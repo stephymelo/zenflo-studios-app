@@ -1,0 +1,29 @@
+button,p,input,li,h1,h2,h3,h4,span,a{
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+h1{
+    font-size:40px;
+    color:$primaryText;
+}
+h2{
+    font-size:16px;
+    line-height: 35px;
+    color:$primaryText;
+}
+a{
+    font-size:16px;
+    color: inherit;
+}
+p{
+    color:#6A7175;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 700px) {
+    h1{
+        font-size:30px;
+    }
+    
+
+}
