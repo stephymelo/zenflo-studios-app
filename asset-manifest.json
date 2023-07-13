@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/zenflo-studios-app/static/css/main.ac39d8e7.css",
-    "main.js": "/zenflo-studios-app/static/js/main.64b9e68e.js",
+    "main.js": "/zenflo-studios-app/static/js/main.2089d755.js",
     "static/js/787.0df3e9e3.chunk.js": "/zenflo-studios-app/static/js/787.0df3e9e3.chunk.js",
-    "static/media/logo.svg": "/zenflo-studios-app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/logoSVG.svg": "/zenflo-studios-app/static/media/logoSVG.61d497538024a5a8c1ad41381976aadf.svg",
     "index.html": "/zenflo-studios-app/index.html",
     "main.ac39d8e7.css.map": "/zenflo-studios-app/static/css/main.ac39d8e7.css.map",
-    "main.64b9e68e.js.map": "/zenflo-studios-app/static/js/main.64b9e68e.js.map",
+    "main.2089d755.js.map": "/zenflo-studios-app/static/js/main.2089d755.js.map",
     "787.0df3e9e3.chunk.js.map": "/zenflo-studios-app/static/js/787.0df3e9e3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ac39d8e7.css",
-    "static/js/main.64b9e68e.js"
+    "static/js/main.2089d755.js"
   ]
 }
