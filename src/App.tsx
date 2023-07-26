@@ -1,6 +1,13 @@
 import React from 'react';
 import logo from './logoSVG.svg';
-
+import {
+  BrowserRouter as Router,
+  Route,
+  HashRouter,
+  BrowserRouter,
+  Routes
+} from "react-router-dom";
+import { Landing } from './Components/Landing/Landing';
 
 function App() {
   return (
@@ -10,6 +17,10 @@ function App() {
        
       
       </header>
+      <Routes>
+      <Route path={"/"} element={<Landing />} />
+
+      </Routes>
     </div>
   );
 }
