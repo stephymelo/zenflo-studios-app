@@ -14,11 +14,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-       
-      
+
+
       </header>
       <Routes>
-      <Route path={"/"} element={<Landing />} />
+        <Route path={"/zenflo-studios-app"} element={<Landing />} />
 
       </Routes>
     </div>
