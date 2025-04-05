@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    box-shadow: none;
+  
+    &.scrolled {
+      background-color: $color-secondary-dark;
+      box-shadow: $elevation-1;
+     
+    }
+  
+    .logo-container {
+      height: 30px;
+      transition: height 0.3s ease;
+      
+      .logo {
+        height: 100%;
+        width: auto;
+        transition: all 0.3s ease;
+      }
+    }
+  }

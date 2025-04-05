@@ -1,0 +1,43 @@
+
+
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: $font-family;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+
+  &--solid {
+    background: $color-primary;
+    color: $color-on-primary;
+    padding: $spacing-2 $spacing-3;
+    border-radius: $border-radius-md;
+    font-weight: $font-weight-medium;
+    
+    &:hover {
+      background: $color-primary-dark;
+    }
+  }
+
+  &--outline {
+    color: $color-primary;
+    position: relative;
+    font-weight: $font-weight-regular;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+    }
+    
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+}

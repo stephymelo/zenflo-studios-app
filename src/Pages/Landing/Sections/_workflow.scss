@@ -1,0 +1,43 @@
+
+.workflow {
+  padding: $spacing-4 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    margin-bottom: $spacing-4;
+  }
+
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-3;
+  }
+
+  .step {
+    flex: 1;
+    
+    &-number {
+      width: 50px;
+      height: 50px;
+      background: $color-primary;
+      color: $color-on-primary;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: $font-weight-bold;
+      margin: 0 auto $spacing-2;
+    }
+    
+    h3 {
+      margin-bottom: $spacing-1;
+    }
+    
+    p {
+      color: rgba($color-on-surface, 0.7);
+    }
+  }
+}

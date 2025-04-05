@@ -1,9 +1,22 @@
-@import './Components/Landing/landing';
 @import './Styles/reset';
-@import './Styles/colors';
+@import './Styles/variables';
+
 @import './Styles/typography';
 @import './Styles/breakpoints';
 @import './Styles/elements';
+@import './Styles/mixins';
+
+@import './Pages/Landing/landing';
+@import './Pages/Landing/Sections/hero';
+@import './Pages/Landing/Sections/services';
+@import './Pages/Landing/Sections/workflow';
+@import './Components/Header/header';
+@import './Components/Menu/menu';
+@import './Components/Button/button';
+
+
+
+
 
 
 @font-face{
