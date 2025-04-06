@@ -1,12 +1,6 @@
 import React from 'react';
 import logo from './logoSVG.svg';
-import {
-  BrowserRouter as Router,
-  Route,
-  HashRouter,
-  BrowserRouter,
-  Routes
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Landing } from './Pages/Landing/Landing';
 import  Header  from './Components/Header/Header';
 
@@ -19,7 +13,7 @@ function App() {
 
 
       <Routes>
-        <Route path={"/zenflo-studios-app"} element={<Landing />} />
+      <Route path="/" element={<Landing />} />
 
       </Routes>
     </div>
