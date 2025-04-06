@@ -11,8 +11,12 @@
 @import './Pages/Landing/Sections/services';
 @import './Pages/Landing/Sections/workflow';
 @import './Components/Header/header';
+@import './Components/Footer/footer';
 @import './Components/Menu/menu';
 @import './Components/Button/button';
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 
 
 
@@ -23,6 +27,7 @@
     font-family: SpaceGrotesk, sans-serif;
     src:  url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 }
+
 @font-face{
     font-family: 'Montserrat', sans-serif;
     src:  url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -30,8 +35,8 @@
 
 
 #app {
-    font-family: 'Montserrat', sans-serif;
-    font-family: SpaceGrotesk,sans-serif;
+    font-family: 'Karla', sans-serif;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

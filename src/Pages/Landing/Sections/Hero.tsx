@@ -9,11 +9,12 @@ export const Hero = () => {
             </div>
             <div className="hero-overlay">
                 <div className="hero-content">
-                    <h4 className='hero-heading'>Design Studio</h4>
-                    <h1 className='hero-title'>Design services for your brand</h1>
-                    <p className="hero-subtitle">
+                   
+                    <h1 className='hero-title'>We design your vision, watch it grow in the world </h1>
+                    <h3 className="hero-subtitle">
                         We create high quality content to impulse your brand
-                    </p>
+                    </h3>
+                    <h4 className='hero-heading'>design and develop studio</h4>
                     <div className="cta-group">
                         <Button variant="solid" size="lg">
                             Book us
