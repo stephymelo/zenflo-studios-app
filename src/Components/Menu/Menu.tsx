@@ -16,7 +16,8 @@ const Menu: React.FC = () => {
       subItems: ['Branding', 'Website', 'Social Media']
     },
     { label: 'Why Us', href: '#why-us' },
-    { label: 'Our Work', href: '#our-work' }
+    { label: 'Our Work', href: '#our-work' },
+    { label: 'Contact', href: '#contact' }
   ];
 
   const handleBookClick = () => {
@@ -52,15 +53,16 @@ const Menu: React.FC = () => {
           </li>
         ))}
         <li className="menu-item">
+
        
-        <Button 
+        {/* <Button 
   variant="solid" 
   size='md'
   color='primary'
   onClick={() => console.log('Clicked')}
 >
   Book us
-</Button>
+</Button> */}
         </li>
       </ul>
     </nav>

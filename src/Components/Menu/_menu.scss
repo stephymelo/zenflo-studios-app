@@ -12,17 +12,19 @@
   .menu-item {
     position: relative;
     cursor: pointer;
+
   }
   
   .menu-item a, .menu-item span {
-    color: $color-on-primary;
+    color: $color-primary-text-hover;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 300;
+   color: $color-white;
     transition: color 0.3s ease;
   }
   
   .menu-item a:hover, .menu-item span:hover {
-    color: $primary-text;
+    color: $color-primary-text;
   }
   
   .dropdown {

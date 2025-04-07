@@ -10,7 +10,7 @@ export const Hero = () => {
             <div className="hero-overlay">
                 <div className="hero-content">
                    
-                    <h1 className='hero-title'>We design your vision, watch it grow in the world </h1>
+                    <h1 className='hero-title'>We build your vision,<br/> you watch it grow </h1>
                     <h3 className="hero-subtitle">
                         We create high quality content to impulse your brand
                     </h3>

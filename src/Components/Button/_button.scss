@@ -11,7 +11,8 @@
 
   &--solid {
     background: $color-primary;
-    color: $color-on-primary;
+  
+    color:$color-white;
     padding: $spacing-2 $spacing-3;
     border-radius: $border-radius-md;
     font-weight: $font-weight-medium;

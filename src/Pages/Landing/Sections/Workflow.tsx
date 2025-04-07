@@ -26,6 +26,22 @@ export const Workflow = () => {
             </div>
           ))}
         </div>
+
+        
+        <section className="section how-we-work">
+        <h2>How We Work</h2>
+        <p>
+          We follow a collaborative and iterative process to ensure your vision comes to life.
+          From concept to execution, we work closely with you to deliver a product that
+          exceeds expectations.
+        </p>
+        <ul>
+          <li>Research & Strategy</li>
+          <li>Design & Prototyping</li>
+          <li>Development & Testing</li>
+          <li>Launch & Support</li>
+        </ul>
+      </section>
       </section>
     );
   };
