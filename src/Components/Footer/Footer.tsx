@@ -23,8 +23,8 @@ const Footer = () => {
                     <div className="socialSection">
                         <h3 className="sectionTitle">Social</h3>
                         <div className="socialLinks">
-                            <a href="https://twitter.com/wearecollins" target="_blank" rel="noopener noreferrer">X: @zenflostudios</a>
-                            <a href="https://instagram.com/zenflo" target="_blank" rel="noopener noreferrer">Instagram: @zenflostudios</a>
+                            <a href="https://x.com/ZenfloStudios" target="_blank" rel="noopener noreferrer">X: @zenflostudios</a>
+                            <a href="https://instagram.com/zenflo.studios" target="_blank" rel="noopener noreferrer">Instagram: @zenflostudios</a>
                             {/* <a href="https://linkedin.com/company/collins" target="_blank" rel="noopener noreferrer">LinkedIn: COLLINS</a> */}
                         </div>
                     </div>

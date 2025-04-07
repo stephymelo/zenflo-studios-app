@@ -16,15 +16,15 @@
   }
   
   .menu-item a, .menu-item span {
-    color: $color-primary-text-hover;
+    color: $color-primary-text;
     text-decoration: none;
     font-weight: 300;
-   color: $color-white;
+ 
     transition: color 0.3s ease;
   }
   
   .menu-item a:hover, .menu-item span:hover {
-    color: $color-primary-text;
+    color: $color-primary-text-hover;
   }
   
   .dropdown {

@@ -12,8 +12,9 @@
     box-shadow: none;
   
     &.scrolled {
-      background-color: $color-secondary-dark;
-      box-shadow: $elevation-1;
+      background-color: $color-background;
+      // border-bottom: 1px solid rgb(210, 210, 210); 
+      // box-shadow: $elevation-1;
      
     }
   

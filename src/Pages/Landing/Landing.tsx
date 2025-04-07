@@ -4,14 +4,16 @@ import * as React from 'react';
 import { Hero } from './Sections/Hero';
 import { Services } from './Sections/Services';
 import { Workflow } from './Sections/Workflow';
+import Solutions from './Sections/Solutions';
 
 interface Landing {
 }
 
 export const Landing: React.FC<Landing> = () => {
-    return (
-<section className='Landing'>
-<Hero />
+  return (
+    <section className='Landing'>
+      <Hero />
+      <Solutions />
       <Services />
       <Workflow />
 
@@ -24,8 +26,8 @@ export const Landing: React.FC<Landing> = () => {
         </p>
       </section>
 
-      
 
-</section>
-);
+
+    </section>
+  );
 }

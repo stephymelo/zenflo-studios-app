@@ -1,13 +1,14 @@
 button,p,input,li,h1,h2,h3,h4,span,a{
     font-family: 'Karla', sans-serif;
     font-weight: 700;
+    color: inherit;
 }
 
 h1{
-    font-size:40px;
+    font-size:44px;
 }
 h2{
-    font-size:16px;
+    font-size:20px;
     line-height: 35px;
 }
 
@@ -21,11 +22,12 @@ h4{
 }
 a{
     font-size:16px;
-    color: inherit;
+   
+    font-weight: 400;
 }
 p{
-    color:#6A7175;
     font-size: 16px;
+    font-weight: 400;
 }
 
 @media screen and (max-width: 700px) {
