@@ -276,6 +276,42 @@ body {
      object-position: center;
 }
 
+@media screen and (max-width: 768px) {
+  .hero {
+    height: auto;
+    max-height: none;
+    flex-direction: column;
+  }
+  .hero-overlay {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 5%;
+  }
+  .hero-content {
+    margin-bottom: 2rem;
+    max-width: 100%;
+    text-align: center;
+  }
+  .hero-content .hero-heading {
+    font-size: 1rem;
+  }
+  .hero-content .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-content .hero-subtitle {
+    font-size: 1rem;
+  }
+  .hero .cta-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero .hero-bamboo-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+  }
+}
 .services {
   padding: 32px 0;
 }

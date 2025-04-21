@@ -72,3 +72,48 @@
         object-position: center;
       }
   }
+
+  @media screen and (max-width: 768px) {
+    .hero {
+      height: auto;
+      max-height: none;
+      flex-direction: column;
+  
+      &-overlay {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 5%;
+      }
+  
+      &-content {
+        margin-bottom: 2rem;
+        max-width: 100%;
+        text-align: center;
+  
+        .hero-heading {
+          font-size: 1rem;
+        }
+  
+        .hero-title {
+          font-size: 2.5rem;
+        }
+  
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+      }
+  
+      .cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .hero-bamboo-image {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+      }
+    }
+  }
+  
