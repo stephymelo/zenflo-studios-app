@@ -11,13 +11,13 @@ const Menu: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const menuItems: MenuItem[] = [
-    { 
-      label: 'Services',
-      subItems: ['Branding', 'Website', 'Social Media']
-    },
+    // { 
+    //   label: 'Services',
+    //   subItems: ['Branding', 'Website', 'Social Media']
+    // },
     { label: 'Why Us', href: '#why-us' },
-    { label: 'Our Work', href: '#our-work' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Our Work', href: '#workflow' },
+    { label: 'Contact', href: '/contact' }
   ];
 
   const handleBookClick = () => {

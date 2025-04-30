@@ -21,11 +21,17 @@
     .logo-container {
       height: 30px;
       transition: height 0.3s ease;
+      :hover{
+        cursor: pointer;
+      }
       
       .logo {
         height: 100%;
         width: auto;
         transition: all 0.3s ease;
+
+
+        
       }
     }
   }

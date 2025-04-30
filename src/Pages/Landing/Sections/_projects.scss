@@ -1,0 +1,105 @@
+.project-slider-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    
+    .slider-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+     
+    }
+    
+    .slider-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin: 0 -1rem; // Allow slides to peek in from sides
+    }
+    
+    .projects-slider {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding: 1rem;
+      scrollbar-width: none; // Hide scrollbar
+      
+      &::-webkit-scrollbar {
+        display: none; // Hide scrollbar
+      }
+    }
+    
+    .project-slide {
+      flex: 0 0 calc(33.333% - 1rem); // Show 3 at a time with partial cut-off
+      scroll-snap-align: start;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+
+      .project-img-container {
+        height: 200px;
+        width: 100%;
+
+      }
+      
+      .project-img {
+       width: 100%;
+       object-fit: contain;
+       
+    
+      }
+      
+      .project-content {
+        padding: 1.5rem;
+        
+        h2 {
+          margin: 0 0 0.5rem 0;
+          font-size: 1.5rem;
+          
+        }
+        
+        p {
+          margin: 0;
+         
+        }
+      }
+    }
+    
+    .slider-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1rem;
+      
+      .slider-arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: $color-primary-text;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+        
+        &.left {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+    
+    
+    
+  }

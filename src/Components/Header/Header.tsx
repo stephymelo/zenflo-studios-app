@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import  Menu  from '../Menu/Menu';
 import { ReactComponent as Logo } from '../../Assets/Logo/logo_zenflo.svg';
-
+import { useNavigate } from 'react-router-dom';
 interface Header {
 }
 
 export const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const navigate = useNavigate();
+
   
     useEffect(() => {
       const handleScroll = () => {
@@ -18,7 +20,7 @@ export const Header = () => {
     }, []);
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="logo-container">
+      <div className="logo-container"  onClick={() => navigate("/")}>
         <Logo className="logo" />
       </div>
       <Menu />

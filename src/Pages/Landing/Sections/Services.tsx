@@ -1,34 +1,56 @@
-export const Services = () => {
-    const services = [
-      {
-        title: "Graphic Design",
-        items: ["Social media graphics", "Presentation design", "Print collateral"]
-      },
-      {
-        title: "Digital Design",
-        items: ["Web & app UI", "Banners & ads", "Email templates"]
-      },
-      {
-        title: "Motion Design",
-        items: ["Animated ads", "Explainer videos", "Micro-animations"]
-      }
-    ];
-  
-    return (
-      <section className="services">
-        <h2>Design services we offer</h2>
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <div key={index} className="service-card">
-              <h3>{service.title}</h3>
-              <ul>
-                {service.items.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+import React from 'react';
+import leaf from '../../../Assets/Media/leaf-zen.svg';
+
+interface Services {
+  id: number;
+  name: string;
+}
+
+const Services: React.FC = () => {
+  const services: Services[] = [
+    { id: 1, name: 'Website Development' },
+    { id: 2, name: 'Website Design' },
+    { id: 3, name: 'Content Design' },
+    { id: 4, name: 'Product Design' },
+    { id: 5, name: 'Prototyping' },
+    { id: 6, name: 'Content Creation' },
+    { id: 7, name: 'Printables' },
+    { id: 8, name: 'Meta Ads' },
+    { id: 9, name: 'UI & UX Design' },
+    { id: 10, name: 'Market Research' },
+    { id: 11, name: 'Google Ads' },
+    { id: 12, name: 'UX Strategy' },
+    { id: 13, name: 'User Research' },
+    { id: 14, name: 'Slide Decks' },
+  ];
+
+  return (
+    <div className="services-container">
+      <div className="services-pills">
+        {services.map((service, index) => (
+          <React.Fragment key={service.id}>
+            <p className="service-pill">
+              {service.name}
+            </p>
+
+            {(index + 1 === 3 || index + 1 === 8 || index + 1 === 11) && (
+              <img 
+                src={leaf} 
+                alt="Divider" 
+                className="leaf-divider" 
+              />
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+      <div className="services-image">
+        {/* Placeholder for your image - replace with your actual image */}
+        <div className="image-placeholder">
+          Your Image Here
         </div>
-      </section>
-    );
-  };
+      </div>
+    </div>
+  );
+};
+
+export default Services;
