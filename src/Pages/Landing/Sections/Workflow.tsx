@@ -16,7 +16,7 @@ export const Workflow = () => {
 
   return (
     <section className="workflow">
-      <section className="section how-we-work">
+      <section className="workflow-richtext">
         <h2>How We Flow</h2>
         <p>
           We follow a collaborative and iterative process to ensure your vision comes to life.

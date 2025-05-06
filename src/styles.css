@@ -389,10 +389,9 @@ body {
   padding: 32px 0;
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
 }
-.workflow h2 {
-  margin-bottom: 32px;
+.workflow-richtext {
+  text-align: left;
 }
 .workflow .steps {
   display: flex;
@@ -412,10 +411,7 @@ body {
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 auto 16px;
-}
-.workflow .step h3 {
-  margin-bottom: 8px;
+  margin: 0 auto;
 }
 
 .solutions {
@@ -510,7 +506,7 @@ body {
   position: relative;
 }
 .project-slider-container .project-slide .project-img-container {
-  height: 200px;
+  height: 230px;
   width: 100%;
 }
 .project-slider-container .project-slide .project-img {
@@ -557,6 +553,10 @@ body {
 
 .quote {
   max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 10em;
+  padding-left: 1em;
+  padding-bottom: 10em;
 }
 
 .header {

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import progen from '../../../Assets/Projects/memorialday-banner-mobile.png';
+import catalog from '../../../Assets/Projects/catalog-men-nil-mockup.png';
+import finkargo from '../../../Assets/Projects/finkargo-mockup.png';
 
 interface Project {
   id: number;
@@ -14,27 +15,31 @@ const Projects: React.FC = () => {
       id: 1, 
       title: 'Catalogs for Hair Units', 
       description: 'For Digital and Print', 
-      img: progen // Directly use the imported image
+      img: catalog // Directly use the imported image
     },
     { 
       id: 2, 
       title: 'E-commerce for Hair Care', 
-      description: 'Built on Shopify' 
+      description: 'Built on Shopify',
+      img: catalog
     },
     { 
       id: 3, 
       title: 'Fintech Platform', 
-      description: 'Credit for importers' 
+      description: 'Credit for importers',
+      img: finkargo
     },
     { 
       id: 4, 
       title: 'E-commerce for Hair loss', 
-      description: 'Built on Shopify' 
+      description: 'Built on Shopify' ,
+      img: catalog
     },
     { 
       id: 5, 
       title: 'Branding for Hair Care', 
-      description: 'Brand book, socials and e-mail' 
+      description: 'Brand book, socials and e-mail' ,
+      img: catalog
     },
   ];
 

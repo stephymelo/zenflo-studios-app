@@ -1,5 +1,6 @@
 import React from 'react';
 import leaf from '../../../Assets/Media/leaf-zen.svg';
+import rightpic from '../../../Assets/Projects/catalog-men-nil-mockup.png';
 
 interface Services {
   id: number;
@@ -44,10 +45,10 @@ const Services: React.FC = () => {
         ))}
       </div>
       <div className="services-image">
-        {/* Placeholder for your image - replace with your actual image */}
-        <div className="image-placeholder">
-          Your Image Here
-        </div>
+     
+      
+         <img className='image-placeholder' src={rightpic}></img>
+       
       </div>
     </div>
   );
