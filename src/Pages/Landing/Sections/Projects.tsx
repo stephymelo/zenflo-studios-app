@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import catalog from '../../../Assets/Projects/catalog-men-nil-mockup.png';
 import finkargo from '../../../Assets/Projects/finkargo-mockup.png';
+import progen from '../../../Assets/Projects/progen-mockup.png';
+import hairloss from '../../../Assets/Projects/hairloss-mockup.png';
 
 interface Project {
   id: number;
@@ -21,7 +23,7 @@ const Projects: React.FC = () => {
       id: 2, 
       title: 'E-commerce for Hair Care', 
       description: 'Built on Shopify',
-      img: catalog
+      img: progen
     },
     { 
       id: 3, 
@@ -33,7 +35,7 @@ const Projects: React.FC = () => {
       id: 4, 
       title: 'E-commerce for Hair loss', 
       description: 'Built on Shopify' ,
-      img: catalog
+      img: hairloss
     },
     { 
       id: 5, 
@@ -71,6 +73,7 @@ const Projects: React.FC = () => {
   return (
     <div className="project-slider-container">
       <h1 className="slider-title">Projects</h1>
+  
       
       <div className="slider-wrapper">
         <div className="projects-slider" ref={sliderRef}>
