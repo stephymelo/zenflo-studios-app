@@ -9,6 +9,9 @@ import finkargo from '../../Assets/Projects/finkargo-mockup.png';
 import progen from '../../Assets/Projects/progen-mockup.png';
 import hairloss from '../../Assets/Projects/hairloss-mockup.png';
 import progenbook from '../../Assets/Projects/progen-brandbook-mockup.png';
+import finkargoColor from '../../Assets/Projects/color-guide.png';
+import finkargoButton from '../../Assets/Projects/button-guide.png';
+import progenWeb from '../../Assets/Projects/progen-web.png';
 
 interface WorkItem {
   id: number;
@@ -22,8 +25,8 @@ const Work: React.FC = () => {
   const workItems: WorkItem[] = [
     {
       id: 1,
-      title: "Catalog design",
-      subtitle: "Included re-designing",
+      title: "Catalogs for print and digital",
+      subtitle: "Re-designing the catalogs to better fit the products, improve readibility and navigation. Designed covers and took photos for catalog use. ",
       images: [
         catalog,
         catalogW,
@@ -36,21 +39,20 @@ const Work: React.FC = () => {
       subtitle: "Designed brand book for socials and web. Built e-commerse with Shopify, customized to the brands needs to include Wholesale, interactive elements, and more.",
       images: [
         progen,
-        progen,
-        progen,
-        progen,
+        progenWeb,
+        progenbook,
+      
       ],
     },
     {
       id: 3,
       title: "Credit platform for importers in Colombia",
-      subtitle: "Created design system, aligned previous designs and created new designs for new services",
+      subtitle: "Created design system, aligned previous designs and created new designs for new services. Working with developers that used React and integrations for a Web-based platform that connected not only the customers, but also internal and admin functionalities.",
       images: [
        finkargo,
-        finkargo,
-        finkargo,
-        finkargo,
-        finkargo,
+        finkargoButton,
+        finkargoColor,
+     
         
       ],
     },
