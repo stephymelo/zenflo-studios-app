@@ -1,6 +1,6 @@
 import React from 'react';
 import leaf from '../../../Assets/Media/leaf-zen.svg';
-import rightpic from '../../../Assets/Projects/catalog-men-nil-mockup.png';
+import rightpic from '../../../Assets/Media/zenflo-flow.svg';
 
 interface Services {
   id: number;

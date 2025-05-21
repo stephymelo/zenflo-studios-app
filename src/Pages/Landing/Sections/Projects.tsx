@@ -3,6 +3,7 @@ import catalog from '../../../Assets/Projects/catalog-men-nil-mockup.png';
 import finkargo from '../../../Assets/Projects/finkargo-mockup.png';
 import progen from '../../../Assets/Projects/progen-mockup.png';
 import hairloss from '../../../Assets/Projects/hairloss-mockup.png';
+import progenbook from '../../../Assets/Projects/progen-brandbook-mockup.png';
 
 interface Project {
   id: number;
@@ -41,7 +42,7 @@ const Projects: React.FC = () => {
       id: 5, 
       title: 'Branding for Hair Care', 
       description: 'Brand book, socials and e-mail' ,
-      img: catalog
+      img: progenbook
     },
   ];
 
@@ -72,7 +73,7 @@ const Projects: React.FC = () => {
 
   return (
     <div className="project-slider-container">
-      <h1 className="slider-title">Projects</h1>
+      <h2 className="slider-title">Projects</h2>
   
       
       <div className="slider-wrapper">
@@ -84,7 +85,7 @@ const Projects: React.FC = () => {
                 </div>
               
               <div className="project-content">
-                <h2>{project.title}</h2>
+                <h3>{project.title}</h3>
                 <p>{project.description}</p>
               </div>
             </div>

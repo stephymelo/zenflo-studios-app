@@ -1,7 +1,14 @@
 import Button from '../../../Components/Button/Button';
 import heroBg from '../../../Assets/Media/bamboo-hero.svg';
+import { useNavigate } from 'react-router-dom';
 
 export const Hero = () => {
+
+    const navigate = useNavigate();
+
+    const handleBookUsClick = () => {
+        navigate('/contact');
+    };
     return (
         <section className="hero">
             {/* <div className="hero-background">
@@ -16,7 +23,7 @@ export const Hero = () => {
                     </h3>
                    
                     <div className="cta-group">
-                        <Button variant="solid" size="lg">
+                        <Button variant="solid" size="lg"  onClick={handleBookUsClick}>
                             Book us
                         </Button>
                        

@@ -15,8 +15,7 @@ const Menu: React.FC = () => {
     //   label: 'Services',
     //   subItems: ['Branding', 'Website', 'Social Media']
     // },
-    { label: 'Why Us', href: '#why-us' },
-    { label: 'Our Work', href: '#workflow' },
+    { label: 'Our Work', href: '/work' },
     { label: 'Contact', href: '/contact' }
   ];
 
