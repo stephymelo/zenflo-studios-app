@@ -114,32 +114,43 @@
 // }
 
 
-
 .workflow {
-  padding: $spacing-4 0;
+  padding: 40px 0;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 
   &-richtext {
     text-align: left;
 
-    .subtitle{
-      margin-top:1em;
-      font-size:18px;
+    .subtitle {
+      margin-top: 1em;
+      font-size: 18px;
     }
   }
 
-  .timeline-container{
-    display: flex; 
+  .bamboo {
+    position: absolute;
+    left:47%;
+    top: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    width: auto;
+    z-index: -1;
+    opacity: 0.8;
+  }
+
+  .timeline-container {
+    display: flex;
     flex-direction: row;
-    margin-top:4em;
+    margin-top: 4em;
     gap: 2em;
+    position: relative;
   }
 
   .planning-container {
     flex: 1;
     padding: 1.5em;
-
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -149,18 +160,20 @@
   .execution-container {
     flex: 1;
     padding: 1.5em;
-    border: 2px solid $color-primary; // Green border
+    border: 2px solid $color-primary-light; 
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: 2em;
+    background-color: $color-background;
 
     .step {
       &:last-child h3 {
-       color:$color-primary
+        color: $color-primary;
       }
+    }
   }
-}
+
 
   .step {
     position: relative;
@@ -172,7 +185,6 @@
     &:last-child {
       margin-bottom: 0;
     }
- 
 
     &-duration {
       display: block;
@@ -188,9 +200,20 @@
     }
   }
 
+}
   @media (max-width: 768px) {
-    .timeline-container {
-      flex-direction: column;
+
+    .workflow {
+      padding: 40px 20px;
+     
+      .timeline-container {
+        flex-direction: column;
+      }
+
+    }
+  
+
+    .bamboo {
+      display: none; /* hide bamboo on mobile if it's causing layout issues */
     }
   }
-}

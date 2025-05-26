@@ -23,7 +23,9 @@ export const Header = () => {
       <div className="logo-container"  onClick={() => navigate("/")}>
         <Logo className="logo" />
       </div>
+      <div className="menu">
       <Menu />
+      </div>
     </header>
   );
 };

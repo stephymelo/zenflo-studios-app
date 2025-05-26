@@ -96,7 +96,7 @@ export const Workflow = () => {
 
       <div className="timeline-container">
         {/* Gray container for Story and Strategy */}
-        <img src={bamboo}></img>
+        <img className='bamboo' src={bamboo}></img>
         <div className="planning-container">
           {steps.slice(0, 2).map((step, index) => (
             <div key={index} className="step">

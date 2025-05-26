@@ -1,6 +1,14 @@
+.menu-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
-
-.menu-list {
+// Desktop Styles
+.menu-web {
+  display: block;
+  
+  .menu-list {
     display: flex;
     gap: 2rem;
     list-style: none;
@@ -8,25 +16,23 @@
     padding: 0;
     align-items: center;
   }
-  
+
   .menu-item {
     position: relative;
     cursor: pointer;
 
+    a, span {
+      color: $color-primary-text;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+
+    a:hover, span:hover {
+      color: $color-primary-text-hover;
+    }
   }
-  
-  .menu-item a, .menu-item span {
-    color: $color-primary-text;
-    text-decoration: none;
-    font-weight: 300;
- 
-    transition: color 0.3s ease;
-  }
-  
-  .menu-item a:hover, .menu-item span:hover {
-    color: $color-primary-text-hover;
-  }
-  
+
   .dropdown {
     position: absolute;
     top: 100%;
@@ -39,14 +45,101 @@
     list-style: none;
     margin: 0;
     z-index: 10;
+
+    li {
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
   }
-  
-  .dropdown li {
-    padding: 0.5rem 1rem;
+}
+
+// Mobile Burger Icon - Left positioned
+.burger-menu {
+  display: none;
+  cursor: pointer;
+  z-index: 1000;
+  margin-right: 20px;
+
+  .line {
+    fill: $color-secondary-text; // Default color
+    transition: fill 0.3s ease; // Only transition color
   }
-  
-  .dropdown li:hover {
-    background: #f5f5f5;
+
+  &.active {
+    .line {
+      fill: $color-primary-dark; // Active/hover color
+    }
   }
-  
-  
+}
+
+// Mobile Menu - Now sliding from left
+.menu-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  background: white;
+  z-index: 999;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 80px; // Moved outside of active state
+  padding-left: 0; // Initialize padding
+  padding-right: 0;
+
+  &.active {
+    width: 250px;
+    padding-left: 20px; // Only animate width and side padding
+    padding-right: 20px;
+  }
+
+  .mobile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative; // Ensure stable positioning
+    height: 100%; // Take full available height
+    overflow-y: auto; // Allow scrolling if many items
+  }
+
+  .mobile-menu-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: relative; // Maintain positioning
+    transition: none; // Remove any item transitions
+
+    a {
+      color: $color-primary-text;
+      text-decoration: none;
+      font-size: 16px;
+      display: block;
+      position: relative;
+    }
+  }
+}
+// Responsive Styles
+@media screen and (max-width: 780px) {
+
+.menu-mobile {
+display: block;
+}
+
+  .menu-web {
+    display: none;
+  }
+
+  .burger-menu {
+    padding-top:0.8rem;
+    display: block;
+
+  }
+
+  .menu-container {
+    justify-content: flex-start;
+  }
+}

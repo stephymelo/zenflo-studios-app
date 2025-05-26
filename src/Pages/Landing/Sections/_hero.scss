@@ -75,6 +75,7 @@
 
   @media screen and (max-width: 768px) {
     .hero {
+      padding-top:5em;
       height: auto;
       max-height: none;
       flex-direction: column;
@@ -89,14 +90,14 @@
       &-content {
         margin-bottom: 2rem;
         max-width: 100%;
-        text-align: center;
+        text-align: left;
   
         .hero-heading {
           font-size: 1rem;
         }
   
         .hero-title {
-          font-size: 2.5rem;
+          font-size: 2.1rem;
         }
   
         .hero-subtitle {
