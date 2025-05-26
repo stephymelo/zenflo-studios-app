@@ -445,18 +445,30 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .project-slider-container .project-slide .project-img-container {
   height: 230px;
   width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
 }
 .project-slider-container .project-slide .project-img {
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  transition: transform 0.3s ease;
 }
 .project-slider-container .project-slide .project-content {
   padding: 1.5rem;
+  flex-grow: 1;
 }
 .project-slider-container .project-slide .project-content h2 {
   margin: 0 0 0.5rem 0;

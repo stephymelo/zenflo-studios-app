@@ -38,19 +38,30 @@
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
+    display: flex;
+    flex-direction: column; // Ensures content stays below image
 
     .project-img-container {
       height: 230px;
       width: 100%;
+      overflow: hidden; // Prevents image from overflowing
+      display: flex;
+      align-items: center; // Vertically centers the image
+      justify-content: center; // Horizontally centers the image
+      background: #f8f8f8; // Fallback background
     }
     
     .project-img {
       width: 100%;
-      object-fit: contain;
+      height: 100%;
+      object-fit: cover; // Changed from 'contain' to 'cover' for consistent cropping
+      object-position: center; // Ensures focus is on center of image
+      transition: transform 0.3s ease; // Optional: for hover effects
     }
     
     .project-content {
       padding: 1.5rem;
+      flex-grow: 1; // Makes content take remaining space
       
       h2 {
         margin: 0 0 0.5rem 0;
@@ -97,28 +108,28 @@
     padding: 1rem;
     
     .slider-wrapper {
-      margin: 0; // Remove side peeking on mobile
+      margin: 0;
     }
     
     .projects-slider {
-      padding: 1rem 0; // Adjust padding for mobile
+      padding: 1rem 0;
     }
     
     .project-slide {
-      flex: 0 0 90%; // Show one project at a time with 10% gap
-      margin: 0 5%; // Center the single slide
+      flex: 0 0 90%;
+      margin: 0 5%;
       
       .project-img-container {
-        height: 180px; // Slightly smaller on mobile
+        height: 180px;
       }
       
       .project-content {
-        padding: 1rem; // Slightly less padding on mobile
+        padding: 1rem;
       }
     }
     
     .slider-controls {
-      justify-content: center; // Center arrows on mobile
+      justify-content: center;
     }
   }
 }
