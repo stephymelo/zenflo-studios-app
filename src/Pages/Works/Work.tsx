@@ -44,18 +44,18 @@ const Work: React.FC = () => {
       
       ],
     },
-    {
-      id: 3,
-      title: "Credit platform for importers in Colombia",
-      subtitle: "Created design system, aligned previous designs and created new designs for new services. Working with developers that used React and integrations for a Web-based platform that connected not only the customers, but also internal and admin functionalities.",
-      images: [
-       finkargo,
-        finkargoButton,
-        finkargoColor,
+    // {
+    //   id: 3,
+    //   title: "Credit platform for importers in Colombia",
+    //   subtitle: "Created design system, aligned previous designs and created new designs for new services. Working with developers that used React and integrations for a Web-based platform that connected not only the customers, but also internal and admin functionalities.",
+    //   images: [
+    //    finkargo,
+    //     finkargoButton,
+    //     finkargoColor,
      
         
-      ],
-    },
+    //   ],
+    // },
   ];
 
   return (

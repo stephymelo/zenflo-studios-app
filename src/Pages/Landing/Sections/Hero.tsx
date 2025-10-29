@@ -22,14 +22,14 @@ export const Hero = () => {
                     We help businesses shape their identity and elevate it through websites, digital content, and strategic design.
                     </h3>
                    
-                    <div className="cta-group">
-                        <Button variant="solid" size="lg"  onClick={handleBookUsClick}>
+                    {/* <div className="cta-group">
+                        <Button variant="outline" size="lg"  onClick={handleBookUsClick} color="secondary">
                             Book us
                         </Button>
                        
-                    </div>
+                    </div> */}
                 </div>
-                <img src={heroBg} alt="Design team working" className="hero-bamboo-image" />
+                {/* <img src={heroBg} alt="Design team working" className="hero-bamboo-image" /> */}
             </div>
         </section>
     );

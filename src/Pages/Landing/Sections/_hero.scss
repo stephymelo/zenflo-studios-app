@@ -4,6 +4,7 @@
     height: 100vh;
     max-height: 80%;
     overflow: hidden;
+    background-color: $color-primary;
   
     &-background {
       position: absolute;
@@ -32,13 +33,13 @@
     }
   
     &-content {
-        
+         color: $color-background;
         margin-bottom:7em;
       max-width: 80%;
   
    
       .hero-heading{
-        color: $color-primary-text;
+       
         font-weight: 300;
         font-size:1.2rem;
 
@@ -49,13 +50,12 @@
         font-weight: 700;
         margin-bottom: 1.5rem;
         line-height: 1.2;
-        color: $color-primary-text;
+      
       }
   
       .hero-subtitle {
         font-size: 1.25rem;
         margin-bottom: 2rem;
-        color: $color-primary-text;
        
       }
     }

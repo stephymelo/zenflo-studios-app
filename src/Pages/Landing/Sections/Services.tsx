@@ -1,5 +1,6 @@
 import React from 'react';
 import leaf from '../../../Assets/Media/leaf-zen.svg';
+import bamboo from '../../../Assets/Media/bamboo-services.svg';
 import rightpic from '../../../Assets/Media/zenflo-flow.svg';
 
 interface Services {
@@ -27,6 +28,9 @@ const Services: React.FC = () => {
 
   return (
     <div className="services-container">
+      <div className="services-image">
+        <img className='bamboo' src={bamboo} />
+      </div>
       <div className="services-pills">
         {services.map((service, index) => (
           <React.Fragment key={service.id}>
@@ -34,22 +38,17 @@ const Services: React.FC = () => {
               {service.name}
             </p>
 
-            {(index + 1 === 3 || index + 1 === 8 || index + 1 === 11) && (
+            {/* {(index + 1 === 3 || index + 1 === 8 || index + 1 === 11) && (
               <img 
                 src={leaf} 
                 alt="Divider" 
                 className="leaf-divider" 
               />
-            )}
+            )} */}
           </React.Fragment>
         ))}
       </div>
-      <div className="services-image">
-     
-      
-         <img className='image-placeholder' src={rightpic}></img>
-       
-      </div>
+
     </div>
   );
 };

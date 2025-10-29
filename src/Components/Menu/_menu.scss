@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   align-items: center;
+
+  
 }
 
 // Desktop Styles
@@ -31,6 +33,7 @@
     a:hover, span:hover {
       color: $color-primary-text-hover;
     }
+   
   }
 
   .dropdown {
@@ -64,7 +67,7 @@
   margin-right: 20px;
 
   .line {
-    fill: $color-secondary-text; // Default color
+    fill: $color-primary-dark; // Default color
     transition: fill 0.3s ease; // Only transition color
   }
 

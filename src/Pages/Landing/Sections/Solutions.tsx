@@ -7,7 +7,7 @@ const Solutions = () => {
         <div className="solution-card">
           <h2 className="solution-title">Scalable Solutions</h2>
           <p className="solution-description">
-            Websites and apps interconnected with different platforms such as Shopify, Amazon, SAP and more.
+            Websites and apps interconnected with different platforms.
           </p>
         </div>
 
