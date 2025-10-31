@@ -1,7 +1,9 @@
+@use '../../Styles/variables' as *;
+
 .footer {
   background-color: $color-background;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 2.5rem 1.25rem;
   color: $color-primary-text;
   font-size: 14px;
   line-height: 1.6;
@@ -24,7 +26,7 @@
 
   &__cta h2 {
 
-    font-size: 2.6rem;
+    font-size: 3rem;
 
     line-height: 1.3;
 
@@ -33,8 +35,8 @@
 
     .cta-green {
       color: $color-primary;
-      font-size: 2.6rem;
-      font-weight: 600;
+      font-size: 3rem;
+
     }
   }
 
@@ -130,6 +132,30 @@
       color: $color-primary;
     }
   }
+
+
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+
+
+  &__cta h2 {
+
+    font-size: 2.1rem;
+
+    line-height: 1.3;
+
+    margin-top: 1em;
+    margin-bottom: 2em;
+
+    .cta-green {
+      color: $color-primary;
+      font-size: 2.1rem;
+
+    }
+  }
+}
 
 
 }

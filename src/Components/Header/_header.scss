@@ -1,80 +1,188 @@
+@use '../../Styles/variables' as *;
+
 .header {
+
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid transparent;
+
+  &-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 9rem;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
+    max-width: 1200px;
+    padding: 2.5rem 1.25rem 1rem;
+    margin: 0 auto;
+  }
+
+  &.scrolled {
+    background-color: $color-background;
+    border-bottom: 1px solid $color-divider;
+  }
+
+  // Contact page specific styles
+  &.contact-page {
+    .logo {
+      path {
+        fill: $color-primary-text !important; // Green on contact page
+      }
+    }
+  }
+
+  .logo-container {
+    height: 30px;
+    transition: height 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .logo {
+      height: 100%;
+      width: auto;
+      transition: all 0.3s ease;
+
+
+      path {
+        fill: $color-primary-text;
+        transition: fill 0.3s ease;
+      }
+
+      // Scrolled state - green logo
+      &.logo-scrolled {
+        path {
+          fill: $color-primary-text; // Your green color from variables
+        }
+      }
+
+      // Always green (for contact page)
+      &.logo-green {
+        path {
+          fill: $color-primary-text !important; // Force green on contact page
+        }
+      }
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .lets-talk-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: $color-primary;
+    padding: 0.75rem 2rem;
+    border-radius: $border-radius-md;
+  }
+
+  .lets-talk-link {
+    color: $color-background;
+    font-family: $font-family;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
     transition: all 0.3s ease;
-    background-color: transparent;
-    box-shadow: none;
-    border-bottom: 1px solid transparent;
-  
-    &.scrolled {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
       background-color: $color-background;
-      border-bottom: 1px solid $color-divider; 
-    }
-  
-    // Contact page specific styles
-    &.contact-page {
-      .logo {
-        path {
-          fill: $color-primary !important; // Green on contact page
-        }
-      }
-    }
-  
-    .logo-container {
-      height: 30px;
-      transition: height 0.3s ease;
-      
-      &:hover {
-        cursor: pointer;
-      }
-      
-      .logo {
-        height: 100%;
-        width: auto;
-        transition: all 0.3s ease;
-        
-        // Default state - white logo
-        path {
-          fill: $color-background; // White color
-          transition: fill 0.3s ease;
-        }
-        
-        // Scrolled state - green logo
-        &.logo-scrolled {
-          path {
-            fill: $color-primary; // Your green color from variables
-          }
-        }
-        
-        // Always green (for contact page)
-        &.logo-green {
-          path {
-            fill: $color-primary !important; // Force green on contact page
-          }
-        }
-      }
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .header {
-      justify-content: flex-start;
-      padding: 1rem 1rem;
+      transition: width 0.3s ease;
     }
 
-    .logo-container {
-      display: flex;
+    &:hover::after {
       width: 100%;
-      justify-content: center;
-    }
-
-    .menu {
-      order: -1;
     }
   }
+}
+
+// Hamburger menu styles
+.hamburger-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 16px;
+  position: relative;
+  z-index: 1001;
+
+  .hamburger-line {
+    display: block;
+    width: 100%;
+    height: 1.2px;
+    background-color: $color-background;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 0;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+
+    &.open {
+      &:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    justify-content: space-between;
+    padding: 1rem 20px;
+
+    &-container {
+      padding: 1rem 1.25rem;
+      justify-content: space-between;
+    }
+
+    .lets-talk-container {
+      padding: 0.5rem 1rem;
+      background-color: transparent;
+      gap: 0;
+    }
+
+    .lets-talk-link {
+      display: none;
+    }
+
+    .hamburger-line {
+      background-color: $color-primary-text;
+    }
+  }
+}

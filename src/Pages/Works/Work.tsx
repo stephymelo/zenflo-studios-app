@@ -1,16 +1,10 @@
 import React from "react";
 
-
 import catalog from '../../Assets/Projects/catalog-men-nil-mockup.png';
 import catalogW from '../../Assets/Projects/catalog-women-mockup.png';
 import catalogA from '../../Assets/Projects/catalog-accessory.png';
-
-import finkargo from '../../Assets/Projects/finkargo-mockup.png';
 import progen from '../../Assets/Projects/progen-mockup.png';
-import hairloss from '../../Assets/Projects/hairloss-mockup.png';
 import progenbook from '../../Assets/Projects/progen-brandbook-mockup.png';
-import finkargoColor from '../../Assets/Projects/color-guide.png';
-import finkargoButton from '../../Assets/Projects/button-guide.png';
 import progenWeb from '../../Assets/Projects/progen-web.png';
 
 interface WorkItem {

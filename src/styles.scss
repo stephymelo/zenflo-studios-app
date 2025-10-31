@@ -1,31 +1,33 @@
-@import './Styles/reset';
-@import './Styles/variables';
+@use './Styles/reset';
+@use './Styles/variables' as *;
+@use './Styles/mixins' as *;
 
-@import './Styles/typography';
-@import './Styles/breakpoints';
-@import './Styles/elements';
-@import './Styles/mixins';
+@use './Styles/typography';
+@use './Styles/breakpoints';
+@use './Styles/elements';
 
-@import './Pages/Landing/landing';
-@import './Pages/Landing/Sections/hero';
-@import './Pages/Landing/Sections/about';
-@import './Pages/Landing/Sections/services';
-@import './Pages/Landing/Sections/workflow';
-@import './Pages/Landing/Sections/solutions';
-@import './Pages/Landing/Sections/service';
-@import './Pages/Landing/Sections/projects';
-@import './Pages/Landing/Sections/quote';
-@import './Pages/Contact/contact';
-@import './Pages/Works/work';
+@use './Pages/Landing/landing';
+@use './Pages/Landing/Sections/hero';
+@use './Pages/Landing/Sections/about';
+@use './Pages/Landing/Sections/services';
+@use './Pages/Landing/Sections/reel';
+@use './Pages/Landing/Sections/workflow';
+@use './Pages/Landing/Sections/solutions';
+@use './Pages/Landing/Sections/service';
+@use './Pages/Landing/Sections/projects';
+@use './Pages/Landing/Sections/markets';
+@use './Pages/Landing/Sections/quote';
+@use './Pages/Contact/contact';
+@use './Pages/Works/work';
 
-@import './Components/Header/header';
-@import './Components/Footer/footer';
-@import './Components/Menu/menu';
-@import './Components/Button/button';
+@use './Components/Header/header';
+@use './Components/Footer/footer';
+@use './Components/Menu/menu';
+@use './Components/Button/button';
 
 
 
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 
 

@@ -23,7 +23,7 @@ const Footer = () => {
                 <div className="footer__content">
                     <div className="link-section">
                         <div className="linkGroup">
-                            <h3 className="sectionTitle">Address</h3>
+                            <h4 className="sectionTitle">Address</h4>
                             <p>Boca Raton, Florida</p>
                             <p>+1 908 460 5930</p>
                             <a href="mailto:hello@zenflostudios.com">hello@zenflostudios.com</a>
@@ -34,7 +34,7 @@ const Footer = () => {
                     <div className="right-column">
 
                         <div className="socialSection">
-                            <h3 className="sectionTitle">Social</h3>
+                            <h4 className="sectionTitle">Social</h4>
                             <div className="socialLinks">
                                 <a href="https://x.com/ZenfloStudios" target="_blank" rel="noopener noreferrer">X: @zenflostudios</a>
                                 <a href="https://instagram.com/zenflo.studios" target="_blank" rel="noopener noreferrer">Instagram: @zenflostudios</a>

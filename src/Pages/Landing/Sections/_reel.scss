@@ -1,0 +1,112 @@
+@use '../../../Styles/variables' as *;
+
+.reel {
+  position: relative;
+  width: 1200px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; // <-- This centers the video horizontally
+  overflow: hidden;
+  cursor: none;
+  background-color: $color-background;
+  margin: 2rem auto; // <-- centers the entire reel container on page
+
+  &:hover {
+    cursor: none;
+  }
+
+  &__video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: $border-radius-md;
+    display: block;
+  }
+
+  &__custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    color: $color-primary;
+    transition: opacity 0.2s ease;
+
+    svg {
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    }
+  }
+
+  &__controls-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    pointer-events: all;
+  }
+
+  &__play-pause-btn {
+    background: none;
+    border: none;
+    color: $color-background;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    pointer-events: all;
+
+    &:hover {
+      background-color: $color-background;
+      transform: scale(1.1);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__time {
+    color: $color-background;
+    font-family: $font-family;
+    font-size: 0.9rem;
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .reel {
+    width: 100%;
+    height: auto;
+
+    &__controls-overlay {
+      padding: 1rem;
+    }
+
+    &__custom-cursor svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    &__time {
+      font-size: 0.8rem;
+    }
+  }
+}

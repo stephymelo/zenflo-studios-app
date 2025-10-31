@@ -1,148 +1,93 @@
-.menu-container {
-  position: relative;
-  display: flex;
-  align-items: center;
+@use '../../Styles/variables' as *;
 
-  
-}
+// Menu Drawer (for both desktop and mobile)
+.menu-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  background-color: $color-background;
+  z-index: 1000;
+  transition: right 0.3s ease;
+  padding: 5rem 2rem 2rem;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
 
-// Desktop Styles
-.menu-web {
-  display: block;
-  
-  .menu-list {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
+  &.open {
+    right: 0;
   }
 
-  .menu-item {
-    position: relative;
-    cursor: pointer;
+  .lets-talk-button {
+    display: none; // Hidden by default on desktop
+    background-color: $color-primary;
+    color: $color-background;
+    text-decoration: none;
+    font-family: $font-family;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    padding: 0.75rem 2rem;
+    border-radius: $border-radius-md;
+    text-align: center;
+    transition: opacity 0.3s ease;
 
-    a, span {
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  &-item {
+    a {
       color: $color-primary-text;
       text-decoration: none;
-      font-weight: 300;
+      font-family: $font-family;
+      font-size: 1.5rem;
+      font-weight: $font-weight-medium;
       transition: color 0.3s ease;
-    }
-
-    a:hover, span:hover {
-      color: $color-primary-text-hover;
-    }
-   
-  }
-
-  .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 0.5rem 0;
-    min-width: 150px;
-    list-style: none;
-    margin: 0;
-    z-index: 10;
-
-    li {
-      padding: 0.5rem 1rem;
 
       &:hover {
-        background: #f5f5f5;
+        color: $color-primary;
       }
     }
   }
 }
 
-// Mobile Burger Icon - Left positioned
-.burger-menu {
-  display: none;
-  cursor: pointer;
-  z-index: 1000;
-  margin-right: 20px;
-
-  .line {
-    fill: $color-primary-dark; // Default color
-    transition: fill 0.3s ease; // Only transition color
-  }
-
-  &.active {
-    .line {
-      fill: $color-primary-dark; // Active/hover color
+// Mobile styles
+@media screen and (max-width: 768px) {
+  .menu-drawer {
+    .lets-talk-button {
+      display: block; // Show on mobile
     }
   }
 }
 
-// Mobile Menu - Now sliding from left
-.menu-mobile {
-  display: none;
+// Menu Drawer Overlay
+.menu-drawer-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 0;
+  width: 100vw;
   height: 100vh;
-  background: white;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  overflow: hidden;
-  transition: width 0.3s ease;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  padding-top: 80px; // Moved outside of active state
-  padding-left: 0; // Initialize padding
-  padding-right: 0;
-
-  &.active {
-    width: 250px;
-    padding-left: 20px; // Only animate width and side padding
-    padding-right: 20px;
-  }
-
-  .mobile-menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative; // Ensure stable positioning
-    height: 100%; // Take full available height
-    overflow-y: auto; // Allow scrolling if many items
-  }
-
-  .mobile-menu-item {
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-    position: relative; // Maintain positioning
-    transition: none; // Remove any item transitions
-
-    a {
-      color: $color-primary-text;
-      text-decoration: none;
-      font-size: 16px;
-      display: block;
-      position: relative;
-    }
-  }
-}
-// Responsive Styles
-@media screen and (max-width: 780px) {
-
-.menu-mobile {
-display: block;
+  animation: fadeIn 0.3s ease;
 }
 
-  .menu-web {
-    display: none;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-
-  .burger-menu {
-    padding-top:0.8rem;
-    display: block;
-
-  }
-
-  .menu-container {
-    justify-content: flex-start;
+  to {
+    opacity: 1;
   }
 }

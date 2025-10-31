@@ -5,6 +5,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,7 +39,7 @@ const Contact = () => {
       const result = await response.json();
       if (result.success) {
         setSubmitStatus("success");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", company: "", message: "" });
       } else {
         setSubmitStatus("error");
       }
@@ -52,10 +53,17 @@ const Contact = () => {
   return (
     <section className="contact">
       <div className="contact__container">
-        <h2 className="contact__title">Contact Us</h2>
+        <h1 className="contact__title">Contact Us</h1>
         <p className="contact__description">
-          Ready to start your project? Get in touch with us today.
-        </p>
+  You can email us at{" "}
+  <a
+    href="mailto:hello@zenflostudios.com"
+    className="contact__email-button"
+  >
+    hello@zenflostudios.com
+  </a>{" "}
+  or shoot us a message :)
+</p>
         
         {submitStatus === "success" && (
           <div className="contact__alert contact__alert--success">
@@ -74,7 +82,7 @@ const Contact = () => {
             type="text"
             name="name"
             className="contact__input"
-            placeholder="Your Name"
+            placeholder="Name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -83,7 +91,16 @@ const Contact = () => {
             type="email"
             name="email"
             className="contact__input"
-            placeholder="Your Email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+            <input
+            type="text"
+            name="company"
+            className="contact__input"
+            placeholder="Company"
             value={formData.email}
             onChange={handleChange}
             required
@@ -91,7 +108,7 @@ const Contact = () => {
           <textarea
             name="message"
             className="contact__textarea"
-            placeholder="Your Message"
+            placeholder="Message"
             value={formData.message}
             onChange={handleChange}
             required
