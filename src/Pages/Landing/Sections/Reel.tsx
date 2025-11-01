@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import videoFile from '../../../Assets/Video/vid-test.mp4';
+import videoFile from '../../../Assets/Video/reel-v1.mp4';
 import { IconPlayerPlay, IconPlayerPause } from "@tabler/icons-react"; // Tabler Icons
 
 const Reel = () => {
