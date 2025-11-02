@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ecommerce from '../../../Assets/Projects/ecommerce-sector.jpg';
 import fintech from '../../../Assets/Projects/fintech-sector.jpg';
 import beauty from '../../../Assets/Projects/beauty-sector.jpg';
@@ -17,15 +17,48 @@ const Markets = () => {
   ];
 
   const [hoveredMarket, setHoveredMarket] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const marketsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px"
+      }
+    );
+
+    const currentRef = marketsRef.current;
+    if (currentRef) observer.observe(currentRef);
+
+    return () => {
+      if (currentRef) observer.unobserve(currentRef);
+    };
+  }, []);
+
+  console.log("Markets isVisible:", isVisible);
 
   const currentImage = markets.find((m) => m.id === hoveredMarket)?.image;
 
   return (
-    <section className="markets">
+    <section className="markets" ref={marketsRef}>
       <div className="markets-title">
-        <h4 className="markets-title__title">Industries</h4>
-        <p className="markets-title__description">
-         We’ve worked across many industries, but these are where we bring the most impact.
+        <h4 className="markets-title__title">
+          Industries
+        </h4>
+        <p
+          className={`markets-title__description ${isVisible ? "animate" : ""}`}
+        >
+         We've worked across many industries, but these are where we bring the most impact.
         </p>
       </div>
 
