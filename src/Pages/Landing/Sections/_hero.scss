@@ -47,10 +47,25 @@
       opacity: 1;
       transform: translateX(0);
       transition: opacity 0.6s ease, transform 0.6s ease;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.05em;
+
+      &.morphing {
+        animation: textFlicker 0.1s infinite;
+      }
 
       &:not(.animate) {
         opacity: 0;
         transform: translateX(-20px);
+      }
+    }
+
+    @keyframes textFlicker {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.9;
       }
     }
 

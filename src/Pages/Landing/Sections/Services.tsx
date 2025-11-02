@@ -48,9 +48,6 @@ const Services: React.FC = () => {
     };
   }, []);
 
-  console.log("Services isVisible:", isVisible);
-  console.log("Services className:", `services-title__description ${isVisible ? "animate" : ""}`);
-
   return (
     <div className="services" ref={servicesRef}>
       <div className='services-container'>

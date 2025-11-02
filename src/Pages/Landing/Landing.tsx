@@ -8,6 +8,7 @@ import Quote from './Sections/Quote';
 import Service from './Sections/Service';
 import Reel from './Sections/Reel';
 import Markets from './Sections/Markets';
+import Testimonials from './Sections/Testimonials';
 
 export const Landing: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ export const Landing: React.FC = () => {
       {/* <Workflow /> */}
       <Services />
       <Markets />
+      <Testimonials />
 
 
 

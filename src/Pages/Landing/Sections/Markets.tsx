@@ -45,8 +45,6 @@ const Markets = () => {
     };
   }, []);
 
-  console.log("Markets isVisible:", isVisible);
-
   const currentImage = markets.find((m) => m.id === hoveredMarket)?.image;
 
   return (
