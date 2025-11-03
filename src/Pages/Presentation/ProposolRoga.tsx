@@ -29,8 +29,10 @@ const ProposolRoga = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [selectedTab, setSelectedTab] = useState("market-research");
     const [scrollStates, setScrollStates] = useState<{ [key: string]: { canScrollLeft: boolean; canScrollRight: boolean } }>({});
+    const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
     const chartRef = useRef<HTMLDivElement>(null);
     const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+    const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
     const chartData: ChartData[] = [
         { label: "direct", percentage: 79.71, color: "#49D3BA" },
@@ -216,6 +218,48 @@ const ProposolRoga = () => {
         };
     }, [selectedTab]);
 
+    // Scroll animation observer
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const target = entry.target as HTMLElement;
+                    const sectionId = target.dataset.sectionId;
+
+                    if (sectionId) {
+                        if (entry.isIntersecting) {
+                            setVisibleSections(prev => new Set(prev).add(sectionId));
+                        } else {
+                            setVisibleSections(prev => {
+                                const newSet = new Set(prev);
+                                newSet.delete(sectionId);
+                                return newSet;
+                            });
+                        }
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            }
+        );
+
+        Object.values(sectionRefs.current).forEach(ref => {
+            if (ref) {
+                observer.observe(ref);
+            }
+        });
+
+        return () => {
+            Object.values(sectionRefs.current).forEach(ref => {
+                if (ref) {
+                    observer.unobserve(ref);
+                }
+            });
+        };
+    }, []);
+
     // Calculate cumulative percentages for positioning segments
     const getSegments = () => {
         let cumulative = 0;
@@ -272,12 +316,20 @@ const ProposolRoga = () => {
                     <img className="proposol__logo-img" src={logo} alt="Zenflo Logo" />
                 </div>
 
-                <div className="proposol__hero">
+                <div
+                    className={`proposol__hero ${visibleSections.has('hero') ? 'proposol__hero--visible' : ''}`}
+                    data-section-id="hero"
+                    ref={(el) => (sectionRefs.current['hero'] = el)}
+                >
                     <h1 className="proposol__hero-title">Hey there Roga.ai</h1>
                     <h3 className="proposol__hero-subtitle">We are Zenflo, keep scrolling down to see what we found about you.</h3>
                 </div>
 
-                <div className="proposol__section">
+                <div
+                    className={`proposol__section ${visibleSections.has('what-it-is') ? 'proposol__section--visible' : ''}`}
+                    data-section-id="what-it-is"
+                    ref={(el) => (sectionRefs.current['what-it-is'] = el)}
+                >
                     <h4 className="proposol__section-subheading">What it is</h4>
                     <h2 className="proposol__section-subtitle">Roga is a device that stimulates the vagus nerve to help manage stress, improve sleep and even help you focus.</h2>
                     <p className="proposol__section-text"> It's very easy to use and has an app that controls the device and offers different meditation content.</p>
@@ -291,18 +343,30 @@ const ProposolRoga = () => {
                     </div>
                 </section>
 
-                <div className="proposol__section">
+                <div
+                    className={`proposol__section ${visibleSections.has('what-else') ? 'proposol__section--visible' : ''}`}
+                    data-section-id="what-else"
+                    ref={(el) => (sectionRefs.current['what-else'] = el)}
+                >
                     <h4 className="proposol__section-subheading">What else did we find?</h4>
                     <p className="proposol__section-text">Your store is built on Shopify — that's great! Shopify offers powerful tools to connect and streamline leads from social media and search engines, plus seamless email marketing flows through its built-in system or integrations like Mailchimp.</p>
                 </div>
 
-                <div className="proposol__section">
+                <div
+                    className={`proposol__section ${visibleSections.has('actual-data') ? 'proposol__section--visible' : ''}`}
+                    data-section-id="actual-data"
+                    ref={(el) => (sectionRefs.current['actual-data'] = el)}
+                >
                     <h4 className="proposol__section-subheading">Some actual data</h4>
                     <p className="proposol__section-text">We saw that you had approximately 2k visits this last month. Your top keywords were:</p>
                     <p className="proposol__section-text">"Roga startup" and "Roga"</p>
                 </div>
 
-                <div className="proposol__section">
+                <div
+                    className={`proposol__section ${visibleSections.has('traffic') ? 'proposol__section--visible' : ''}`}
+                    data-section-id="traffic"
+                    ref={(el) => (sectionRefs.current['traffic'] = el)}
+                >
                     <h4 className="proposol__section-subheading">Traffic on your site</h4>
                     <div className="proposol__chart" ref={chartRef}>
                         <div className="proposol__chart-container">
@@ -343,28 +407,48 @@ const ProposolRoga = () => {
 
                 <section className="proposol__section-main">
 
-                    <div className="proposol__section">
+                    <div
+                        className={`proposol__section ${visibleSections.has('assessment') ? 'proposol__section--visible' : ''}`}
+                        data-section-id="assessment"
+                        ref={(el) => (sectionRefs.current['assessment'] = el)}
+                    >
                         <h4 className="proposol__section-subheading">Quick assestment</h4>
                         <p className="proposol__section-text">Non-consistent branding</p>
                         <p className="proposol__section-text">Views are low for the mayority of videos, some had a really good perfomance</p>
                     </div>
 
-                    <div className="proposol__section">
+                    <div
+                        className={`proposol__section ${visibleSections.has('gameplan-intro') ? 'proposol__section--visible' : ''}`}
+                        data-section-id="gameplan-intro"
+                        ref={(el) => (sectionRefs.current['gameplan-intro'] = el)}
+                    >
                         <h4 className="proposol__section-subheading">The gameplan</h4>
                         <h2 className="proposol__section-subtitle">We want the world to know the value of your product, and that means starting with the basics. Here are some the things we can start off with.</h2>
                     </div>
 
-                    <div className="proposol__section-line">
+                    <div
+                        className={`proposol__section-line ${visibleSections.has('brand-identity') ? 'proposol__section-line--visible' : ''}`}
+                        data-section-id="brand-identity"
+                        ref={(el) => (sectionRefs.current['brand-identity'] = el)}
+                    >
                         <h3 className="proposol__section-line-title">Defining the brand identity</h3>
                         <p className="proposol__section-line-text">Using what you have defined in terms of look and feel and messaging from your product, packaging and website, we need to connect that with your socials.</p>
                     </div>
 
-                    <div className="proposol__section-line">
+                    <div
+                        className={`proposol__section-line ${visibleSections.has('market') ? 'proposol__section-line--visible' : ''}`}
+                        data-section-id="market"
+                        ref={(el) => (sectionRefs.current['market'] = el)}
+                    >
                         <h3 className="proposol__section-line-title">Understand your market</h3>
                         <p className="proposol__section-line-text">A little bit of research is always needed before designing. Understanding the market, defining your target audience. As previously mentioned, its women in their 30's to 40's, they like to meditate, do yoga, take care of themselves to try to live a stress free life. We will create a buyer persona based on this and our own research to always have them in mind when designing. We will also look for people and have them on hand for any photographic, videographic material needed.</p>
                     </div>
 
-                    <div className="proposol__section-line">
+                    <div
+                        className={`proposol__section-line ${visibleSections.has('gameplan') ? 'proposol__section-line--visible' : ''}`}
+                        data-section-id="gameplan"
+                        ref={(el) => (sectionRefs.current['gameplan'] = el)}
+                    >
                         <h3 className="proposol__section-line-title">The gameplan</h3>
                         <p className="proposol__section-line-text">We will create a gameplan for a 3 month campaign, have a consistent posting schedule, having the content planned out and assets filed.</p>
                     </div>
@@ -383,7 +467,11 @@ const ProposolRoga = () => {
 
                 {/* Services Carousel Section */}
                 <section className="proposol__services">
-                    <div className="proposol__services-header">
+                    <div
+                        className={`proposol__services-header ${visibleSections.has('services-header') ? 'proposol__services-header--visible' : ''}`}
+                        data-section-id="services-header"
+                        ref={(el) => (sectionRefs.current['services-header'] = el)}
+                    >
                         <h4 className="proposol__section-subheading">Project details</h4>
                         <h2 className="proposol__section-subtitle">Choose a project to see the detailed process and timescrope</h2>
                     </div>
@@ -471,13 +559,21 @@ const ProposolRoga = () => {
                         ))}
                     </div>
                 </section>
-                <div className="proposol__section">
+                <div
+                    className={`proposol__section ${visibleSections.has('results') ? 'proposol__section--visible' : ''}`}
+                    data-section-id="results"
+                    ref={(el) => (sectionRefs.current['results'] = el)}
+                >
                     <h4 className="proposol__section-subheading">Results</h4>
                     <h2 className="proposol__section-subtitle">For us it's important you actually see the results.</h2>
                     <p className="proposol__section-text"> We tackle things based on the project, not on how much time we spend doing it, we want you to have an excellent service, that means you can talk to us every day of the week at anytime.</p>
                 </div>
 
-                <div className="proposol__section">
+                <div
+                    className={`proposol__section ${visibleSections.has('next-steps') ? 'proposol__section--visible' : ''}`}
+                    data-section-id="next-steps"
+                    ref={(el) => (sectionRefs.current['next-steps'] = el)}
+                >
                     <h4 className="proposol__section-subheading">Next Steps</h4>
                     <h2 className="proposol__section-subtitle">Let's get in touch and start creating together.</h2>
                     <div className="proposol__section-links">
