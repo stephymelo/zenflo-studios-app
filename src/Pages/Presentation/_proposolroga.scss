@@ -13,7 +13,47 @@
     &__container {
         display: flex;
         flex-direction: column;
-        gap: 5em;
+        gap: 8em;
+    }
+
+    // Language Toggle Button
+    &__language-toggle {
+        position: fixed;
+        top: 20px;
+        right: 7.142vw;
+        padding: 0.75em 1.5em;
+        background: transparent;
+        border: 1.6px solid $color-primary;
+        color: $color-primary-text;
+        font-size: 14px;
+        font-weight: 400;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        z-index: 100;
+
+        &:hover {
+            background: $color-primary;
+            color: #ffffff;
+        }
+
+        &:focus {
+            outline: none;
+            background: transparent;
+            color: $color-primary-text;
+        }
+
+        &:active {
+            background: transparent;
+            color: $color-primary-text;
+        }
+
+        @media (max-width: 768px) {
+            top: 40px;
+            right: 5vw;
+            padding: 0.6em 1.2em;
+            font-size: 14px;
+        }
     }
 
     // Logo
@@ -92,6 +132,22 @@
             flex-direction: column;
             gap:1em;
             width:60%;
+        }
+
+        &-bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75em;
+        }
+
+        &-bullet {
+            min-width: 8px;
+            width: 8px;
+            height: 8px;
+            border: 1px solid $color-primary-text;
+            border-radius: 50%;
+            margin-top: 0.5em;
+            flex-shrink: 0;
         }
     }
 
@@ -395,13 +451,14 @@
         transition: all 0.3s ease;
         font-family: "Be Vietnam Pro", sans-serif;
 
-        &:hover {
+        &:hover:not(&--active) {
             background: lighten($color-primary, 35%);
         }
 
         &--active {
             background: $color-primary;
-            color: white;
+            color: #ffffff;
+            border-color: $color-primary;
         }
 
         @media (max-width: 768px) {
