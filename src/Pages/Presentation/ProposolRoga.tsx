@@ -38,7 +38,7 @@ const ProposolRoga = () => {
     const translations = {
         ES: {
             hero: {
-                title: "Hola Roga.ai",
+                title: "Hola Roga",
                 subtitle: "Somos Zenflo, sigue bajando para ver lo que encontramos sobre ustedes."
             },
             whatItIs: {
@@ -106,7 +106,7 @@ const ProposolRoga = () => {
         },
         EN: {
             hero: {
-                title: "Hey there Roga.ai",
+                title: "Hey there Roga",
                 subtitle: "We are Zenflo, keep scrolling down to see what we found about you."
             },
             whatItIs: {
@@ -201,19 +201,19 @@ const ProposolRoga = () => {
                     {
                         number: 2,
                         title: "Público Objetivo y Buyer Persona",
-                        timeScope: "Semana 2",
+                        timeScope: "Semana 1",
                         description: "Creamos buyer personas detallados—al menos tres, con un persona clave—basados en la demografía, psicografía y patrones de comportamiento de tu audiencia."
                     },
                     {
                         number: 3,
                         title: "Análisis de Tendencias del Mercado",
-                        timeScope: "Semana 3-4",
+                        timeScope: "Semana 2",
                         description: "Realizamos una investigación de mercado profunda para obtener claridad sobre el panorama del bienestar y definir la forma más efectiva de comercializar Roga."
                     },
                     {
                         number: 4,
                         title: "Análisis FODA",
-                        timeScope: "Semana 4",
+                        timeScope: "Semana 2",
                         description: "Realizamos un análisis FODA completo para identificar las fortalezas, debilidades, oportunidades y amenazas de Roga, construyendo una base clara para decisiones estratégicas."
                     }
                 ]
@@ -263,13 +263,13 @@ const ProposolRoga = () => {
                     {
                         number: 2,
                         title: "Creación de Contenido",
-                        timeScope: "Semana 2-6",
+                        timeScope: "Semana 2-3",
                         description: "Producimos fotos y videos de alta calidad utilizando tanto recursos internos como externos con nuestros propios modelos. Luego creamos y editamos los materiales para un uso versátil en todos los canales."
                     },
                     {
                         number: 3,
-                        title: "Lanzamiento de Campaña",
-                        timeScope: "Semana 4-8",
+                        title: "Campaña",
+                        timeScope: "Semana 4",
                         description: "Seguimos el calendario para comenzar a publicar, creando y editando activos continuamente, y lanzamos campañas en Instagram, Facebook y TikTok."
                     },
                     {
@@ -296,19 +296,19 @@ const ProposolRoga = () => {
                     {
                         number: 2,
                         title: "Target Audience and Buyer Persona",
-                        timeScope: "Week 2",
+                        timeScope: "Week 1",
                         description: "We create detailed buyer personas—at least three, with one key persona—based on your audience's demographics, psychographics, and behavior patterns."
                     },
                     {
                         number: 3,
                         title: "Market Trends Analysis",
-                        timeScope: "Week 3-4",
+                        timeScope: "Week 2",
                         description: "We conduct in-depth market research to gain clarity on the wellness landscape and define the most effective way to market Roga."
                     },
                     {
                         number: 4,
                         title: "SWOT Analysis",
-                        timeScope: "Week 4",
+                        timeScope: "Week 2",
                         description: "We conduct a full SWOT analysis to identify Roga's strengths, weaknesses, opportunities, and threats—building a clear foundation for strategic decisions."
                     }
                 ]
@@ -358,13 +358,13 @@ const ProposolRoga = () => {
                     {
                         number: 2,
                         title: "Content Creation",
-                        timeScope: "Week 2-6",
+                        timeScope: "Week 2-3",
                         description: "We produce high-quality photos and videos using both in-house and external resources with our own models. We then create and edit the materials for versatile use across channels."
                     },
                     {
                         number: 3,
-                        title: "Campaign Launch",
-                        timeScope: "Week 4-8",
+                        title: "Campaign",
+                        timeScope: "Week 4-12",
                         description: "We follow the calendar to start posting, continuously creating and editing assets, and launch campaigns across Instagram, Facebook, and TikTok."
                     },
                     {
