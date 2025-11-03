@@ -1388,6 +1388,12 @@ body {
 .proposol__section-img {
   width: 100%;
 }
+.proposol__section-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 60%;
+}
 .proposol__section-line {
   display: flex;
   gap: 0.6em;
@@ -1525,6 +1531,327 @@ body {
   color: #231F20;
   margin-left: auto;
   font-family: "Inconsolata", monospace;
+}
+.proposol__image {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 500px;
+  margin-top: 6em;
+  margin-bottom: 4em;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .proposol__image {
+    height: 400px;
+    margin-top: 4em;
+    margin-bottom: 3em;
+  }
+}
+@media (max-width: 480px) {
+  .proposol__image {
+    height: 300px;
+    margin-top: 3em;
+    margin-bottom: 2em;
+  }
+}
+.proposol__image-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+}
+.proposol__image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.proposol__image-content {
+  position: relative;
+  z-index: 3;
+  padding: 2em;
+  max-width: 800px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .proposol__image-content {
+    padding: 1.5em;
+    max-width: 90%;
+  }
+}
+.proposol__image-content h4 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+}
+.proposol__image-content-text {
+  color: white;
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+@media (max-width: 768px) {
+  .proposol__image-content-text {
+    font-size: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .proposol__image-content-text {
+    font-size: 20px;
+  }
+}
+.proposol__services {
+  margin-top: 6em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.proposol__services-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.proposol__tabs {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin-bottom: 1.5em;
+}
+@media (max-width: 768px) {
+  .proposol__tabs {
+    gap: 0.5em;
+  }
+}
+.proposol__estimate-rate {
+  font-size: 18px;
+  font-weight: 600;
+  color: #231F20;
+  margin-bottom: 2em;
+}
+@media (max-width: 768px) {
+  .proposol__estimate-rate {
+    font-size: 16px;
+  }
+}
+.proposol__tab {
+  padding: 0.75em 1.5em;
+  background: transparent;
+  border: 2px solid #49D3BA;
+  color: #231F20;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.proposol__tab:hover {
+  background: rgb(216.7477876106, 245.7522123894, 240.4977876106);
+}
+.proposol__tab--active {
+  background: #49D3BA;
+  color: white;
+}
+@media (max-width: 768px) {
+  .proposol__tab {
+    padding: 0.6em 1.2em;
+    font-size: 14px;
+  }
+}
+.proposol__carousel-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+}
+@media (max-width: 768px) {
+  .proposol__carousel-container {
+    min-height: 350px;
+  }
+}
+.proposol__carousel-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  gap: 1em;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.proposol__carousel-wrapper--active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .proposol__carousel-wrapper {
+    gap: 0.5em;
+  }
+}
+.proposol__carousel {
+  display: flex;
+  gap: 1.5em;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 1em 0;
+  flex: 1;
+}
+.proposol__carousel::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 768px) {
+  .proposol__carousel {
+    gap: 1em;
+    scroll-snap-type: x mandatory;
+  }
+}
+.proposol__carousel-arrow {
+  background: #49D3BA;
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 32px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+.proposol__carousel-arrow:hover {
+  background: rgb(45.3628318584, 187.6371681416, 161.8628318584);
+  transform: scale(1.1);
+}
+.proposol__carousel-arrow:active {
+  transform: scale(0.95);
+}
+@media (max-width: 768px) {
+  .proposol__carousel-arrow {
+    display: none;
+  }
+}
+.proposol__carousel-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 1.5em;
+}
+@media (min-width: 769px) {
+  .proposol__carousel-nav {
+    display: none;
+  }
+}
+.proposol__carousel-nav-button {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.proposol__carousel-nav-button:not(:disabled):hover {
+  color: #49D3BA;
+}
+.proposol__carousel-nav-button--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.proposol__carousel-nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.proposol__card {
+  background: white;
+  border-radius: 16px;
+  padding: 2em;
+  min-width: 320px;
+  max-width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.proposol__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 768px) {
+  .proposol__card {
+    min-width: 280px;
+    max-width: 280px;
+    padding: 1.5em;
+    scroll-snap-align: center;
+  }
+}
+@media (max-width: 480px) {
+  .proposol__card {
+    min-width: calc(100vw - 60px);
+    max-width: calc(100vw - 60px);
+  }
+}
+.proposol__card-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #49D3BA;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.proposol__card-number-text {
+  line-height: 1;
+}
+.proposol__card-title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #231F20;
+}
+.proposol__card-time {
+  font-size: 14px;
+  color: #49D3BA;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.proposol__card-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #231F20;
 }
 
 @keyframes fillSegment {

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import logo from '../../Assets/Logo/loguito.svg';
 import roga from '../../Assets/Proposol/roga-ear.png';
-import "./_proposolroga.scss";
+import yoga from '../../Assets/Proposol/yoga-girl.jpg';
+
 
 interface ChartData {
     label: string;
@@ -9,9 +11,26 @@ interface ChartData {
     color: string;
 }
 
+interface StepCard {
+    number: number;
+    title: string;
+    timeScope: string;
+    description: string;
+}
+
+interface ServiceOption {
+    id: string;
+    label: string;
+    estimateRate: string;
+    steps: StepCard[];
+}
+
 const ProposolRoga = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [selectedTab, setSelectedTab] = useState("market-research");
+    const [scrollStates, setScrollStates] = useState<{ [key: string]: { canScrollLeft: boolean; canScrollRight: boolean } }>({});
     const chartRef = useRef<HTMLDivElement>(null);
+    const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
     const chartData: ChartData[] = [
         { label: "direct", percentage: 79.71, color: "#49D3BA" },
@@ -21,6 +40,127 @@ const ProposolRoga = () => {
         { label: "paidReferrals", percentage: 1.48, color: "#E89B7C" },
         { label: "mail", percentage: 0.06, color: "#3eb367ff" },
     ];
+
+    const serviceOptions: ServiceOption[] = [
+        {
+            id: "market-research",
+            label: "Market Research",
+            estimateRate: "$2,500 - $3,500",
+            steps: [
+                {
+                    number: 1,
+                    title: "Competitor Analysis",
+                    timeScope: "Week 1-2",
+                    description: "Deep dive into your competitors' strategies, content, and audience engagement to identify opportunities."
+                },
+                {
+                    number: 2,
+                    title: "Target Audience Definition",
+                    timeScope: "Week 2-3",
+                    description: "Create detailed buyer personas based on demographics, psychographics, and behavioral patterns."
+                },
+                {
+                    number: 3,
+                    title: "Market Trends Analysis",
+                    timeScope: "Week 3-4",
+                    description: "Research current wellness and meditation market trends to position Roga effectively."
+                },
+                {
+                    number: 4,
+                    title: "SWOT Analysis",
+                    timeScope: "Week 4",
+                    description: "Identify strengths, weaknesses, opportunities, and threats in the current market landscape."
+                }
+            ]
+        },
+        {
+            id: "brand-guidelines",
+            label: "Brand Guidelines",
+            estimateRate: "$4,000 - $5,500",
+            steps: [
+                {
+                    number: 1,
+                    title: "Brand Identity Development",
+                    timeScope: "Week 1-2",
+                    description: "Define your brand's visual identity, including color palette, typography, and logo usage."
+                },
+                {
+                    number: 2,
+                    title: "Voice & Tone Documentation",
+                    timeScope: "Week 2-3",
+                    description: "Establish how your brand communicates across all touchpoints with clear guidelines."
+                },
+                {
+                    number: 3,
+                    title: "Visual Asset Library",
+                    timeScope: "Week 3-4",
+                    description: "Create templates, graphics, and imagery that align with your brand identity."
+                },
+                {
+                    number: 4,
+                    title: "Brand Guidelines Manual",
+                    timeScope: "Week 4-5",
+                    description: "Compile comprehensive brand guidelines for consistent application across all channels."
+                }
+            ]
+        },
+        {
+            id: "social-media",
+            label: "Social Media Campaign",
+            estimateRate: "$3,500 - $6,000",
+            steps: [
+                {
+                    number: 1,
+                    title: "Content Strategy Planning",
+                    timeScope: "Week 1",
+                    description: "Develop a 3-month content calendar aligned with your brand and audience interests."
+                },
+                {
+                    number: 2,
+                    title: "Content Creation",
+                    timeScope: "Week 2-6",
+                    description: "Produce high-quality photos, videos, and graphics optimized for each platform."
+                },
+                {
+                    number: 3,
+                    title: "Campaign Launch",
+                    timeScope: "Week 7-8",
+                    description: "Execute coordinated campaign launch across Instagram, TikTok, and other channels."
+                },
+                {
+                    number: 4,
+                    title: "Performance Tracking",
+                    timeScope: "Ongoing",
+                    description: "Monitor analytics, engagement metrics, and adjust strategy based on performance data."
+                }
+            ]
+        }
+    ];
+
+    const checkScrollPosition = (id: string) => {
+        const ref = carouselRefs.current[id];
+        if (!ref) return;
+
+        const canScrollLeft = ref.scrollLeft > 0;
+        const canScrollRight = ref.scrollLeft < (ref.scrollWidth - ref.clientWidth - 1);
+
+        setScrollStates(prev => ({
+            ...prev,
+            [id]: { canScrollLeft, canScrollRight }
+        }));
+    };
+
+    const handleScroll = (ref: HTMLDivElement | null, direction: 'left' | 'right', id: string) => {
+        if (!ref) return;
+        const scrollAmount = ref.offsetWidth * 0.8;
+        ref.scrollBy({
+            left: direction === 'left' ? -scrollAmount : scrollAmount,
+            behavior: 'smooth'
+        });
+
+        // Update scroll state after scrolling
+        setTimeout(() => checkScrollPosition(id), 300);
+    };
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -44,6 +184,37 @@ const ProposolRoga = () => {
             }
         };
     }, []);
+
+    // Initialize scroll states when carousels are mounted
+    useEffect(() => {
+        serviceOptions.forEach(option => {
+            checkScrollPosition(option.id);
+        });
+    }, [selectedTab]);
+
+    // Add scroll event listeners to carousels
+    useEffect(() => {
+        const handleScrollEvent = (id: string) => () => checkScrollPosition(id);
+        const listeners: { [key: string]: () => void } = {};
+
+        serviceOptions.forEach(option => {
+            const ref = carouselRefs.current[option.id];
+            if (ref) {
+                const listener = handleScrollEvent(option.id);
+                listeners[option.id] = listener;
+                ref.addEventListener('scroll', listener);
+            }
+        });
+
+        return () => {
+            serviceOptions.forEach(option => {
+                const ref = carouselRefs.current[option.id];
+                if (ref && listeners[option.id]) {
+                    ref.removeEventListener('scroll', listeners[option.id]);
+                }
+            });
+        };
+    }, [selectedTab]);
 
     // Calculate cumulative percentages for positioning segments
     const getSegments = () => {
@@ -108,12 +279,17 @@ const ProposolRoga = () => {
 
                 <div className="proposol__section">
                     <h4 className="proposol__section-subheading">What it is</h4>
-                     <h2 className="proposol__section-subtitle">Roga is a device that stimulates the vagus nerve to help manage stress, improve sleep and even help you focus.</h2>
+                    <h2 className="proposol__section-subtitle">Roga is a device that stimulates the vagus nerve to help manage stress, improve sleep and even help you focus.</h2>
                     <p className="proposol__section-text"> It's very easy to use and has an app that controls the device and offers different meditation content.</p>
-                    <div className="proposol__section-image">
-                        <img className="proposol__section-img" src={roga} alt="Roga product" />
-                    </div>
                 </div>
+                <section className="proposol__image">
+                    <img className="proposol__image-bg" src={roga} alt="Roga wellness device" />
+                    <div className="proposol__image-overlay"></div>
+                    <div className="proposol__image-content">
+                        <h4>Overview</h4>
+                        <h2 className="proposol__image-content-text">Lightweight, 3 colors, plug and play</h2>
+                    </div>
+                </section>
 
                 <div className="proposol__section">
                     <h4 className="proposol__section-subheading">What else did we find?</h4>
@@ -194,7 +370,133 @@ const ProposolRoga = () => {
                     </div>
 
                 </section>
+
+                {/* Hero Image Section with Overlay */}
+                <section className="proposol__image">
+                    <img className="proposol__image-bg" src={yoga} alt="Roga wellness device" />
+                    <div className="proposol__image-overlay"></div>
+                    <div className="proposol__image-content">
+                        <h4>Market</h4>
+                        <h2 className="proposol__image-content-text">Women in their 30's-40's</h2>
+                    </div>
+                </section>
+
+                {/* Services Carousel Section */}
+                <section className="proposol__services">
+                    <div className="proposol__services-header">
+                        <h4 className="proposol__section-subheading">Project details</h4>
+                        <h2 className="proposol__section-subtitle">Choose a project to see the detailed process and timescrope</h2>
+                    </div>
+
+                    {/* Tabs */}
+                    <div className="proposol__tabs">
+                        {serviceOptions.map((option) => (
+                            <button
+                                key={option.id}
+                                className={`proposol__tab ${selectedTab === option.id ? 'proposol__tab--active' : ''}`}
+                                onClick={() => setSelectedTab(option.id)}
+                            >
+                                {option.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Project Estimate Rate */}
+                    <p className="proposol__estimate-rate">
+                        Project estimate rate: {serviceOptions.find(option => option.id === selectedTab)?.estimateRate}
+                    </p>
+
+                    {/* Carousel for each tab */}
+                    <div className="proposol__carousel-container">
+                        {serviceOptions.map((option) => (
+                            <div key={option.id}>
+                                <div
+                                    className={`proposol__carousel-wrapper ${selectedTab === option.id ? 'proposol__carousel-wrapper--active' : ''}`}
+                                >
+                                    <button
+                                        className="proposol__carousel-arrow proposol__carousel-arrow--left"
+                                        onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
+                                        aria-label="Scroll left"
+                                    >
+                                        ‹
+                                    </button>
+
+                                    <div
+                                        className="proposol__carousel"
+                                        ref={(el) => (carouselRefs.current[option.id] = el)}
+                                    >
+                                        {option.steps.map((step) => (
+                                            <div key={step.number} className="proposol__card">
+                                                <div className="proposol__card-number">
+                                                    <span className="proposol__card-number-text">{step.number}</span>
+                                                </div>
+                                                <h3 className="proposol__card-title">{step.title}</h3>
+                                                <p className="proposol__card-time">{step.timeScope}</p>
+                                                <p className="proposol__card-description">{step.description}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <button
+                                        className="proposol__carousel-arrow proposol__carousel-arrow--right"
+                                        onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
+                                        aria-label="Scroll right"
+                                    >
+                                        ›
+                                    </button>
+                                </div>
+
+                                {/* Bottom navigation indicators */}
+                                {selectedTab === option.id && (
+                                    <div className="proposol__carousel-nav">
+                                        <button
+                                            className={`proposol__carousel-nav-button ${!scrollStates[option.id]?.canScrollLeft ? 'proposol__carousel-nav-button--disabled' : ''}`}
+                                            onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
+                                            disabled={!scrollStates[option.id]?.canScrollLeft}
+                                            aria-label="Scroll left"
+                                        >
+                                            <IconChevronLeft size={20} />
+                                        </button>
+                                        <button
+                                            className={`proposol__carousel-nav-button ${!scrollStates[option.id]?.canScrollRight ? 'proposol__carousel-nav-button--disabled' : ''}`}
+                                            onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
+                                            disabled={!scrollStates[option.id]?.canScrollRight}
+                                            aria-label="Scroll right"
+                                        >
+                                            <IconChevronRight size={20} />
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+                <div className="proposol__section">
+                    <h4 className="proposol__section-subheading">Results</h4>
+                    <h2 className="proposol__section-subtitle">For us it's important you actually see the results.</h2>
+                    <p className="proposol__section-text"> We tackle things based on the project, not on how much time we spend doing it, we want you to have an excellent service, that means you can talk to us every day of the week at anytime.</p>
+                </div>
+
+                <div className="proposol__section">
+                    <h4 className="proposol__section-subheading">Next Steps</h4>
+                    <h2 className="proposol__section-subtitle">Let's get in touch and start creating together.</h2>
+                    <div className="proposol__section-links">
+                        <a
+                            href="tel:+19085604930"
+                            className="contact__email-button"
+                        >
+                            +1 908-560-4930
+                        </a>{" "}
+                        <a
+                            href="mailto:hello@zenflostudios.com"
+                            className="contact__email-button"
+                        >
+                            hello@zenflostudios.com
+                        </a>{" "}
+                    </div>
+                </div>
             </div>
+
         </div>
     );
 };
