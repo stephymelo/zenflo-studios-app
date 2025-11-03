@@ -1,0 +1,248 @@
+@use '../../Styles/variables' as *;
+
+
+.proposol {
+    max-width: 1200px;
+    position: relative;
+    padding: 40px 7.142vw 24px;
+    margin-bottom: 20em;
+    display: flex;
+    flex-direction: column;
+
+    // Container
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 5em;
+    }
+
+    // Logo
+    &__logo {
+        width: 6%;
+        margin-bottom: 2em;
+        transition: transform .5s cubic-bezier(0, .61, .28, .92);
+
+        &-img {
+            width: 100%;
+        }
+    }
+
+    // Hero Section
+    &__hero {
+        height: 500px;
+        display: flex;
+        gap: 2em;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 4em;
+        &-title{
+            font-size:32px;
+        }
+    }
+
+    &__section-main {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    // Regular Section
+    &__section {
+        display: flex;
+        gap: 1.25em;
+        flex-direction: column;
+
+        &-subheading {
+            letter-spacing: normal;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        &-subtitle {
+            line-height: 140%;
+        }
+
+        &-image {
+            width: 50%;
+        }
+
+        &-img {
+            width: 100%;
+        }
+    }
+
+    // Section with Line (Border Left)
+    &__section-line {
+        display: flex;
+        gap: 0.6em;
+        flex-direction: column;
+        padding-left: 2em;
+        border-left: 2px solid $color-primary;
+        margin-bottom: 2em;
+
+        &-title {
+            font-size: 24px;
+            line-height: 120%;
+
+        }
+
+        &-text {
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            padding-left: 1.5em;
+            border-left-width: 2px;
+        }
+
+        @media (max-width: 480px) {
+            padding-left: 1em;
+            border-left-width: 2px;
+        }
+    }
+
+    // Chart Section
+    &__chart {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0.5rem auto;
+        padding: 2rem;
+
+        &-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        &-wrapper {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+
+            @media (max-width: 768px) {
+                width: 250px;
+                height: 250px;
+            }
+
+            @media (max-width: 480px) {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        &-svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(0deg);
+        }
+
+        &-segment {
+            opacity: 0;
+            transform-origin: center;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+
+            &--animate {
+                animation: fillSegment 0.8s ease-out forwards;
+            }
+
+            &:hover {
+                opacity: 0.85;
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+        }
+
+        &-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 250px;
+
+            @media (max-width: 768px) {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    }
+
+    // Legend Items
+    &__legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 16px;
+        opacity: 0;
+        transform: translateX(-20px);
+
+        &--fade-in {
+            animation: fadeInSlide 0.6s ease-out forwards;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 14px;
+        }
+    }
+
+    &__legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        flex-shrink: 0;
+
+        @media (max-width: 480px) {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &__legend-label {
+        font-weight: 500;
+        color: $color-primary-text;
+        text-transform: capitalize;
+        min-width: 120px;
+
+        @media (max-width: 480px) {
+            min-width: 100px;
+        }
+    }
+
+    &__legend-percentage {
+        font-weight: 600;
+        color: $color-primary-text;
+        margin-left: auto;
+        font-family: 'Inconsolata', monospace;
+    }
+}
+
+// Keyframes
+@keyframes fillSegment {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
