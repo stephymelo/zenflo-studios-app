@@ -3,6 +3,8 @@ import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import logo from '../../Assets/Logo/loguito.svg';
 import roga from '../../Assets/Proposol/roga-ear.png';
 import yoga from '../../Assets/Proposol/yoga-girl.jpg';
+import moodboard from '../../Assets/Proposol/moodboard.jpg';
+import social from '../../Assets/Proposol/social-mock.jpg';
 
 
 interface ChartData {
@@ -65,9 +67,13 @@ const ProposolRoga = () => {
             assessment: {
                 title: "Evaluación rápida",
                 text1: "Falta de consistencia entre la apariencia del sitio web y las redes sociales.",
-                text2: "El engagement en Instagram es limitado, mientras que TikTok demuestra mayor interacción y alcance.",
+                text2: "La interacción en TikTok es limitado pero muestra un alcance más alto, mientras que en Instagram la interacción suele ser más constante.",
                 text3: "El contenido debe ser auténtico. Las personas quieren contenido que les genere valor y muestre cómo se integra en la vida diaria.",
                 text4: "El contenido más atractivo muestra personas reales usando el producto. Las marcas de bienestar participan en tendencias, usan testimonios, y crean contenido relevante a la industria."
+            },
+            exploration: {
+                title: "Exploración",
+                subtitle: "Hicimos una mini exploración de su apariencia y estilo."
             },
             gameplanIntro: {
                 title: "El plan",
@@ -133,9 +139,13 @@ const ProposolRoga = () => {
             assessment: {
                 title: "Quick assessment",
                 text1: "Misalignment between website look and feel and social media. ",
-                text2: "Engagement on Instagram is limited, whereas TikTok demonstrates higher interaction and reach.",
+                text2: "Engagement on TikTok is limited but shows higher reach, while Instagram engagement tends to be more consistent.",
                 text3: "Content should be authentic and relatable. Audiences want content that provides value and shows how it fits into daily life.",
                 text4: "The most engaging content shows real people enjoying and explaining the product. Successful wellness brands participate in trends and demonstrate daily use."
+            },
+            exploration: {
+                title: "Exploration",
+                subtitle: "We did a mini exploration of your look and feel."
             },
             gameplanIntro: {
                 title: "The game plan",
@@ -676,6 +686,24 @@ const ProposolRoga = () => {
                             <div className="proposol__section-bullet-item">
                             <span className="proposol__section-bullet"></span>
                             <p className="proposol__section-text">{t.assessment.text4}</p>
+                        </div>
+                    </div>
+
+                    {/* Exploration Section */}
+                    <div
+                        className={`proposol__section ${visibleSections.has('exploration') ? 'proposol__section--visible' : ''}`}
+                        data-section-id="exploration"
+                        ref={(el) => (sectionRefs.current['exploration'] = el)}
+                    >
+                        <h4 className="proposol__section-subheading">{t.exploration.title}</h4>
+                        <h2 className="proposol__section-subtitle">{t.exploration.subtitle}</h2>
+                        <div className="proposol__exploration-images">
+                            <div className="proposol__exploration-image">
+                                <img src={moodboard} alt="Moodboard exploration" className="proposol__section-img" />
+                            </div>
+                            <div className="proposol__exploration-image">
+                                <img src={social} alt="Social media exploration" className="proposol__section-img" />
+                            </div>
                         </div>
                     </div>
 
