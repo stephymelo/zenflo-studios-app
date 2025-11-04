@@ -1603,6 +1603,26 @@ body {
   margin-left: auto;
   font-family: "Inconsolata", monospace;
 }
+.proposol__exploration-images {
+  display: flex;
+  gap: 2em;
+  margin-top: 2em;
+}
+@media (max-width: 768px) {
+  .proposol__exploration-images {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+}
+.proposol__exploration-image {
+  flex: 1;
+  width: 100%;
+}
+.proposol__exploration-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
 .proposol__image {
   position: relative;
   width: 100vw;
@@ -1720,7 +1740,6 @@ body {
   font-size: 18px;
   font-weight: 600;
   color: #231F20;
-  margin-bottom: 2em;
 }
 @media (max-width: 768px) {
   .proposol__estimate-rate {
@@ -1805,13 +1824,12 @@ body {
   }
 }
 .proposol__carousel-arrow {
-  background: #49D3BA;
-  color: white;
-  border: none;
+  background: #f3f3ee;
+  color: #231F20;
+  border: 1px solid #49D3BA;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  font-size: 32px;
   cursor: pointer;
   flex-shrink: 0;
   transition: all 0.3s ease;
@@ -1822,7 +1840,8 @@ body {
   padding: 0;
 }
 .proposol__carousel-arrow:hover {
-  background: rgb(45.3628318584, 187.6371681416, 161.8628318584);
+  background: #49D3BA;
+  color: #ffffff;
   transform: scale(1.1);
 }
 .proposol__carousel-arrow:active {

@@ -1,4 +1,5 @@
 @use '../../Styles/variables' as *;
+@use 'sass:color';
 
 
 .proposol {
@@ -456,7 +457,7 @@
         font-size: 18px;
         font-weight: 600;
         color: $color-primary-text;
-        margin-bottom: 2em;
+      
 
         @media (max-width: 768px) {
             font-size: 16px;
@@ -476,7 +477,7 @@
         font-family: "Be Vietnam Pro", sans-serif;
 
         &:hover:not(&--active) {
-            background: lighten($color-primary, 35%);
+            background: color.adjust($color-primary, $lightness: 35%);
         }
 
         &--active {

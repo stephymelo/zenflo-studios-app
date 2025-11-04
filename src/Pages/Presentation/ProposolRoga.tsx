@@ -67,7 +67,7 @@ const ProposolRoga = () => {
             assessment: {
                 title: "Evaluación rápida",
                 text1: "Falta de consistencia entre la apariencia del sitio web y las redes sociales.",
-                text2: "La interacción en TikTok es limitado pero muestra un alcance más alto, mientras que en Instagram la interacción suele ser más constante.",
+                text2: "La interacción en TikTok es limitada pero muestra un alcance más alto, mientras que en Instagram la interacción suele ser más constante.",
                 text3: "El contenido debe ser auténtico. Las personas quieren contenido que les genere valor y muestre cómo se integra en la vida diaria.",
                 text4: "El contenido más atractivo muestra personas reales usando el producto. Las marcas de bienestar participan en tendencias, usan testimonios, y crean contenido relevante a la industria."
             },
