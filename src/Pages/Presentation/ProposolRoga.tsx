@@ -175,7 +175,7 @@ const ProposolRoga = () => {
             results: {
                 title: "Results",
                 subtitle: "For us it's important you actually see the results.",
-                text: "We tackle things based on the project, not on how much time we spend doing it, we want you to have an excellent service, that means you can talk to us every day of the week at anytime."
+                text: "We tackle things based on the project, not on how much time we spend doing it. We want you to have an excellent service, that means you can talk to us every day of the week at anytime."
             },
             nextSteps: {
                 title: "Next Steps",
