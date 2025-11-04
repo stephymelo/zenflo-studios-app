@@ -15,7 +15,7 @@ function App() {
 
       <Routes>
         {/* Route without header and footer */}
-        <Route path="/proposol-roga" element={<ProposolRoga/>}/>
+        <Route path="/proposal-roga" element={<ProposolRoga/>}/>
 
         {/* Routes with header and footer */}
         <Route path="*" element={
