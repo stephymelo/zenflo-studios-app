@@ -30,7 +30,7 @@ const ProposolRoga = () => {
     const [selectedTab, setSelectedTab] = useState("market-research");
     const [scrollStates, setScrollStates] = useState<{ [key: string]: { canScrollLeft: boolean; canScrollRight: boolean } }>({});
     const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-    const [language, setLanguage] = useState<'ES' | 'EN'>('ES');
+    const [language, setLanguage] = useState<'ES' | 'EN'>('EN');
     const chartRef = useRef<HTMLDivElement>(null);
     const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
     const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -39,12 +39,12 @@ const ProposolRoga = () => {
         ES: {
             hero: {
                 title: "Hola Roga",
-                subtitle: "Somos Zenflo, sigue bajando para ver lo que encontramos sobre ustedes."
+                subtitle: "Somos Zenflo, continuen para ver lo que encontramos sobre ustedes."
             },
             whatItIs: {
                 title: "Qué es",
-                subtitle: "Roga es un dispositivo que estimula el nervio vago para ayudar a manejar el estrés, mejorar el sueño e incluso ayudarte a concentrarte.",
-                text: "Es muy fácil de usar y tiene una app que controla el dispositivo y ofrece diferentes contenidos de meditación."
+                subtitle: "Roga es un dispositivo que estimula el nervio vago para ayudar a manejar el estrés, aliviar el sueño e incluso mejorar la concentración.",
+                text: "Es fácil de usar y tiene una app que controla el dispositivo y ofrece diferentes contenidos de meditación."
             },
             overview: {
                 title: "Vista general",
@@ -52,34 +52,34 @@ const ProposolRoga = () => {
             },
             whatElse: {
                 title: "¿Qué más encontramos?",
-                text: "Tu tienda está construida en Shopify, ¡eso es genial! Shopify ofrece herramientas poderosas para conectar y optimizar leads desde redes sociales y motores de búsqueda, además de flujos de email marketing fluidos a través de su sistema integrado o integraciones como Mailchimp."
+                text: "Su tienda está construida en Shopify, ¡eso es genial! Shopify ofrece herramientas poderosas para conectar y optimizar leads desde redes sociales y motores de búsqueda. Además de facilitar el email marketing a través de su sistema integrado o integraciones como Mailchimp."
             },
             actualData: {
                 title: "Algunos datos reales",
-                text1: "Vimos que tuviste aproximadamente 2k visitas este último mes. Tus palabras clave principales fueron:",
+                text1: "Vimos que tuveron aproximadamente 2k visitas este último mes. Sus palabras clave fueron:",
                 text2: '"Roga startup" y "Roga"'
             },
             traffic: {
-                title: "Tráfico en tu sitio"
+                title: "Tráfico en el sitio"
             },
             assessment: {
                 title: "Evaluación rápida",
-                text1: "Desalineación entre la apariencia del sitio web y las redes sociales.",
+                text1: "Falta de consistencia entre la apariencia del sitio web y las redes sociales.",
                 text2: "El engagement en Instagram es limitado, mientras que TikTok demuestra mayor interacción y alcance.",
-                text3: "El contenido debe ser auténtico y relacionable. Las audiencias quieren contenido que proporcione valor y muestre cómo se integra en la vida diaria.",
-                text4: "El contenido más atractivo muestra personas reales disfrutando y explicando el producto. Las marcas de bienestar exitosas participan en tendencias y demuestran el uso diario."
+                text3: "El contenido debe ser auténtico. Las personas quieren contenido que les genere valor y muestre cómo se integra en la vida diaria.",
+                text4: "El contenido más atractivo muestra personas reales usando el producto. Las marcas de bienestar participan en tendencias, usan testimonios, y crean contenido relevante a la industria."
             },
             gameplanIntro: {
                 title: "El plan",
-                subtitle: "Queremos que el mundo conozca el valor de tu producto, y eso significa empezar con lo básico. Aquí hay algunas cosas con las que podemos comenzar."
+                subtitle: "Queremos que el mundo conozca el valor de su producto, y eso significa empezar con lo básico. Aquí hay algunas cosas con las que podemos comenzar."
             },
             brandIdentity: {
-                title: "Entendiendo tu producto y mercado",
-                text: "Comenzamos investigando el mercado y entendiendo tu audiencia ideal: aquellos que valoran un estilo de vida libre de estrés. Usando esta información, construimos un buyer persona, realizamos un análisis FODA y desarrollamos un banco de palabras clave SEO para guiar tu estrategia."
+                title: "Entendiendo su producto y mercado",
+                text: "Comenzamos investigando el mercado y entendiendo su audiencia ideal: aquellos que valoran un estilo de vida libre de estrés. Usando esta información, construimos un buyer persona, realizamos un análisis FODA y desarrollamos un banco de palabras clave SEO para guiar tu estrategia."
             },
             market: {
-                title: "Definiendo tu apariencia y estilo",
-                text: "Llevamos la identidad de tu producto, empaque y sitio web a tus canales sociales para una presencia de marca consistente."
+                title: "Definiendo su apariencia y estilo",
+                text: "Llevamos la identidad de su producto, empaque y sitio web a sus redes sociales para una presencia de marca consistente."
             },
             gameplan: {
                 title: "Creación de contenido y campaña",
@@ -91,13 +91,13 @@ const ProposolRoga = () => {
             },
             servicesHeader: {
                 title: "El Flo",
-                subtitle: "Hacemos que cada proyecto sea sin complicaciones, para que puedas mantenerte en tu modo zen."
+                subtitle: "Hacemos que cada proyecto sea libre de dificultades, para que puedas mantenerte en tu modo zen."
             },
             estimateRate: "Tarifa estimada del proyecto:",
             results: {
                 title: "Resultados",
-                subtitle: "Para nosotros es importante que veas los resultados.",
-                text: "Abordamos las cosas basándonos en el proyecto, no en cuánto tiempo pasamos haciéndolo, queremos que tengas un servicio excelente, eso significa que puedes hablar con nosotros todos los días de la semana en cualquier momento."
+                subtitle: "Para nosotros es importante que vean los resultados.",
+                text: "Por eso trabajamos por proyecto y no por tiempo. Queremos que tengan un servicio excelente, eso significa que pueden contactarnos todos los días de la semana en cualquier momento."
             },
             nextSteps: {
                 title: "Próximos pasos",
@@ -220,32 +220,32 @@ const ProposolRoga = () => {
             },
             {
                 id: "brand-guidelines",
-                label: "Guías de Marca",
+                label: "Guía de Marca",
                 estimateRate: "$2,000 - $2,500",
                 steps: [
                     {
                         number: 1,
                         title: "Identidad de Marca",
                         timeScope: "Semana 1-2",
-                        description: "Trabajamos estrechamente contigo para dar forma a tu marca, honrando tu visión, tu producto y alineándolo con los estándares del mercado. Establecemos la identidad visual de tu marca: colores, tipografía y logo, y creamos materiales gráficos que aportan consistencia."
+                        description: "Trabajamos estrechamente con ustedes para dar forma a su marca, honrando su visión, su producto y alineándolo con los estándares del mercado. Establecemos la identidad visual de su marca: colores, tipografía y logo, y creamos materiales gráficos."
                     },
                     {
                         number: 2,
                         title: "Definición de Voz y Tono",
-                        timeScope: "Semana 2-3",
-                        description: "Cómo comunicas tu marca importa. Diseñamos una guía detallada que mapea tus puntos de contacto e interacciones de marca. Esto también incluye un pequeño banco de palabras clave SEO para integrar en los textos."
+                        timeScope: "Semana 2",
+                        description: "Cómo comunican su marca importa. Diseñamos una guía detallada que mapea sus puntos de contacto e interacciones de usuario. Esto también incluye un pequeño banco de palabras clave SEO para integrar en los textos."
                     },
                     {
                         number: 3,
                         title: "Aplicaciones de Identidad Visual",
                         timeScope: "Semana 3-4",
-                        description: "Demostramos cómo adaptar tus activos visuales en diferentes medios, desde publicaciones sociales hasta correos electrónicos, mostrando sus diversas aplicaciones para un uso consistente de la marca."
+                        description: "Demostramos cómo adaptar sus activos visuales en diferentes medios, desde publicaciones sociales hasta correos electrónicos, mostrando sus diversas aplicaciones."
                     },
                     {
                         number: 4,
                         title: "Diseño para Redes Sociales",
                         timeScope: "Semana 4-5",
-                        description: "Creamos un conjunto de reglas de diseño para publicaciones sociales, delineando diseño, tipografía, uso de color y tratamiento de imágenes para asegurar que cada publicación refleje tu marca de manera consistente."
+                        description: "Creamos un conjunto de reglas de diseño para publicaciones sociales, delineando estilo, tipografía, uso de color y tratamiento de imágenes."
                     }
                 ]
             },
@@ -258,7 +258,7 @@ const ProposolRoga = () => {
                         number: 1,
                         title: "Planificación de Estrategia de Contenido",
                         timeScope: "Semana 1",
-                        description: "Creamos un calendario de contenido de 3 meses alineado con tu marca y los intereses de tu audiencia."
+                        description: "Creamos un calendario de contenido para una campaña de 3 meses. Delineamos los objetivos de la campaña y realizamos el brief para tener los assets necesarios a la hora de crear el conentido."
                     },
                     {
                         number: 2,
@@ -270,13 +270,13 @@ const ProposolRoga = () => {
                         number: 3,
                         title: "Campaña",
                         timeScope: "Semana 4",
-                        description: "Seguimos el calendario para comenzar a publicar, creando y editando activos continuamente, y lanzamos campañas en Instagram, Facebook y TikTok."
+                        description: "Lanzamos la campaña en Instagram y Tiktok, creando y editando activos continuamente."
                     },
                     {
                         number: 4,
                         title: "Seguimiento de Rendimiento",
                         timeScope: "Continuo",
-                        description: "Monitoreamos analíticas y métricas de engagement, ajustando estrategias basándonos en datos de rendimiento. Un reporte quincenal resume todos los resultados."
+                        description: "Monitoreamos analíticas y métricas de engagement, ajustando estrategias basándonos en datos de rendimiento. Enviamos un reporte quincenal."
                     }
                 ]
             }
@@ -322,7 +322,7 @@ const ProposolRoga = () => {
                         number: 1,
                         title: "Brand Identity",
                         timeScope: "Week 1-2",
-                        description: "We work closely with you to shape your brand, honoring your vision, your product, and aligning it with market standards. We establish your brand's visual identity—colors, typography, and logo—and craft graphic materials that bring consistency. "
+                        description: "We work closely with you to shape your brand, honoring your vision, your product, and aligning it with market standards. We establish your brand's visual identity—colors, typography, and graphic materials. "
                     },
                     {
                         number: 2,
@@ -334,13 +334,13 @@ const ProposolRoga = () => {
                         number: 3,
                         title: "Aplications of Visual Identity",
                         timeScope: "Week 3-4",
-                        description: "We demonstrate how to adapt your visual assets across different mediums—from social posts to emails—showing their various applications for consistent brand use."
+                        description: "We demonstrate how to adapt your visual assets across different mediums—from social posts to emails—showing their various applications."
                     },
                     {
                         number: 4,
                         title: "Social Media Design",
                         timeScope: "Week 4-5",
-                        description: "We create a set of design rules for social posts, outlining layout, typography, color usage, and image treatment to ensure every post reflects your brand consistently."
+                        description: "We create a set of design rules for social posts, outlining layout, typography, color usage, and image treatment."
                     }
                 ]
             },
@@ -673,6 +673,10 @@ const ProposolRoga = () => {
                             <span className="proposol__section-bullet"></span>
                             <p className="proposol__section-text">{t.assessment.text3}</p>
                         </div>
+                            <div className="proposol__section-bullet-item">
+                            <span className="proposol__section-bullet"></span>
+                            <p className="proposol__section-text">{t.assessment.text4}</p>
+                        </div>
                     </div>
 
                 <section className="proposol__section-main">
@@ -768,7 +772,7 @@ const ProposolRoga = () => {
                                         onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
                                         aria-label="Scroll left"
                                     >
-                                        ‹
+                                        <IconChevronLeft size={20} />
                                     </button>
 
                                     <div
@@ -792,7 +796,7 @@ const ProposolRoga = () => {
                                         onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
                                         aria-label="Scroll right"
                                     >
-                                        ›
+                                        <IconChevronRight size={20} />
                                     </button>
                                 </div>
 

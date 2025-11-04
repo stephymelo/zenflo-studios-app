@@ -1332,7 +1332,6 @@ body {
   }
 }
 .proposol {
-  max-width: 1200px;
   position: relative;
   padding: 40px 7.142vw 24px;
   margin-bottom: 20em;
@@ -1381,7 +1380,8 @@ body {
   }
 }
 .proposol__logo {
-  width: 6%;
+  width: 2%;
+  min-width: 30px;
   margin-bottom: 2em;
   transition: transform 0.5s cubic-bezier(0, 0.61, 0.28, 0.92);
 }
@@ -1442,7 +1442,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  width: 60%;
+  width: 220px;
 }
 .proposol__section-bullet-item {
   display: flex;
@@ -1610,7 +1610,7 @@ body {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  height: 500px;
+  height: 700px;
   margin-top: 6em;
   margin-bottom: 4em;
   overflow: hidden;
@@ -1620,14 +1620,14 @@ body {
 }
 @media (max-width: 768px) {
   .proposol__image {
-    height: 400px;
+    height: 500px;
     margin-top: 4em;
     margin-bottom: 3em;
   }
 }
 @media (max-width: 480px) {
   .proposol__image {
-    height: 300px;
+    height: 400px;
     margin-top: 3em;
     margin-bottom: 2em;
   }
@@ -1868,7 +1868,7 @@ body {
   cursor: not-allowed;
 }
 .proposol__card {
-  background: white;
+  background: #fafaf8;
   border-radius: 16px;
   padding: 2em;
   min-width: 320px;
@@ -1877,7 +1877,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .proposol__card:hover {
@@ -1902,13 +1901,14 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #49D3BA;
-  color: white;
+  border: 1px solid #49D3BA;
+  background: transparent;
+  color: #49D3BA;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   flex-shrink: 0;
 }
 .proposol__card-number-text {
@@ -1922,8 +1922,8 @@ body {
 }
 .proposol__card-time {
   font-size: 14px;
-  color: #49D3BA;
-  font-weight: 500;
+  color: #8d9491;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
