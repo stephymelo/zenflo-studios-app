@@ -200,7 +200,7 @@ const ProposolRoga = () => {
             {
                 id: "market-research",
                 label: "Investigación de Mercado",
-                estimateRate: "$1,000 - $1,500",
+                estimateRate: "$1,500 - $2,000",
                 steps: [
                     {
                         number: 1,
@@ -231,7 +231,7 @@ const ProposolRoga = () => {
             {
                 id: "brand-guidelines",
                 label: "Guía de Marca",
-                estimateRate: "$2,000 - $2,500",
+                estimateRate: "$2,500 - $3,000",
                 steps: [
                     {
                         number: 1,
@@ -295,7 +295,7 @@ const ProposolRoga = () => {
             {
                 id: "market-research",
                 label: "Market Research",
-                estimateRate: "$1,000 - $1,500",
+                estimateRate: "$1,500 - $2,000",
                 steps: [
                     {
                         number: 1,
@@ -326,7 +326,7 @@ const ProposolRoga = () => {
             {
                 id: "brand-guidelines",
                 label: "Brand Guidelines",
-                estimateRate: "$2,000 - $2,500",
+                estimateRate: "2,500 - $3,000",
                 steps: [
                     {
                         number: 1,
