@@ -5,6 +5,7 @@ import roga from '../../Assets/Proposol/roga-ear.png';
 import yoga from '../../Assets/Proposol/yoga-girl.jpg';
 import moodboard from '../../Assets/Proposol/moodboard.jpg';
 import social from '../../Assets/Proposol/social-mock.jpg';
+import './_proposalroga.scss';
 
 
 interface ChartData {
@@ -27,7 +28,7 @@ interface ServiceOption {
     steps: StepCard[];
 }
 
-const ProposolRoga = () => {
+const ProposalRoga = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [selectedTab, setSelectedTab] = useState("market-research");
     const [scrollStates, setScrollStates] = useState<{ [key: string]: { canScrollLeft: boolean; canScrollRight: boolean } }>({});
@@ -561,84 +562,84 @@ const ProposolRoga = () => {
     };
 
     return (
-        <div className="proposol">
+        <div className="proposal">
             <button
-                className="proposol__language-toggle"
+                className="proposal__language-toggle"
                 onClick={() => setLanguage(language === 'ES' ? 'EN' : 'ES')}
                 aria-label="Toggle language"
             >
                 {language}
             </button>
 
-            <div className="proposol__container">
-                <div className="proposol__logo">
-                    <img className="proposol__logo-img" src={logo} alt="Zenflo Logo" />
+            <div className="proposal__container">
+                <div className="proposal__logo">
+                    <img className="proposal__logo-img" src={logo} alt="Zenflo Logo" />
                 </div>
 
                 <div
-                    className={`proposol__hero ${visibleSections.has('hero') ? 'proposol__hero--visible' : ''}`}
+                    className={`proposal__hero ${visibleSections.has('hero') ? 'proposal__hero--visible' : ''}`}
                     data-section-id="hero"
                     ref={(el) => (sectionRefs.current['hero'] = el)}
                 >
-                    <h1 className="proposol__hero-title">{t.hero.title}</h1>
-                    <h3 className="proposol__hero-subtitle">{t.hero.subtitle}</h3>
+                    <h1 className="proposal__hero-title">{t.hero.title}</h1>
+                    <h3 className="proposal__hero-subtitle">{t.hero.subtitle}</h3>
                 </div>
 
                 <div
-                    className={`proposol__section ${visibleSections.has('what-it-is') ? 'proposol__section--visible' : ''}`}
+                    className={`proposal__section ${visibleSections.has('what-it-is') ? 'proposal__section--visible' : ''}`}
                     data-section-id="what-it-is"
                     ref={(el) => (sectionRefs.current['what-it-is'] = el)}
                 >
-                    <h4 className="proposol__section-subheading">{t.whatItIs.title}</h4>
-                    <h2 className="proposol__section-subtitle">{t.whatItIs.subtitle}</h2>
-                    <p className="proposol__section-text">{t.whatItIs.text}</p>
+                    <h4 className="proposal__section-subheading">{t.whatItIs.title}</h4>
+                    <h2 className="proposal__section-subtitle">{t.whatItIs.subtitle}</h2>
+                    <p className="proposal__section-text">{t.whatItIs.text}</p>
                 </div>
-                <section className="proposol__image">
-                    <img className="proposol__image-bg" src={roga} alt="Roga wellness device" />
-                    <div className="proposol__image-overlay"></div>
-                    <div className="proposol__image-content">
+                <section className="proposal__image">
+                    <img className="proposal__image-bg" src={roga} alt="Roga wellness device" />
+                    <div className="proposal__image-overlay"></div>
+                    <div className="proposal__image-content">
                         <h4>{t.overview.title}</h4>
-                        <h2 className="proposol__image-content-text">{t.overview.text}</h2>
+                        <h2 className="proposal__image-content-text">{t.overview.text}</h2>
                     </div>
                 </section>
 
                 <div
-                    className={`proposol__section ${visibleSections.has('what-else') ? 'proposol__section--visible' : ''}`}
+                    className={`proposal__section ${visibleSections.has('what-else') ? 'proposal__section--visible' : ''}`}
                     data-section-id="what-else"
                     ref={(el) => (sectionRefs.current['what-else'] = el)}
                 >
-                    <h4 className="proposol__section-subheading">{t.whatElse.title}</h4>
-                    <p className="proposol__section-text">{t.whatElse.text}</p>
+                    <h4 className="proposal__section-subheading">{t.whatElse.title}</h4>
+                    <p className="proposal__section-text">{t.whatElse.text}</p>
                 </div>
 
                
 
                 <div
-                    className={`proposol__section ${visibleSections.has('traffic') ? 'proposol__section--visible' : ''}`}
+                    className={`proposal__section ${visibleSections.has('traffic') ? 'proposal__section--visible' : ''}`}
                     data-section-id="traffic"
                     ref={(el) => (sectionRefs.current['traffic'] = el)}
                 >
                      <div
-                    className={`proposol__section ${visibleSections.has('actual-data') ? 'proposol__section--visible' : ''}`}
+                    className={`proposal__section ${visibleSections.has('actual-data') ? 'proposal__section--visible' : ''}`}
                     data-section-id="actual-data"
                     ref={(el) => (sectionRefs.current['actual-data'] = el)}
                 >
-                    <h4 className="proposol__section-subheading">{t.actualData.title}</h4>
-                    <p className="proposol__section-text">{t.actualData.text1}</p>
-                    <p className="proposol__section-text">{t.actualData.text2}</p>
+                    <h4 className="proposal__section-subheading">{t.actualData.title}</h4>
+                    <p className="proposal__section-text">{t.actualData.text1}</p>
+                    <p className="proposal__section-text">{t.actualData.text2}</p>
                 </div>
                    
-                    <div className="proposol__chart" ref={chartRef}>
-                         <p className="proposol__section-text">{t.traffic.title}</p>
-                        <div className="proposol__chart-container">
-                            <div className="proposol__chart-wrapper">
-                                <svg viewBox="0 0 100 100" className="proposol__chart-svg">
+                    <div className="proposal__chart" ref={chartRef}>
+                         <p className="proposal__section-text">{t.traffic.title}</p>
+                        <div className="proposal__chart-container">
+                            <div className="proposal__chart-wrapper">
+                                <svg viewBox="0 0 100 100" className="proposal__chart-svg">
                                     {segments.map((segment, index) => (
                                         <path
                                             key={segment.label}
                                             d={createArc(segment.start, segment.end)}
                                             fill={segment.color}
-                                            className={`proposol__chart-segment ${isVisible ? "proposol__chart-segment--animate" : ""}`}
+                                            className={`proposal__chart-segment ${isVisible ? "proposal__chart-segment--animate" : ""}`}
                                             style={{
                                                 animationDelay: `${index * 0.1}s`,
                                             }}
@@ -647,18 +648,18 @@ const ProposolRoga = () => {
                                 </svg>
                             </div>
 
-                            <div className="proposol__chart-legend">
+                            <div className="proposal__chart-legend">
                                 {chartData.map((item, index) => (
                                     <div
                                         key={item.label}
-                                        className={`proposol__legend-item ${isVisible ? "proposol__legend-item--fade-in" : ""}`}
+                                        className={`proposal__legend-item ${isVisible ? "proposal__legend-item--fade-in" : ""}`}
                                         style={{
                                             animationDelay: `${index * 0.1}s`,
                                         }}
                                     >
-                                        <div className="proposol__legend-color" style={{ backgroundColor: item.color }} />
-                                        <span className="proposol__legend-label">{item.label}:</span>
-                                        <span className="proposol__legend-percentage">{item.percentage}%</span>
+                                        <div className="proposal__legend-color" style={{ backgroundColor: item.color }} />
+                                        <span className="proposal__legend-label">{item.label}:</span>
+                                        <span className="proposal__legend-percentage">{item.percentage}%</span>
                                     </div>
                                 ))}
                             </div>
@@ -666,116 +667,116 @@ const ProposolRoga = () => {
                     </div>
                 </div>
                    <div
-                        className={`proposol__section ${visibleSections.has('assessment') ? 'proposol__section--visible' : ''}`}
+                        className={`proposal__section ${visibleSections.has('assessment') ? 'proposal__section--visible' : ''}`}
                         data-section-id="assessment"
                         ref={(el) => (sectionRefs.current['assessment'] = el)}
                     >
-                        <h4 className="proposol__section-subheading">{t.assessment.title}</h4>
-                        <div className="proposol__section-bullet-item">
-                            <span className="proposol__section-bullet"></span>
-                            <p className="proposol__section-text">{t.assessment.text1}</p>
+                        <h4 className="proposal__section-subheading">{t.assessment.title}</h4>
+                        <div className="proposal__section-bullet-item">
+                            <span className="proposal__section-bullet"></span>
+                            <p className="proposal__section-text">{t.assessment.text1}</p>
                         </div>
-                        <div className="proposol__section-bullet-item">
-                            <span className="proposol__section-bullet"></span>
-                            <p className="proposol__section-text">{t.assessment.text2}</p>
+                        <div className="proposal__section-bullet-item">
+                            <span className="proposal__section-bullet"></span>
+                            <p className="proposal__section-text">{t.assessment.text2}</p>
                         </div>
-                        <div className="proposol__section-bullet-item">
-                            <span className="proposol__section-bullet"></span>
-                            <p className="proposol__section-text">{t.assessment.text3}</p>
+                        <div className="proposal__section-bullet-item">
+                            <span className="proposal__section-bullet"></span>
+                            <p className="proposal__section-text">{t.assessment.text3}</p>
                         </div>
-                            <div className="proposol__section-bullet-item">
-                            <span className="proposol__section-bullet"></span>
-                            <p className="proposol__section-text">{t.assessment.text4}</p>
+                            <div className="proposal__section-bullet-item">
+                            <span className="proposal__section-bullet"></span>
+                            <p className="proposal__section-text">{t.assessment.text4}</p>
                         </div>
                     </div>
 
                     {/* Exploration Section */}
                     <div
-                        className={`proposol__section ${visibleSections.has('exploration') ? 'proposol__section--visible' : ''}`}
+                        className={`proposal__section ${visibleSections.has('exploration') ? 'proposal__section--visible' : ''}`}
                         data-section-id="exploration"
                         ref={(el) => (sectionRefs.current['exploration'] = el)}
                     >
-                        <h4 className="proposol__section-subheading">{t.exploration.title}</h4>
-                        <h2 className="proposol__section-subtitle">{t.exploration.subtitle}</h2>
-                        <div className="proposol__exploration-images">
-                            <div className="proposol__exploration-image">
-                                <img src={moodboard} alt="Moodboard exploration" className="proposol__section-img" />
+                        <h4 className="proposal__section-subheading">{t.exploration.title}</h4>
+                        <h2 className="proposal__section-subtitle">{t.exploration.subtitle}</h2>
+                        <div className="proposal__exploration-images">
+                            <div className="proposal__exploration-image">
+                                <img src={moodboard} alt="Moodboard exploration" className="proposal__section-img" />
                             </div>
-                            <div className="proposol__exploration-image">
-                                <img src={social} alt="Social media exploration" className="proposol__section-img" />
+                            <div className="proposal__exploration-image">
+                                <img src={social} alt="Social media exploration" className="proposal__section-img" />
                             </div>
                         </div>
                     </div>
 
-                <section className="proposol__section-main">
+                <section className="proposal__section-main">
 
                  
 
                     <div
-                        className={`proposol__section ${visibleSections.has('gameplan-intro') ? 'proposol__section--visible' : ''}`}
+                        className={`proposal__section ${visibleSections.has('gameplan-intro') ? 'proposal__section--visible' : ''}`}
                         data-section-id="gameplan-intro"
                         ref={(el) => (sectionRefs.current['gameplan-intro'] = el)}
                     >
-                        <h4 className="proposol__section-subheading">{t.gameplanIntro.title}</h4>
-                        <h2 className="proposol__section-subtitle">{t.gameplanIntro.subtitle}</h2>
+                        <h4 className="proposal__section-subheading">{t.gameplanIntro.title}</h4>
+                        <h2 className="proposal__section-subtitle">{t.gameplanIntro.subtitle}</h2>
                     </div>
 
                     <div
-                        className={`proposol__section-line ${visibleSections.has('brand-identity') ? 'proposol__section-line--visible' : ''}`}
+                        className={`proposal__section-line ${visibleSections.has('brand-identity') ? 'proposal__section-line--visible' : ''}`}
                         data-section-id="brand-identity"
                         ref={(el) => (sectionRefs.current['brand-identity'] = el)}
                     >
-                        <h3 className="proposol__section-line-title">{t.brandIdentity.title}</h3>
-                        <p className="proposol__section-line-text">{t.brandIdentity.text}</p>
+                        <h3 className="proposal__section-line-title">{t.brandIdentity.title}</h3>
+                        <p className="proposal__section-line-text">{t.brandIdentity.text}</p>
                     </div>
 
                     <div
-                        className={`proposol__section-line ${visibleSections.has('market') ? 'proposol__section-line--visible' : ''}`}
+                        className={`proposal__section-line ${visibleSections.has('market') ? 'proposal__section-line--visible' : ''}`}
                         data-section-id="market"
                         ref={(el) => (sectionRefs.current['market'] = el)}
                     >
-                        <h3 className="proposol__section-line-title">{t.market.title}</h3>
-                        <p className="proposol__section-line-text">{t.market.text}</p>
+                        <h3 className="proposal__section-line-title">{t.market.title}</h3>
+                        <p className="proposal__section-line-text">{t.market.text}</p>
                     </div>
 
                     <div
-                        className={`proposol__section-line ${visibleSections.has('gameplan') ? 'proposol__section-line--visible' : ''}`}
+                        className={`proposal__section-line ${visibleSections.has('gameplan') ? 'proposal__section-line--visible' : ''}`}
                         data-section-id="gameplan"
                         ref={(el) => (sectionRefs.current['gameplan'] = el)}
                     >
-                        <h3 className="proposol__section-line-title">{t.gameplan.title}</h3>
-                        <p className="proposol__section-line-text">{t.gameplan.text}</p>
+                        <h3 className="proposal__section-line-title">{t.gameplan.title}</h3>
+                        <p className="proposal__section-line-text">{t.gameplan.text}</p>
                     </div>
 
                 </section>
 
                 {/* Hero Image Section with Overlay */}
-                <section className="proposol__image">
-                    <img className="proposol__image-bg" src={yoga} alt="Roga wellness device" />
-                    <div className="proposol__image-overlay"></div>
-                    <div className="proposol__image-content">
+                <section className="proposal__image">
+                    <img className="proposal__image-bg" src={yoga} alt="Roga wellness device" />
+                    <div className="proposal__image-overlay"></div>
+                    <div className="proposal__image-content">
                         <h4>{t.marketSection.title}</h4>
-                        <h2 className="proposol__image-content-text">{t.marketSection.text}</h2>
+                        <h2 className="proposal__image-content-text">{t.marketSection.text}</h2>
                     </div>
                 </section>
 
                 {/* Services Carousel Section */}
-                <section className="proposol__services">
+                <section className="proposal__services">
                     <div
-                        className={`proposol__services-header ${visibleSections.has('services-header') ? 'proposol__services-header--visible' : ''}`}
+                        className={`proposal__services-header ${visibleSections.has('services-header') ? 'proposal__services-header--visible' : ''}`}
                         data-section-id="services-header"
                         ref={(el) => (sectionRefs.current['services-header'] = el)}
                     >
-                        <h4 className="proposol__section-subheading">{t.servicesHeader.title}</h4>
-                        <h2 className="proposol__section-subtitle">{t.servicesHeader.subtitle}</h2>
+                        <h4 className="proposal__section-subheading">{t.servicesHeader.title}</h4>
+                        <h2 className="proposal__section-subtitle">{t.servicesHeader.subtitle}</h2>
                     </div>
 
                     {/* Tabs */}
-                    <div className="proposol__tabs">
+                    <div className="proposal__tabs">
                         {serviceOptions.map((option) => (
                             <button
                                 key={option.id}
-                                className={`proposol__tab ${selectedTab === option.id ? 'proposol__tab--active' : ''}`}
+                                className={`proposal__tab ${selectedTab === option.id ? 'proposal__tab--active' : ''}`}
                                 onClick={() => setSelectedTab(option.id)}
                             >
                                 {option.label}
@@ -784,19 +785,19 @@ const ProposolRoga = () => {
                     </div>
 
                     {/* Project Estimate Rate */}
-                    <p className="proposol__estimate-rate">
+                    <p className="proposal__estimate-rate">
                         {t.estimateRate} {serviceOptions.find(option => option.id === selectedTab)?.estimateRate}
                     </p>
 
                     {/* Carousel for each tab */}
-                    <div className="proposol__carousel-container">
+                    <div className="proposal__carousel-container">
                         {serviceOptions.map((option) => (
                             <div key={option.id}>
                                 <div
-                                    className={`proposol__carousel-wrapper ${selectedTab === option.id ? 'proposol__carousel-wrapper--active' : ''}`}
+                                    className={`proposal__carousel-wrapper ${selectedTab === option.id ? 'proposal__carousel-wrapper--active' : ''}`}
                                 >
                                     <button
-                                        className="proposol__carousel-arrow proposol__carousel-arrow--left"
+                                        className="proposal__carousel-arrow proposal__carousel-arrow--left"
                                         onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
                                         aria-label="Scroll left"
                                     >
@@ -804,23 +805,23 @@ const ProposolRoga = () => {
                                     </button>
 
                                     <div
-                                        className="proposol__carousel"
+                                        className="proposal__carousel"
                                         ref={(el) => (carouselRefs.current[option.id] = el)}
                                     >
                                         {option.steps.map((step) => (
-                                            <div key={step.number} className="proposol__card">
-                                                <div className="proposol__card-number">
-                                                    <span className="proposol__card-number-text">{step.number}</span>
+                                            <div key={step.number} className="proposal__card">
+                                                <div className="proposal__card-number">
+                                                    <span className="proposal__card-number-text">{step.number}</span>
                                                 </div>
-                                                <h3 className="proposol__card-title">{step.title}</h3>
-                                                <p className="proposol__card-time">{step.timeScope}</p>
-                                                <p className="proposol__card-description">{step.description}</p>
+                                                <h3 className="proposal__card-title">{step.title}</h3>
+                                                <p className="proposal__card-time">{step.timeScope}</p>
+                                                <p className="proposal__card-description">{step.description}</p>
                                             </div>
                                         ))}
                                     </div>
 
                                     <button
-                                        className="proposol__carousel-arrow proposol__carousel-arrow--right"
+                                        className="proposal__carousel-arrow proposal__carousel-arrow--right"
                                         onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
                                         aria-label="Scroll right"
                                     >
@@ -830,9 +831,9 @@ const ProposolRoga = () => {
 
                                 {/* Bottom navigation indicators */}
                                 {selectedTab === option.id && (
-                                    <div className="proposol__carousel-nav">
+                                    <div className="proposal__carousel-nav">
                                         <button
-                                            className={`proposol__carousel-nav-button ${!scrollStates[option.id]?.canScrollLeft ? 'proposol__carousel-nav-button--disabled' : ''}`}
+                                            className={`proposal__carousel-nav-button ${!scrollStates[option.id]?.canScrollLeft ? 'proposal__carousel-nav-button--disabled' : ''}`}
                                             onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
                                             disabled={!scrollStates[option.id]?.canScrollLeft}
                                             aria-label="Scroll left"
@@ -840,7 +841,7 @@ const ProposolRoga = () => {
                                             <IconChevronLeft size={20} />
                                         </button>
                                         <button
-                                            className={`proposol__carousel-nav-button ${!scrollStates[option.id]?.canScrollRight ? 'proposol__carousel-nav-button--disabled' : ''}`}
+                                            className={`proposal__carousel-nav-button ${!scrollStates[option.id]?.canScrollRight ? 'proposal__carousel-nav-button--disabled' : ''}`}
                                             onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
                                             disabled={!scrollStates[option.id]?.canScrollRight}
                                             aria-label="Scroll right"
@@ -854,23 +855,23 @@ const ProposolRoga = () => {
                     </div>
                 </section>
                 <div
-                    className={`proposol__section ${visibleSections.has('results') ? 'proposol__section--visible' : ''}`}
+                    className={`proposal__section ${visibleSections.has('results') ? 'proposal__section--visible' : ''}`}
                     data-section-id="results"
                     ref={(el) => (sectionRefs.current['results'] = el)}
                 >
-                    <h4 className="proposol__section-subheading">{t.results.title}</h4>
-                    <h2 className="proposol__section-subtitle">{t.results.subtitle}</h2>
-                    <p className="proposol__section-text">{t.results.text}</p>
+                    <h4 className="proposal__section-subheading">{t.results.title}</h4>
+                    <h2 className="proposal__section-subtitle">{t.results.subtitle}</h2>
+                    <p className="proposal__section-text">{t.results.text}</p>
                 </div>
 
                 <div
-                    className={`proposol__section ${visibleSections.has('next-steps') ? 'proposol__section--visible' : ''}`}
+                    className={`proposal__section ${visibleSections.has('next-steps') ? 'proposal__section--visible' : ''}`}
                     data-section-id="next-steps"
                     ref={(el) => (sectionRefs.current['next-steps'] = el)}
                 >
-                    <h4 className="proposol__section-subheading">{t.nextSteps.title}</h4>
-                    <h2 className="proposol__section-subtitle">{t.nextSteps.subtitle}</h2>
-                    <div className="proposol__section-links">
+                    <h4 className="proposal__section-subheading">{t.nextSteps.title}</h4>
+                    <h2 className="proposal__section-subtitle">{t.nextSteps.subtitle}</h2>
+                    <div className="proposal__section-links">
                         <a
                             href="tel:+19085604930"
                             className="contact__email-button"
@@ -891,4 +892,4 @@ const ProposolRoga = () => {
     );
 };
 
-export default ProposolRoga;
+export default ProposalRoga;

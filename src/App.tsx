@@ -6,7 +6,9 @@ import Footer from './Components/Footer/Footer';
 import Contact from './Pages/Contact/Contact';
 import Work from './Pages/Works/Work';
 import { ScrollToTop } from './Components/ScrollToTop/ScrollToTop';
-import ProposolRoga from './Pages/Presentation/ProposolRoga';
+import ProposalRoga from './Pages/Presentation/ProposalRoga';
+import ProposalHernan from './Pages/Presentation/ProposalHernan';
+import ProposalAllinoneinventions from './Pages/Presentation/ProposalAllinoneinventions';
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
 
       <Routes>
         {/* Route without header and footer */}
-        <Route path="/proposal-roga" element={<ProposolRoga/>}/>
+        <Route path="/proposal-roga" element={<ProposalRoga/>}/>
+        <Route path="/proposal-hernan" element={<ProposalHernan/>}/>
+         <Route path="/proposal-allinoneinventions" element={<ProposalAllinoneinventions/>}/>
 
         {/* Routes with header and footer */}
         <Route path="*" element={

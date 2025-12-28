@@ -2,7 +2,7 @@
 @use 'sass:color';
 
 
-.proposol {
+.proposal {
 
     position: relative;
     padding: 40px 7.142vw 24px;
@@ -457,7 +457,7 @@
         font-size: 18px;
         font-weight: 600;
         color: $color-primary-text;
-      
+
 
         @media (max-width: 768px) {
             font-size: 16px;
