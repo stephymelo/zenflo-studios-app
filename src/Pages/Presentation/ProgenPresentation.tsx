@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import logo from '../../Assets/Logo/loguito.svg';
 import './_proposalroga.scss';
+import './_progenpresentation.scss';
 
 
 interface ChartData {
@@ -47,54 +48,75 @@ const ProgenPresentation = () => {
         {
             id: "social-media-presence",
             label: "Social Media Presence",
-            strategicFocus: "Educational content around hair loss solutions, before/after transformations, product demonstrations, authority positioning",
+            strategicFocus: "Educational hair loss content, before/after results, product demos, expert positioning",
             cards: [
-                { number: 1, title: "Reach & Impressions", description: "Track reach and impressions growth across platforms" },
-                { number: 2, title: "Engagement Rate", description: "Monitor likes, comments, shares, saves" },
-                { number: 3, title: "Video Performance", description: "Track watch time and retention metrics" },
-                { number: 4, title: "Follower Growth", description: "Measure audience growth rate" },
+                { number: 1, title: "Reach & Impressions", description: "How many people see our content" },
+                { number: 2, title: "Engagement Rate", description: "Are people interacting with our posts?" },
+                { number: 3, title: "Video Performance", description: "How long do people watch our videos?" },
+                { number: 4, title: "Follower Growth", description: "Is our audience getting bigger?" },
             ]
         },
         {
             id: "website-traffic",
             label: "Website Traffic",
             cards: [
-                { number: 1, title: "Total Users & Sessions", description: "Increase volume of qualified traffic" },
-                { number: 2, title: "Traffic Source Mix", description: "Increase organic and intent-driven traffic" },
-                { number: 3, title: "Engaged Sessions", description: "Track meaningful site interactions" },
-                { number: 4, title: "Organic Growth", description: "Grow organic search contribution" },
+                { number: 1, title: "Total Users & Sessions", description: "How many people visit the site" },
+                { number: 2, title: "Traffic Source Mix", description: "Where are visitors coming from?" },
+                { number: 3, title: "Engaged Sessions", description: "How many visitors actually do something on the site" },
+                { number: 4, title: "Organic Growth", description: "Are more people finding us through Google?" },
             ]
         },
         {
             id: "on-site-engagement",
             label: "On-Site Engagement",
             cards: [
-                { number: 1, title: "Engagement Time", description: "Increase from ~14s to 30-45s+" },
-                { number: 2, title: "Views Per User", description: "Increase from ~1.47 to 2.0+" },
-                { number: 3, title: "Bounce Rate", description: "Reduce single-page exits" },
-                { number: 4, title: "Landing Page Optimization", description: "Improve clarity and value proposition" },
+                { number: 1, title: "Time on Site", description: "Get visitors to stay longer (14s → 30-45s+)" },
+                { number: 2, title: "Pages Per Visit", description: "Get visitors to look at more pages (1.47 → 2.0+)" },
+                { number: 3, title: "Bounce Rate", description: "Fewer people leaving after one page" },
+                { number: 4, title: "Landing Pages", description: "Make the first page people see more compelling" },
             ]
         },
         {
             id: "traffic-quality",
             label: "Traffic Quality",
             cards: [
-                { number: 1, title: "Engaged Sessions", description: "Track sessions with meaningful interaction" },
-                { number: 2, title: "Multi-Page Views", description: "Increase sessions with multiple page views" },
-                { number: 3, title: "Returning Users", description: "Build returning visitor base" },
-                { number: 4, title: "Intent Signals", description: "Monitor high-intent behavior patterns" },
+                { number: 1, title: "Engaged Sessions", description: "How many visitors actually interact with the site" },
+                { number: 2, title: "Multi-Page Views", description: "Are people exploring beyond the first page?" },
+                { number: 3, title: "Returning Visitors", description: "Are people coming back?" },
+                { number: 4, title: "Buying Signals", description: "Are visitors showing interest in products?" },
             ]
         },
         {
             id: "retargeting-audiences",
             label: "Retargeting Audiences",
             cards: [
-                { number: 1, title: "View Content Events", description: "Track product page views for retargeting" },
-                { number: 2, title: "Add-to-Cart Events", description: "Build cart abandonment audiences" },
-                { number: 3, title: "Audience Building", description: "Grow 30/60/90 day audience pools" },
-                { number: 4, title: "Conversion Prep", description: "Prepare audiences for future conversion campaigns" },
+                { number: 1, title: "Product Page Views", description: "Who looked at products? We can show them ads later." },
+                { number: 2, title: "Cart Abandonment", description: "Who added items but didn't buy? Follow up with them." },
+                { number: 3, title: "Audience Building", description: "Growing lists of interested people for future ads" },
+                { number: 4, title: "Conversion Prep", description: "Getting audiences ready to buy when we run sales" },
             ]
         },
+    ];
+
+    // Max sessions for bar chart scaling
+    const maxSessions = Math.max(...chartData.map(d => d.sessions));
+
+    // Top pages data
+    const topPages = [
+        { label: "Shop Bestsellers", views: 688, change: "+39.6%" },
+        { label: "Homepage", views: 243, change: "-24.3%" },
+        { label: "Product Pages", views: 155, change: "+12.1%" },
+    ];
+    const maxPageViews = Math.max(...topPages.map(p => p.views));
+
+    // Geographic data
+    const geoData = [
+        { label: "United States", users: 848, percentage: 76, color: "#49D3BA" },
+        { label: "Singapore", users: 62, percentage: 5.5, color: "#55a4a4" },
+        { label: "China", users: 48, percentage: 4.3, color: "#ff9580" },
+        { label: "Canada", users: 41, percentage: 3.7, color: "#5A9B7D" },
+        { label: "Mexico", users: 32, percentage: 2.9, color: "#E89B7C" },
+        { label: "Other", users: 84, percentage: 7.6, color: "#3eb367" },
     ];
 
     const checkScrollPosition = (id: string) => {
@@ -280,246 +302,10 @@ const ProgenPresentation = () => {
                     ref={(el) => (sectionRefs.current['hero'] = el)}
                 >
                     <h1 className="proposal__hero-title">Progen Global</h1>
-                    <h3 className="proposal__hero-subtitle">Analytics Report — Awareness Performance & Traffic Quality</h3>
+                    <h3 className="proposal__hero-subtitle">Website Performance Report — How people find and use the site</h3>
                 </div>
 
-                {/* 2. Executive Summary */}
-                <div
-                    className={`proposal__section ${visibleSections.has('executive-summary') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="executive-summary"
-                    ref={(el) => (sectionRefs.current['executive-summary'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">EXECUTIVE SUMMARY</h4>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>1.1K</strong> active users <strong>(+11.6%)</strong></p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>4.9K</strong> total events <strong>(+5.3%)</strong></p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>2</strong> purchases <strong>(-33.3%)</strong></p>
-                    </div>
-                    <p className="proposal__section-text" style={{ marginTop: '1.5rem' }}>
-                        The current performance confirms that the brand is successfully driving awareness, but users are not yet transitioning into deeper engagement or conversion behavior.
-                    </p>
-                </div>
-
-                {/* 3. Traffic & Acquisition */}
-                <div
-                    className={`proposal__section ${visibleSections.has('traffic') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="traffic"
-                    ref={(el) => (sectionRefs.current['traffic'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">TRAFFIC & ACQUISITION</h4>
-
-                    <div className="proposal__chart" ref={chartRef}>
-                        <div className="proposal__chart-container">
-                            <div className="proposal__chart-wrapper">
-                                <svg viewBox="0 0 100 100" className="proposal__chart-svg">
-                                    {segments.map((segment, index) => (
-                                        <path
-                                            key={segment.label}
-                                            d={createArc(segment.start, segment.end)}
-                                            fill={segment.color}
-                                            className={`proposal__chart-segment ${isVisible ? "proposal__chart-segment--animate" : ""}`}
-                                            style={{
-                                                animationDelay: `${index * 0.1}s`,
-                                            }}
-                                        />
-                                    ))}
-                                </svg>
-                            </div>
-
-                            <div className="proposal__chart-legend">
-                                {chartData.map((item, index) => (
-                                    <div
-                                        key={item.label}
-                                        className={`proposal__legend-item ${isVisible ? "proposal__legend-item--fade-in" : ""}`}
-                                        style={{
-                                            animationDelay: `${index * 0.1}s`,
-                                        }}
-                                    >
-                                        <div className="proposal__legend-color" style={{ backgroundColor: item.color }} />
-                                        <span className="proposal__legend-label">{item.label}:</span>
-                                        <span className="proposal__legend-percentage">{item.sessions} sessions ({item.change})</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Heavy dependence on Paid Social, consistent with awareness campaigns</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Organic Search is growing, indicating potential for higher-intent traffic</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Paid Search is almost non-existent, limiting bottom-funnel capture</p>
-                    </div>
-                </div>
-
-                {/* 4. Geographic Distribution */}
-                <div
-                    className={`proposal__section ${visibleSections.has('geographic') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="geographic"
-                    ref={(el) => (sectionRefs.current['geographic'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">GEOGRAPHIC DISTRIBUTION</h4>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>United States:</strong> 848 users (+24.3%)</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>Secondary markets:</strong> Singapore, China, Canada, Mexico</p>
-                    </div>
-                    <p className="proposal__section-text" style={{ marginTop: '1.5rem' }}>
-                        Strong concentration in the U.S. market. Opportunity to localize messaging and scale performance in top regions.
-                    </p>
-                </div>
-
-                {/* 5. Behavior & Engagement */}
-                <div
-                    className={`proposal__section ${visibleSections.has('behavior') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="behavior"
-                    ref={(el) => (sectionRefs.current['behavior'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">BEHAVIOR & ENGAGEMENT</h4>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Views per user: <strong>~1.47</strong></p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Avg engagement time: <strong>~14 seconds</strong></p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Majority of users leave after one page</p>
-                    </div>
-
-                    <p className="proposal__section-text" style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}><strong>Interpretation:</strong></p>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Users are clicking but not engaging</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Indicates weak landing experience and/or low intent traffic</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Disconnect between ad messaging and on-site experience</p>
-                    </div>
-
-                    <p className="proposal__section-text" style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}><strong>Top Pages:</strong></p>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Shop Bestsellers: <strong>688 views (+39.6%)</strong></p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Homepage: <strong>243 views (-24.3%)</strong></p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Product and analyzer pages: moderate but growing</p>
-                    </div>
-                </div>
-
-                {/* 6. Conversion Snapshot */}
-                <div
-                    className={`proposal__section ${visibleSections.has('conversion') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="conversion"
-                    ref={(el) => (sectionRefs.current['conversion'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">CONVERSION SNAPSHOT</h4>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Purchases: <strong>2 (-33.3%)</strong></p>
-                    </div>
-                    <p className="proposal__section-text" style={{ marginTop: '1.5rem' }}>
-                        Expected under an awareness-only campaign. Priority should be engagement and intent building, not immediate sales.
-                    </p>
-                </div>
-
-                {/* 7. Key Problems Identified */}
-                <div
-                    className={`proposal__section ${visibleSections.has('key-problems') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="key-problems"
-                    ref={(el) => (sectionRefs.current['key-problems'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">KEY PROBLEMS IDENTIFIED</h4>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>Low engagement:</strong> 14-second average session time is critically low</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>Weak traffic quality:</strong> Paid Social is driving volume but not qualified users</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>Poor funnel depth:</strong> Users are not navigating beyond the first page</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text"><strong>Lack of intent-based channels:</strong> Minimal Paid Search presence</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Limited capture of high-intent demand</p>
-                    </div>
-                </div>
-
-                {/* 8. What's Working */}
-                <div
-                    className={`proposal__section ${visibleSections.has('whats-working') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="whats-working"
-                    ref={(el) => (sectionRefs.current['whats-working'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">WHAT'S WORKING</h4>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Strong ability to generate traffic at scale</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Growth in Paid Social performance</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Increasing interest in product-related pages</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Strong traction in the U.S. market</p>
-                    </div>
-                </div>
-
-                {/* 9. April Strategy Context */}
-                <div
-                    className={`proposal__section ${visibleSections.has('april-strategy') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="april-strategy"
-                    ref={(el) => (sectionRefs.current['april-strategy'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">APRIL STRATEGY CONTEXT</h4>
-                    <p className="proposal__section-text">
-                        The campaign for April is focused on brand awareness (no promotions), audience growth, traffic generation, education and positioning.
-                    </p>
-                    <p className="proposal__section-text" style={{ marginTop: '1rem' }}>
-                        Success should be measured through engagement and traffic quality rather than direct conversions.
-                    </p>
-                </div>
-
-                {/* 10. April Goals — Tabbed Carousel */}
+                {/* 2. April Goals — Tabbed Carousel (MOVED UP) */}
                 <section className="proposal__services">
                     <div
                         className={`proposal__services-header ${visibleSections.has('april-goals') ? 'proposal__services-header--visible' : ''}`}
@@ -527,7 +313,7 @@ const ProgenPresentation = () => {
                         ref={(el) => (sectionRefs.current['april-goals'] = el)}
                     >
                         <h4 className="proposal__section-subheading">APRIL GOALS</h4>
-                        <h2 className="proposal__section-subtitle">Key performance indicators to track across each strategic pillar.</h2>
+                        <h2 className="proposal__section-subtitle">What we're tracking this month — organized by focus area.</h2>
                     </div>
 
                     {/* Tabs */}
@@ -546,7 +332,7 @@ const ProgenPresentation = () => {
                     {/* Strategic Focus (if present) */}
                     {currentTab?.strategicFocus && (
                         <p className="proposal__estimate-rate">
-                            Strategic Focus: {currentTab.strategicFocus}
+                            Focus: {currentTab.strategicFocus}
                         </p>
                     )}
 
@@ -615,6 +401,294 @@ const ProgenPresentation = () => {
                     </div>
                 </section>
 
+                {/* 3. Executive Summary — Metric Cards */}
+                <div
+                    className={`proposal__section ${visibleSections.has('executive-summary') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="executive-summary"
+                    ref={(el) => (sectionRefs.current['executive-summary'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">EXECUTIVE SUMMARY</h4>
+
+                    <div className="progen-metrics">
+                        <div className="progen-metric-card">
+                            <span className="progen-metric-card__label">Active Users</span>
+                            <span className="progen-metric-card__value">1.1K</span>
+                            <span className="progen-metric-card__badge progen-metric-card__badge--up">
+                                <span className="progen-metric-card__arrow">▲</span> +11.6%
+                            </span>
+                        </div>
+                        <div className="progen-metric-card">
+                            <span className="progen-metric-card__label">Total Events</span>
+                            <span className="progen-metric-card__value">4.9K</span>
+                            <span className="progen-metric-card__badge progen-metric-card__badge--up">
+                                <span className="progen-metric-card__arrow">▲</span> +5.3%
+                            </span>
+                        </div>
+                        <div className="progen-metric-card">
+                            <span className="progen-metric-card__label">Purchases</span>
+                            <span className="progen-metric-card__value">2</span>
+                            <span className="progen-metric-card__badge progen-metric-card__badge--down">
+                                <span className="progen-metric-card__arrow">▼</span> -33.3%
+                            </span>
+                        </div>
+                    </div>
+
+                    <p className="proposal__section-text" style={{ marginTop: '1.5rem' }}>
+                        People are finding the site, but most leave without doing anything. We need to give them a reason to stay.
+                    </p>
+                </div>
+
+                {/* 4. Traffic & Acquisition */}
+                <div
+                    className={`proposal__section ${visibleSections.has('traffic') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="traffic"
+                    ref={(el) => (sectionRefs.current['traffic'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">TRAFFIC & ACQUISITION</h4>
+
+                    <div className="proposal__chart" ref={chartRef}>
+                        <div className="proposal__chart-container">
+                            <div className="proposal__chart-wrapper">
+                                <svg viewBox="0 0 100 100" className="proposal__chart-svg">
+                                    {segments.map((segment, index) => (
+                                        <path
+                                            key={segment.label}
+                                            d={createArc(segment.start, segment.end)}
+                                            fill={segment.color}
+                                            className={`proposal__chart-segment ${isVisible ? "proposal__chart-segment--animate" : ""}`}
+                                            style={{
+                                                animationDelay: `${index * 0.1}s`,
+                                            }}
+                                        />
+                                    ))}
+                                </svg>
+                            </div>
+
+                            <div className="proposal__chart-legend">
+                                {chartData.map((item, index) => (
+                                    <div
+                                        key={item.label}
+                                        className={`proposal__legend-item ${isVisible ? "proposal__legend-item--fade-in" : ""}`}
+                                        style={{
+                                            animationDelay: `${index * 0.1}s`,
+                                        }}
+                                    >
+                                        <div className="proposal__legend-color" style={{ backgroundColor: item.color }} />
+                                        <span className="proposal__legend-label">{item.label}:</span>
+                                        <span className="proposal__legend-percentage">{item.sessions} sessions ({item.change})</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Horizontal Bar Chart — Sessions by Channel */}
+                    <div className="progen-bar-chart">
+                        <div className="progen-bar-chart__title">Sessions by Channel</div>
+                        {chartData.map((item) => (
+                            <div key={item.label} className="progen-bar-chart__row">
+                                <span className="progen-bar-chart__label">{item.label}</span>
+                                <div className="progen-bar-chart__track">
+                                    <div
+                                        className="progen-bar-chart__fill"
+                                        style={{
+                                            width: visibleSections.has('traffic') ? `${(item.sessions / maxSessions) * 100}%` : '0%',
+                                            backgroundColor: item.color,
+                                        }}
+                                    />
+                                </div>
+                                <span className="progen-bar-chart__value">{item.sessions}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">Most visitors come from paid social media ads</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">Google searches are bringing more people — these visitors are more likely to buy</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">Almost nobody finds us through paid Google search ads — we're missing people who are actively looking to buy</p>
+                    </div>
+                </div>
+
+                {/* 5. Geographic Distribution */}
+                <div
+                    className={`proposal__section ${visibleSections.has('geographic') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="geographic"
+                    ref={(el) => (sectionRefs.current['geographic'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">GEOGRAPHIC DISTRIBUTION</h4>
+
+                    <div className="progen-geo-bar">
+                        {geoData.map((item) => (
+                            <div key={item.label} className="progen-geo-bar__row">
+                                <span className="progen-geo-bar__label">{item.label}</span>
+                                <div className="progen-geo-bar__track">
+                                    <div
+                                        className="progen-geo-bar__fill"
+                                        style={{
+                                            width: visibleSections.has('geographic') ? `${item.percentage}%` : '0%',
+                                            backgroundColor: item.color,
+                                        }}
+                                    />
+                                </div>
+                                <span className="progen-geo-bar__value">{item.users} users ({item.percentage}%)</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <p className="proposal__section-text" style={{ marginTop: '1.5rem' }}>
+                        Over 3 out of 4 visitors are in the US. There's a chance to tailor messaging for the top countries and grow those audiences.
+                    </p>
+                </div>
+
+                {/* 6. Behavior & Engagement */}
+                <div
+                    className={`proposal__section ${visibleSections.has('behavior') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="behavior"
+                    ref={(el) => (sectionRefs.current['behavior'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">BEHAVIOR & ENGAGEMENT</h4>
+
+                    {/* Metric Cards */}
+                    <div className="progen-behavior-metrics">
+                        <div className="progen-behavior-card">
+                            <span className="progen-behavior-card__label">Views Per User</span>
+                            <span className="progen-behavior-card__value">1.47</span>
+                            <span className="progen-behavior-card__target">
+                                <span className="progen-behavior-card__target-icon"></span>
+                                Goal: 2.0+
+                            </span>
+                        </div>
+                        <div className="progen-behavior-card">
+                            <span className="progen-behavior-card__label">Avg Engagement Time</span>
+                            <span className="progen-behavior-card__value progen-behavior-card__value--warning">14s</span>
+                            <span className="progen-behavior-card__target">
+                                <span className="progen-behavior-card__target-icon"></span>
+                                Goal: 30-45s+
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">Most people look at just one page and leave</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">14 seconds is way too short — people aren't finding what they need</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">The website isn't grabbing attention when people land on it</p>
+                    </div>
+
+                    {/* Top Pages Bar Chart */}
+                    <div className="progen-top-pages">
+                        <div className="progen-top-pages__title">Most Viewed Pages</div>
+                        {topPages.map((page) => (
+                            <div key={page.label} className="progen-top-pages__row">
+                                <span className="progen-top-pages__label">{page.label}</span>
+                                <div className="progen-top-pages__track">
+                                    <div
+                                        className="progen-top-pages__fill"
+                                        style={{
+                                            width: visibleSections.has('behavior') ? `${(page.views / maxPageViews) * 100}%` : '0%',
+                                        }}
+                                    />
+                                </div>
+                                <span className="progen-top-pages__value">{page.views} views ({page.change})</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* 7. Conversion Snapshot */}
+                <div
+                    className={`proposal__section ${visibleSections.has('conversion') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="conversion"
+                    ref={(el) => (sectionRefs.current['conversion'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">CONVERSION SNAPSHOT</h4>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">Purchases: <strong>2 (-33.3%)</strong></p>
+                    </div>
+                    <p className="proposal__section-text" style={{ marginTop: '1.5rem' }}>
+                        Right now the focus is on getting the brand known, not on sales. Two purchases is low, but that's expected — we're not running any promotions yet. The goal is to build awareness first, then drive sales later.
+                    </p>
+                </div>
+
+                {/* 8. Key Problems Identified */}
+                <div
+                    className={`proposal__section ${visibleSections.has('key-problems') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="key-problems"
+                    ref={(el) => (sectionRefs.current['key-problems'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">KEY PROBLEMS IDENTIFIED</h4>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text"><strong>People leave too fast:</strong> 14 seconds on site is way below where it should be</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text"><strong>Visitors don't stick around:</strong> Social media ads bring people in, but they're not interested enough to explore</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text"><strong>One-page visits:</strong> Most people look at one page and bounce — they're not browsing the site</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text"><strong>No Google ads:</strong> We're barely running paid search ads, so we're missing people who are actively looking to buy hair products</p>
+                    </div>
+                </div>
+
+                {/* 9. What's Working */}
+                <div
+                    className={`proposal__section ${visibleSections.has('whats-working') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="whats-working"
+                    ref={(el) => (sectionRefs.current['whats-working'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">WHAT'S WORKING</h4>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">We're bringing a lot of people to the site — traffic is growing</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">Social media ads are performing well and bringing more visitors than last month</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">More people are checking out product pages — interest in the products is growing</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">The US market is strong — most of our traffic comes from the right audience</p>
+                    </div>
+                </div>
+
+                {/* 10. April Strategy Context */}
+                <div
+                    className={`proposal__section ${visibleSections.has('april-strategy') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="april-strategy"
+                    ref={(el) => (sectionRefs.current['april-strategy'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">APRIL STRATEGY CONTEXT</h4>
+                    <p className="proposal__section-text">
+                        This month is about getting the brand in front of more people — no promotions or sales pushes. We're focused on growing the audience, driving traffic, educating people about Progen, and building trust.
+                    </p>
+                    <p className="proposal__section-text" style={{ marginTop: '1rem' }}>
+                        We'll measure success by how much people engage and how good the traffic is — not by how many sales we make.
+                    </p>
+                </div>
+
                 {/* 11. Final Strategic Insight */}
                 <div
                     className={`proposal__section ${visibleSections.has('final-insight') ? 'proposal__section--visible' : ''}`}
@@ -622,19 +696,19 @@ const ProgenPresentation = () => {
                     ref={(el) => (sectionRefs.current['final-insight'] = el)}
                 >
                     <h4 className="proposal__section-subheading">FINAL STRATEGIC INSIGHT</h4>
-                    <h2 className="proposal__section-subtitle">The primary issue is not traffic volume, but engagement and intent.</h2>
-                    <p className="proposal__section-text" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}><strong>April focus:</strong></p>
+                    <h2 className="proposal__section-subtitle">The problem isn't getting people to the site — it's getting them to stay and do something.</h2>
+                    <p className="proposal__section-text" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}><strong>This month we're focused on:</strong></p>
                     <div className="proposal__section-bullet-item">
                         <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Improving user quality</p>
+                        <p className="proposal__section-text">Bringing better-quality visitors who are actually interested in the products</p>
                     </div>
                     <div className="proposal__section-bullet-item">
                         <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Increasing engagement depth</p>
+                        <p className="proposal__section-text">Making the website more engaging so people explore instead of bouncing</p>
                     </div>
                     <div className="proposal__section-bullet-item">
                         <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Building a stronger foundation for future conversions</p>
+                        <p className="proposal__section-text">Building a solid foundation so when we run promotions, people are ready to buy</p>
                     </div>
                 </div>
 

@@ -1,0 +1,316 @@
+// ProgenPresentation — supplementary styles for charts and metric cards
+
+// Metric Cards Grid
+.progen-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    margin-top: 1em;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+}
+
+.progen-metric-card {
+    background: #fafaf8;
+    border-radius: 16px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    &__label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        opacity: 0.7;
+    }
+
+    &__value {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.1;
+        font-family: 'Inconsolata', monospace;
+
+        @media (max-width: 480px) {
+            font-size: 36px;
+        }
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3em;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 0.3em 0.8em;
+        border-radius: 20px;
+        width: fit-content;
+
+        &--up {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+
+        &--down {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+        }
+    }
+
+    &__arrow {
+        font-size: 12px;
+    }
+}
+
+// Horizontal Bar Chart
+.progen-bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1.5em;
+    padding: 2em;
+    background: #fafaf8;
+    border-radius: 16px;
+
+    &__title {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    &__label {
+        min-width: 120px;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: right;
+
+        @media (max-width: 480px) {
+            min-width: 90px;
+            font-size: 12px;
+        }
+    }
+
+    &__track {
+        flex: 1;
+        height: 28px;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__fill {
+        height: 100%;
+        border-radius: 6px;
+        width: 0;
+        transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        &--animated {
+            // width is set via inline style
+        }
+    }
+
+    &__value {
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 40px;
+        font-family: 'Inconsolata', monospace;
+    }
+}
+
+// Behavior Metric Cards
+.progen-behavior-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em;
+    margin-top: 1em;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.progen-behavior-card {
+    background: #fafaf8;
+    border-radius: 16px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    &__label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        opacity: 0.7;
+    }
+
+    &__value {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.1;
+        font-family: 'Inconsolata', monospace;
+
+        @media (max-width: 480px) {
+            font-size: 36px;
+        }
+
+        &--warning {
+            color: #dc2626;
+        }
+    }
+
+    &__target {
+        font-size: 13px;
+        font-weight: 500;
+        opacity: 0.6;
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+
+        &-icon {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f59e0b;
+        }
+    }
+}
+
+// Top Pages Bars
+.progen-top-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1.5em;
+    padding: 2em;
+    background: #fafaf8;
+    border-radius: 16px;
+
+    &__title {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    &__label {
+        min-width: 140px;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: right;
+
+        @media (max-width: 480px) {
+            min-width: 100px;
+            font-size: 12px;
+        }
+    }
+
+    &__track {
+        flex: 1;
+        height: 24px;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    &__fill {
+        height: 100%;
+        border-radius: 6px;
+        background: #49D3BA;
+        width: 0;
+        transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    &__value {
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 60px;
+        font-family: 'Inconsolata', monospace;
+    }
+}
+
+// Geographic Bar
+.progen-geo-bar {
+    margin-top: 1em;
+    padding: 2em;
+    background: #fafaf8;
+    border-radius: 16px;
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        margin-bottom: 1em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__label {
+        min-width: 100px;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: right;
+
+        @media (max-width: 480px) {
+            min-width: 70px;
+            font-size: 12px;
+        }
+    }
+
+    &__track {
+        flex: 1;
+        height: 32px;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    &__fill {
+        height: 100%;
+        border-radius: 6px;
+        width: 0;
+        transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    &__value {
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 90px;
+        font-family: 'Inconsolata', monospace;
+
+        @media (max-width: 480px) {
+            min-width: 60px;
+            font-size: 12px;
+        }
+    }
+}
