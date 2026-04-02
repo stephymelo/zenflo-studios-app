@@ -712,29 +712,7 @@ const ProgenPresentation = () => {
                     </div>
                 </div>
 
-                {/* 12. Next Steps */}
-                <div
-                    className={`proposal__section ${visibleSections.has('next-steps') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="next-steps"
-                    ref={(el) => (sectionRefs.current['next-steps'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">NEXT STEPS</h4>
-                    <h2 className="proposal__section-subtitle">Let's get in touch and start creating together.</h2>
-                    <div className="proposal__section-links">
-                        <a
-                            href="tel:+19085604930"
-                            className="contact__email-button"
-                        >
-                            +1 908-560-4930
-                        </a>{" "}
-                        <a
-                            href="mailto:hello@zenflostudios.com"
-                            className="contact__email-button"
-                        >
-                            hello@zenflostudios.com
-                        </a>{" "}
-                    </div>
-                </div>
+
             </div>
         </div>
     );
