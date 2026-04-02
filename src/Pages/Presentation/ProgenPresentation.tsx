@@ -620,9 +620,7 @@ const ProgenPresentation = () => {
                         <span className="proposal__section-bullet"></span>
                         <p className="proposal__section-text">Purchases: <strong>2 (-33.3%)</strong></p>
                     </div>
-                    <p className="proposal__section-text" style={{ marginTop: '1.5rem' }}>
-                        Right now the focus is on getting the brand known, not on sales. Two purchases is low, but that's expected — we're not running any promotions yet. The goal is to build awareness first, then drive sales later.
-                    </p>
+
                 </div>
 
                 {/* 8. Key Problems Identified */}
