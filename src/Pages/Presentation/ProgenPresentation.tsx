@@ -302,7 +302,6 @@ const ProgenPresentation = () => {
                     ref={(el) => (sectionRefs.current['hero'] = el)}
                 >
                     <h1 className="proposal__hero-title progen-hero-title">Progen Global</h1>
-                    <h2 className="progen-hero-period">Last 7 Days</h2>
                     <h3 className="proposal__hero-subtitle">Website Performance Report — How people find and use the site</h3>
                 </div>
 
@@ -401,6 +400,15 @@ const ProgenPresentation = () => {
                         ))}
                     </div>
                 </section>
+
+                {/* Last 7 Days Analytics divider */}
+                <div
+                    className={`proposal__section ${visibleSections.has('last-7-days') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="last-7-days"
+                    ref={(el) => (sectionRefs.current['last-7-days'] = el)}
+                >
+                    <h2 className="progen-hero-period">Last 7 Days Analytics</h2>
+                </div>
 
                 {/* 3. Executive Summary — Metric Cards */}
                 <div
