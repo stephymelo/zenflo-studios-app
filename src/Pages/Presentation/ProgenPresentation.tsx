@@ -301,7 +301,8 @@ const ProgenPresentation = () => {
                     data-section-id="hero"
                     ref={(el) => (sectionRefs.current['hero'] = el)}
                 >
-                    <h1 className="proposal__hero-title">Progen Global</h1>
+                    <h1 className="proposal__hero-title progen-hero-title">Progen Global</h1>
+                    <h2 className="progen-hero-period">Last 7 Days</h2>
                     <h3 className="proposal__hero-subtitle">Website Performance Report — How people find and use the site</h3>
                 </div>
 

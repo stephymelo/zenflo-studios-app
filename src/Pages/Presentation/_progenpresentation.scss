@@ -1,4 +1,134 @@
-// ProgenPresentation — supplementary styles for charts and metric cards
+// ProgenPresentation — supplementary styles for charts, metric cards, and typography overrides
+@use '../../Styles/variables' as *;
+
+// ============================================
+// TYPOGRAPHY OVERRIDES — bigger, bolder, readable
+// ============================================
+
+// Force consistent font across all progen elements
+.proposal .progen-hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    letter-spacing: -0.5px;
+
+    @media (max-width: 768px) {
+        font-size: 2.8rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 2.2rem;
+    }
+}
+
+.progen-hero-period {
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: $color-primary;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1.6rem;
+    }
+}
+
+// Section headings (EXECUTIVE SUMMARY, TRAFFIC & ACQUISITION, etc.)
+.proposal .proposal__section-subheading {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+    @media (max-width: 768px) {
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 18px;
+        letter-spacing: 1.5px;
+    }
+}
+
+// Section subtitles (descriptive text after headings)
+.proposal .proposal__section-subtitle {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.5;
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+    @media (max-width: 768px) {
+        font-size: 1.3rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1.15rem;
+    }
+}
+
+// Body text — bigger and heavier
+.proposal .proposal__section-text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+// Chart legend text
+.proposal .proposal__legend-label,
+.proposal .proposal__legend-percentage {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+// Card text
+.proposal .proposal__card-title {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.proposal .proposal__card-description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+// Tab buttons
+.proposal .proposal__tab {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+// Estimate/focus rate text
+.proposal .proposal__estimate-rate {
+    font-size: 17px;
+    font-weight: 500;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+// Services header subtitle
+.proposal .proposal__services-header .proposal__section-subtitle {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+// ============================================
+// CHART/CARD STYLES — with bigger, bolder fonts
+// ============================================
 
 // Metric Cards Grid
 .progen-metrics {
@@ -28,21 +158,22 @@
     }
 
     &__label {
-        font-size: 13px;
+        font-size: 15px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 500;
+        letter-spacing: 1.5px;
+        font-weight: 600;
         opacity: 0.7;
+        font-family: 'Be Vietnam Pro', sans-serif;
     }
 
     &__value {
-        font-size: 48px;
+        font-size: 56px;
         font-weight: 700;
         line-height: 1.1;
-        font-family: 'Inconsolata', monospace;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         @media (max-width: 480px) {
-            font-size: 36px;
+            font-size: 42px;
         }
     }
 
@@ -50,11 +181,12 @@
         display: inline-flex;
         align-items: center;
         gap: 0.3em;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 600;
-        padding: 0.3em 0.8em;
+        padding: 0.4em 0.9em;
         border-radius: 20px;
         width: fit-content;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         &--up {
             background: rgba(34, 197, 94, 0.1);
@@ -68,7 +200,7 @@
     }
 
     &__arrow {
-        font-size: 12px;
+        font-size: 14px;
     }
 }
 
@@ -83,11 +215,12 @@
     border-radius: 16px;
 
     &__title {
-        font-size: 14px;
+        font-size: 18px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
+        letter-spacing: 2px;
+        font-weight: 700;
         margin-bottom: 0.5em;
+        font-family: 'Be Vietnam Pro', sans-serif;
     }
 
     &__row {
@@ -97,20 +230,21 @@
     }
 
     &__label {
-        min-width: 120px;
-        font-size: 14px;
-        font-weight: 500;
+        min-width: 130px;
+        font-size: 16px;
+        font-weight: 600;
         text-align: right;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         @media (max-width: 480px) {
             min-width: 90px;
-            font-size: 12px;
+            font-size: 14px;
         }
     }
 
     &__track {
         flex: 1;
-        height: 28px;
+        height: 32px;
         background: rgba(0, 0, 0, 0.04);
         border-radius: 6px;
         overflow: hidden;
@@ -122,17 +256,13 @@
         border-radius: 6px;
         width: 0;
         transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-        &--animated {
-            // width is set via inline style
-        }
     }
 
     &__value {
-        font-size: 14px;
-        font-weight: 600;
-        min-width: 40px;
-        font-family: 'Inconsolata', monospace;
+        font-size: 16px;
+        font-weight: 700;
+        min-width: 50px;
+        font-family: 'Be Vietnam Pro', sans-serif;
     }
 }
 
@@ -157,21 +287,22 @@
     gap: 0.5em;
 
     &__label {
-        font-size: 13px;
+        font-size: 15px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 500;
+        letter-spacing: 1.5px;
+        font-weight: 600;
         opacity: 0.7;
+        font-family: 'Be Vietnam Pro', sans-serif;
     }
 
     &__value {
-        font-size: 48px;
+        font-size: 56px;
         font-weight: 700;
         line-height: 1.1;
-        font-family: 'Inconsolata', monospace;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         @media (max-width: 480px) {
-            font-size: 36px;
+            font-size: 42px;
         }
 
         &--warning {
@@ -180,17 +311,18 @@
     }
 
     &__target {
-        font-size: 13px;
-        font-weight: 500;
+        font-size: 15px;
+        font-weight: 600;
         opacity: 0.6;
         display: flex;
         align-items: center;
         gap: 0.4em;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         &-icon {
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: #f59e0b;
         }
@@ -208,11 +340,12 @@
     border-radius: 16px;
 
     &__title {
-        font-size: 14px;
+        font-size: 18px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
+        letter-spacing: 2px;
+        font-weight: 700;
         margin-bottom: 0.5em;
+        font-family: 'Be Vietnam Pro', sans-serif;
     }
 
     &__row {
@@ -222,20 +355,21 @@
     }
 
     &__label {
-        min-width: 140px;
-        font-size: 14px;
-        font-weight: 500;
+        min-width: 150px;
+        font-size: 16px;
+        font-weight: 600;
         text-align: right;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         @media (max-width: 480px) {
             min-width: 100px;
-            font-size: 12px;
+            font-size: 14px;
         }
     }
 
     &__track {
         flex: 1;
-        height: 24px;
+        height: 28px;
         background: rgba(0, 0, 0, 0.04);
         border-radius: 6px;
         overflow: hidden;
@@ -250,10 +384,10 @@
     }
 
     &__value {
-        font-size: 14px;
-        font-weight: 600;
-        min-width: 60px;
-        font-family: 'Inconsolata', monospace;
+        font-size: 16px;
+        font-weight: 700;
+        min-width: 70px;
+        font-family: 'Be Vietnam Pro', sans-serif;
     }
 }
 
@@ -276,20 +410,21 @@
     }
 
     &__label {
-        min-width: 100px;
-        font-size: 14px;
-        font-weight: 500;
+        min-width: 110px;
+        font-size: 16px;
+        font-weight: 600;
         text-align: right;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         @media (max-width: 480px) {
             min-width: 70px;
-            font-size: 12px;
+            font-size: 14px;
         }
     }
 
     &__track {
         flex: 1;
-        height: 32px;
+        height: 36px;
         background: rgba(0, 0, 0, 0.04);
         border-radius: 6px;
         overflow: hidden;
@@ -303,14 +438,14 @@
     }
 
     &__value {
-        font-size: 14px;
-        font-weight: 600;
-        min-width: 90px;
-        font-family: 'Inconsolata', monospace;
+        font-size: 16px;
+        font-weight: 700;
+        min-width: 100px;
+        font-family: 'Be Vietnam Pro', sans-serif;
 
         @media (max-width: 480px) {
-            min-width: 60px;
-            font-size: 12px;
+            min-width: 70px;
+            font-size: 14px;
         }
     }
 }
