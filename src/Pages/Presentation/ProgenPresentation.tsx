@@ -688,28 +688,7 @@ const ProgenPresentation = () => {
                     </p>
                 </div>
 
-                {/* 11. Final Strategic Insight */}
-                <div
-                    className={`proposal__section ${visibleSections.has('final-insight') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="final-insight"
-                    ref={(el) => (sectionRefs.current['final-insight'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">FINAL STRATEGIC INSIGHT</h4>
-                    <h2 className="proposal__section-subtitle">The problem isn't getting people to the site — it's getting them to stay and do something.</h2>
-                    <p className="proposal__section-text" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}><strong>This month we're focused on:</strong></p>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Bringing better-quality visitors who are actually interested in the products</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Making the website more engaging so people explore instead of bouncing</p>
-                    </div>
-                    <div className="proposal__section-bullet-item">
-                        <span className="proposal__section-bullet"></span>
-                        <p className="proposal__section-text">Building a solid foundation so when we run promotions, people are ready to buy</p>
-                    </div>
-                </div>
+
 
 
             </div>
