@@ -9,6 +9,7 @@ import { ScrollToTop } from './Components/ScrollToTop/ScrollToTop';
 import ProposalRoga from './Pages/Presentation/ProposalRoga';
 import ProposalHernan from './Pages/Presentation/ProposalHernan';
 import ProposalAllinoneinventions from './Pages/Presentation/ProposalAllinoneinventions';
+import ProgenPresentation from './Pages/Presentation/ProgenPresentation';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/proposal-roga" element={<ProposalRoga/>}/>
         <Route path="/proposal-hernan" element={<ProposalHernan/>}/>
          <Route path="/proposal-allinoneinventions" element={<ProposalAllinoneinventions/>}/>
+        <Route path="/progen-presentation" element={<ProgenPresentation/>}/>
 
         {/* Routes with header and footer */}
         <Route path="*" element={
