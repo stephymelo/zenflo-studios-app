@@ -1,16 +1,32 @@
 {
   "files": {
-    "main.css": "/zenflo-studios-app/static/css/main.ac39d8e7.css",
-    "main.js": "/zenflo-studios-app/static/js/main.95f29b08.js",
-    "static/js/787.0df3e9e3.chunk.js": "/zenflo-studios-app/static/js/787.0df3e9e3.chunk.js",
-    "static/media/logoSVG.svg": "/zenflo-studios-app/static/media/logoSVG.61d497538024a5a8c1ad41381976aadf.svg",
-    "index.html": "/zenflo-studios-app/index.html",
-    "main.ac39d8e7.css.map": "/zenflo-studios-app/static/css/main.ac39d8e7.css.map",
-    "main.95f29b08.js.map": "/zenflo-studios-app/static/js/main.95f29b08.js.map",
-    "787.0df3e9e3.chunk.js.map": "/zenflo-studios-app/static/js/787.0df3e9e3.chunk.js.map"
+    "main.css": "/static/css/main.0dad15b3.css",
+    "main.js": "/static/js/main.dc7e3c0b.js",
+    "static/js/787.0df3e9e3.chunk.js": "/static/js/787.0df3e9e3.chunk.js",
+    "static/media/reel-v1.mp4": "/static/media/reel-v1.cb564fba9a7e8c153393.mp4",
+    "static/media/progen-mockup.png": "/static/media/progen-mockup.f445042b851cbe704a18.png",
+    "static/media/catalog-men-nil-mockup.png": "/static/media/catalog-men-nil-mockup.8760ba019de07fc7f789.png",
+    "static/media/progen-brandbook-mockup.png": "/static/media/progen-brandbook-mockup.ae1fe54fe921cd48a864.png",
+    "static/media/beauty-sector.jpg": "/static/media/beauty-sector.da94b27d5f31cbbc3fe9.jpg",
+    "static/media/ecommerce-sector.jpg": "/static/media/ecommerce-sector.bfabeb99ca5db1fb8c9c.jpg",
+    "static/media/catalog-women-mockup.png": "/static/media/catalog-women-mockup.e5aa572d32dd0c6448d0.png",
+    "static/media/fintech-sector.jpg": "/static/media/fintech-sector.eb1f94ef5998760e52e2.jpg",
+    "static/media/moodboard.jpg": "/static/media/moodboard.223973b245e9a59b0025.jpg",
+    "static/media/catalog-accessory.png": "/static/media/catalog-accessory.46d83407ed1ea6a3bf6b.png",
+    "static/media/yoga-girl.jpg": "/static/media/yoga-girl.f24620326139aee4f5f3.jpg",
+    "static/media/progen-web.png": "/static/media/progen-web.0e3ecb1966868073e845.png",
+    "static/media/roga-ear.png": "/static/media/roga-ear.96dc1f9ee4e7fb6ad368.png",
+    "static/media/social-mock.jpg": "/static/media/social-mock.ff36b3f89fbc1a90689d.jpg",
+    "static/media/logo_zenflo.svg": "/static/media/logo_zenflo.f26038a9e56aeddc3b7f3c1fbe794095.svg",
+    "static/media/loguito.svg": "/static/media/loguito.40e7d8a356252b2a00d0cb08cdb02c65.svg",
+    "index.html": "/index.html",
+    "static/media/leaf-zen.svg": "/static/media/leaf-zen.140fa25fe9753d81e8f043a9df0dfe05.svg",
+    "main.0dad15b3.css.map": "/static/css/main.0dad15b3.css.map",
+    "main.dc7e3c0b.js.map": "/static/js/main.dc7e3c0b.js.map",
+    "787.0df3e9e3.chunk.js.map": "/static/js/787.0df3e9e3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac39d8e7.css",
-    "static/js/main.95f29b08.js"
+    "static/css/main.0dad15b3.css",
+    "static/js/main.dc7e3c0b.js"
   ]
 }
