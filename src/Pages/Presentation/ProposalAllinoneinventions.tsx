@@ -271,7 +271,7 @@ const ProposalAllinoneinventions = () => {
                         number: 1,
                         title: "Full SEO Audit of Website",
                         timeScope: "1 week",
-                        description: "Comprehensive review of website performance, keyword visibility, and search opportunities, including competitor and market benchmarks for organic and paid growth."
+                        description: "Review of website performance, keyword visibility, and search opportunities, including competitor and market benchmarks for organic and paid growth."
                     },
                     {
                         number: 2,
@@ -284,243 +284,243 @@ const ProposalAllinoneinventions = () => {
                         number: 3,
                         title: "Lead Tracking",
                         timeScope: "",
-                        description: "Recommendations for adding custom contact form questions and touchpoints to better track lead sources, user intent, and marketing performance."
+                        description: "Recommendations for adding custom contact form questions, additional touchpoints and CTA's to increase leads and understand user intent. Depending on how you collect the leads, we can suggest different tools to help you visualize this data better."
                     },
                     {
                         number: 4,
                         title: "Analysis Report",
                         timeScope: "1 week",
                         description: "Data-focused report including SWOT analysis, traffic performance, lead activity, and user interactions across the website and social media."
-                    
 
-            }
 
-        ]
-    },
-        {
-            id: "content-growth",
-            label: "Optimization, Content & Social Growth Plan",
-            estimateRate: "$500 - $600",
-            steps: [
+                    }
 
-                {
+                ]
+            },
+            {
+                id: "content-growth",
+                label: "Optimization, Content & Social Growth Plan",
+                estimateRate: "$500 - $600",
+                steps: [
 
-                    number: 1,
-                    title: "Blog Topics & Examples",
-                    timeScope: "2 weeks",
-                    description: "Keyword-driven blog topic research focused on inventions, patents, and product creation. Includes 8 SEO-optimized blog topics with examples designed to attract entrepreneurs, inventors, and product-based founders while supporting long-term organic visibility."
+                    {
+
+                        number: 1,
+                        title: "Blog Topics & Examples",
+                        timeScope: "2 weeks",
+                        description: "Keyword-driven blog topics (list of 16) supported by search data to estimate traffic potential, focused on inventions, patents, and product creation. Includes 8 written blogs for 1 month posting, 2 blogs a week and the blog topic list for the 3 month campaign."
 
                     },
-                {
-                    number: 2,
-                    title: "Social Media Strategy & Planning",
-                    timeScope: "2 weeks",
-                    description: "Targeted social media strategy to build credibility for an invention or patented solution, with a posting plan, content themes, and post/video ideas tailored to entrepreneurs."
+                    {
+                        number: 2,
+                        title: "Social Media Strategy & Planning",
+                        timeScope: "2 weeks",
+                        description: "Targeted social media strategy to build credibility and social media presence, with a posting plan, content themes, and post/video ideas."
 
                     }
-            ]
-        }
+                ]
+            }
         ]
     };
 
-const serviceOptions = serviceOptionsData[language];
+    const serviceOptions = serviceOptionsData[language];
 
-const checkScrollPosition = (id: string) => {
-    const ref = carouselRefs.current[id];
-    if (!ref) return;
+    const checkScrollPosition = (id: string) => {
+        const ref = carouselRefs.current[id];
+        if (!ref) return;
 
-    const canScrollLeft = ref.scrollLeft > 0;
-    const canScrollRight = ref.scrollLeft < (ref.scrollWidth - ref.clientWidth - 1);
+        const canScrollLeft = ref.scrollLeft > 0;
+        const canScrollRight = ref.scrollLeft < (ref.scrollWidth - ref.clientWidth - 1);
 
-    setScrollStates(prev => ({
-        ...prev,
-        [id]: { canScrollLeft, canScrollRight }
-    }));
-};
-
-const handleScroll = (ref: HTMLDivElement | null, direction: 'left' | 'right', id: string) => {
-    if (!ref) return;
-    const scrollAmount = ref.offsetWidth * 0.8;
-    ref.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-    });
-
-    // Update scroll state after scrolling
-    setTimeout(() => checkScrollPosition(id), 300);
-};
-
-useEffect(() => {
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            });
-        },
-        { threshold: 0.3 }
-    );
-
-    if (chartRef.current) {
-        observer.observe(chartRef.current);
-    }
-
-    return () => {
-        if (chartRef.current) {
-            observer.unobserve(chartRef.current);
-        }
+        setScrollStates(prev => ({
+            ...prev,
+            [id]: { canScrollLeft, canScrollRight }
+        }));
     };
-}, []);
 
-// Initialize scroll states when carousels are mounted
-useEffect(() => {
-    serviceOptions.forEach(option => {
-        checkScrollPosition(option.id);
-    });
-}, [selectedTab]);
+    const handleScroll = (ref: HTMLDivElement | null, direction: 'left' | 'right', id: string) => {
+        if (!ref) return;
+        const scrollAmount = ref.offsetWidth * 0.8;
+        ref.scrollBy({
+            left: direction === 'left' ? -scrollAmount : scrollAmount,
+            behavior: 'smooth'
+        });
 
-// Add scroll event listeners to carousels
-useEffect(() => {
-    const handleScrollEvent = (id: string) => () => checkScrollPosition(id);
-    const listeners: { [key: string]: () => void } = {};
+        // Update scroll state after scrolling
+        setTimeout(() => checkScrollPosition(id), 300);
+    };
 
-    serviceOptions.forEach(option => {
-        const ref = carouselRefs.current[option.id];
-        if (ref) {
-            const listener = handleScrollEvent(option.id);
-            listeners[option.id] = listener;
-            ref.addEventListener('scroll', listener);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        if (chartRef.current) {
+            observer.observe(chartRef.current);
         }
-    });
 
-    return () => {
+        return () => {
+            if (chartRef.current) {
+                observer.unobserve(chartRef.current);
+            }
+        };
+    }, []);
+
+    // Initialize scroll states when carousels are mounted
+    useEffect(() => {
+        serviceOptions.forEach(option => {
+            checkScrollPosition(option.id);
+        });
+    }, [selectedTab]);
+
+    // Add scroll event listeners to carousels
+    useEffect(() => {
+        const handleScrollEvent = (id: string) => () => checkScrollPosition(id);
+        const listeners: { [key: string]: () => void } = {};
+
         serviceOptions.forEach(option => {
             const ref = carouselRefs.current[option.id];
-            if (ref && listeners[option.id]) {
-                ref.removeEventListener('scroll', listeners[option.id]);
+            if (ref) {
+                const listener = handleScrollEvent(option.id);
+                listeners[option.id] = listener;
+                ref.addEventListener('scroll', listener);
             }
         });
-    };
-}, [selectedTab]);
 
-// Scroll animation observer
-useEffect(() => {
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                const target = entry.target as HTMLElement;
-                const sectionId = target.dataset.sectionId;
-
-                if (sectionId) {
-                    if (entry.isIntersecting) {
-                        setVisibleSections(prev => new Set(prev).add(sectionId));
-                    } else {
-                        setVisibleSections(prev => {
-                            const newSet = new Set(prev);
-                            newSet.delete(sectionId);
-                            return newSet;
-                        });
-                    }
+        return () => {
+            serviceOptions.forEach(option => {
+                const ref = carouselRefs.current[option.id];
+                if (ref && listeners[option.id]) {
+                    ref.removeEventListener('scroll', listeners[option.id]);
                 }
             });
-        },
-        {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        }
-    );
+        };
+    }, [selectedTab]);
 
-    Object.values(sectionRefs.current).forEach(ref => {
-        if (ref) {
-            observer.observe(ref);
-        }
-    });
+    // Scroll animation observer
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const target = entry.target as HTMLElement;
+                    const sectionId = target.dataset.sectionId;
 
-    return () => {
+                    if (sectionId) {
+                        if (entry.isIntersecting) {
+                            setVisibleSections(prev => new Set(prev).add(sectionId));
+                        } else {
+                            setVisibleSections(prev => {
+                                const newSet = new Set(prev);
+                                newSet.delete(sectionId);
+                                return newSet;
+                            });
+                        }
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            }
+        );
+
         Object.values(sectionRefs.current).forEach(ref => {
             if (ref) {
-                observer.unobserve(ref);
+                observer.observe(ref);
             }
         });
-    };
-}, []);
 
-// Calculate cumulative percentages for positioning segments
-const getSegments = () => {
-    let cumulative = 0;
-    return chartData.map((item) => {
-        const start = cumulative;
-        cumulative += item.percentage;
-        return {
-            ...item,
-            start,
-            end: cumulative,
+        return () => {
+            Object.values(sectionRefs.current).forEach(ref => {
+                if (ref) {
+                    observer.unobserve(ref);
+                }
+            });
         };
-    });
-};
+    }, []);
 
-const segments = getSegments();
+    // Calculate cumulative percentages for positioning segments
+    const getSegments = () => {
+        let cumulative = 0;
+        return chartData.map((item) => {
+            const start = cumulative;
+            cumulative += item.percentage;
+            return {
+                ...item,
+                start,
+                end: cumulative,
+            };
+        });
+    };
 
-// Create SVG path for donut segment
-const createArc = (startPercent: number, endPercent: number) => {
-    const startAngle = (startPercent / 100) * 360 - 90;
-    const endAngle = (endPercent / 100) * 360 - 90;
+    const segments = getSegments();
 
-    const startRad = (startAngle * Math.PI) / 180;
-    const endRad = (endAngle * Math.PI) / 180;
+    // Create SVG path for donut segment
+    const createArc = (startPercent: number, endPercent: number) => {
+        const startAngle = (startPercent / 100) * 360 - 90;
+        const endAngle = (endPercent / 100) * 360 - 90;
 
-    const outerRadius = 45;
-    const innerRadius = 30;
-    const centerX = 50;
-    const centerY = 50;
+        const startRad = (startAngle * Math.PI) / 180;
+        const endRad = (endAngle * Math.PI) / 180;
 
-    const x1 = centerX + outerRadius * Math.cos(startRad);
-    const y1 = centerY + outerRadius * Math.sin(startRad);
-    const x2 = centerX + outerRadius * Math.cos(endRad);
-    const y2 = centerY + outerRadius * Math.sin(endRad);
-    const x3 = centerX + innerRadius * Math.cos(endRad);
-    const y3 = centerY + innerRadius * Math.sin(endRad);
-    const x4 = centerX + innerRadius * Math.cos(startRad);
-    const y4 = centerY + innerRadius * Math.sin(startRad);
+        const outerRadius = 45;
+        const innerRadius = 30;
+        const centerX = 50;
+        const centerY = 50;
 
-    const largeArc = endPercent - startPercent > 50 ? 1 : 0;
+        const x1 = centerX + outerRadius * Math.cos(startRad);
+        const y1 = centerY + outerRadius * Math.sin(startRad);
+        const x2 = centerX + outerRadius * Math.cos(endRad);
+        const y2 = centerY + outerRadius * Math.sin(endRad);
+        const x3 = centerX + innerRadius * Math.cos(endRad);
+        const y3 = centerY + innerRadius * Math.sin(endRad);
+        const x4 = centerX + innerRadius * Math.cos(startRad);
+        const y4 = centerY + innerRadius * Math.sin(startRad);
 
-    return `
+        const largeArc = endPercent - startPercent > 50 ? 1 : 0;
+
+        return `
       M ${x1} ${y1}
       A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${x2} ${y2}
       L ${x3} ${y3}
       A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${x4} ${y4}
       Z
     `;
-};
+    };
 
-return (
-    <div className="proposal">
-        <div className="proposal__container">
-            <div className="proposal__logo">
-                <img className="proposal__logo-img" src={logo} alt="Zenflo Logo" />
-            </div>
+    return (
+        <div className="proposal">
+            <div className="proposal__container">
+                <div className="proposal__logo">
+                    <img className="proposal__logo-img" src={logo} alt="Zenflo Logo" />
+                </div>
 
-            <div
-                className={`proposal__hero ${visibleSections.has('hero') ? 'proposal__hero--visible' : ''}`}
-                data-section-id="hero"
-                ref={(el) => (sectionRefs.current['hero'] = el)}
-            >
-                <h1 className="proposal__hero-title">{t.hero.title}</h1>
-                <h3 className="proposal__hero-subtitle">{t.hero.subtitle}</h3>
-            </div>
+                <div
+                    className={`proposal__hero ${visibleSections.has('hero') ? 'proposal__hero--visible' : ''}`}
+                    data-section-id="hero"
+                    ref={(el) => (sectionRefs.current['hero'] = el)}
+                >
+                    <h1 className="proposal__hero-title">{t.hero.title}</h1>
+                    <h3 className="proposal__hero-subtitle">{t.hero.subtitle}</h3>
+                </div>
 
-            <div
-                className={`proposal__section ${visibleSections.has('what-it-is') ? 'proposal__section--visible' : ''}`}
-                data-section-id="what-it-is"
-                ref={(el) => (sectionRefs.current['what-it-is'] = el)}
-            >
-                <h4 className="proposal__section-subheading">{t.whatItIs.title}</h4>
-                <h2 className="proposal__section-subtitle">{t.whatItIs.subtitle}</h2>
-                <p className="proposal__section-text">{t.whatItIs.text}</p>
-            </div>
-            {/* <section className="proposal__image">
+                <div
+                    className={`proposal__section ${visibleSections.has('what-it-is') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="what-it-is"
+                    ref={(el) => (sectionRefs.current['what-it-is'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">{t.whatItIs.title}</h4>
+                    <h2 className="proposal__section-subtitle">{t.whatItIs.subtitle}</h2>
+                    <p className="proposal__section-text">{t.whatItIs.text}</p>
+                </div>
+                {/* <section className="proposal__image">
                     <img className="proposal__image-bg" src={roga} alt="All In One Inventions wellness device" />
                     <div className="proposal__image-overlay"></div>
                     <div className="proposal__image-content">
@@ -529,138 +529,138 @@ return (
                     </div>
                 </section> */}
 
-            <div
-                className={`proposal__section ${visibleSections.has('what-else') ? 'proposal__section--visible' : ''}`}
-                data-section-id="what-else"
-                ref={(el) => (sectionRefs.current['what-else'] = el)}
-            >
-                <h4 className="proposal__section-subheading">{t.whatElse.title}</h4>
-                <p className="proposal__section-text">{t.whatElse.text}</p>
-            </div>
-
-
-
-            <div
-                className={`proposal__section ${visibleSections.has('traffic') ? 'proposal__section--visible' : ''}`}
-                data-section-id="traffic"
-                ref={(el) => (sectionRefs.current['traffic'] = el)}
-            >
                 <div
-                    className={`proposal__section ${visibleSections.has('actual-data') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="actual-data"
-                    ref={(el) => (sectionRefs.current['actual-data'] = el)}
+                    className={`proposal__section ${visibleSections.has('what-else') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="what-else"
+                    ref={(el) => (sectionRefs.current['what-else'] = el)}
                 >
-                    <h4 className="proposal__section-subheading">{t.actualData.title}</h4>
-                    <p className="proposal__section-text">{t.actualData.text1}</p>
-                    <p className="proposal__section-text">{t.actualData.text2}</p>
+                    <h4 className="proposal__section-subheading">{t.whatElse.title}</h4>
+                    <p className="proposal__section-text">{t.whatElse.text}</p>
                 </div>
 
-                {/* Visits Over Time Chart */}
-                <div className="proposal__visits-chart">
-                    <h4 className="proposal__section-subheading">Visits Over Time</h4>
-                    <svg viewBox="0 0 800 400" className="proposal__line-chart">
-                        {/* Grid lines */}
-                        <line x1="100" y1="50" x2="100" y2="350" stroke="#e5e5e5" strokeWidth="2" />
-                        <line x1="100" y1="350" x2="750" y2="350" stroke="#e5e5e5" strokeWidth="2" />
 
-                        {/* Horizontal grid lines */}
-                        <line x1="100" y1="50" x2="750" y2="50" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
-                        <line x1="100" y1="125" x2="750" y2="125" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
-                        <line x1="100" y1="200" x2="750" y2="200" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
-                        <line x1="100" y1="275" x2="750" y2="275" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
 
-                        {/* Y-axis labels */}
-                        <text x="70" y="55" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">14K</text>
-                        <text x="70" y="130" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">10.5K</text>
-                        <text x="70" y="205" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">7K</text>
-                        <text x="70" y="280" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">3.5K</text>
-                        <text x="70" y="355" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">0</text>
+                <div
+                    className={`proposal__section ${visibleSections.has('traffic') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="traffic"
+                    ref={(el) => (sectionRefs.current['traffic'] = el)}
+                >
+                    <div
+                        className={`proposal__section ${visibleSections.has('actual-data') ? 'proposal__section--visible' : ''}`}
+                        data-section-id="actual-data"
+                        ref={(el) => (sectionRefs.current['actual-data'] = el)}
+                    >
+                        <h4 className="proposal__section-subheading">{t.actualData.title}</h4>
+                        <p className="proposal__section-text">{t.actualData.text1}</p>
+                        <p className="proposal__section-text">{t.actualData.text2}</p>
+                    </div>
 
-                        {/* X-axis labels */}
-                        <text x="200" y="380" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="500" textAnchor="middle">2025/09</text>
-                        <text x="425" y="380" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="500" textAnchor="middle">2025/10</text>
-                        <text x="650" y="380" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="500" textAnchor="middle">2025/11</text>
+                    {/* Visits Over Time Chart */}
+                    <div className="proposal__visits-chart">
+                        <h4 className="proposal__section-subheading">Visits Over Time</h4>
+                        <svg viewBox="0 0 800 400" className="proposal__line-chart">
+                            {/* Grid lines */}
+                            <line x1="100" y1="50" x2="100" y2="350" stroke="#e5e5e5" strokeWidth="2" />
+                            <line x1="100" y1="350" x2="750" y2="350" stroke="#e5e5e5" strokeWidth="2" />
 
-                        {/* Line path */}
-                        <polyline
-                            points="200,86 425,200 650,193"
-                            fill="none"
-                            stroke="#49D3BA"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
+                            {/* Horizontal grid lines */}
+                            <line x1="100" y1="50" x2="750" y2="50" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
+                            <line x1="100" y1="125" x2="750" y2="125" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
+                            <line x1="100" y1="200" x2="750" y2="200" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
+                            <line x1="100" y1="275" x2="750" y2="275" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="5,5" />
 
-                        {/* Data points */}
-                        <circle cx="200" cy="86" r="6" fill="#49D3BA" />
-                        <circle cx="425" cy="200" r="6" fill="#49D3BA" />
-                        <circle cx="650" cy="193" r="6" fill="#49D3BA" />
-                    </svg>
-                </div>
+                            {/* Y-axis labels */}
+                            <text x="70" y="55" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">14K</text>
+                            <text x="70" y="130" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">10.5K</text>
+                            <text x="70" y="205" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">7K</text>
+                            <text x="70" y="280" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">3.5K</text>
+                            <text x="70" y="355" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="600" textAnchor="end">0</text>
 
-                <div className="proposal__chart" ref={chartRef}>
-                    <p className="proposal__section-text">{t.traffic.title}</p>
-                    <div className="proposal__chart-container">
-                        <div className="proposal__chart-wrapper">
-                            <svg viewBox="0 0 100 100" className="proposal__chart-svg">
-                                {segments.map((segment, index) => (
-                                    <path
-                                        key={segment.label}
-                                        d={createArc(segment.start, segment.end)}
-                                        fill={segment.color}
-                                        className={`proposal__chart-segment ${isVisible ? "proposal__chart-segment--animate" : ""}`}
+                            {/* X-axis labels */}
+                            <text x="200" y="380" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="500" textAnchor="middle">2025/09</text>
+                            <text x="425" y="380" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="500" textAnchor="middle">2025/10</text>
+                            <text x="650" y="380" fontSize="16" fill="#2d3748" fontFamily="Be Vietnam Pro, sans-serif" fontWeight="500" textAnchor="middle">2025/11</text>
+
+                            {/* Line path */}
+                            <polyline
+                                points="200,86 425,200 650,193"
+                                fill="none"
+                                stroke="#49D3BA"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+
+                            {/* Data points */}
+                            <circle cx="200" cy="86" r="6" fill="#49D3BA" />
+                            <circle cx="425" cy="200" r="6" fill="#49D3BA" />
+                            <circle cx="650" cy="193" r="6" fill="#49D3BA" />
+                        </svg>
+                    </div>
+
+                    <div className="proposal__chart" ref={chartRef}>
+                        <p className="proposal__section-text">{t.traffic.title}</p>
+                        <div className="proposal__chart-container">
+                            <div className="proposal__chart-wrapper">
+                                <svg viewBox="0 0 100 100" className="proposal__chart-svg">
+                                    {segments.map((segment, index) => (
+                                        <path
+                                            key={segment.label}
+                                            d={createArc(segment.start, segment.end)}
+                                            fill={segment.color}
+                                            className={`proposal__chart-segment ${isVisible ? "proposal__chart-segment--animate" : ""}`}
+                                            style={{
+                                                animationDelay: `${index * 0.1}s`,
+                                            }}
+                                        />
+                                    ))}
+                                </svg>
+                            </div>
+
+                            <div className="proposal__chart-legend">
+                                {chartData.map((item, index) => (
+                                    <div
+                                        key={item.label}
+                                        className={`proposal__legend-item ${isVisible ? "proposal__legend-item--fade-in" : ""}`}
                                         style={{
                                             animationDelay: `${index * 0.1}s`,
                                         }}
-                                    />
+                                    >
+                                        <div className="proposal__legend-color" style={{ backgroundColor: item.color }} />
+                                        <span className="proposal__legend-label">{item.label}:</span>
+                                        <span className="proposal__legend-percentage">{item.percentage}%</span>
+                                    </div>
                                 ))}
-                            </svg>
-                        </div>
-
-                        <div className="proposal__chart-legend">
-                            {chartData.map((item, index) => (
-                                <div
-                                    key={item.label}
-                                    className={`proposal__legend-item ${isVisible ? "proposal__legend-item--fade-in" : ""}`}
-                                    style={{
-                                        animationDelay: `${index * 0.1}s`,
-                                    }}
-                                >
-                                    <div className="proposal__legend-color" style={{ backgroundColor: item.color }} />
-                                    <span className="proposal__legend-label">{item.label}:</span>
-                                    <span className="proposal__legend-percentage">{item.percentage}%</span>
-                                </div>
-                            ))}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div
-                className={`proposal__section ${visibleSections.has('assessment') ? 'proposal__section--visible' : ''}`}
-                data-section-id="assessment"
-                ref={(el) => (sectionRefs.current['assessment'] = el)}
-            >
-                <h4 className="proposal__section-subheading">{t.assessment.title}</h4>
-                <div className="proposal__section-bullet-item">
-                    <span className="proposal__section-bullet"></span>
-                    <p className="proposal__section-text">{t.assessment.text1}</p>
+                <div
+                    className={`proposal__section ${visibleSections.has('assessment') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="assessment"
+                    ref={(el) => (sectionRefs.current['assessment'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">{t.assessment.title}</h4>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">{t.assessment.text1}</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">{t.assessment.text2}</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">{t.assessment.text3}</p>
+                    </div>
+                    <div className="proposal__section-bullet-item">
+                        <span className="proposal__section-bullet"></span>
+                        <p className="proposal__section-text">{t.assessment.text4}</p>
+                    </div>
                 </div>
-                <div className="proposal__section-bullet-item">
-                    <span className="proposal__section-bullet"></span>
-                    <p className="proposal__section-text">{t.assessment.text2}</p>
-                </div>
-                <div className="proposal__section-bullet-item">
-                    <span className="proposal__section-bullet"></span>
-                    <p className="proposal__section-text">{t.assessment.text3}</p>
-                </div>
-                <div className="proposal__section-bullet-item">
-                    <span className="proposal__section-bullet"></span>
-                    <p className="proposal__section-text">{t.assessment.text4}</p>
-                </div>
-            </div>
 
-            {/* Exploration Section - HIDDEN */}
-            {/* <div
+                {/* Exploration Section - HIDDEN */}
+                {/* <div
                         className={`proposal__section ${visibleSections.has('exploration') ? 'proposal__section--visible' : ''}`}
                         data-section-id="exploration"
                         ref={(el) => (sectionRefs.current['exploration'] = el)}
@@ -677,50 +677,50 @@ return (
                         </div>
                     </div> */}
 
-            <section className="proposal__section-main">
+                <section className="proposal__section-main">
 
 
 
-                <div
-                    className={`proposal__section ${visibleSections.has('gameplan-intro') ? 'proposal__section--visible' : ''}`}
-                    data-section-id="gameplan-intro"
-                    ref={(el) => (sectionRefs.current['gameplan-intro'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">{t.gameplanIntro.title}</h4>
-                    <h2 className="proposal__section-subtitle">{t.gameplanIntro.subtitle}</h2>
-                </div>
+                    <div
+                        className={`proposal__section ${visibleSections.has('gameplan-intro') ? 'proposal__section--visible' : ''}`}
+                        data-section-id="gameplan-intro"
+                        ref={(el) => (sectionRefs.current['gameplan-intro'] = el)}
+                    >
+                        <h4 className="proposal__section-subheading">{t.gameplanIntro.title}</h4>
+                        <h2 className="proposal__section-subtitle">{t.gameplanIntro.subtitle}</h2>
+                    </div>
 
-                <div
-                    className={`proposal__section-line ${visibleSections.has('brand-identity') ? 'proposal__section-line--visible' : ''}`}
-                    data-section-id="brand-identity"
-                    ref={(el) => (sectionRefs.current['brand-identity'] = el)}
-                >
-                    <h3 className="proposal__section-line-title">{t.brandIdentity.title}</h3>
-                    <p className="proposal__section-line-text">{t.brandIdentity.text}</p>
-                </div>
+                    <div
+                        className={`proposal__section-line ${visibleSections.has('brand-identity') ? 'proposal__section-line--visible' : ''}`}
+                        data-section-id="brand-identity"
+                        ref={(el) => (sectionRefs.current['brand-identity'] = el)}
+                    >
+                        <h3 className="proposal__section-line-title">{t.brandIdentity.title}</h3>
+                        <p className="proposal__section-line-text">{t.brandIdentity.text}</p>
+                    </div>
 
-                <div
-                    className={`proposal__section-line ${visibleSections.has('market') ? 'proposal__section-line--visible' : ''}`}
-                    data-section-id="market"
-                    ref={(el) => (sectionRefs.current['market'] = el)}
-                >
-                    <h3 className="proposal__section-line-title">{t.market.title}</h3>
-                    <p className="proposal__section-line-text">{t.market.text}</p>
-                </div>
+                    <div
+                        className={`proposal__section-line ${visibleSections.has('market') ? 'proposal__section-line--visible' : ''}`}
+                        data-section-id="market"
+                        ref={(el) => (sectionRefs.current['market'] = el)}
+                    >
+                        <h3 className="proposal__section-line-title">{t.market.title}</h3>
+                        <p className="proposal__section-line-text">{t.market.text}</p>
+                    </div>
 
-                <div
-                    className={`proposal__section-line ${visibleSections.has('gameplan') ? 'proposal__section-line--visible' : ''}`}
-                    data-section-id="gameplan"
-                    ref={(el) => (sectionRefs.current['gameplan'] = el)}
-                >
-                    <h3 className="proposal__section-line-title">{t.gameplan.title}</h3>
-                    <p className="proposal__section-line-text">{t.gameplan.text}</p>
-                </div>
+                    <div
+                        className={`proposal__section-line ${visibleSections.has('gameplan') ? 'proposal__section-line--visible' : ''}`}
+                        data-section-id="gameplan"
+                        ref={(el) => (sectionRefs.current['gameplan'] = el)}
+                    >
+                        <h3 className="proposal__section-line-title">{t.gameplan.title}</h3>
+                        <p className="proposal__section-line-text">{t.gameplan.text}</p>
+                    </div>
 
-            </section>
+                </section>
 
-            {/* Hero Image Section with Overlay - HIDDEN */}
-            {/* <section className="proposal__image">
+                {/* Hero Image Section with Overlay - HIDDEN */}
+                {/* <section className="proposal__image">
                     <img className="proposal__image-bg" src={yoga} alt="All In One Inventions wellness device" />
                     <div className="proposal__image-overlay"></div>
                     <div className="proposal__image-content">
@@ -729,136 +729,136 @@ return (
                     </div>
                 </section> */}
 
-            {/* Services Carousel Section */}
-            <section className="proposal__services">
-                <div
-                    className={`proposal__services-header ${visibleSections.has('services-header') ? 'proposal__services-header--visible' : ''}`}
-                    data-section-id="services-header"
-                    ref={(el) => (sectionRefs.current['services-header'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">{t.servicesHeader.title}</h4>
-                    <h2 className="proposal__section-subtitle">{t.servicesHeader.subtitle}</h2>
-                </div>
+                {/* Services Carousel Section */}
+                <section className="proposal__services">
+                    <div
+                        className={`proposal__services-header ${visibleSections.has('services-header') ? 'proposal__services-header--visible' : ''}`}
+                        data-section-id="services-header"
+                        ref={(el) => (sectionRefs.current['services-header'] = el)}
+                    >
+                        <h4 className="proposal__section-subheading">{t.servicesHeader.title}</h4>
+                        <h2 className="proposal__section-subtitle">{t.servicesHeader.subtitle}</h2>
+                    </div>
 
-                {/* Tabs */}
-                <div className="proposal__tabs">
-                    {serviceOptions.map((option) => (
-                        <button
-                            key={option.id}
-                            className={`proposal__tab ${selectedTab === option.id ? 'proposal__tab--active' : ''}`}
-                            onClick={() => setSelectedTab(option.id)}
-                        >
-                            {option.label}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Project Estimate Rate */}
-                <p className="proposal__estimate-rate">
-                    {t.estimateRate} {serviceOptions.find(option => option.id === selectedTab)?.estimateRate}
-                </p>
-
-                {/* Carousel for each tab */}
-                <div className="proposal__carousel-container">
-                    {serviceOptions.map((option) => (
-                        <div key={option.id}>
-                            <div
-                                className={`proposal__carousel-wrapper ${selectedTab === option.id ? 'proposal__carousel-wrapper--active' : ''}`}
+                    {/* Tabs */}
+                    <div className="proposal__tabs">
+                        {serviceOptions.map((option) => (
+                            <button
+                                key={option.id}
+                                className={`proposal__tab ${selectedTab === option.id ? 'proposal__tab--active' : ''}`}
+                                onClick={() => setSelectedTab(option.id)}
                             >
-                                <button
-                                    className="proposal__carousel-arrow proposal__carousel-arrow--left"
-                                    onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
-                                    aria-label="Scroll left"
-                                >
-                                    <IconChevronLeft size={20} />
-                                </button>
+                                {option.label}
+                            </button>
+                        ))}
+                    </div>
 
+                    {/* Project Estimate Rate */}
+                    <p className="proposal__estimate-rate">
+                        {t.estimateRate} {serviceOptions.find(option => option.id === selectedTab)?.estimateRate}
+                    </p>
+
+                    {/* Carousel for each tab */}
+                    <div className="proposal__carousel-container">
+                        {serviceOptions.map((option) => (
+                            <div key={option.id}>
                                 <div
-                                    className="proposal__carousel"
-                                    ref={(el) => (carouselRefs.current[option.id] = el)}
+                                    className={`proposal__carousel-wrapper ${selectedTab === option.id ? 'proposal__carousel-wrapper--active' : ''}`}
                                 >
-                                    {option.steps.map((step) => (
-                                        <div key={step.number} className="proposal__card">
-                                            <div className="proposal__card-number">
-                                                <span className="proposal__card-number-text">{step.number}</span>
-                                            </div>
-                                            <h3 className="proposal__card-title">{step.title}</h3>
-                                            <p className="proposal__card-time">{step.timeScope}</p>
-                                            <p className="proposal__card-description">{step.description}</p>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <button
-                                    className="proposal__carousel-arrow proposal__carousel-arrow--right"
-                                    onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
-                                    aria-label="Scroll right"
-                                >
-                                    <IconChevronRight size={20} />
-                                </button>
-                            </div>
-
-                            {/* Bottom navigation indicators */}
-                            {selectedTab === option.id && (
-                                <div className="proposal__carousel-nav">
                                     <button
-                                        className={`proposal__carousel-nav-button ${!scrollStates[option.id]?.canScrollLeft ? 'proposal__carousel-nav-button--disabled' : ''}`}
+                                        className="proposal__carousel-arrow proposal__carousel-arrow--left"
                                         onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
-                                        disabled={!scrollStates[option.id]?.canScrollLeft}
                                         aria-label="Scroll left"
                                     >
                                         <IconChevronLeft size={20} />
                                     </button>
+
+                                    <div
+                                        className="proposal__carousel"
+                                        ref={(el) => (carouselRefs.current[option.id] = el)}
+                                    >
+                                        {option.steps.map((step) => (
+                                            <div key={step.number} className="proposal__card">
+                                                <div className="proposal__card-number">
+                                                    <span className="proposal__card-number-text">{step.number}</span>
+                                                </div>
+                                                <h3 className="proposal__card-title">{step.title}</h3>
+                                                <p className="proposal__card-time">{step.timeScope}</p>
+                                                <p className="proposal__card-description">{step.description}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+
                                     <button
-                                        className={`proposal__carousel-nav-button ${!scrollStates[option.id]?.canScrollRight ? 'proposal__carousel-nav-button--disabled' : ''}`}
+                                        className="proposal__carousel-arrow proposal__carousel-arrow--right"
                                         onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
-                                        disabled={!scrollStates[option.id]?.canScrollRight}
                                         aria-label="Scroll right"
                                     >
                                         <IconChevronRight size={20} />
                                     </button>
                                 </div>
-                            )}
-                        </div>
-                    ))}
+
+                                {/* Bottom navigation indicators */}
+                                {selectedTab === option.id && (
+                                    <div className="proposal__carousel-nav">
+                                        <button
+                                            className={`proposal__carousel-nav-button ${!scrollStates[option.id]?.canScrollLeft ? 'proposal__carousel-nav-button--disabled' : ''}`}
+                                            onClick={() => handleScroll(carouselRefs.current[option.id], 'left', option.id)}
+                                            disabled={!scrollStates[option.id]?.canScrollLeft}
+                                            aria-label="Scroll left"
+                                        >
+                                            <IconChevronLeft size={20} />
+                                        </button>
+                                        <button
+                                            className={`proposal__carousel-nav-button ${!scrollStates[option.id]?.canScrollRight ? 'proposal__carousel-nav-button--disabled' : ''}`}
+                                            onClick={() => handleScroll(carouselRefs.current[option.id], 'right', option.id)}
+                                            disabled={!scrollStates[option.id]?.canScrollRight}
+                                            aria-label="Scroll right"
+                                        >
+                                            <IconChevronRight size={20} />
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+                <div
+                    className={`proposal__section ${visibleSections.has('results') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="results"
+                    ref={(el) => (sectionRefs.current['results'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">{t.results.title}</h4>
+                    <h2 className="proposal__section-subtitle">{t.results.subtitle}</h2>
+                    <p className="proposal__section-text">{t.results.text}</p>
                 </div>
-            </section>
-            <div
-                className={`proposal__section ${visibleSections.has('results') ? 'proposal__section--visible' : ''}`}
-                data-section-id="results"
-                ref={(el) => (sectionRefs.current['results'] = el)}
-            >
-                <h4 className="proposal__section-subheading">{t.results.title}</h4>
-                <h2 className="proposal__section-subtitle">{t.results.subtitle}</h2>
-                <p className="proposal__section-text">{t.results.text}</p>
+
+                <div
+                    className={`proposal__section ${visibleSections.has('next-steps') ? 'proposal__section--visible' : ''}`}
+                    data-section-id="next-steps"
+                    ref={(el) => (sectionRefs.current['next-steps'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">{t.nextSteps.title}</h4>
+                    <h2 className="proposal__section-subtitle">{t.nextSteps.subtitle}</h2>
+                    <div className="proposal__section-links">
+                        <a
+                            href="tel:+19085604930"
+                            className="contact__email-button"
+                        >
+                            +1 908-560-4930
+                        </a>{" "}
+                        <a
+                            href="mailto:hello@zenflostudios.com"
+                            className="contact__email-button"
+                        >
+                            hello@zenflostudios.com
+                        </a>{" "}
+                    </div>
+                </div>
             </div>
 
-            <div
-                className={`proposal__section ${visibleSections.has('next-steps') ? 'proposal__section--visible' : ''}`}
-                data-section-id="next-steps"
-                ref={(el) => (sectionRefs.current['next-steps'] = el)}
-            >
-                <h4 className="proposal__section-subheading">{t.nextSteps.title}</h4>
-                <h2 className="proposal__section-subtitle">{t.nextSteps.subtitle}</h2>
-                <div className="proposal__section-links">
-                    <a
-                        href="tel:+19085604930"
-                        className="contact__email-button"
-                    >
-                        +1 908-560-4930
-                    </a>{" "}
-                    <a
-                        href="mailto:hello@zenflostudios.com"
-                        className="contact__email-button"
-                    >
-                        hello@zenflostudios.com
-                    </a>{" "}
-                </div>
-            </div>
         </div>
-
-    </div>
-);
+    );
 };
 
 export default ProposalAllinoneinventions;

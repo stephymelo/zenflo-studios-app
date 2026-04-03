@@ -11,6 +11,7 @@ import ProposalHernan from './Pages/Presentation/ProposalHernan';
 import ProposalAllinoneinventions from './Pages/Presentation/ProposalAllinoneinventions';
 import ProgenPresentation from './Pages/Presentation/ProgenPresentation';
 import AprilCalendar from './Pages/Presentation/AprilCalendar';
+import MarketingCampaignNil from './Pages/Presentation/MarketingCampaignNil';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
          <Route path="/proposal-allinoneinventions" element={<ProposalAllinoneinventions/>}/>
         <Route path="/progen-presentation" element={<ProgenPresentation/>}/>
         <Route path="/april-calendar" element={<AprilCalendar/>}/>
+        <Route path="/nil-marketing" element={<MarketingCampaignNil/>}/>
 
         {/* Routes with header and footer */}
         <Route path="*" element={
