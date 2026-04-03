@@ -182,6 +182,7 @@ const AprilCalendar = () => {
 
     // ── Render ─────────────────────────────────────────────────
     return (
+        <>
         <div className="april-calendar-page">
         <div className="proposal april-cal">
             <div className="proposal__container">
@@ -442,6 +443,7 @@ const AprilCalendar = () => {
                 </div>
             </div>
         )}
+        </>
     );
 };
 
