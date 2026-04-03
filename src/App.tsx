@@ -10,6 +10,7 @@ import ProposalRoga from './Pages/Presentation/ProposalRoga';
 import ProposalHernan from './Pages/Presentation/ProposalHernan';
 import ProposalAllinoneinventions from './Pages/Presentation/ProposalAllinoneinventions';
 import ProgenPresentation from './Pages/Presentation/ProgenPresentation';
+import AprilCalendar from './Pages/Presentation/AprilCalendar';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/proposal-hernan" element={<ProposalHernan/>}/>
          <Route path="/proposal-allinoneinventions" element={<ProposalAllinoneinventions/>}/>
         <Route path="/progen-presentation" element={<ProgenPresentation/>}/>
+        <Route path="/april-calendar" element={<AprilCalendar/>}/>
 
         {/* Routes with header and footer */}
         <Route path="*" element={
