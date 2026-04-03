@@ -91,7 +91,14 @@ let nextId = 100;
 
 // ── Component ──────────────────────────────────────────────────────
 const AprilCalendar = () => {
-    const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
+    const [tasks, setTasks] = useState<Task[]>(() => {
+        try {
+            const saved = localStorage.getItem('april-calendar-tasks');
+            return saved ? JSON.parse(saved) : INITIAL_TASKS;
+        } catch {
+            return INITIAL_TASKS;
+        }
+    });
     const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
     const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
     const [selectedTask, setSelectedTask] = useState<SelectedTask>(null);
@@ -107,6 +114,11 @@ const AprilCalendar = () => {
     const [formPerson, setFormPerson] = useState(TEAM[0].name);
     const [formBrand, setFormBrand] = useState(BRANDS[0].name);
     const [formTitle, setFormTitle] = useState("");
+
+    // ── Persist tasks to localStorage ─────────────────────────
+    useEffect(() => {
+        localStorage.setItem('april-calendar-tasks', JSON.stringify(tasks));
+    }, [tasks]);
 
     // ── Intersection observer for scroll-in animations ─────────
     useEffect(() => {
