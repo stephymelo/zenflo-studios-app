@@ -178,6 +178,7 @@ const AprilCalendar = () => {
 
     // ── Render ─────────────────────────────────────────────────
     return (
+        <div className="april-calendar-page">
         <div className="proposal april-cal">
             <div className="proposal__container">
                 {/* Logo */}
@@ -191,8 +192,8 @@ const AprilCalendar = () => {
                     data-section-id="hero"
                     ref={el => (sectionRefs.current['hero'] = el)}
                 >
-                    <h1 className="proposal__hero-title april-cal__title">April Calendar</h1>
-                    <h3 className="proposal__hero-subtitle">Marketing Team — Task Overview</h3>
+                    <h1 className="proposal__hero-title april-cal__title">April Marketing Team</h1>
+                    <h3 className="proposal__hero-subtitle">Task Overview</h3>
                 </div>
 
                 {/* ── Team Members Bar ───────────────────────── */}
@@ -394,6 +395,7 @@ const AprilCalendar = () => {
                     </div>
                 </section>
             </div>
+        </div>
         </div>
     );
 };
