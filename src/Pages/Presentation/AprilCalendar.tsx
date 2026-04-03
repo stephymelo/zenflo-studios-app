@@ -13,6 +13,7 @@ interface TeamMember {
 
 interface Brand {
     name: string;
+    short: string;
     color: string;
 }
 
@@ -38,47 +39,25 @@ const TEAM: TeamMember[] = [
 ];
 
 const BRANDS: Brand[] = [
-    { name: "New Image Labs", color: "#3B82F6" },
-    { name: "Onrite",         color: "#22C55E" },
-    { name: "Progen",         color: "#D4A574" },
-    { name: "TressAllure",    color: "#EC4899" },
-    { name: "Hairloss.com",   color: "#8B5CF6" },
+    { name: "New Image Labs", short: "NIL", color: "#3B82F6" },
+    { name: "Onrite",         short: "OR",  color: "#22C55E" },
+    { name: "Progen",         short: "PG",  color: "#D4A574" },
+    { name: "TressAllure",    short: "TA",  color: "#EC4899" },
+    { name: "Hairloss.com",   short: "HL",  color: "#8B5CF6" },
 ];
 
 const INITIAL_TASKS: Task[] = [
-    { id: "s1",  day: 1,  person: "Isabela",   brand: "Progen",         title: "SEO Keyword Research",     completed: false },
-    { id: "s2",  day: 1,  person: "Jhon",      brand: "New Image Labs", title: "Homepage Redesign",        completed: false },
-    { id: "s3",  day: 2,  person: "Kayla",     brand: "TressAllure",    title: "Instagram Content Plan",   completed: false },
-    { id: "s4",  day: 2,  person: "Claire",    brand: "Hairloss.com",   title: "Email Campaign Draft",     completed: false },
-    { id: "s5",  day: 3,  person: "Stephanie", brand: "Progen",         title: "Landing Page UX Review",   completed: false },
-    { id: "s6",  day: 3,  person: "Isabela",   brand: "Onrite",         title: "Analytics Report",         completed: false },
-    { id: "s7",  day: 7,  person: "Jhon",      brand: "Progen",         title: "Product Page Build",       completed: false },
-    { id: "s8",  day: 7,  person: "Kayla",     brand: "New Image Labs", title: "Social Media Calendar",    completed: false },
-    { id: "s9",  day: 7,  person: "Claire",    brand: "TressAllure",    title: "Newsletter Design",        completed: false },
-    { id: "s10", day: 8,  person: "Stephanie", brand: "Hairloss.com",   title: "Brand Audit",              completed: false },
-    { id: "s11", day: 10, person: "Isabela",   brand: "New Image Labs", title: "Blog Post Draft",          completed: false },
-    { id: "s12", day: 10, person: "Jhon",      brand: "Onrite",         title: "Checkout Flow Update",     completed: false },
-    { id: "s13", day: 14, person: "Kayla",     brand: "Progen",         title: "TikTok Content",           completed: false },
-    { id: "s14", day: 14, person: "Claire",    brand: "Onrite",         title: "Email Sequences",          completed: false },
-    { id: "s15", day: 15, person: "Stephanie", brand: "TressAllure",    title: "Packaging Design Review",  completed: false },
-    { id: "s16", day: 15, person: "Isabela",   brand: "Hairloss.com",   title: "SEO Audit",                completed: false },
-    { id: "s17", day: 17, person: "Jhon",      brand: "TressAllure",    title: "Collection Page",          completed: false },
-    { id: "s18", day: 21, person: "Kayla",     brand: "Hairloss.com",   title: "Social Ads Copy",          completed: false },
-    { id: "s19", day: 21, person: "Claire",    brand: "New Image Labs", title: "Campaign Planning",        completed: false },
-    { id: "s20", day: 22, person: "Stephanie", brand: "Onrite",         title: "UI Component Library",     completed: false },
-    { id: "s21", day: 24, person: "Isabela",   brand: "TressAllure",    title: "Monthly Analytics",        completed: false },
-    { id: "s22", day: 24, person: "Jhon",      brand: "Hairloss.com",   title: "Landing Page Dev",         completed: false },
-    { id: "s23", day: 28, person: "Kayla",     brand: "Onrite",         title: "Email A/B Testing",        completed: false },
-    { id: "s24", day: 28, person: "Claire",    brand: "Progen",         title: "Social Calendar",          completed: false },
-    { id: "s25", day: 29, person: "Stephanie", brand: "New Image Labs", title: "UX Wireframes",            completed: false },
-    { id: "s26", day: 30, person: "Isabela",   brand: "Progen",         title: "Month-End Report",         completed: false },
-    { id: "s27", day: 30, person: "Jhon",      brand: "New Image Labs", title: "Bug Fixes & QA",           completed: false },
+    { id: "s1", day: 3, person: "Stephanie", brand: "Progen",         title: "Fiberbond Page",                         completed: false },
+    { id: "s2", day: 3, person: "Stephanie", brand: "New Image Labs", title: "Final Sale Page",                        completed: false },
+    { id: "s3", day: 3, person: "Stephanie", brand: "Onrite",         title: "Account + Adjustments",                  completed: false },
+    { id: "s4", day: 3, person: "Stephanie", brand: "New Image Labs", title: "Flyer",                                  completed: false },
 ];
 
 // ── Helpers ────────────────────────────────────────────────────────
 const memberColor = (name: string) => TEAM.find(m => m.name === name)?.color ?? "#888";
 const memberEmoji = (name: string) => TEAM.find(m => m.name === name)?.emoji ?? "";
 const brandColor  = (name: string) => BRANDS.find(b => b.name === name)?.color ?? "#888";
+const brandShort  = (name: string) => BRANDS.find(b => b.name === name)?.short ?? name;
 
 /** Build a 6×7 grid (rows × cols, Mon–Sun) for April 2025. 0 = empty cell. */
 const buildCalendarGrid = (): number[][] => {
@@ -480,7 +459,7 @@ const TaskCard = ({ task, onToggle, onDelete, movingTaskId, onMoveStart, onMove,
 
             <div className="april-cal__task-body">
                 <span className="april-cal__task-brand" style={{ background: brandColor(task.brand) }}>
-                    {task.brand}
+                    {brandShort(task.brand)}
                 </span>
                 <span className={`april-cal__task-title ${task.completed ? 'april-cal__task-title--done' : ''}`}>
                     {task.title}
