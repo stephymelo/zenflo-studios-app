@@ -26,6 +26,7 @@ interface Task {
 }
 
 type StatusFilter = 'all' | 'in-progress' | 'completed';
+type SelectedTask = Task | null;
 
 // ── Data ───────────────────────────────────────────────────────────
 const TEAM: TeamMember[] = [
@@ -33,7 +34,7 @@ const TEAM: TeamMember[] = [
     { name: "Jhon",      role: "Frontend Developer",              color: "#4ECDC4", emoji: "😎" },
     { name: "Kayla",     role: "Marketing, Email & Social Media", color: "#FFD93D", emoji: "🌸" },
     { name: "Claire",    role: "Marketing, Email & Social Media", color: "#A78BFA", emoji: "✨" },
-    { name: "Stephanie", role: "UX/UI & Marketing",               color: "#FF8ED4", emoji: "💅" },
+    { name: "Stephanie", role: "UX/UI & Marketing",               color: "#FF8ED4", emoji: "😸" },
 ];
 
 const BRANDS: Brand[] = [
@@ -113,6 +114,8 @@ let nextId = 100;
 const AprilCalendar = () => {
     const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
     const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
+    const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+    const [selectedTask, setSelectedTask] = useState<SelectedTask>(null);
     const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
     const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
     const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -169,6 +172,7 @@ const AprilCalendar = () => {
     // ── Filtering ──────────────────────────────────────────────
     const filteredTasks = tasks.filter(t => {
         if (selectedPerson && t.person !== selectedPerson) return false;
+        if (selectedBrand && t.brand !== selectedBrand) return false;
         if (statusFilter === 'in-progress' && t.completed) return false;
         if (statusFilter === 'completed' && !t.completed) return false;
         return true;
@@ -187,13 +191,9 @@ const AprilCalendar = () => {
                 </div>
 
                 {/* Hero */}
-                <div
-                    className={`proposal__hero ${visibleSections.has('hero') ? 'proposal__hero--visible' : ''}`}
-                    data-section-id="hero"
-                    ref={el => (sectionRefs.current['hero'] = el)}
-                >
-                    <h1 className="proposal__hero-title april-cal__title">April Marketing Team</h1>
-                    <h3 className="proposal__hero-subtitle">Task Overview</h3>
+                <div className="april-cal__hero-compact">
+                    <h1 className="april-cal__title">April Marketing Team</h1>
+                    <span className="april-cal__hero-sub">Task Overview</span>
                 </div>
 
                 {/* ── Team Members Bar ───────────────────────── */}
@@ -261,84 +261,28 @@ const AprilCalendar = () => {
                         <div className="april-cal__brand-legend">
                             <h4 className="proposal__section-subheading">Brands</h4>
                             <div className="april-cal__brands">
+                                <button
+                                    className={`april-cal__brand-tag april-cal__brand-tag--btn ${selectedBrand === null ? 'april-cal__brand-tag--all-active' : ''}`}
+                                    onClick={() => setSelectedBrand(null)}
+                                >
+                                    All
+                                </button>
                                 {BRANDS.map(b => (
-                                    <span key={b.name} className="april-cal__brand-tag" style={{ background: b.color }}>
+                                    <button
+                                        key={b.name}
+                                        className={`april-cal__brand-tag april-cal__brand-tag--btn ${selectedBrand === b.name ? 'april-cal__brand-tag--active' : ''}`}
+                                        style={{
+                                            background: selectedBrand === b.name ? b.color : 'transparent',
+                                            borderColor: b.color,
+                                            color: selectedBrand === b.name ? '#fff' : b.color,
+                                        }}
+                                        onClick={() => setSelectedBrand(prev => prev === b.name ? null : b.name)}
+                                    >
                                         {b.name}
-                                    </span>
+                                    </button>
                                 ))}
                             </div>
                         </div>
-                    </div>
-                </section>
-
-                {/* ── Calendar Grid ─────────────────────────── */}
-                <section
-                    className={`april-cal__section ${visibleSections.has('calendar') ? 'april-cal__section--visible' : ''}`}
-                    data-section-id="calendar"
-                    ref={el => (sectionRefs.current['calendar'] = el)}
-                >
-                    <h4 className="proposal__section-subheading">April 2025</h4>
-
-                    {/* Desktop grid */}
-                    <div className="april-cal__grid">
-                        {/* Day-of-week headers */}
-                        {DAY_LABELS.map(d => (
-                            <div key={d} className="april-cal__grid-header">{d}</div>
-                        ))}
-
-                        {/* Day cells */}
-                        {calendarGrid.flat().map((day, i) => {
-                            const dayTasks = day > 0 ? tasksForDay(day) : [];
-                            const isEmpty = day === 0;
-                            return (
-                                <div
-                                    key={i}
-                                    className={`april-cal__cell ${isEmpty ? 'april-cal__cell--empty' : ''} ${day > 0 && dayTasks.length === 0 ? 'april-cal__cell--no-tasks' : ''}`}
-                                >
-                                    {day > 0 && <span className="april-cal__cell-day">{day}</span>}
-                                    {dayTasks.map(t => (
-                                        <TaskCard
-                                            key={t.id}
-                                            task={t}
-                                            onToggle={toggleComplete}
-                                            onDelete={deleteTask}
-                                            movingTaskId={movingTaskId}
-                                            onMoveStart={setMovingTaskId}
-                                            onMove={moveTask}
-                                        />
-                                    ))}
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* Mobile list */}
-                    <div className="april-cal__list">
-                        {Array.from({ length: 30 }, (_, i) => i + 1).map(day => {
-                            const dayTasks = tasksForDay(day);
-                            if (dayTasks.length === 0) return null;
-                            const dateObj = new Date(2025, 3, day);
-                            const weekday = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
-                            return (
-                                <div key={day} className="april-cal__list-day">
-                                    <div className="april-cal__list-day-header">
-                                        <span className="april-cal__list-day-num">{day}</span>
-                                        <span className="april-cal__list-day-name">{weekday}</span>
-                                    </div>
-                                    {dayTasks.map(t => (
-                                        <TaskCard
-                                            key={t.id}
-                                            task={t}
-                                            onToggle={toggleComplete}
-                                            onDelete={deleteTask}
-                                            movingTaskId={movingTaskId}
-                                            onMoveStart={setMovingTaskId}
-                                            onMove={moveTask}
-                                        />
-                                    ))}
-                                </div>
-                            );
-                        })}
                     </div>
                 </section>
 
@@ -394,9 +338,110 @@ const AprilCalendar = () => {
                         </button>
                     </div>
                 </section>
+
+                {/* ── Calendar Grid ─────────────────────────── */}
+                <section
+                    className={`april-cal__section ${visibleSections.has('calendar') ? 'april-cal__section--visible' : ''}`}
+                    data-section-id="calendar"
+                    ref={el => (sectionRefs.current['calendar'] = el)}
+                >
+                    <h4 className="proposal__section-subheading">April 2025</h4>
+
+                    {/* Desktop grid */}
+                    <div className="april-cal__grid">
+                        {/* Day-of-week headers */}
+                        {DAY_LABELS.map(d => (
+                            <div key={d} className="april-cal__grid-header">{d}</div>
+                        ))}
+
+                        {/* Day cells */}
+                        {calendarGrid.flat().map((day, i) => {
+                            const dayTasks = day > 0 ? tasksForDay(day) : [];
+                            const isEmpty = day === 0;
+                            return (
+                                <div
+                                    key={i}
+                                    className={`april-cal__cell ${isEmpty ? 'april-cal__cell--empty' : ''} ${day > 0 && dayTasks.length === 0 ? 'april-cal__cell--no-tasks' : ''}`}
+                                >
+                                    {day > 0 && <span className="april-cal__cell-day">{day}</span>}
+                                    {dayTasks.map(t => (
+                                        <TaskCard
+                                            key={t.id}
+                                            task={t}
+                                            onToggle={toggleComplete}
+                                            onDelete={deleteTask}
+                                            movingTaskId={movingTaskId}
+                                            onMoveStart={setMovingTaskId}
+                                            onMove={moveTask}
+                                            onOpenPopup={setSelectedTask}
+                                        />
+                                    ))}
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Mobile list */}
+                    <div className="april-cal__list">
+                        {Array.from({ length: 30 }, (_, i) => i + 1).map(day => {
+                            const dayTasks = tasksForDay(day);
+                            if (dayTasks.length === 0) return null;
+                            const dateObj = new Date(2025, 3, day);
+                            const weekday = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
+                            return (
+                                <div key={day} className="april-cal__list-day">
+                                    <div className="april-cal__list-day-header">
+                                        <span className="april-cal__list-day-num">{day}</span>
+                                        <span className="april-cal__list-day-name">{weekday}</span>
+                                    </div>
+                                    {dayTasks.map(t => (
+                                        <TaskCard
+                                            key={t.id}
+                                            task={t}
+                                            onToggle={toggleComplete}
+                                            onDelete={deleteTask}
+                                            movingTaskId={movingTaskId}
+                                            onMoveStart={setMovingTaskId}
+                                            onMove={moveTask}
+                                            onOpenPopup={setSelectedTask}
+                                        />
+                                    ))}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </section>
+
             </div>
         </div>
         </div>
+
+        {/* Task detail popup */}
+        {selectedTask && (
+            <div className="april-cal__popup-overlay" onClick={() => setSelectedTask(null)}>
+                <div className="april-cal__popup" onClick={e => e.stopPropagation()}>
+                    <button className="april-cal__popup-close" onClick={() => setSelectedTask(null)}>✕</button>
+                    <span
+                        className="april-cal__popup-brand"
+                        style={{ background: brandColor(selectedTask.brand) }}
+                    >
+                        {selectedTask.brand}
+                    </span>
+                    <h2 className="april-cal__popup-title">{selectedTask.title}</h2>
+                    <div className="april-cal__popup-meta">
+                        <span className="april-cal__popup-person">
+                            {memberEmoji(selectedTask.person)} {selectedTask.person}
+                        </span>
+                        <span className="april-cal__popup-day">April {selectedTask.day}</span>
+                        <span
+                            className={`april-cal__popup-status ${selectedTask.completed ? 'april-cal__popup-status--done' : ''}`}
+                        >
+                            {selectedTask.completed ? '✓ Completed' : '● In Progress'}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        )}
     );
 };
 
@@ -408,20 +453,22 @@ interface TaskCardProps {
     movingTaskId: string | null;
     onMoveStart: (id: string | null) => void;
     onMove: (id: string, newDay: number) => void;
+    onOpenPopup: (task: Task) => void;
 }
 
-const TaskCard = ({ task, onToggle, onDelete, movingTaskId, onMoveStart, onMove }: TaskCardProps) => {
+const TaskCard = ({ task, onToggle, onDelete, movingTaskId, onMoveStart, onMove, onOpenPopup }: TaskCardProps) => {
     const isMoving = movingTaskId === task.id;
 
     return (
         <div
             className={`april-cal__task ${task.completed ? 'april-cal__task--done' : ''}`}
             style={{ borderLeftColor: memberColor(task.person) }}
+            onClick={() => onOpenPopup(task)}
         >
             {/* Checkbox */}
             <button
                 className={`april-cal__task-check ${task.completed ? 'april-cal__task-check--checked' : ''}`}
-                onClick={() => onToggle(task.id)}
+                onClick={e => { e.stopPropagation(); onToggle(task.id); }}
                 title={task.completed ? 'Mark in progress' : 'Mark completed'}
                 style={task.completed ? { background: '#22C55E', borderColor: '#22C55E' } : {}}
             >
@@ -441,10 +488,10 @@ const TaskCard = ({ task, onToggle, onDelete, movingTaskId, onMoveStart, onMove 
 
             {/* Actions */}
             <div className="april-cal__task-actions">
-                <button className="april-cal__task-action" onClick={() => onMoveStart(isMoving ? null : task.id)} title="Move to another day">
+                <button className="april-cal__task-action" onClick={e => { e.stopPropagation(); onMoveStart(isMoving ? null : task.id); }} title="Move to another day">
                     ↻
                 </button>
-                <button className="april-cal__task-action april-cal__task-action--delete" onClick={() => onDelete(task.id)} title="Delete task">
+                <button className="april-cal__task-action april-cal__task-action--delete" onClick={e => { e.stopPropagation(); onDelete(task.id); }} title="Delete task">
                     ✕
                 </button>
             </div>

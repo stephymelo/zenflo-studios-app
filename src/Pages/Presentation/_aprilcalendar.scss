@@ -19,17 +19,40 @@
     margin-bottom: 10em;
 }
 
+// ── Tighten container gap for this page ───
+.april-cal .proposal__container {
+    gap: 3em;
+}
+
+// ============================================
+// COMPACT HERO
+// ============================================
+
+.april-cal__hero-compact {
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+
+.april-cal__hero-sub {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: $color-secondary-text;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .april-cal__title {
-    font-size: 4rem;
+    font-size: 1.75rem;
     font-weight: 700;
     font-family: 'Be Vietnam Pro', sans-serif;
     letter-spacing: -0.5px;
 
     @media (max-width: 768px) {
-        font-size: 2.8rem;
-    }
-    @media (max-width: 480px) {
-        font-size: 2.2rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -204,6 +227,30 @@
     font-family: 'Be Vietnam Pro', sans-serif;
     letter-spacing: 0.3px;
     white-space: nowrap;
+
+    &--btn {
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+        padding: 0.45em 1.1em;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &--all-active {
+        background: $color-primary !important;
+        border-color: $color-primary !important;
+        color: #fff !important;
+    }
+
+    &--active {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+    }
 }
 
 // ============================================
@@ -327,6 +374,7 @@
     position: relative;
     transition: all 0.2s ease;
     flex-wrap: wrap;
+    cursor: pointer;
 
     &:hover {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -636,4 +684,121 @@
         opacity: 0.4;
         cursor: not-allowed;
     }
+}
+
+// ============================================
+// TASK DETAIL POPUP
+// ============================================
+
+.april-cal__popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1em;
+    animation: fadeInOverlay 0.2s ease;
+}
+
+.april-cal__popup {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2em;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: popupIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.april-cal__popup-close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    font-size: 14px;
+    color: $color-secondary-text;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+
+    &:hover {
+        background: rgba(220, 38, 38, 0.1);
+        color: #dc2626;
+    }
+}
+
+.april-cal__popup-brand {
+    padding: 0.35em 0.9em;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    width: fit-content;
+}
+
+.april-cal__popup-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: $color-primary-text;
+    line-height: 1.25;
+    padding-right: 2em;
+}
+
+.april-cal__popup-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75em;
+    align-items: center;
+    padding-top: 0.5em;
+    border-top: 1px solid $color-divider;
+}
+
+.april-cal__popup-person {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: $color-primary-text;
+}
+
+.april-cal__popup-day {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: $color-secondary-text;
+}
+
+.april-cal__popup-status {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: $color-secondary-text;
+    margin-left: auto;
+
+    &--done {
+        color: #22C55E;
+    }
+}
+
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes popupIn {
+    from { opacity: 0; transform: scale(0.88) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
 }
