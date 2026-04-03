@@ -298,9 +298,10 @@ const AprilCalendar = () => {
                         <div className="april-cal__form-field">
                             <label className="april-cal__form-label">Day</label>
                             <select className="april-cal__form-select" value={formDay} onChange={e => setFormDay(Number(e.target.value))}>
-                                {Array.from({ length: 30 }, (_, i) => i + 1).map(d => (
-                                    <option key={d} value={d}>April {d}</option>
-                                ))}
+                                {Array.from({ length: 30 }, (_, i) => i + 1).map(d => {
+                                    const weekday = new Date(2025, 3, d).toLocaleDateString('en-US', { weekday: 'long' });
+                                    return <option key={d} value={d}>{weekday}, April {d}</option>;
+                                })}
                             </select>
                         </div>
 
@@ -327,7 +328,7 @@ const AprilCalendar = () => {
                             <input
                                 className="april-cal__form-input"
                                 type="text"
-                                placeholder="What needs to be done?"
+                                placeholder="What am I working on?"
                                 value={formTitle}
                                 onChange={e => setFormTitle(e.target.value)}
                                 onKeyDown={e => e.key === 'Enter' && addTask()}
