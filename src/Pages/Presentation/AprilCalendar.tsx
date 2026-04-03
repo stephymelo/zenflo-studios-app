@@ -59,10 +59,10 @@ const memberEmoji = (name: string) => TEAM.find(m => m.name === name)?.emoji ?? 
 const brandColor  = (name: string) => BRANDS.find(b => b.name === name)?.color ?? "#888";
 const brandShort  = (name: string) => BRANDS.find(b => b.name === name)?.short ?? name;
 
-/** Build a 6×7 grid (rows × cols, Mon–Sun) for April 2025. 0 = empty cell. */
+/** Build a 6×7 grid (rows × cols, Mon–Sun) for April 2026. 0 = empty cell. */
 const buildCalendarGrid = (): number[][] => {
-    // April 2025: day 1 is what weekday?
-    const firstDow = new Date(2025, 3, 1).getDay(); // 0=Sun … 6=Sat
+    // April 2026: day 1 is what weekday?
+    const firstDow = new Date(2026, 3, 1).getDay(); // 0=Sun … 6=Sat
     // Convert to Mon-start: Mon=0 … Sun=6
     const startOffset = firstDow === 0 ? 6 : firstDow - 1;
     const daysInMonth = 30;
@@ -278,7 +278,7 @@ const AprilCalendar = () => {
                             <label className="april-cal__form-label">Day</label>
                             <select className="april-cal__form-select" value={formDay} onChange={e => setFormDay(Number(e.target.value))}>
                                 {Array.from({ length: 30 }, (_, i) => i + 1).map(d => {
-                                    const weekday = new Date(2025, 3, d).toLocaleDateString('en-US', { weekday: 'long' });
+                                    const weekday = new Date(2026, 3, d).toLocaleDateString('en-US', { weekday: 'long' });
                                     return <option key={d} value={d}>{weekday}, April {d}</option>;
                                 })}
                             </select>
@@ -326,7 +326,7 @@ const AprilCalendar = () => {
                     data-section-id="calendar"
                     ref={el => (sectionRefs.current['calendar'] = el)}
                 >
-                    <h4 className="proposal__section-subheading">April 2025</h4>
+                    <h4 className="proposal__section-subheading">April 2026</h4>
 
                     {/* Desktop grid */}
                     <div className="april-cal__grid">
@@ -367,7 +367,7 @@ const AprilCalendar = () => {
                         {Array.from({ length: 30 }, (_, i) => i + 1).map(day => {
                             const dayTasks = tasksForDay(day);
                             if (dayTasks.length === 0) return null;
-                            const dateObj = new Date(2025, 3, day);
+                            const dateObj = new Date(2026, 3, day);
                             const weekday = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
                             return (
                                 <div key={day} className="april-cal__list-day">
