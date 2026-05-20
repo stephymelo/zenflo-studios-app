@@ -91,7 +91,26 @@
   width: 0; background: var(--zen-green); transition: width .1s;
 }
 
-@media (max-width: 980px) {
-  .hsvc-tile { grid-template-columns: 1fr; gap: 24px; flex: 0 0 86vw; height: auto; }
-  .hsvc-tile .col-r { max-height: 38vh; }
+@media (max-width: 768px) {
+  .hsvc-wrap { height: auto; }
+  .hsvc-sticky { position: relative; height: auto; overflow: visible; }
+  .hsvc-head {
+    position: relative; left: auto; top: auto;
+    padding: 60px 24px 24px;
+  }
+  .hsvc-head h2 { font-size: clamp(32px, 8vw, 48px); }
+  .hsvc-counter { display: none; }
+  .hsvc-track {
+    position: relative; left: auto; top: auto; bottom: auto;
+    flex-direction: column; height: auto;
+    padding: 0 24px; gap: 32px; transform: none !important;
+  }
+  .hsvc-tile {
+    flex: none; width: 100%; max-width: 100%;
+    height: auto; grid-template-columns: 1fr;
+    gap: 24px; padding: 24px;
+  }
+  .hsvc-tile .svc-name { font-size: clamp(36px, 9vw, 56px); }
+  .hsvc-tile .col-r { max-height: 50vh; aspect-ratio: 4/3; }
+  .hsvc-progress { display: none; }
 }

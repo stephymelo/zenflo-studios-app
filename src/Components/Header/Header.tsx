@@ -35,6 +35,13 @@ const Header: React.FC = () => {
       <button className={`nav-hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
         <span /><span /><span />
       </button>
+      <div className={`nav-mobile${menuOpen ? ' open' : ''}`}>
+        <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+        <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+        <a href="#process" onClick={() => setMenuOpen(false)}>How we flow</a>
+        <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+        <a href="/courses" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Online courses →</a>
+      </div>
     </nav>
   );
 };

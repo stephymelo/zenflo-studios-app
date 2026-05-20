@@ -35,10 +35,10 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="hero-scroll">
+      {/* <div className="hero-scroll">
         <span>Scroll</span>
         <span className="line-anim" />
-      </div>
+      </div> */}
     </section>
   );
 };
