@@ -1,66 +1,38 @@
-import { useEffect, useState } from 'react';
-import { ReactComponent as Logo } from '../../Assets/Logo/logo_zenflo.svg';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Menu from '../Menu/Menu';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
 
-export const Header = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const navigate = useNavigate();
-    const location = useLocation();
+const Header: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-    // Check if current path is /contact
-    const isContactPage = location.pathname === '/contact';
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Determine logo class - green if on contact page OR scrolled
-    const getLogoClass = () => {
-        if (isContactPage) return 'logo logo-green';
-        if (isScrolled) return 'logo logo-scrolled';
-        return 'logo';
-    };
-
-    return (
-        <header className={`header ${isScrolled ? 'scrolled' : ''} ${isContactPage ? 'contact-page' : ''}`}>
-            <div className='header-container'>
-                <div className="logo-container" onClick={() => navigate("/")}>
-                    <Logo className={getLogoClass()} />
-                </div>
-                <div className="header-right">
-                    <div className="lets-talk-container">
-                        <a
-                            href="/contact"
-                            className="lets-talk-link"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                navigate("/contact");
-                            }}
-                        >
-                            Let's Talk
-                        </a>
-                        <button
-                            className="hamburger-menu"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
-                            <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
-                            <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-        </header>
-    );
+  return (
+    <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+      <div className="nav-brand" onClick={() => navigate('/')}>
+        <img src={logo} alt="Zenflo Studios" className="nav-logo" />
+      </div>
+      <div className="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">How we flow</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" className="nav-cta">
+        Start growing
+        <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
+      </a>
+      <button className={`nav-hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <span /><span /><span />
+      </button>
+    </nav>
+  );
 };
 
 export default Header;

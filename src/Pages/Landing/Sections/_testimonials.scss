@@ -1,141 +1,64 @@
 @use '../../../Styles/variables' as *;
 
-.testimonials {
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-top:20em;
-  margin-bottom: 10em;
-  padding: 0;
-
-  &-heading {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  &-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    position: relative;
-    width: 100%;
-    padding: 0 4rem;
-  }
-
-  &-arrow {
-    background: none;
-    border: none;
-    color: $color-primary-text;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    opacity: 0.6;
-    z-index: 10;
-
-    &:hover {
-      color: $color-primary;
-      opacity: 1;
-      transform: scale(1.1);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-
-  &-content {
-    text-align: center;
-    padding: 2rem 0;
-    position: relative;
-    max-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 800px;
-    flex: 1;
-  }
-
-  &-slide {
-    width: 100%;
-
-    &-right {
-      animation: fadeIn 0.8s ease-in-out;
-    }
-
-    &-left {
-      animation: fadeIn 0.8s ease-in-out;
-    }
-  }
-
-  &-quote {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    font-style: italic;
-  }
-
-  &-name {
-    font-size: 1.125rem;
-    font-weight: $font-weight-medium;
-    margin-bottom: 0.5rem;
-  }
-
-  &-role {
-    font-size: 1rem;
-    color: $color-secondary-text;
-  }
+.testi {
+  padding: 140px 0 100px; background: var(--ink);
+  color: var(--cream); position: relative; overflow: hidden;
 }
-
-// Keyframe animations for smooth transitions
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.testi-head {
+  text-align: center; margin-bottom: 80px;
+  max-width: 720px; margin-left: auto; margin-right: auto; padding: 0 32px;
 }
-
-// Mobile styles
-@media (max-width: 768px) {
-  .testimonials {
-      margin-top:8em;
-    margin-bottom: 5rem;
-
-    &-container {
-      gap: 1.5rem;
-      padding: 0 1.5rem;
-    }
-
-    &-arrow {
-      padding: 0;
-
-      svg {
-        width: 24px;
-        height: 24px;
-      }
-    }
-
-    &-content {
-      padding: 1rem 0;
-      height: 180px;
-    }
-
-    &-quote {
-      font-size: 1.125rem;
-      margin-bottom: 1.5rem;
-    }
-
-    &-name {
-      font-size: 1rem;
-    }
-
-    &-role {
-      font-size: 0.875rem;
-    }
-  }
+.testi-head .testi-eyebrow {
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: #FFDA63; margin-bottom: 20px;
+}
+.testi-head h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(44px, 5.5vw, 80px); line-height: 0.95;
+  letter-spacing: -0.03em; margin: 0; color: var(--cream);
+}
+.testi-head h2 .pop {
+  font-family: var(--font-script); color: var(--coral);
+  font-weight: 400; transform: rotate(-3deg); display: inline-block;
+}
+.testi-track-wrap { overflow: hidden; padding: 20px 0 60px; }
+.testi-track {
+  display: flex; gap: 28px;
+  animation: testiscroll 50s linear infinite; padding-left: 32px;
+}
+@keyframes testiscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.testi-card {
+  flex: 0 0 460px; background: var(--cream); color: var(--ink);
+  padding: 36px 32px; border-radius: var(--radius-lg);
+  border: 2px solid var(--ink); box-shadow: 8px 8px 0 0 #FFDA63;
+  transition: transform .4s;
+}
+.testi-card:nth-child(even) { box-shadow: 8px 8px 0 0 var(--coral); }
+.testi-card:nth-child(3n) { box-shadow: 8px 8px 0 0 var(--zen-green); }
+.testi-card:hover { transform: translateY(-6px); }
+.testi-card .stars {
+  color: var(--coral); font-size: 16px;
+  letter-spacing: 4px; margin-bottom: 14px;
+}
+.testi-card blockquote {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 22px; line-height: 1.3; letter-spacing: -0.01em;
+  margin: 0 0 22px; color: var(--ink);
+}
+.testi-card .who {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 18px; border-top: 1px solid var(--line);
+}
+.testi-card .avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--zen-green-mist); display: flex;
+  align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700;
+  color: var(--zen-green-deep); font-size: 16px;
+}
+.testi-card .t-name { font-weight: 600; font-size: 14px; color: var(--ink); }
+.testi-card .role {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
 }

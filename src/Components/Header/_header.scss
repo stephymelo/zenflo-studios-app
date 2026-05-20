@@ -1,188 +1,68 @@
 @use '../../Styles/variables' as *;
 
-.header {
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;
+  transition: background .35s var(--ease-flow), backdrop-filter .35s;
+}
+.nav.scrolled {
+  background: rgba(255,246,224,0.85); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+}
+.nav-logo {
+  height: 32px; width: auto;
+  transition: transform .35s var(--ease-flow);
+}
+.nav-brand:hover .nav-logo { transform: scale(1.05); }
 
+.nav-links {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 28px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2);
+}
+.nav-links a { position: relative; padding: 6px 0; }
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 0; height: 1.4px; background: var(--zen-green);
+  transition: width .5s var(--ease-flow);
+}
+.nav-links a:hover::after { width: 100%; }
 
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  transition: all 0.3s ease;
-  background-color: transparent;
-  box-shadow: none;
-  border-bottom: 1px solid transparent;
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ink); color: var(--cream);
+  padding: 10px 18px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: transform .35s var(--ease-flow), background .35s;
+}
+.nav-cta:hover { background: var(--zen-green-deep); transform: translateY(-2px); }
+.nav-cta .arrow { width: 14px; height: 14px; transition: transform .35s; }
+.nav-cta:hover .arrow { transform: translateX(3px) rotate(-45deg); }
 
-  &-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    padding: 2.5rem 1.25rem 1rem;
-    margin: 0 auto;
+.nav-hamburger {
+  display: none; background: none; border: none;
+  width: 24px; height: 18px; position: relative; z-index: 101;
+  cursor: pointer; padding: 0;
+
+  span {
+    display: block; width: 100%; height: 1.4px;
+    background: var(--ink); transition: all 0.3s ease;
+    position: absolute; left: 0;
   }
-
-  &.scrolled {
-    background-color: $color-background;
-    border-bottom: 1px solid $color-divider;
-  }
-
-  // Contact page specific styles
-  &.contact-page {
-    .logo {
-      path {
-        fill: $color-primary-text !important; // Green on contact page
-      }
-    }
-  }
-
-  .logo-container {
-    height: 30px;
-    transition: height 0.3s ease;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    .logo {
-      height: 100%;
-      width: auto;
-      transition: all 0.3s ease;
-
-
-      path {
-        fill: $color-primary-text;
-        transition: fill 0.3s ease;
-      }
-
-      // Scrolled state - green logo
-      &.logo-scrolled {
-        path {
-          fill: $color-primary-text; // Your green color from variables
-        }
-      }
-
-      // Always green (for contact page)
-      &.logo-green {
-        path {
-          fill: $color-primary-text !important; // Force green on contact page
-        }
-      }
-    }
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-  }
-
-  .lets-talk-container {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    background-color: $color-primary;
-    padding: 0.75rem 2rem;
-    border-radius: $border-radius-md;
-  }
-
-  .lets-talk-link {
-    color: $color-background;
-    font-family: $font-family;
-    font-size: $font-size-base;
-    font-weight: $font-weight-medium;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background-color: $color-background;
-      transition: width 0.3s ease;
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
-  }
+  span:nth-child(1) { top: 0; }
+  span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  span:nth-child(3) { bottom: 0; }
+  &.open span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+  &.open span:nth-child(2) { opacity: 0; }
+  &.open span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
 }
 
-// Hamburger menu styles
-.hamburger-menu {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 20px;
-  height: 16px;
-  position: relative;
-  z-index: 1001;
-
-  .hamburger-line {
-    display: block;
-    width: 100%;
-    height: 1.2px;
-    background-color: $color-background;
-    transition: all 0.3s ease;
-    position: absolute;
-    left: 0;
-
-    &:nth-child(1) {
-      top: 0;
-    }
-
-    &:nth-child(2) {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &:nth-child(3) {
-      bottom: 0;
-    }
-
-    &.open {
-      &:nth-child(1) {
-        top: 50%;
-        transform: translateY(-50%) rotate(45deg);
-      }
-
-      &:nth-child(2) {
-        opacity: 0;
-      }
-
-      &:nth-child(3) {
-        bottom: 50%;
-        transform: translateY(50%) rotate(-45deg);
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    justify-content: space-between;
-    padding: 1rem 20px;
-
-    &-container {
-      padding: 1rem 1.25rem;
-      justify-content: space-between;
-    }
-
-    .lets-talk-container {
-      padding: 0.5rem 1rem;
-      background-color: transparent;
-      gap: 0;
-    }
-
-    .lets-talk-link {
-      display: none;
-    }
-
-    .hamburger-line {
-      background-color: $color-primary-text;
-    }
-  }
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: block; }
 }

@@ -9,6 +9,11 @@
 @use './Pages/Landing/landing';
 @use './Pages/Landing/Sections/hero';
 @use './Pages/Landing/Sections/about';
+@use './Pages/Landing/Sections/marquee';
+@use './Pages/Landing/Sections/horizontalservices';
+@use './Pages/Landing/Sections/processrail';
+@use './Pages/Landing/Sections/testimonials';
+@use './Pages/Landing/Sections/ctasection';
 @use './Pages/Landing/Sections/services';
 @use './Pages/Landing/Sections/reel';
 @use './Pages/Landing/Sections/workflow';
@@ -16,11 +21,9 @@
 @use './Pages/Landing/Sections/service';
 @use './Pages/Landing/Sections/projects';
 @use './Pages/Landing/Sections/markets';
-@use './Pages/Landing/Sections/testimonials';
 @use './Pages/Landing/Sections/quote';
 @use './Pages/Contact/contact';
 @use './Pages/Works/work';
-
 
 @use './Pages/Presentation/proposalroga';
 @use './Pages/Presentation/proposalhernan';
@@ -29,37 +32,14 @@
 @use './Pages/Presentation/aprilcalendar';
 @use './Pages/Presentation/marketingcampaignnil';
 
-
 @use './Components/Header/header';
 @use './Components/Footer/footer';
 @use './Components/Menu/menu';
 @use './Components/Button/button';
 
-
-
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-
-
-
-
-
-
-@font-face{
-    font-family: SpaceGrotesk, sans-serif;
-    src:  url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-}
-
-@font-face{
-    font-family: 'Montserrat', sans-serif;
-    src:  url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;600;700;800&family=Inconsolata:wght@400;500;600;700&family=Shrikhand&display=swap');
 
 #app {
- 
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
- 
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

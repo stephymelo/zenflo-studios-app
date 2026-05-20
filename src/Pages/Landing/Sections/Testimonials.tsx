@@ -1,111 +1,47 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
+import React, { useEffect, useRef } from 'react';
 
-interface Testimonial {
-  id: number;
-  quote: string;
-  name: string;
-  role: string;
-}
+const testimonials = [
+  { quote: "Zenflo made us look like a brand that's been around for ten years — on launch day.", name: 'Mariana Restrepo', role: 'Founder, Aura Beauty', initials: 'MR' },
+  { quote: "They get beauty. They get DTC. They get that I'm not just buying pixels — I'm buying a business that works.", name: 'Daniela Castro', role: 'CEO, Florería Skin', initials: 'DC' },
+  { quote: 'Our Shopify revenue tripled in the first quarter post-relaunch. The site does the work for me now.', name: 'Sofía Vega', role: 'Founder, Botánica Co.', initials: 'SV' },
+  { quote: 'Working with Zenflo felt like having a creative director on the team — without the agency price tag.', name: 'Lina Pacheco', role: 'Brand Lead, Mango Hair', initials: 'LP' },
+];
 
 const Testimonials: React.FC = () => {
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      quote: "“Attentive, communicative, and always ready with helpful guidance — a pleasure to work with.",
-      name: "Michael Kerzner",
-      role: "CEO, Premier Nail Source"
-    },
-    {
-      id: 2,
-      quote: "Collaborative environment and truly understood our vision and brought it to life.",
-      name: "Ricky Arias",
-      role: "Marketing Director, New Image Labs"
-    },
+  const sectionRef = useRef<HTMLElement>(null);
 
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<'left' | 'right'>('right');
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const currentTestimonial = testimonials[currentIndex];
-
-  // Auto-play functionality
   useEffect(() => {
-    const startTimer = () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); }),
+      { threshold: 0.1 }
+    );
+    sectionRef.current?.querySelectorAll('.rv').forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
-      timerRef.current = setInterval(() => {
-        setDirection('right');
-        handleNext();
-      }, 6000);
-    };
-
-    startTimer();
-
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-    };
-  }, [currentIndex]);
-
-  const handlePreviousClick = () => {
-    setDirection('left');
-    handlePrevious();
-  };
-
-  const handleNextClick = () => {
-    setDirection('right');
-    handleNext();
-  };
+  const cards = [...testimonials, ...testimonials];
 
   return (
-    <section className="testimonials">
-      <h4 className="testimonials-heading">Testimonials</h4>
-
-      <div className="testimonials-container">
-        <div
-          className="testimonials-arrow testimonials-arrow-left"
-          onClick={handlePreviousClick}
-          aria-label="Previous testimonial"
-          role="button"
-          tabIndex={0}
-        >
-          <IconArrowLeft size={32} stroke={1} />
-        </div>
-
-        <div className="testimonials-content" key={currentIndex}>
-          <div className={`testimonials-slide testimonials-slide-${direction}`}>
-            <p className="testimonials-quote">"{currentTestimonial.quote}"</p>
-            <p className="testimonials-name">{currentTestimonial.name}</p>
-            <p className="testimonials-role">{currentTestimonial.role}</p>
-          </div>
-        </div>
-
-        <div
-          className="testimonials-arrow testimonials-arrow-right"
-          onClick={handleNextClick}
-          aria-label="Next testimonial"
-          role="button"
-          tabIndex={0}
-        >
-          <IconArrowRight size={32} stroke={1} />
+    <section className="testi" ref={sectionRef}>
+      <div className="testi-head">
+        <div className="testi-eyebrow rv">Kind words</div>
+        <h2 className="rv rv-2">Founders who let us <span className="pop">help</span>.</h2>
+      </div>
+      <div className="testi-track-wrap">
+        <div className="testi-track">
+          {cards.map((t, i) => (
+            <div className="testi-card" key={i}>
+              <div className="stars">★★★★★</div>
+              <blockquote>"{t.quote}"</blockquote>
+              <div className="who">
+                <div className="avatar">{t.initials}</div>
+                <div>
+                  <div className="t-name">{t.name}</div>
+                  <div className="role">{t.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

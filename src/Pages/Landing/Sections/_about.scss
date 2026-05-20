@@ -1,43 +1,72 @@
 .about {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  padding: 8em 0;
-  display: flex;
-  align-items: center;
+  padding: 140px 32px 120px; background: var(--cream);
+  position: relative; overflow: hidden;
+}
+.about-inner {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-eyebrow {
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 14px;
+}
+.about-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--coral); }
+.about-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(48px, 6vw, 96px); line-height: 0.95;
+  letter-spacing: -0.03em; color: var(--ink); margin: 0 0 32px;
+}
+.about-title .swash {
+  font-family: var(--font-script); font-weight: 400; font-size: 0.92em;
+  color: var(--zen-green); display: inline-block;
+  transform: rotate(-4deg); margin-right: 8px; line-height: 1;
+}
+.about-body { font-size: 18px; line-height: 1.65; color: var(--ink-2); margin: 0 0 24px; max-width: 480px; }
+.about-body strong { color: var(--ink); font-weight: 600; }
+.about-stats {
+  display: flex; gap: 40px; margin-top: 40px;
+  padding-top: 32px; border-top: 1.5px solid var(--line);
+}
+.about-stats .stat { display: flex; flex-direction: column; gap: 6px; }
+.about-stats .stat-num {
+  font-family: var(--font-display); font-weight: 700; font-size: 56px;
+  line-height: 1; letter-spacing: -0.02em; color: var(--zen-green-deep);
+}
+.about-stats .stat-lbl {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+}
 
-  &-container {
-    width: 45%;
-    margin-left: 12rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-  }
+.about-collage { position: relative; height: 560px; }
+.collage-card {
+  position: absolute; border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-3);
+  transition: transform .8s var(--ease-flow);
+}
+.collage-card img, .collage-card div { width: 100%; height: 100%; object-fit: cover; }
+.collage-card.c1 { left: 0; top: 30px; width: 62%; height: 360px; transform: rotate(-3deg); z-index: 2; }
+.collage-card.c2 { right: 0; top: 0; width: 46%; height: 280px; transform: rotate(4deg); z-index: 1; border: 6px solid var(--cream); }
+.collage-card.c3 { right: 30px; bottom: 0; width: 50%; height: 240px; transform: rotate(-2deg); z-index: 3; border: 6px solid var(--butter); }
+.about-collage:hover .c1 { transform: rotate(-1deg) translateY(-6px); }
+.about-collage:hover .c2 { transform: rotate(2deg) translateY(-6px); }
+.about-collage:hover .c3 { transform: rotate(0deg) translateY(-6px); }
+.collage-tag {
+  position: absolute; top: 40px; right: -20px;
+  background: var(--butter); color: var(--ink);
+  padding: 12px 20px; border: 2px solid var(--ink); border-radius: 999px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+  transform: rotate(8deg); box-shadow: var(--shadow-stamp); z-index: 5;
+}
+.collage-script {
+  position: absolute; bottom: -16px; left: -10px;
+  font-family: var(--font-script); font-size: 64px;
+  color: var(--coral); transform: rotate(-6deg); z-index: 5; line-height: 1;
+}
 
-  &-text {
-    font-size: 28px;
-    font-weight: 300;
-    line-height: 150%;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-
-    &.animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @media (max-width: 768px) {
-    &-container {
-      width: 90%;
-      margin: 0 auto;
-      gap: 1.5em;
-    }
-
-    &-text {
-      font-size: 22px;
-      transform: translateX(-15px);
-    }
-  }
+@media (max-width: 980px) {
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-collage { height: 400px; }
 }

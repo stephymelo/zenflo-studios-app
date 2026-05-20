@@ -1,44 +1,95 @@
-// Color Palette
-$color-primary: #49D3BA;
-$color-primary-dark: #015656;
-$color-primary-light: #78caca;
-$color-secondary: #03dac6;
-$color-secondary-light: #03dac6;
-$color-secondary-dark: #053535;
-$color-error: #b00020;
-$color-background: #f3f3ee;
-// $color-background: #f4f4f9;
+// Zenflo 2026 Design System
 
-$color-white:#f4f4f9;
-$color-primary-text: #231F20;
-$color-secondary-text: #8d9491;
-$color-primary-text-hover:#3f935b;
+// Brand core
+$zen-green:        #54B37C;
+$zen-green-deep:   #2F7E54;
+$zen-green-darker: #14422C;
+$zen-green-soft:   #A8D6BB;
+$zen-green-mist:   #E1F0E7;
 
-$color-divider:#d1d1d1;
+$butter:           #F8EFD4;
+$cream:            #FFF6E0;
+$cream-warm:       #F8EFD4;
+$sand:             #EFE3C2;
 
+$coral:            #FF6B57;
+$coral-deep:       #D9442F;
 
-// Spacing
-$spacing-unit: 8px;
-$spacing-1: $spacing-unit;       // 8px
-$spacing-2: $spacing-unit * 2;   // 16px
-$spacing-3: $spacing-unit * 3;   // 24px
-$spacing-4: $spacing-unit * 4;   // 32px
+$ink:              #0A1F18;
+$ink-2:            #2A3A33;
+$ink-3:            #5C6B65;
+$line:             #D9D2BB;
 
-// Typography
-$font-family: 'Inconsolata', system-ui, sans-serif;
-$font-size-base: 16px;
-$font-size-small: 14px;
-$font-size-large: 20px;
-$font-weight-regular: 400;
-$font-weight-medium: 600;
-$font-weight-bold: 700;
+// Fonts
+$font-display: "Bricolage Grotesque", "Archivo Black", "Inter", system-ui, sans-serif;
+$font-script:  "Shrikhand", "Sansita Swashed", cursive;
+$font-sans:    "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+$font-mono:    "Inconsolata", "JetBrains Mono", ui-monospace, monospace;
 
-// Elevation
+// Radii / shadows / easing
+$radius-lg: 22px;
+$shadow-3: 0 14px 36px rgba(10,31,24,0.12);
+$shadow-stamp: 6px 6px 0 0 $ink;
+$ease-flow: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// Legacy aliases (used by presentation pages + button)
+$color-primary:        $zen-green;
+$color-primary-dark:   $zen-green-deep;
+$color-primary-light:  $zen-green-soft;
+$color-primary-text:   $ink;
+$color-secondary-text: $ink-3;
+$color-background:     $cream;
+$color-white:          #fff;
+$color-divider:        $line;
+$color-secondary:      $zen-green;
+$color-secondary-light: $zen-green-soft;
+$color-secondary-dark: $zen-green-darker;
+$color-error:          $coral;
+$color-primary-text-hover: $zen-green;
+$font-family:          $font-sans;
+$font-size-base:       16px;
+$font-size-small:      14px;
+$font-size-large:      20px;
+$font-weight-regular:  400;
+$font-weight-medium:   500;
+$font-weight-bold:     700;
+$spacing-unit:         8px;
+$spacing-1: $spacing-unit;
+$spacing-2: $spacing-unit * 2;
+$spacing-3: $spacing-unit * 3;
+$spacing-4: $spacing-unit * 4;
+$border-radius-sm:     4px;
+$border-radius-md:     8px;
+$border-radius-lg:     12px;
 $elevation-1: 0 1px 3px rgba(0,0,0,0.12);
 $elevation-2: 0 4px 6px rgba(0,0,0,0.1);
 $elevation-3: 0 10px 15px rgba(0,0,0,0.1);
 
-// Border
-$border-radius-sm: 4px;
-$border-radius-md: 8px;
-$border-radius-lg: 12px;
+// CSS custom properties (used in component styles)
+:root {
+  --zen-green:        #{$zen-green};
+  --zen-green-deep:   #{$zen-green-deep};
+  --zen-green-darker: #{$zen-green-darker};
+  --zen-green-soft:   #{$zen-green-soft};
+  --zen-green-mist:   #{$zen-green-mist};
+  --butter:           #{$butter};
+  --cream:            #{$cream};
+  --cream-warm:       #{$cream-warm};
+  --sand:             #{$sand};
+  --coral:            #{$coral};
+  --coral-deep:       #{$coral-deep};
+  --ink:              #{$ink};
+  --ink-2:            #{$ink-2};
+  --ink-3:            #{$ink-3};
+  --line:             #{$line};
+  --font-display: #{$font-display};
+  --font-script:  #{$font-script};
+  --font-sans:    #{$font-sans};
+  --font-mono:    #{$font-mono};
+  --radius-lg: #{$radius-lg};
+  --shadow-3: #{$shadow-3};
+  --shadow-stamp: 6px 6px 0 0 var(--ink);
+  --ease-flow: #{$ease-flow};
+  --ease-bounce: #{$ease-bounce};
+}

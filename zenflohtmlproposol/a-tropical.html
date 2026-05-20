@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Zenflo — Tropical Riso</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="stylesheet" href="assets/colors_and_type.css"/>
+<style>
+  /* ─── Base ─── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--font-sans); overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; }
+
+  /* Reveal on scroll */
+  .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-flow), transform .9s var(--ease-flow); }
+  .rv.in { opacity: 1; transform: none; }
+  .rv-2 { transition-delay: .12s; }
+  .rv-3 { transition-delay: .24s; }
+  .rv-4 { transition-delay: .36s; }
+  .rv-5 { transition-delay: .48s; }
+
+  /* ─── Grain texture ─── */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 200;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04, 0 0 0 0 0.12, 0 0 0 0 0.10, 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: .55; mix-blend-mode: multiply;
+  }
+
+  /* ─── Header ─── */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; transition: background .35s var(--ease-flow), backdrop-filter .35s; }
+  .nav.scrolled { background: rgba(255,246,224,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; color: var(--zen-green-deep); }
+  .nav-brand .dot { width: 10px; height: 10px; background: var(--zen-green); border-radius: 50%; box-shadow: 0 0 0 3px var(--cream), 0 0 0 4.5px var(--zen-green); animation: pulse 2.6s var(--ease-flow) infinite; }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+  .nav-links { display: flex; gap: 28px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+  .nav-links a { position: relative; padding: 6px 0; }
+  .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1.4px; background: var(--zen-green); transition: width .5s var(--ease-flow); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--cream); padding: 10px 18px; border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; transition: transform .35s var(--ease-flow), background .35s; }
+  .nav-cta:hover { background: var(--zen-green-deep); transform: translateY(-2px); }
+  .nav-cta .arrow { width: 14px; height: 14px; transition: transform .35s; }
+  .nav-cta:hover .arrow { transform: translateX(3px) rotate(-45deg); }
+
+  /* ─── HERO ─── */
+  .hero { position: relative; min-height: 100vh; padding: 120px 32px 80px; overflow: hidden; display: flex; flex-direction: column; }
+  .hero-mark {
+    position: absolute; left: 50%; top: 50%;
+    width: 76vw; max-width: 1200px;
+    transform: translate(-50%, -42%) rotate(-3deg);
+    opacity: .85;
+    color: var(--zen-green);
+    pointer-events: none;
+    transition: transform 0.1s linear;
+    will-change: transform;
+    z-index: 1;
+  }
+  .hero-mark svg { width: 100%; height: auto; display: block; }
+  .hero-mark svg path { fill: var(--zen-green); }
+  .hero-eyebrows { position: absolute; top: 110px; left: 32px; right: 32px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2); z-index: 3; }
+  .hero-eyebrows .dot-line { display: flex; gap: 10px; align-items: center; }
+  .hero-eyebrows .dot-line::before { content: ""; width: 30px; height: 1px; background: var(--ink-2); }
+
+  .hero-inner { position: relative; max-width: 1240px; width: 100%; margin: 0 auto; z-index: 2; padding-top: 80px; flex: 0 0 auto; }
+  .hero-h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(80px, 12vw, 220px); line-height: 0.86; letter-spacing: -0.035em; color: var(--ink); margin: 0; mix-blend-mode: multiply; }
+  .hero-h1 .line { display: block; opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease-flow), transform .9s var(--ease-flow); }
+  .hero-h1.in .line:nth-child(1) { opacity: 1; transform: none; transition-delay: .15s; }
+  .hero-h1.in .line:nth-child(2) { opacity: 1; transform: none; transition-delay: .30s; }
+  .hero-h1.in .line:nth-child(3) { opacity: 1; transform: none; transition-delay: .45s; }
+  .hero-h1 .scribble { color: var(--coral); font-family: var(--font-script); font-style: normal; letter-spacing: -0.01em; display: inline-block; transform: translateY(8px) rotate(-3deg); }
+  .hero-h1 em { font-style: normal; color: var(--zen-green-deep); }
+
+  .hero-foot { position: relative; max-width: 1240px; width: 100%; margin: auto auto 0; padding-top: 56px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; z-index: 3; flex-wrap: wrap; }
+  .hero-sub { max-width: 460px; font-size: 18px; line-height: 1.55; color: var(--ink-2); font-weight: 400; }
+  .hero-sub strong { font-weight: 600; color: var(--ink); }
+  .hero-stamps { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stamp { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border: 2px solid var(--ink); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--cream); transition: transform .35s var(--ease-bounce); }
+  .stamp.butter { background: #FFDA63; transform: rotate(-3deg); }
+  .stamp.coral { background: var(--coral); color: var(--cream); border-color: var(--ink); transform: rotate(2.5deg); }
+  .stamp.green { background: var(--zen-green); color: var(--cream); transform: rotate(-1deg); }
+  .stamp:hover { transform: rotate(0) translateY(-3px); }
+  .stamp .bullet { width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
+
+  .hero-scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-3); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3; }
+  .hero-scroll .line { width: 1px; height: 36px; background: var(--ink-3); animation: drop 1.8s var(--ease-flow) infinite; transform-origin: top; }
+  @keyframes drop { 0%,100% { transform: scaleY(0); } 50% { transform: scaleY(1); } }
+
+  /* ─── Marquee ─── */
+  .marquee { background: var(--ink); color: var(--cream); padding: 18px 0; overflow: hidden; white-space: nowrap; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); position: relative; z-index: 5; }
+  .marquee-track { display: inline-flex; gap: 48px; animation: marq 30s linear infinite; padding-left: 24px; }
+  .marquee.alt { background: var(--coral); color: var(--cream); }
+  .marquee.alt .marquee-track { animation-direction: reverse; animation-duration: 36s; }
+  .marquee.butter { background: #FFDA63; color: var(--ink); }
+  @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-item { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4vw, 56px); letter-spacing: -0.02em; line-height: 1; display: inline-flex; align-items: center; gap: 32px; }
+  .marquee-item .star { color: var(--zen-green); font-family: var(--font-script); font-size: 0.7em; }
+  .marquee.alt .marquee-item .star { color: var(--ink); }
+  .marquee.butter .marquee-item .star { color: var(--coral); }
+
+  /* ─── ABOUT (South Florida + Beauty story) ─── */
+  .about { padding: 140px 32px 120px; background: var(--cream); position: relative; overflow: hidden; }
+  .about-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+  .about-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--coral); }
+  .about-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.95; letter-spacing: -0.03em; color: var(--ink); margin: 0 0 32px; }
+  .about-title .swash { font-family: var(--font-script); font-weight: 400; font-size: 0.92em; color: var(--zen-green); display: inline-block; transform: rotate(-4deg); margin-right: 8px; line-height: 1; }
+  .about-body { font-size: 18px; line-height: 1.65; color: var(--ink-2); margin: 0 0 24px; max-width: 480px; }
+  .about-body strong { color: var(--ink); font-weight: 600; }
+  .about-stats { display: flex; gap: 40px; margin-top: 40px; padding-top: 32px; border-top: 1.5px solid var(--line); }
+  .about-stats .stat { display: flex; flex-direction: column; gap: 6px; }
+  .about-stats .stat-num { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1; letter-spacing: -0.02em; color: var(--zen-green-deep); }
+  .about-stats .stat-lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+
+  .about-collage { position: relative; height: 560px; }
+  .collage-card { position: absolute; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-3); transition: transform .8s var(--ease-flow); }
+  .collage-card img { width: 100%; height: 100%; object-fit: cover; }
+  .collage-card.c1 { left: 0; top: 30px; width: 62%; height: 360px; transform: rotate(-3deg); z-index: 2; }
+  .collage-card.c2 { right: 0; top: 0; width: 46%; height: 280px; transform: rotate(4deg); z-index: 1; border: 6px solid var(--cream); }
+  .collage-card.c3 { right: 30px; bottom: 0; width: 50%; height: 240px; transform: rotate(-2deg); z-index: 3; border: 6px solid var(--butter); }
+  .about-collage:hover .c1 { transform: rotate(-1deg) translateY(-6px); }
+  .about-collage:hover .c2 { transform: rotate(2deg) translateY(-6px); }
+  .about-collage:hover .c3 { transform: rotate(0deg) translateY(-6px); }
+  .collage-tag { position: absolute; top: 40px; right: -20px; background: var(--butter); color: var(--ink); padding: 12px 20px; border: 2px solid var(--ink); border-radius: 999px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; transform: rotate(8deg); box-shadow: var(--shadow-stamp); z-index: 5; }
+  .collage-script { position: absolute; bottom: -16px; left: -10px; font-family: var(--font-script); font-size: 64px; color: var(--coral); transform: rotate(-6deg); z-index: 5; line-height: 1; }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--zen-green-darker); color: var(--cream); padding: 140px 32px 160px; position: relative; overflow: hidden; }
+  .services::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(168,214,187,0.07) 1px, transparent 1px); background-size: 24px 24px; opacity: .8; }
+  .services-inner { max-width: 1240px; margin: 0 auto; position: relative; }
+  .services-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 80px; }
+  .services-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--zen-green-soft); display: flex; align-items: center; gap: 14px; }
+  .services-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--coral); }
+  .services-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(56px, 8vw, 140px); line-height: 0.86; letter-spacing: -0.035em; color: var(--cream); margin: 0; }
+  .services-title .pop { color: var(--coral); font-family: var(--font-script); font-weight: 400; display: inline-block; transform: rotate(-3deg); }
+  .services-title em { font-style: normal; color: #FFDA63; }
+  .services-sub { font-size: 18px; line-height: 1.55; color: var(--zen-green-soft); max-width: 380px; padding-bottom: 18px; }
+
+  .service-row { display: grid; grid-template-columns: 80px 1fr 1.4fr 200px; gap: 24px; padding: 36px 0; border-top: 1px solid rgba(255,246,224,0.18); align-items: center; cursor: pointer; transition: padding .5s var(--ease-flow); position: relative; }
+  .service-row:last-child { border-bottom: 1px solid rgba(255,246,224,0.18); }
+  .service-row .num { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.2em; color: var(--zen-green-soft); }
+  .service-row .name { font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 4.5vw, 64px); line-height: 1; letter-spacing: -0.02em; color: var(--cream); transition: color .4s var(--ease-flow), transform .5s var(--ease-flow); }
+  .service-row .desc { font-size: 16px; line-height: 1.55; color: var(--zen-green-soft); max-width: 460px; opacity: 0.8; transition: opacity .4s; }
+  .service-row .tags { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--zen-green-soft); text-align: right; }
+  .service-row::after { content: "→"; position: absolute; right: -8px; top: 50%; transform: translate(20px, -50%); opacity: 0; font-size: 32px; color: var(--coral); transition: all .5s var(--ease-flow); }
+  .service-row:hover { padding-left: 24px; }
+  .service-row:hover .name { color: #FFDA63; transform: translateX(6px); }
+  .service-row:hover .desc { opacity: 1; }
+  .service-row:hover::after { opacity: 1; transform: translate(0, -50%); }
+  .service-row .name .script { font-family: var(--font-script); color: var(--coral); transform: rotate(-3deg) translateY(4px); display: inline-block; }
+
+  /* ─── PROCESS ─── */
+  .process { padding: 140px 32px 160px; background: var(--cream); position: relative; overflow: hidden; }
+  .process-bamboo { position: absolute; left: 50%; top: -5%; transform: translateX(-50%); height: 110%; width: auto; opacity: 0.15; pointer-events: none; }
+  .process-inner { max-width: 1240px; margin: 0 auto; position: relative; }
+  .process-head { text-align: center; margin-bottom: 100px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .process-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--coral); margin-bottom: 24px; }
+  .process-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.95; letter-spacing: -0.03em; color: var(--ink); margin: 0 0 24px; }
+  .process-title .swash { font-family: var(--font-script); font-weight: 400; color: var(--zen-green); font-style: normal; display: inline-block; transform: rotate(-3deg); margin: 0 4px; }
+  .process-sub { font-size: 19px; color: var(--ink-2); }
+
+  .process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 28px; position: relative; }
+  .process-step { background: var(--cream); padding: 32px 24px; border-radius: var(--radius-lg); border: 2px solid var(--ink); box-shadow: var(--shadow-stamp); transition: transform .4s var(--ease-flow); position: relative; }
+  .process-step:nth-child(odd) { transform: rotate(-1.5deg); }
+  .process-step:nth-child(even) { transform: rotate(1.5deg); }
+  .process-step:hover { transform: rotate(0) translateY(-6px); box-shadow: 10px 10px 0 0 var(--ink); }
+  .process-step.s1 { background: var(--cream); }
+  .process-step.s2 { background: #FFDA63; }
+  .process-step.s3 { background: var(--zen-green-mist); }
+  .process-step.s4 { background: var(--coral); color: var(--cream); }
+  .process-step.s4 .step-num, .process-step.s4 .step-dur { color: var(--cream); }
+  .process-step.s4 p { color: rgba(255,246,224,0.85); }
+  .process-step .step-num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; display: flex; justify-content: space-between; }
+  .process-step .step-dur { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; opacity: .6; }
+  .process-step h3 { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 12px; color: inherit; }
+  .process-step p { font-size: 14px; line-height: 1.55; margin: 0; color: var(--ink-2); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testi { padding: 140px 0 100px; background: var(--ink); color: var(--cream); position: relative; overflow: hidden; }
+  .testi-head { text-align: center; margin-bottom: 80px; max-width: 720px; margin-left: auto; margin-right: auto; padding: 0 32px; }
+  .testi-head .testi-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #FFDA63; margin-bottom: 20px; }
+  .testi-head h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(44px, 5.5vw, 80px); line-height: 0.95; letter-spacing: -0.03em; margin: 0; color: var(--cream); }
+  .testi-head h2 .pop { font-family: var(--font-script); color: var(--coral); font-weight: 400; transform: rotate(-3deg); display: inline-block; }
+  .testi-track-wrap { overflow: hidden; padding: 20px 0 60px; }
+  .testi-track { display: flex; gap: 28px; animation: testiscroll 50s linear infinite; padding-left: 32px; }
+  @keyframes testiscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .testi-card { flex: 0 0 460px; background: var(--cream); color: var(--ink); padding: 36px 32px; border-radius: var(--radius-lg); border: 2px solid var(--ink); box-shadow: 8px 8px 0 0 #FFDA63; transition: transform .4s; }
+  .testi-card:nth-child(even) { box-shadow: 8px 8px 0 0 var(--coral); }
+  .testi-card:nth-child(3n) { box-shadow: 8px 8px 0 0 var(--zen-green); }
+  .testi-card:hover { transform: translateY(-6px); }
+  .testi-card .stars { color: var(--coral); font-size: 16px; letter-spacing: 4px; margin-bottom: 14px; }
+  .testi-card blockquote { font-family: var(--font-display); font-weight: 600; font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 22px; color: var(--ink); }
+  .testi-card .who { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .testi-card .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--zen-green-mist); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; color: var(--zen-green-deep); font-size: 16px; }
+  .testi-card .name { font-weight: 600; font-size: 14px; color: var(--ink); }
+  .testi-card .role { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ─── CTA ─── */
+  .cta { padding: 140px 32px 140px; background: var(--zen-green-deep); color: var(--cream); position: relative; overflow: hidden; }
+  .cta-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
+  .cta-mark { position: absolute; right: -120px; bottom: -180px; width: 720px; opacity: 0.16; transform: rotate(-12deg); pointer-events: none; color: var(--cream); }
+  .cta-mark svg path { fill: var(--cream); }
+  .cta h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(56px, 7vw, 120px); line-height: 0.9; letter-spacing: -0.035em; margin: 0 0 28px; color: var(--cream); }
+  .cta h2 .pop { font-family: var(--font-script); font-weight: 400; color: #FFDA63; transform: rotate(-3deg); display: inline-block; }
+  .cta h2 .coral { color: var(--coral); }
+  .cta p { font-size: 19px; line-height: 1.55; color: rgba(255,246,224,0.85); margin: 0 0 32px; max-width: 480px; }
+  .cta-form { display: flex; flex-direction: column; gap: 18px; max-width: 460px; }
+  .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cta-form label { display: flex; flex-direction: column; gap: 6px; }
+  .cta-form label span { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--zen-green-soft); }
+  .cta-form input, .cta-form textarea { font-family: var(--font-sans); font-size: 16px; padding: 14px 16px; background: rgba(255,246,224,0.06); border: 1.5px solid rgba(255,246,224,0.22); border-radius: 14px; color: var(--cream); outline: none; transition: all .3s; font-weight: 400; }
+  .cta-form input:focus, .cta-form textarea:focus { border-color: #FFDA63; background: rgba(255,246,224,0.12); }
+  .cta-form textarea { resize: vertical; min-height: 90px; }
+  .cta-form button { align-self: flex-start; padding: 14px 28px; border: 2px solid var(--ink); background: #FFDA63; color: var(--ink); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; border-radius: 14px; box-shadow: 6px 6px 0 0 var(--ink); transform: rotate(-2deg); transition: transform .25s var(--ease-flow), box-shadow .25s; }
+  .cta-form button:hover { transform: rotate(0) translate(2px, 2px); box-shadow: 2px 2px 0 0 var(--ink); }
+  .cta-aside { display: flex; flex-direction: column; gap: 24px; position: relative; z-index: 3; }
+  .cta-aside .block { padding: 24px; border: 1.5px solid rgba(255,246,224,0.3); border-radius: 18px; }
+  .cta-aside .block h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #FFDA63; margin: 0 0 10px; font-weight: 500; }
+  .cta-aside .block p { font-size: 17px; line-height: 1.45; color: var(--cream); margin: 0; }
+  .cta-aside .block a { color: #FFDA63; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--ink); color: var(--cream); padding: 80px 32px 32px; }
+  .footer-inner { max-width: 1240px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,246,224,0.18); }
+  .footer-brand { font-family: var(--font-display); font-weight: 800; font-size: 48px; line-height: 0.95; letter-spacing: -0.03em; color: var(--cream); margin: 0 0 14px; }
+  .footer-brand .pop { font-family: var(--font-script); color: var(--zen-green); font-weight: 400; transform: rotate(-3deg); display: inline-block; }
+  .footer-tag { font-size: 15px; color: rgba(255,246,224,0.7); max-width: 260px; }
+  .footer-col h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--zen-green-soft); margin: 0 0 16px; font-weight: 500; }
+  .footer-col a { display: block; font-size: 15px; color: var(--cream); margin-bottom: 8px; transition: color .25s; }
+  .footer-col a:hover { color: #FFDA63; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,246,224,0.5); }
+  .footer-bottom .place { color: #FFDA63; }
+
+  /* responsive crunch */
+  @media (max-width: 980px) {
+    .hero-eyebrows { display: none; }
+    .about-inner, .services-head, .cta-inner, .footer-top { grid-template-columns: 1fr; gap: 40px; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .service-row { grid-template-columns: 50px 1fr; }
+    .service-row .desc, .service-row .tags { display: none; }
+  }
+</style>
+</head>
+<body class="zenflo" data-screen-label="01 Tropical">
+
+<!-- HEADER -->
+<header class="nav" id="nav">
+  <a class="nav-brand" href="#">
+    <span class="dot"></span>
+    zenflo
+  </a>
+  <nav class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#process">How we flow</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#contact" class="nav-cta">
+    Start growing
+    <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mark" id="heroMark">
+    <!-- Handpainted Z mark used as oversized background -->
+    <img src="assets/zenflo-handpainted.png" alt="" style="width:100%; mix-blend-mode: multiply; opacity:.55;"/>
+  </div>
+  <div class="hero-eyebrows">
+    <span class="dot-line">Zenflo Studios · est. 2025</span>
+    <span>Boca Raton · South Florida</span>
+  </div>
+  <div class="hero-inner">
+    <h1 class="hero-h1" id="heroH1">
+      <span class="line">We build</span>
+      <span class="line">your <em>vision,</em></span>
+      <span class="line">you <span class="scribble">grow.</span></span>
+    </h1>
+  </div>
+  <div class="hero-foot">
+    <p class="hero-sub">
+      A creative studio from <strong>South Florida</strong> turning beauty + lifestyle brands into the kind of shops you screenshot.
+      Brand → website → followers → sales — todo en uno.
+    </p>
+    <div class="hero-stamps">
+      <span class="stamp butter"><span class="bullet"></span>Brand</span>
+      <span class="stamp coral"><span class="bullet"></span>Shopify</span>
+      <span class="stamp green"><span class="bullet"></span>SEO + Social</span>
+      <span class="stamp"><span class="bullet" style="background:var(--coral)"></span>Print</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Branding <span class="star">✿</span> Web design <span class="star">✿</span> Shopify builds <span class="star">✿</span> SEO + growth <span class="star">✿</span> Social content <span class="star">✿</span> Print + packaging <span class="star">✿</span> Photography direction <span class="star">✿</span></span>
+    <span class="marquee-item">Branding <span class="star">✿</span> Web design <span class="star">✿</span> Shopify builds <span class="star">✿</span> SEO + growth <span class="star">✿</span> Social content <span class="star">✿</span> Print + packaging <span class="star">✿</span> Photography direction <span class="star">✿</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="work">
+  <div class="about-inner">
+    <div>
+      <div class="about-eyebrow rv">Who we are</div>
+      <h2 class="about-title rv rv-2">
+        From <span class="swash">Boca</span> with <br/>roots in <em style="font-style:normal;color:var(--coral);">Colombia.</em>
+      </h2>
+      <p class="about-body rv rv-3">
+        <strong>Zenflo Studios</strong> is a creative + development studio based in South Florida. We've spent the last few years building brands in the beauty space — salons, skincare lines, indie cosmetics, hair-care launches — and the secret recipe is the same every time: a clean identity, a Shopify that actually converts, and content people care enough to share.
+      </p>
+      <p class="about-body rv rv-4">
+        Bilingual, opinionated, and built for founders who want their brand to feel as good as it looks.
+      </p>
+      <div class="about-stats rv rv-5">
+        <div class="stat"><span class="stat-num" data-count="12">12</span><span class="stat-lbl">Beauty brands launched</span></div>
+        <div class="stat"><span class="stat-num" data-count="40">40+</span><span class="stat-lbl">Shopify stores live</span></div>
+        <div class="stat"><span class="stat-num" data-count="5">5</span><span class="stat-lbl">Years in beauty</span></div>
+      </div>
+    </div>
+    <div class="about-collage rv rv-2">
+      <span class="collage-tag">Beauty · DTC · Indie</span>
+      <div class="collage-card c1"><img src="assets/beauty-sector.jpg" alt=""/></div>
+      <div class="collage-card c2"><img src="assets/ecommerce-sector.jpg" alt=""/></div>
+      <div class="collage-card c3"><img src="assets/catalog-accessory.png" alt="" style="object-fit:contain; background:#FFDA63;"/></div>
+      <span class="collage-script">florecer</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE 2 -->
+<div class="marquee alt">
+  <div class="marquee-track">
+    <span class="marquee-item">Built in Boca <span class="star">✦</span> Roots in Colombia <span class="star">✦</span> Beauty brands a especialidad <span class="star">✦</span> Shopify partners <span class="star">✦</span> Available worldwide <span class="star">✦</span></span>
+    <span class="marquee-item">Built in Boca <span class="star">✦</span> Roots in Colombia <span class="star">✦</span> Beauty brands a especialidad <span class="star">✦</span> Shopify partners <span class="star">✦</span> Available worldwide <span class="star">✦</span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-head">
+      <div>
+        <div class="services-eyebrow rv">What we do</div>
+        <h2 class="services-title rv rv-2">Six ways <br/>we make you <span class="pop">bloom</span>.</h2>
+      </div>
+      <p class="services-sub rv rv-3">
+        Each one stands alone. Stitched together, they're how a beauty brand goes from idea to sold-out launch — usually in 60-90 days.
+      </p>
+    </div>
+
+    <div class="service-list">
+      <div class="service-row rv">
+        <span class="num">01</span>
+        <span class="name">Brand identity</span>
+        <span class="desc">Logo, type, color, voice — the whole personality. We build brands that look expensive and feel approachable.</span>
+        <span class="tags">Naming<br/>Logo + system<br/>Brand guidelines</span>
+      </div>
+      <div class="service-row rv">
+        <span class="num">02</span>
+        <span class="name">Websites <span class="script">+</span> Shopify</span>
+        <span class="desc">Hand-coded marketing sites and Shopify storefronts engineered to convert. Custom themes, fast loads, no template look.</span>
+        <span class="tags">Shopify Plus<br/>Custom themes<br/>Headless if needed</span>
+      </div>
+      <div class="service-row rv">
+        <span class="num">03</span>
+        <span class="name">Marketing strategy</span>
+        <span class="desc">Positioning, launch plans, funnels, paid + organic. We figure out who buys and why, then go get them.</span>
+        <span class="tags">GTM strategy<br/>Paid (Meta, TikTok)<br/>Email + SMS</span>
+      </div>
+      <div class="service-row rv">
+        <span class="num">04</span>
+        <span class="name">Content <span class="script">&</span> social</span>
+        <span class="desc">Photo + video direction, IG/TikTok playbooks, UGC casting. Content that scrolls slower and sells harder.</span>
+        <span class="tags">Photo direction<br/>Reels + TikToks<br/>Creator partnerships</span>
+      </div>
+      <div class="service-row rv">
+        <span class="num">05</span>
+        <span class="name">SEO <span class="script">+</span> Growth</span>
+        <span class="desc">Technical SEO, content strategy, retention loops. We don't promise overnight — we promise sustained traffic that compounds.</span>
+        <span class="tags">Technical SEO<br/>Content engine<br/>Analytics + CRO</span>
+      </div>
+      <div class="service-row rv">
+        <span class="num">06</span>
+        <span class="name">Print <span class="script">+</span> packaging</span>
+        <span class="desc">Business cards, secondary packaging, unboxing experiences. The bit your customer photographs and posts.</span>
+        <span class="tags">Packaging<br/>Print collateral<br/>Trade shows</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <img src="assets/bamboo-services.svg" alt="" class="process-bamboo"/>
+  <div class="process-inner">
+    <div class="process-head">
+      <div class="process-eyebrow rv">How we flow</div>
+      <h2 class="process-title rv rv-2">A <span class="swash">simple</span> path from <br/>seed to sold-out.</h2>
+      <p class="process-sub rv rv-3">
+        Four phases. Roughly 8–12 weeks for a full launch. No agency theatre, no slide decks for the sake of slide decks.
+      </p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step s1 rv">
+        <div class="step-num"><span>01 / Plant</span><span class="step-dur">Week 1</span></div>
+        <h3>Discovery & strategy</h3>
+        <p>We dig into your audience, competitors, and what makes you actually different. Output: a strategy doc you'll keep referring back to.</p>
+      </div>
+      <div class="process-step s2 rv rv-2">
+        <div class="step-num"><span>02 / Sprout</span><span class="step-dur">Week 2–4</span></div>
+        <h3>Brand & visual system</h3>
+        <p>Logo, type, color, photography direction, packaging. Two rounds of revisions. We build for scale — not just a hero image.</p>
+      </div>
+      <div class="process-step s3 rv rv-3">
+        <div class="step-num"><span>03 / Grow</span><span class="step-dur">Week 5–9</span></div>
+        <h3>Site & store build</h3>
+        <p>Shopify or custom marketing site. Real copy, real photography, real inventory hooked up. Tested across devices.</p>
+      </div>
+      <div class="process-step s4 rv rv-4">
+        <div class="step-num"><span>04 / Bloom</span><span class="step-dur">Ongoing</span></div>
+        <h3>Launch & grow</h3>
+        <p>Launch campaign, SEO foundation, paid + social plan. We stay on as growth partner for as long as you want us around.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="testi-head">
+    <div class="testi-eyebrow rv">Kind words</div>
+    <h2 class="rv rv-2">Founders who let us <span class="pop">help</span>.</h2>
+  </div>
+  <div class="testi-track-wrap">
+    <div class="testi-track">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Zenflo made us look like a brand that's been around for ten years — on launch day."</blockquote>
+        <div class="who">
+          <div class="avatar">MR</div>
+          <div><div class="name">Mariana Restrepo</div><div class="role">Founder, Aura Beauty</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"They get beauty. They get DTC. They get that I'm not just buying pixels — I'm buying a business that works."</blockquote>
+        <div class="who">
+          <div class="avatar">DC</div>
+          <div><div class="name">Daniela Castro</div><div class="role">CEO, Florería Skin</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Our Shopify revenue tripled in the first quarter post-relaunch. The site does the work for me now."</blockquote>
+        <div class="who">
+          <div class="avatar">SV</div>
+          <div><div class="name">Sofía Vega</div><div class="role">Founder, Botánica Co.</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Working with Zenflo felt like having a creative director on the team — without the agency price tag."</blockquote>
+        <div class="who">
+          <div class="avatar">LP</div>
+          <div><div class="name">Lina Pacheco</div><div class="role">Brand Lead, Mango Hair</div></div>
+        </div>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Zenflo made us look like a brand that's been around for ten years — on launch day."</blockquote>
+        <div class="who">
+          <div class="avatar">MR</div>
+          <div><div class="name">Mariana Restrepo</div><div class="role">Founder, Aura Beauty</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"They get beauty. They get DTC. They get that I'm not just buying pixels — I'm buying a business that works."</blockquote>
+        <div class="who">
+          <div class="avatar">DC</div>
+          <div><div class="name">Daniela Castro</div><div class="role">CEO, Florería Skin</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Our Shopify revenue tripled in the first quarter post-relaunch. The site does the work for me now."</blockquote>
+        <div class="who">
+          <div class="avatar">SV</div>
+          <div><div class="name">Sofía Vega</div><div class="role">Founder, Botánica Co.</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Working with Zenflo felt like having a creative director on the team — without the agency price tag."</blockquote>
+        <div class="who">
+          <div class="avatar">LP</div>
+          <div><div class="name">Lina Pacheco</div><div class="role">Brand Lead, Mango Hair</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUTTER MARQUEE -->
+<div class="marquee butter">
+  <div class="marquee-track">
+    <span class="marquee-item">Ready to grow? <span class="star">🌱</span> Let's plant something <span class="star">🌱</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e78f828b8b88a79d8289818b88949392838e8894c984888a">[email&#160;protected]</a> <span class="star">🌱</span> Ready to grow? <span class="star">🌱</span> Let's plant something <span class="star">🌱</span></span>
+    <span class="marquee-item">Ready to grow? <span class="star">🌱</span> Let's plant something <span class="star">🌱</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cca4a9a0a0a38cb6a9a2aaa0a3bfb8b9a8a5a3bfe2afa3a1">[email&#160;protected]</a> <span class="star">🌱</span> Ready to grow? <span class="star">🌱</span> Let's plant something <span class="star">🌱</span></span>
+  </div>
+</div>
+
+<!-- CTA / CONTACT -->
+<section class="cta" id="contact">
+  <div class="cta-mark"><img src="assets/zenflo-handpainted.png" alt="" style="width:100%; opacity:.4;"/></div>
+  <div class="cta-inner">
+    <div>
+      <h2 class="rv">Let's <span class="pop">grow</span> something <span class="coral">together.</span></h2>
+      <p class="rv rv-2">Tell us about your brand and where you want it to go. We'll come back within 48 hours with a flight plan, a rough timeline, and an honest estimate.</p>
+      <form class="cta-form rv rv-3">
+        <div class="cta-row">
+          <label><span>Your name</span><input type="text" placeholder="Mariana Restrepo"/></label>
+          <label><span>Your brand</span><input type="text" placeholder="Aura Beauty"/></label>
+        </div>
+        <label><span>Email</span><input type="email" placeholder="hello@yourbrand.com"/></label>
+        <label><span>What are you working on?</span><textarea placeholder="A skincare launch. Need brand + Shopify + first 90 days of content."></textarea></label>
+        <button type="button">Send the seed →</button>
+      </form>
+    </div>
+    <aside class="cta-aside">
+      <div class="block rv rv-2">
+        <h4>Email us</h4>
+        <p><a href="/cdn-cgi/l/email-protection#81e9e4ededeec1fbe4efe7edeef2f5f4e5e8eef2afe2eeec"><span class="__cf_email__" data-cfemail="82eae7eeeeedc2f8e7ece4eeedf1f6f7e6ebedf1ace1edef">[email&#160;protected]</span></a></p>
+      </div>
+      <div class="block rv rv-3">
+        <h4>We're based in</h4>
+        <p>Boca Raton, South Florida.<br/>Open from Bogotá to Miami.</p>
+      </div>
+      <div class="block rv rv-4">
+        <h4>Office hours</h4>
+        <p>Mon–Fri · 9am to 6pm EST<br/>Async by default — meetings on purpose.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <h3 class="footer-brand">zen<span class="pop">flo</span>.</h3>
+        <p class="footer-tag">A creative studio building beauty brands worth screenshotting. Boca Raton + Bogotá.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <a href="#">About</a>
+        <a href="#">Work</a>
+        <a href="#">Process</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Branding</a>
+        <a href="#">Shopify</a>
+        <a href="#">SEO + Growth</a>
+        <a href="#">Content + Social</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">LinkedIn</a>
+        <a href="/cdn-cgi/l/email-protection#6c04090000032c1609020a00031f18190805031f420f0301"><span class="__cf_email__" data-cfemail="d9b1bcb5b5b699a3bcb7bfb5b6aaadacbdb0b6aaf7bab6b4">[email&#160;protected]</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zenflo Studios</span>
+      <span class="place">Built in Boca · Roots in Colombia 🌱</span>
+      <span>v.2026.05</span>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function initLanding() {
+    // Scroll-triggered reveals
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+
+    // Hero h1: trigger rise on load (works whether iframe is initially in-view or not)
+    const h1 = document.getElementById('heroH1');
+    if (h1) setTimeout(() => h1.classList.add('in'), 80);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanding);
+  } else {
+    initLanding();
+  }
+
+  // Sticky-nav state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+
+  // Hero parallax — translate handpainted mark with scroll + mouse
+  const heroMark = document.getElementById('heroMark');
+  let mx = 0, my = 0, sy = 0;
+  window.addEventListener('scroll', () => {
+    sy = window.scrollY;
+    requestAnimationFrame(applyMark);
+  });
+  window.addEventListener('mousemove', (e) => {
+    const w = window.innerWidth, h = window.innerHeight;
+    mx = (e.clientX / w - 0.5) * 24;
+    my = (e.clientY / h - 0.5) * 16;
+    requestAnimationFrame(applyMark);
+  });
+  function applyMark() {
+    if (!heroMark) return;
+    const yScroll = sy * 0.25;
+    heroMark.style.transform = `translate(calc(-50% + ${mx}px), calc(-42% + ${my}px - ${yScroll}px)) rotate(-3deg)`;
+  }
+</script>
+</body>
+</html>

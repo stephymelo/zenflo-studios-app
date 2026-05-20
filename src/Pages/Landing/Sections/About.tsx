@@ -1,55 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from 'react';
 
-const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const aboutRef = useRef<HTMLDivElement>(null);
+const About: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          } else {
-            setIsVisible(false);
-          }
-        });
-      },
-      {
-        threshold: 0.3,
-        rootMargin: "0px 0px -100px 0px"
-      }
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); }),
+      { threshold: 0.1 }
     );
-
-    const currentRef = aboutRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
+    sectionRef.current?.querySelectorAll('.rv').forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
-  console.log("About isVisible:", isVisible); // Debug log
-
   return (
-    <section className="about" ref={aboutRef}>
-      <div className="about-container">
-            <h4>Who</h4>
-        <p
-          className={`about-text ${isVisible ? "animate" : ""}`}
-          style={{ transitionDelay: "0.1s" }}
-        >
-          Zenflo Studios is an interactive design agency creating digital
-          products and services.
-        </p>
-        <p
-          className={`about-text ${isVisible ? "animate" : ""}`}
-          style={{ transitionDelay: "0.3s" }}
-        >
-          Founded in 2025 in South Florida, with roots in Colombia, we blend
-          creativity and innovation to drive growth and transformation for every
-          client.
-        </p>
+    <section className="about" id="about" ref={sectionRef}>
+      <div className="about-inner">
+        <div>
+          <div className="about-eyebrow rv">About the studio</div>
+          <h2 className="about-title rv rv-2">
+            <span className="swash">Creative</span> muscle for brands with taste.
+          </h2>
+          <p className="about-body rv rv-3">
+            We're a <strong>small, senior team</strong> — no juniors, no layers, no meetings-about-meetings. Every pixel, every line of code, every strategy deck is touched by someone who's done this a hundred times and still cares about doing it right.
+          </p>
+          <p className="about-body rv rv-4">
+            Based in <strong>Boca Raton</strong> with roots in <strong>Colombia</strong> — we speak the language of South Florida beauty and Latin American hustle.
+          </p>
+          <div className="about-stats rv rv-5">
+            <div className="stat"><span className="stat-num">50+</span><span className="stat-lbl">Brands launched</span></div>
+            <div className="stat"><span className="stat-num">3×</span><span className="stat-lbl">Avg. revenue lift</span></div>
+            <div className="stat"><span className="stat-num">98%</span><span className="stat-lbl">Client retention</span></div>
+          </div>
+        </div>
+        <div className="about-collage">
+          <div className="collage-card c1"><div style={{ width: '100%', height: '100%', background: 'var(--zen-green-mist)' }} /></div>
+          <div className="collage-card c2"><div style={{ width: '100%', height: '100%', background: 'var(--sand)' }} /></div>
+          <div className="collage-card c3"><div style={{ width: '100%', height: '100%', background: 'var(--butter)' }} /></div>
+          <div className="collage-tag">Est. 2025</div>
+          <div className="collage-script">zen</div>
+        </div>
       </div>
     </section>
   );
