@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "22": "^0.0.0",
     "@tabler/icons-react": "^3.35.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -24,7 +23,7 @@
     "node": "22.x"
   },
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "pnpm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "CI=false react-scripts build && cp build/index.html build/404.html",
