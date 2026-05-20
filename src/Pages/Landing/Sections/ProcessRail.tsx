@@ -25,7 +25,7 @@ const ProcessRail: React.FC = () => {
         <div className="process-head">
           <div className="lbl rv">§ How we flow</div>
           <h2 className="rv rv-2"><span className="swash">Four</span> phases, eight to twelve weeks.</h2>
-          <p className="rv rv-3">No agency theatre, no slide decks for the sake of slide decks. Just the work, done together.</p>
+         
         </div>
         <div className="process-rail">
           {steps.map((step, i) => (
