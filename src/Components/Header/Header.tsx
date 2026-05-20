@@ -24,8 +24,12 @@ const Header: React.FC = () => {
         <a href="#process">How we flow</a>
         <a href="#contact">Contact</a>
       </div>
-      <a href="#contact" className="nav-cta">
+      {/* <a href="#contact" className="nav-cta">
         Start growing
+        <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
+      </a> */}
+      <a href="/courses" className="nav-cta courses">
+        Online courses
         <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
       </a>
       <button className={`nav-hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">

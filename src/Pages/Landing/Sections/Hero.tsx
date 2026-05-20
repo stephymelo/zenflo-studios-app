@@ -10,10 +10,10 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="hero">
-      <div className="hero-eyebrows">
+      {/* <div className="hero-eyebrows">
         <span className="dot-line">Zenflo Studios · Est. 2025</span>
         <span>Boca Raton · South Florida</span>
-      </div>
+      </div> */}
 
       <div className="hero-inner">
         <h1 className="hero-h1" ref={h1Ref}>
@@ -24,13 +24,13 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="hero-foot">
-        <p className="hero-sub">
-          A creative studio from <strong>South Florida</strong> turning beauty + lifestyle brands into the kind of shops you screenshot. Brand → website → followers → sales.
-        </p>
+        {/* <p className="hero-sub">
+          A creative studio from <strong>South Florida</strong> building the next wave of brands.
+        </p> */}
         <div className="hero-stamps">
           <span className="stamp"><span className="bullet" /> Brand</span>
-          <span className="stamp butter"><span className="bullet" /> Shopify</span>
-          <span className="stamp coral"><span className="bullet" /> SEO + Social</span>
+          <span className="stamp butter"><span className="bullet" /> Shopify/E-commerce</span>
+          <span className="stamp coral"><span className="bullet" /> AI + SEO + Social</span>
           <span className="stamp green"><span className="bullet" /> Print</span>
         </div>
       </div>
