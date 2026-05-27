@@ -23,7 +23,7 @@ const ProcessRail: React.FC = () => {
     <section className="process" id="process" ref={sectionRef}>
       <div className="process-inner">
         <div className="process-head">
-          <div className="lbl rv">§ How we flow</div>
+          <div className="lbl rv"></div>
           <h2 className="rv rv-2"><span className="swash">Four</span> phases, eight to twelve weeks.</h2>
          
         </div>

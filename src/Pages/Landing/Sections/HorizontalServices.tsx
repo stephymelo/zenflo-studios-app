@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const services = [
-  { ix: '01', name: <><span className="it">Brand</span> Identity</>, desc: 'Logo systems, type pairings, color strategy, packaging, and the tiny details that separate a brand people screenshot from one they scroll past.', tags: ['LOGO SYSTEM', 'COLOR', 'TYPE', 'PACKAGING'], tag: 'Core' },
-  { ix: '02', name: <>Shopify <span className="pop">stores</span></>, desc: 'Custom Liquid themes built for speed, mobile-first, and conversion. Inventory, subscriptions, upsells — all wired.', tags: ['CUSTOM THEME', 'LIQUID', 'CRO', 'SUBSCRIPTIONS'], tag: 'Build', cls: 't2' },
-  { ix: '03', name: <>Web <span className="it">design</span></>, desc: 'Marketing sites, landing pages, and microsites that load fast, rank well, and look like no one else in your category.', tags: ['NEXT.JS', 'WEBFLOW', 'ANIMATIONS', 'SEO'], tag: 'Design' },
+  { ix: '01', name: <><span className="pop">Brand</span> Identity</>, desc: 'Make an impact with a strong brand identity that resonates with your audience.', tags: ['LOGO', 'BRAND BOOK', 'PACKAGING'], tag: 'Core' },
+  { ix: '02', name: <>Shopify <span className="pop">stores</span></>, desc: 'Custom Liquid themes built for speed, mobile-first, and conversion. Add subscriptions, bundles, upsell and more.', tags: ['CUSTOM THEME', 'LIQUID', 'CRO'], tag: 'Build', cls: 't2' },
+  { ix: '03', name: <>Web <span className="pop">design</span></>, desc: 'Landing pages and full websites that load fast, rank well, and turn visitors into customers. Designed around your goals, not a template.', tags: ['UX/UI DESIGN', 'IMPROVE TRAFFIC', 'WEBSITE UPDATES'], tag: 'Design' },
   { ix: '04', name: <>Content <span className="pop">&</span> Social</>, desc: 'Monthly content calendars, reels, carousels, and stories. We shoot, edit, write, and schedule — you approve.', tags: ['REELS', 'CAROUSELS', 'STORIES', 'CALENDAR'], tag: 'Create', cls: 't4' },
-  { ix: '05', name: <>SEO + <span className="it">Growth</span></>, desc: 'Technical audits, keyword maps, backlink campaigns, and the monthly reporting loop that actually moves the needle.', tags: ['TECHNICAL SEO', 'KEYWORDS', 'BACKLINKS', 'ANALYTICS'], tag: 'Grow' },
-  { ix: '06', name: <>Creative <span className="pop">direction</span></>, desc: 'Photo shoots, campaign concepting, seasonal lookbooks. We art-direct the whole thing so every asset feels like one brand.', tags: ['ART DIRECTION', 'PHOTO', 'CAMPAIGNS', 'LOOKBOOKS'], tag: 'Direct', cls: 't6' },
+  { ix: '05', name: <>SEO + <span className="pop">Growth</span></>, desc: 'Technical audits, keyword maps, backlink campaigns, and the monthly reporting loop that actually moves the needle.', tags: ['TECHNICAL SEO', 'KEYWORDS', 'BACKLINKS', 'ANALYTICS'], tag: 'Grow' },
+  { ix: '06', name: <>Creative <span className="pop">studio</span></>, desc: 'We film content with your products and business, take high-quality photos, and produce printables and digital catalogs — everything your brand needs to show up polished.', tags: ['CONTENT FILMING', 'PRODUCT PHOTOGRAPHY', 'PRINTABLES', 'DIGITAL CATALOGS'], tag: 'Create', cls: 't6' },
 ];
 
 const HorizontalServices: React.FC = () => {
@@ -49,12 +49,11 @@ const HorizontalServices: React.FC = () => {
           {services.map((s, i) => (
             <div className={`hsvc-tile${s.cls ? ` ${s.cls}` : ''}`} key={i}>
               <div className="col-l">
-                <span className="ix">{s.ix}</span>
-                <h3 className="svc-name">{s.name}</h3>
+                  <h3 className="svc-name">{s.name}</h3>
                 <p className="desc">{s.desc}</p>
                 <div className="tags">{s.tags.map((t) => <span className="tag" key={t}>{t}</span>)}</div>
               </div>
-              <div className="col-r" data-tag={s.tag}>
+              <div className="col-r">
                 <div style={{ width: '100%', height: '100%', background: 'var(--zen-green-mist)' }} />
               </div>
             </div>

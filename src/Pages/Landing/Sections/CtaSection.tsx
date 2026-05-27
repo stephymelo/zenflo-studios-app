@@ -38,7 +38,7 @@ const CtaSection: React.FC = () => {
       <div className="cta-section-inner">
         <div>
           <h2 className="rv">Let's <span className="pop">grow</span> something <span className="coral-text">together.</span></h2>
-          <p className="rv rv-2">Tell us about your brand and where you want it to go. We'll come back within 48 hours with a flight plan, a rough timeline, and an honest estimate.</p>
+          <p className="rv rv-2">Tell us about your brand and your vision.</p>
           {sent ? (
             <div className="cta-form rv rv-3" style={{ textAlign: 'center', padding: '40px 0' }}>
               <h3 style={{ color: '#FFDA63', marginBottom: 12 }}>Sent!</h3>
@@ -48,7 +48,7 @@ const CtaSection: React.FC = () => {
             <form className="cta-form rv rv-3" onSubmit={handleSubmit}>
               <div className="cta-row">
                 <label><span>Your name</span><input name="name" type="text" required /></label>
-                <label><span>Your brand</span><input name="brand" type="text" placeholder="Aura Beauty" /></label>
+                <label><span>Your brand</span><input name="brand" type="text" placeholder="Brand Name" /></label>
               </div>
               <label><span>Email</span><input name="email" type="email" placeholder="hello@yourbrand.com" required /></label>
               <label><span>What are you working on?</span><textarea name="message" placeholder="A skincare launch. Need brand + Shopify + first 90 days of content." /></label>

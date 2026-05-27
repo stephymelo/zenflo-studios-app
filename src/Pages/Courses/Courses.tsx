@@ -46,11 +46,11 @@ const Courses: React.FC = () => {
           <div className="courses-hero-left">
             <div className="courses-badge">
               <span className="courses-badge-dot" />
-              The Zenflo Studio Course · Free Monthly
+              The Zenflo Studio Course
             </div>
             <h1>Run your<br /><span className="scribble">own</span> <span className="shopify">Shopify.</span></h1>
             <p className="courses-lead">
-              <strong>A free, live, 90-minute class</strong> we run every month — for Shopify beginners who want to set up a store that converts without paying an agency to do it.
+              <strong>A free, live, 45-minute class</strong> we run every month — for Shopify beginners who want to set up a store that converts.
             </p>
             <p className="courses-sub">
               Stay for one. Stay for the whole seven-class series. Either way you leave with a real plan, not theory — and a recording you can share with your team.
@@ -61,28 +61,28 @@ const Courses: React.FC = () => {
               <div className="courses-card-free">Free</div>
               <div className="courses-card-top">
                 <span className="courses-card-label">Next class</span>
-                <span className="courses-card-date">June 12</span>
-                <span className="courses-card-time">Thursday · 7pm EST</span>
+                <span className="courses-card-date">June 24</span>
+                <span className="courses-card-time">Wednesday · 7pm EST</span>
               </div>
               <div className="courses-card-grid">
                 <div>
                   <span className="courses-card-label">Topic</span>
-                  <strong>Shopify basics — does it suit your business?</strong>
+                  <strong>Shopify basics — how to jumpstart your e-commerce</strong>
                 </div>
                 <div>
                   <span className="courses-card-label">Format</span>
-                  <strong>90 min live + Q&A</strong>
+                  <strong>45 min live + Q&A</strong>
                 </div>
               </div>
               <div className="courses-card-grid">
                 <div>
                   <span className="courses-card-label">Price</span>
-                  <strong>Free, forever</strong>
+                  <strong>Free</strong>
                 </div>
-                <div>
+                {/* <div>
                   <span className="courses-card-label">Spots left</span>
                   <strong>17 of 50</strong>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -94,13 +94,13 @@ const Courses: React.FC = () => {
         <div className="courses-signup-inner">
           <div className="courses-signup-left">
             <div className="courses-eyebrow">Save your seat</div>
-            <h2>Sign up for the <span className="scribble">next</span> class.</h2>
-            <p>Tell us a little about you and we'll send the Zoom link 24 hours before. You'll automatically get invitations to the rest of the series — opt out anytime.</p>
+            <h2>Sign up for your <span className="scribble">first</span> class.</h2>
+            <p>Tell us a little about you and we'll send the Zoom link 24 hours before. You'll automatically get invitations to the rest of the course.</p>
             <ol className="courses-steps">
               <li><span className="step-num">1</span><span><strong>Zoom link + reminder</strong> sent 24h and 1h before class.</span></li>
               <li><span className="step-num">2</span><span><strong>Replay + slides</strong> in your inbox the morning after.</span></li>
               <li><span className="step-num">3</span><span><strong>First dibs</strong> on the rest of the seven-class series.</span></li>
-              <li><span className="step-num">4</span><span><strong>No spam, no sales calls</strong> — promise. Unsubscribe in one click.</span></li>
+              
             </ol>
           </div>
           <div className="courses-signup-right">
@@ -108,16 +108,16 @@ const Courses: React.FC = () => {
               <div className="courses-form-card">
                 <div className="courses-form-success">
                   <h3>You're in!</h3>
-                  <p>Check your inbox for the Zoom link. See you June 12.</p>
+                  <p>Check your inbox for the Zoom link. See you June 24.</p>
                 </div>
               </div>
             ) : (
               <div className="courses-form-card">
-                <div className="courses-form-title">Save your seat</div>
+                
                 <form onSubmit={handleSubmit}>
                   <div className="courses-form-row">
-                    <label><span>Your name</span><input name="name" type="text" placeholder="Mariana Restrepo" required /></label>
-                    <label><span>Your brand</span><input name="brand" type="text" placeholder="Aura Beauty" required /></label>
+                    <label><span>Your name</span><input name="name" type="text" placeholder="" required /></label>
+                    <label><span>Your brand</span><input name="brand" type="text" placeholder="Brand Name" required /></label>
                   </div>
                   <label><span>Email</span><input name="email" type="email" placeholder="hello@yourbrand.com" required /></label>
                   <div className="courses-form-field">
@@ -137,9 +137,9 @@ const Courses: React.FC = () => {
                   </div>
                   <label><span>What do you want to walk away with?</span><textarea name="goals" placeholder="A storefront for my candle line. Mostly confused about apps and SEO." /></label>
                   <button type="submit" className="courses-submit" disabled={sending}>
-                    {sending ? 'Saving…' : 'Save my seat for June 12 →'}
+                    {sending ? 'Saving…' : 'Save my seat for June 24 →'}
                   </button>
-                  <p className="courses-fine">Free · 90 min · Zoom link sent 24h before</p>
+                
                 </form>
               </div>
             )}

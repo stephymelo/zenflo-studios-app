@@ -13,6 +13,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
       <div className="nav-brand" onClick={() => navigate('/')}>
