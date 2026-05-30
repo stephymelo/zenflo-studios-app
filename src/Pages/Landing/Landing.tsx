@@ -30,7 +30,7 @@ export const Landing: React.FC = () => {
       </Marquee>
       <HorizontalServices />
       <ProcessRail />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Marquee variant="butter">
         <MarqueeItem text="Let's grow" />
         <MarqueeItem text="Let's bloom" />

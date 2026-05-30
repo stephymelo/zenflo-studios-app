@@ -63,7 +63,7 @@
   aspect-ratio: 4/5; border-radius: 12px; overflow: hidden;
   box-shadow: var(--shadow-3); position: relative; max-height: 55vh;
 }
-.hsvc-tile .col-r img { width: 100%; height: 100%; object-fit: cover; }
+.hsvc-tile .col-r img, .hsvc-tile .col-r video { width: 100%; height: 100%; object-fit: cover; }
 .hsvc-tile.t2 { background: var(--zen-green-darker); color: var(--cream); border-radius: 16px; padding: 4vw; }
 .hsvc-tile.t2 .svc-name { color: var(--cream); }
 .hsvc-tile.t2 .desc { color: var(--zen-green-soft); }

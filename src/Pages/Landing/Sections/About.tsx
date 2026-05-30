@@ -1,4 +1,7 @@
 import React, { useEffect, useRef } from 'react';
+import hlVid from '../../../Assets/2026 Assets/hl-socialmedia-website.mov';
+import hairlossImg from '../../../Assets/2026 Assets/hairloss-mobile-home.png';
+import catalogImg from '../../../Assets/2026 Assets/nil-catalogpage.jpg';
 
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -33,9 +36,9 @@ const About: React.FC = () => {
           </div> */}
         </div>
         <div className="about-collage">
-          <div className="collage-card c1"><div style={{ width: '100%', height: '100%', background: 'var(--zen-green-mist)' }} /></div>
-          <div className="collage-card c2"><div style={{ width: '100%', height: '100%', background: 'var(--sand)' }} /></div>
-          <div className="collage-card c3"><div style={{ width: '100%', height: '100%', background: 'var(--butter)' }} /></div>
+          <div className="collage-card c1"><video src={hlVid} autoPlay muted loop playsInline /></div>
+          <div className="collage-card c2"><img src={hairlossImg} alt="" /></div>
+          <div className="collage-card c3"><img src={catalogImg} alt="" /></div>
           <div className="collage-tag">Est. 2025</div>
          
         </div>

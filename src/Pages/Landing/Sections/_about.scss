@@ -45,7 +45,7 @@
   overflow: hidden; box-shadow: var(--shadow-3);
   transition: transform .8s var(--ease-flow);
 }
-.collage-card img, .collage-card div { width: 100%; height: 100%; object-fit: cover; }
+.collage-card img, .collage-card video, .collage-card div { width: 100%; height: 100%; object-fit: cover; }
 .collage-card.c1 { left: 0; top: 30px; width: 62%; height: 360px; transform: rotate(-3deg); z-index: 2; }
 .collage-card.c2 { right: 0; top: 0; width: 46%; height: 280px; transform: rotate(4deg); z-index: 1; border: 6px solid var(--cream); }
 .collage-card.c3 { right: 30px; bottom: 0; width: 50%; height: 240px; transform: rotate(-2deg); z-index: 3; border: 6px solid var(--butter); }
