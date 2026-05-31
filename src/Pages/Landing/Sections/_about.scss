@@ -39,14 +39,14 @@
   letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
 }
 
-.about-collage { position: relative; height: 560px; }
+.about-collage { position: relative; height: 620px; }
 .collage-card {
   position: absolute; border-radius: var(--radius-lg);
   overflow: hidden; box-shadow: var(--shadow-3);
   transition: transform .8s var(--ease-flow);
 }
 .collage-card img, .collage-card video, .collage-card div { width: 100%; height: 100%; object-fit: cover; }
-.collage-card.c1 { left: 0; top: 0; width: 70%; height: 420px; transform: rotate(-2deg); z-index: 2; border-radius: 16px; }
+.collage-card.c1 { left: 0; top: 0; width: 60%; height: 500px; transform: rotate(-2deg); z-index: 2; border-radius: 16px; }
 .collage-card.c2 { right: -10px; top: 20px; width: 44%; height: 320px; transform: rotate(3deg); z-index: 1; border: 5px solid var(--cream); border-radius: 14px; }
 .collage-card.c3 { left: 10%; bottom: 0; width: 55%; height: 200px; transform: rotate(1deg); z-index: 3; border: 5px solid var(--butter); border-radius: 14px; }
 .about-collage:hover .c1 { transform: rotate(-1deg) translateY(-6px); }
