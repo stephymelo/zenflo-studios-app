@@ -46,25 +46,12 @@
   transition: transform .8s var(--ease-flow);
 }
 .collage-card img, .collage-card video, .collage-card div { width: 100%; height: 100%; object-fit: cover; }
-.collage-card.c1 { left: 0; top: 30px; width: 62%; height: 360px; transform: rotate(-3deg); z-index: 2; }
-.collage-card.c2 { right: 0; top: 0; width: 46%; height: 280px; transform: rotate(4deg); z-index: 1; border: 6px solid var(--cream); }
-.collage-card.c3 { right: 30px; bottom: 0; width: 50%; height: 240px; transform: rotate(-2deg); z-index: 3; border: 6px solid var(--butter); }
+.collage-card.c1 { left: 0; top: 0; width: 70%; height: 420px; transform: rotate(-2deg); z-index: 2; border-radius: 16px; }
+.collage-card.c2 { right: -10px; top: 20px; width: 44%; height: 320px; transform: rotate(3deg); z-index: 1; border: 5px solid var(--cream); border-radius: 14px; }
+.collage-card.c3 { left: 10%; bottom: 0; width: 55%; height: 200px; transform: rotate(1deg); z-index: 3; border: 5px solid var(--butter); border-radius: 14px; }
 .about-collage:hover .c1 { transform: rotate(-1deg) translateY(-6px); }
-.about-collage:hover .c2 { transform: rotate(2deg) translateY(-6px); }
+.about-collage:hover .c2 { transform: rotate(1.5deg) translateY(-6px); }
 .about-collage:hover .c3 { transform: rotate(0deg) translateY(-6px); }
-.collage-tag {
-  position: absolute; top: 40px; right: -20px;
-  background: var(--butter); color: var(--ink);
-  padding: 12px 20px; border: 2px solid var(--ink); border-radius: 999px;
-  font-family: var(--font-mono); font-size: 12px;
-  letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
-  transform: rotate(8deg); box-shadow: var(--shadow-stamp); z-index: 5;
-}
-.collage-script {
-  position: absolute; bottom: -16px; left: -10px;
-  font-family: var(--font-script); font-size: 64px;
-  color: var(--coral); transform: rotate(-6deg); z-index: 5; line-height: 1;
-}
 
 @media (max-width: 980px) {
   .about-inner { grid-template-columns: 1fr; gap: 40px; }

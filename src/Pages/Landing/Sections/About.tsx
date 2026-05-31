@@ -39,7 +39,6 @@ const About: React.FC = () => {
           <div className="collage-card c1"><video src={hlVid} autoPlay muted loop playsInline /></div>
           <div className="collage-card c2"><img src={hairlossImg} alt="" /></div>
           <div className="collage-card c3"><img src={catalogImg} alt="" /></div>
-          <div className="collage-tag">Est. 2025</div>
          
         </div>
       </div>
