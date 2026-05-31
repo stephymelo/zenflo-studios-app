@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import brandImg from '../../../Assets/2026 Assets/capillus-brochurecover.png';
+import brandImg from '../../../Assets/2026 Assets/nil-catalogpage.jpg';
 import shopifyImg from '../../../Assets/2026 Assets/shopify-skin-homescreen.png';
 import webVid from '../../../Assets/2026 Assets/ta-website-scroll.mov';
 import socialVid from '../../../Assets/2026 Assets/socialmedia-reel.mp4';
