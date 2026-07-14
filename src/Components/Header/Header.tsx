@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
-import LanguageToggle from '../LanguageToggle/LanguageToggle';
+import LanguageToggle, { isSpanish, langHref } from '../LanguageToggle/LanguageToggle';
 
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,11 +28,11 @@ const Header: React.FC = () => {
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#process">How we flow</a>
-        <a href="/newsletter">Newsletter</a>
+        <a href={langHref('/newsletter')} className="notranslate">{isSpanish() ? 'Boletín' : 'Newsletter'}</a>
         <a href="#contact">Contact</a>
         <LanguageToggle />
       </div>
-      <a href="/courses" className="nav-cta courses">
+      <a href={langHref('/courses')} className="nav-cta courses">
         Online courses
         <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
       </a>
@@ -43,9 +43,9 @@ const Header: React.FC = () => {
         <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
         <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
         <a href="#process" onClick={() => setMenuOpen(false)}>How we flow</a>
-        <a href="/newsletter" onClick={() => setMenuOpen(false)}>Newsletter</a>
+        <a href={langHref('/newsletter')} className="notranslate" onClick={() => setMenuOpen(false)}>{isSpanish() ? 'Boletín' : 'Newsletter'}</a>
         <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-        <a href="/courses" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Online courses →</a>
+        <a href={langHref('/courses')} className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Online courses →</a>
         <LanguageToggle />
       </div>
     </nav>

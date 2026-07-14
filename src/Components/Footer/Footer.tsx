@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
+import { isSpanish, langHref } from '../LanguageToggle/LanguageToggle';
 
 const Footer: React.FC = () => {
   return (
@@ -15,8 +16,8 @@ const Footer: React.FC = () => {
             <a href="https://instagram.com/zenflo.studios" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://x.com/ZenfloStudios" target="_blank" rel="noopener noreferrer">X / Twitter</a>
             <a href="mailto:hello@zenflostudios.com">hello@zenflostudios.com</a>
-            <a href="/newsletter">Sign up to the newsletter</a>
-            <a href="/courses">Online courses</a>
+            <a href={langHref('/newsletter')} className="notranslate">{isSpanish() ? 'Suscríbete al boletín' : 'Sign up to the newsletter'}</a>
+            <a href={langHref('/courses')}>Online courses</a>
           </div>
         </div>
         <div className="footer-bottom">

@@ -1,29 +1,36 @@
 import React from 'react';
 
 type Lang = 'en' | 'es';
+const LANGS: Lang[] = ['en', 'es'];
 
-// Google Translate's page-translation widget is driven by the `googtrans`
-// cookie; setting it and reloading translates the whole app in place.
-const getLang = (): Lang => (document.cookie.includes('googtrans=/en/es') ? 'es' : 'en');
-
-const clearCookie = (name: string) => {
-  const past = 'Thu, 01 Jan 1970 00:00:00 GMT';
-  document.cookie = `${name}=; path=/; expires=${past}`;
-  document.cookie = `${name}=; path=/; domain=.${window.location.hostname}; expires=${past}`;
+// Language is carried in the URL as a path prefix (/es). English is the
+// default and has no prefix. Google Translate performs the actual translation,
+// driven by the googtrans cookie which index.html syncs from the URL on load.
+export const currentLang = (): Lang => {
+  const seg = window.location.pathname.split('/')[1] as Lang;
+  return LANGS.includes(seg) ? seg : 'en';
 };
 
+export const isSpanish = () => currentLang() === 'es';
+
+// Prefix an internal href with the active language (raw <a> tags bypass the
+// router basename, so they need this).
+export const langHref = (path: string) =>
+  isSpanish() ? `/es${path === '/' ? '' : path}` : path;
+
 const setLang = (lang: Lang) => {
-  if (lang === getLang()) return;
-  clearCookie('googtrans');
-  if (lang === 'es') {
-    document.cookie = 'googtrans=/en/es; path=/';
-    document.cookie = `googtrans=/en/es; path=/; domain=.${window.location.hostname}`;
-  }
-  window.location.reload();
+  if (lang === currentLang()) return;
+  const parts = window.location.pathname.split('/');
+  if (LANGS.includes(parts[1] as Lang)) parts.splice(1, 1);
+  const rest = parts.join('/') || '/';
+  const target = lang === 'en' ? rest : `/es${rest === '/' ? '' : rest}`;
+  document.cookie = `googtrans=/en/${lang}; path=/`;
+  document.cookie = `googtrans=/en/${lang}; path=/; domain=.${window.location.hostname}`;
+  window.location.assign(target + window.location.search + window.location.hash);
 };
 
 const LanguageToggle: React.FC = () => {
-  const lang = getLang();
+  const lang = currentLang();
   return (
     <div className="lang-toggle notranslate" aria-label="Language">
       <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>

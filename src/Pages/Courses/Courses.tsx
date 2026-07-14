@@ -4,7 +4,7 @@ import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
 import { submitForm } from '../../utils/submitForm';
 import { subscribeToNewsletter, COURSE_TAG_ID } from '../../utils/mailchimp';
 import { useSeo } from '../../utils/useSeo';
-import LanguageToggle from '../../Components/LanguageToggle/LanguageToggle';
+import LanguageToggle, { isSpanish, langHref } from '../../Components/LanguageToggle/LanguageToggle';
 
 const Courses: React.FC = () => {
   useSeo(
@@ -49,7 +49,7 @@ const Courses: React.FC = () => {
         <div className="nav-brand" onClick={() => navigate('/')}>
           <img src={logo} alt="Zenflo Studios" className="nav-logo" />
         </div>
-        <a href="/" className="courses-back">← Back to studio</a>
+        <a href={langHref('/')} className="courses-back">← Back to studio</a>
         <LanguageToggle />
         <a href="#save-seat" className="nav-cta">
           Save your seat
@@ -184,8 +184,8 @@ const Courses: React.FC = () => {
             <h2>Catch the recap in your <span className="scribble">inbox</span>.</h2>
             <p>Class invites, dates, and the monthly Zenflo letter — Shopify plays and content ideas, once a month.</p>
           </div>
-          <a href="/newsletter" className="courses-newsletter-btn">
-            Sign up to the newsletter
+          <a href={langHref('/newsletter')} className="courses-newsletter-btn notranslate">
+            {isSpanish() ? 'Suscríbete al boletín' : 'Sign up to the newsletter'}
             <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
           </a>
         </div>

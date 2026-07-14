@@ -5,4 +5,9 @@
   <url><loc>https://zenflostudios.com/newsletter</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zenflostudios.com/work</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://zenflostudios.com/contact</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zenflostudios.com/es</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zenflostudios.com/es/courses</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zenflostudios.com/es/newsletter</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zenflostudios.com/es/work</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://zenflostudios.com/es/contact</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
 </urlset>

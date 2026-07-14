@@ -8,12 +8,19 @@ import { installTranslateGuard } from './utils/translateGuard';
 
 installTranslateGuard();
 
+// Language lives in the URL as a path prefix (/es). English is the default and
+// has no prefix. A per-language basename keeps router navigation in-language.
+const LANGS = ['en', 'es'];
+const seg = window.location.pathname.split('/')[1];
+const basename = LANGS.includes(seg) ? `/${seg}` : '/';
+document.documentElement.lang = LANGS.includes(seg) ? seg : 'en';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-   <BrowserRouter>
+   <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </React.StrictMode>

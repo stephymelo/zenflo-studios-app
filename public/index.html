@@ -11,6 +11,9 @@
       content="Custom Shopify stores and app development, web design, content & social, SEO, and product photography for small brands — plus a free monthly Shopify class for beginners. Boca Raton, South Florida."
     />
     <link rel="canonical" href="https://zenflostudios.com/" />
+    <link rel="alternate" hreflang="en" href="https://zenflostudios.com/" />
+    <link rel="alternate" hreflang="es" href="https://zenflostudios.com/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://zenflostudios.com/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Zenflo Studios" />
@@ -154,8 +157,18 @@
         <p>Email <a href="mailto:hello@zenflostudios.com">hello@zenflostudios.com</a> · <a href="https://zenflostudios.com/newsletter">Newsletter</a> · <a href="https://zenflostudios.com/work">Work</a> · <a href="https://zenflostudios.com/contact">Contact</a></p>
       </main>
     </div>
-    <div id="google_translate_element"></div>
+    <div id="google_translate_element" aria-hidden="true"></div>
     <script type="text/javascript">
+      (function () {
+        // Language is driven by the URL prefix (/es/...). Anything else is
+        // English. Set the Google Translate cookie from the URL BEFORE the
+        // widget loads so the right language paints with no flash.
+        var LANGS = ['en', 'es'];
+        var seg = location.pathname.split('/')[1];
+        var lang = LANGS.indexOf(seg) !== -1 ? seg : 'en';
+        document.cookie = 'googtrans=/en/' + lang + ';path=/';
+        document.cookie = 'googtrans=/en/' + lang + ';path=/;domain=.' + location.hostname;
+      })();
       function googleTranslateElementInit() {
         new google.translate.TranslateElement(
           { pageLanguage: 'en', includedLanguages: 'en,es', autoDisplay: false },
