@@ -1,3 +1,27 @@
-# https://www.robotstxt.org/robotstxt.html
+# All crawlers welcome, including AI assistants and their search bots.
 User-agent: *
 Disallow:
+
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Disallow:
+
+User-agent: OAI-SearchBot
+Disallow:
+
+User-agent: ChatGPT-User
+Disallow:
+
+User-agent: ClaudeBot
+Disallow:
+
+User-agent: Claude-User
+Disallow:
+
+User-agent: PerplexityBot
+Disallow:
+
+User-agent: Google-Extended
+Disallow:
+
+Sitemap: https://zenflostudios.com/sitemap.xml
