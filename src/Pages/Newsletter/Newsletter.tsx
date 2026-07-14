@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { subscribeToNewsletter } from '../../utils/mailchimp';
+import { useSeo } from '../../utils/useSeo';
 
 const Newsletter: React.FC = () => {
+  useSeo(
+    'The Zenflo Letter — Monthly Shopify & Marketing Tips | Zenflo Studios',
+    'One email a month with Shopify plays, digital marketing ideas, and free class invites — written for founders starting a business and doing their own marketing.',
+    '/newsletter'
+  );
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
 

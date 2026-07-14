@@ -6,8 +6,14 @@ import HorizontalServices from './Sections/HorizontalServices';
 import ProcessRail from './Sections/ProcessRail';
 import Testimonials from './Sections/Testimonials';
 import CtaSection from './Sections/CtaSection';
+import { useSeo } from '../../utils/useSeo';
 
 export const Landing: React.FC = () => {
+  useSeo(
+    'Zenflo Studios — Shopify & Digital Marketing Studio in South Florida',
+    'Custom Shopify stores and app development, web design, content & social, SEO for small brands — plus a free monthly Shopify class for beginners. Boca Raton, South Florida.',
+    '/'
+  );
   return (
     <section className="landing">
       <Hero />

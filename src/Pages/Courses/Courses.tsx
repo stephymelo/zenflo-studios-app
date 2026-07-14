@@ -3,8 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
 import { submitForm } from '../../utils/submitForm';
 import { subscribeToNewsletter, COURSE_TAG_ID } from '../../utils/mailchimp';
+import { useSeo } from '../../utils/useSeo';
 
 const Courses: React.FC = () => {
+  useSeo(
+    'Free Shopify Course for Beginners — Live Monthly Class | Zenflo Studios',
+    'Learn Shopify live: a monthly class for beginners starting an online business. The first 30 minutes are free — theme, apps, product pages, and first sales. Next class August 19, 7pm EST.',
+    '/courses'
+  );
   const navigate = useNavigate();
   const [experience, setExperience] = useState('from-zero');
   const [submitted, setSubmitted] = useState(false);
@@ -152,6 +158,20 @@ const Courses: React.FC = () => {
               </div>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="courses-faq">
+        <div className="courses-faq-inner">
+          <h2>Questions, <span className="scribble">answered</span>.</h2>
+          <dl>
+            <div><dt>Is the Shopify course really free?</dt><dd>The first 30 minutes — the full lesson plus live Q&A — are free for everyone, every month. Staying for the guided build hour is $29, and the seven-class series pass with the replay library is $129.</dd></div>
+            <div><dt>Do I need experience to learn Shopify in this class?</dt><dd>No — the class is built for beginners starting a business or their first online store. If you can use a web browser, you can follow along.</dd></div>
+            <div><dt>What will I learn?</dt><dd>How to set up a Shopify store that converts: choosing a theme fast, the 3 apps you actually need, product pages and photos, shipping settings, and how to get your first sales with simple marketing.</dd></div>
+            <div><dt>When is the next class?</dt><dd>Wednesday, August 19 at 7pm EST, live on Zoom. A new class runs every month — the Zoom link arrives 24 hours before.</dd></div>
+            <div><dt>English or Spanish?</dt><dd>The class runs in English, and we speak Spanish natively — preguntas en español are always welcome.</dd></div>
+          </dl>
         </div>
       </section>
 

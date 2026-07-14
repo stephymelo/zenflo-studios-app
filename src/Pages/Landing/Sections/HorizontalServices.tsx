@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import brandImg from '../../../Assets/2026 Assets/nil-catalogpage.jpg';
 import shopifyImg from '../../../Assets/2026 Assets/shopify-skin-homescreen.png';
+import appDevImg from '../../../Assets/2026 Assets/amn-productpage.png';
 import webVid from '../../../Assets/2026 Assets/ta-website-scroll.mov';
 import socialVid from '../../../Assets/2026 Assets/socialmedia-reel.mp4';
 import growthImg from '../../../Assets/2026 Assets/email-comebackcheckout.png';
 import creativeVid from '../../../Assets/2026 Assets/ta-reelphotoshoot.mp4';
 
 const services = [
-  { ix: '01', name: <><span className="pop">Brand</span> Identity</>, desc: 'Make an impact with a strong brand identity that resonates with your audience.', tags: ['LOGO', 'BRAND BOOK', 'PACKAGING'], tag: 'Core', media: brandImg, video: false },
-  { ix: '02', name: <>Shopify <span className="pop">stores</span></>, desc: 'Custom Liquid themes built for speed, mobile-first, and conversion. Add subscriptions, bundles, upsell and more.', tags: ['CUSTOM THEME', 'LIQUID', 'CRO'], tag: 'Build', cls: 't2', media: shopifyImg, video: false },
+  { ix: '01', name: <>Shopify <span className="pop">stores</span></>, desc: 'Custom Liquid themes built for speed, mobile-first, and conversion. Add subscriptions, bundles, upsell and more.', tags: ['CUSTOM THEME', 'LIQUID', 'CRO'], tag: 'Build', media: shopifyImg, video: false },
+  { ix: '02', name: <>App <span className="pop">development</span></>, desc: 'Custom Shopify development when a theme can\'t take you further — private apps, integrations, custom features, and automations built for your store.', tags: ['CUSTOM APPS', 'INTEGRATIONS', 'SHOPIFY API', 'AUTOMATIONS'], tag: 'Build', cls: 't2', media: appDevImg, video: false },
   { ix: '03', name: <>Web <span className="pop">design</span></>, desc: 'Landing pages and full websites that load fast, rank well, and turn visitors into customers. Designed around your goals, not a template.', tags: ['UX/UI DESIGN', 'IMPROVE TRAFFIC', 'WEBSITE UPDATES'], tag: 'Design', media: webVid, video: true },
   { ix: '04', name: <>Content <span className="pop">&</span> Social</>, desc: 'Monthly content calendars, reels, carousels, and stories. We shoot, edit, write, and schedule — you approve.', tags: ['REELS', 'CAROUSELS', 'STORIES', 'CALENDAR'], tag: 'Create', cls: 't4', media: socialVid, video: true },
   { ix: '05', name: <>SEO + <span className="pop">Growth</span></>, desc: 'Technical audits, keyword maps, backlink campaigns, and the monthly reporting loop that actually moves the needle.', tags: ['TECHNICAL SEO', 'KEYWORDS', 'BACKLINKS', 'ANALYTICS'], tag: 'Grow', media: growthImg, video: false },

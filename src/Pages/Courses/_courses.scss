@@ -285,3 +285,26 @@
   .courses-newsletter { padding: 72px 24px; }
   .courses-newsletter-inner { flex-direction: column; align-items: flex-start; }
 }
+
+// FAQ
+.courses-faq { background: var(--cream); padding: 100px 32px 20px; }
+.courses-faq-inner { max-width: 880px; margin: 0 auto; }
+.courses-faq h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(36px, 4.5vw, 64px); line-height: 0.95;
+  letter-spacing: -0.03em; color: var(--ink); margin: 0 0 40px;
+}
+.courses-faq h2 .scribble {
+  font-family: var(--font-script); color: var(--zen-green);
+  font-weight: 400; display: inline-block; transform: rotate(-3deg);
+}
+.courses-faq dl { margin: 0; display: flex; flex-direction: column; gap: 28px; }
+.courses-faq dt {
+  font-family: var(--font-display); font-weight: 700; font-size: 20px;
+  color: var(--ink); margin-bottom: 8px;
+}
+.courses-faq dd { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-2); max-width: 720px; }
+
+@media (max-width: 768px) {
+  .courses-faq { padding: 72px 24px 0; }
+}

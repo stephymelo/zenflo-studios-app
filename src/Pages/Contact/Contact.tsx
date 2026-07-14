@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+import { useSeo } from "../../utils/useSeo";
 
 
 const Contact = () => {
+  useSeo(
+    'Contact — Zenflo Studios | Shopify & Marketing Studio, Boca Raton FL',
+    'Tell us about your brand. Custom Shopify development and apps, web design, content, and SEO for small product brands — English y español.',
+    '/contact'
+  );
   const [formData, setFormData] = useState({
     name: "",
     email: "",

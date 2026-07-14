@@ -1,4 +1,5 @@
 import React from "react";
+import { useSeo } from "../../utils/useSeo";
 
 import catalog from '../../Assets/Projects/catalog-men-nil-mockup.png';
 import catalogW from '../../Assets/Projects/catalog-women-mockup.png';
@@ -15,6 +16,11 @@ interface WorkItem {
 }
 
 const Work: React.FC = () => {
+  useSeo(
+    'Work — Zenflo Studios | Shopify Builds, Brand & Content Projects',
+    'Selected projects: custom Shopify stores and apps, catalogs, brand books, and content for small product brands.',
+    '/work'
+  );
   // Sample data - replace with your actual work items
   const workItems: WorkItem[] = [
     {

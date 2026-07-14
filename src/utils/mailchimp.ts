@@ -44,20 +44,32 @@ export function subscribeToNewsletter(opts: {
     if (opts.tags) params.set('tags', opts.tags);
 
     const script = document.createElement('script');
-    const cleanup = () => {
+    let settled = false;
+    const finish = (result: SubscribeResult) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timer);
       delete (window as unknown as Record<string, unknown>)[cb];
       script.remove();
+      resolve(result);
     };
+    // Mailchimp occasionally returns malformed JSONP (e.g. two concatenated
+    // payloads when rate-limiting repeat attempts), which throws a parse error
+    // and never invokes the callback — without this timeout the form would hang.
+    const timer = window.setTimeout(() => {
+      finish({
+        ok: false,
+        msg: 'Mailchimp could not process this signup — if you tried several times, wait about 5 minutes and try once more.',
+      });
+    }, 10000);
     (window as unknown as Record<string, unknown>)[cb] = (data: { result: string; msg: string }) => {
-      cleanup();
-      resolve({
+      finish({
         ok: data.result === 'success',
         msg: (data.msg || '').replace(/^\d+\s*-\s*/, ''),
       });
     };
     script.onerror = () => {
-      cleanup();
-      resolve({ ok: false, msg: 'Something went wrong — please try again in a minute.' });
+      finish({ ok: false, msg: 'Something went wrong — please try again in a minute.' });
     };
     script.src = `${MC_BASE}?${params.toString()}`;
     document.body.appendChild(script);
