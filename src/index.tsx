@@ -4,6 +4,9 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './styles.scss';
 import reportWebVitals from './reportWebVitals';
+import { installTranslateGuard } from './utils/translateGuard';
+
+installTranslateGuard();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -1,0 +1,20 @@
+.lang-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.14em;
+}
+.lang-toggle button {
+  background: none; border: none; padding: 4px 2px; cursor: pointer;
+  font: inherit; letter-spacing: inherit; color: var(--ink-3);
+  text-transform: uppercase; transition: color .25s;
+}
+.lang-toggle button:hover { color: var(--ink); }
+.lang-toggle button.active { color: var(--zen-green-deep); font-weight: 700; }
+.lang-sep { color: var(--ink-3); }
+
+// Hide every piece of Google Translate's own UI — our toggle drives it.
+#google_translate_element, .goog-te-gadget, .goog-te-banner-frame, .goog-logo-link { display: none !important; }
+iframe.goog-te-banner-frame, iframe.skiptranslate { display: none !important; visibility: hidden !important; }
+body { top: 0 !important; }
+.goog-tooltip, .goog-tooltip:hover, #goog-gt-tt { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }

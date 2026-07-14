@@ -4,6 +4,7 @@ import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
 import { submitForm } from '../../utils/submitForm';
 import { subscribeToNewsletter, COURSE_TAG_ID } from '../../utils/mailchimp';
 import { useSeo } from '../../utils/useSeo';
+import LanguageToggle from '../../Components/LanguageToggle/LanguageToggle';
 
 const Courses: React.FC = () => {
   useSeo(
@@ -49,6 +50,7 @@ const Courses: React.FC = () => {
           <img src={logo} alt="Zenflo Studios" className="nav-logo" />
         </div>
         <a href="/" className="courses-back">← Back to studio</a>
+        <LanguageToggle />
         <a href="#save-seat" className="nav-cta">
           Save your seat
           <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
