@@ -23,7 +23,7 @@
   letter-spacing: -0.03em; color: var(--ink); margin: 0 0 24px;
 }
 .newsletter-left h1 .pop {
-  font-family: var(--font-script); color: var(--zen-green);
+  font-family: var(--font-script); color: var(--zen-green-deep);
   font-weight: 400; display: inline-block; transform: rotate(-2deg);
 }
 .newsletter-lead {
@@ -48,7 +48,7 @@
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2);
 }
 .newsletter-card input {
-  padding: 14px 16px; border: 1.5px solid var(--line);
+  padding: 14px 16px; border: 1.5px solid #7E8C85;
   border-radius: 10px; font-size: 16px; font-family: var(--font-sans);
   color: var(--ink); background: var(--cream); outline: none;
   transition: border-color .25s;
@@ -62,8 +62,8 @@
 }
 .newsletter-submit:hover { background: var(--ink); transform: translateY(-2px); }
 .newsletter-submit:disabled { opacity: .6; cursor: default; transform: none; }
-.newsletter-error { font-size: 14px; color: var(--coral-deep); margin: 0; }
-.newsletter-error a { color: var(--coral-deep); text-decoration: underline; }
+.newsletter-error { font-size: 14px; color: #C13A27; margin: 0; }
+.newsletter-error a { color: #C13A27; text-decoration: underline; }
 .newsletter-success h3 {
   font-family: var(--font-display); font-weight: 800; font-size: 32px;
   color: var(--zen-green-deep); margin: 0 0 10px;

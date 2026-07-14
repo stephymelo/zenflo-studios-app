@@ -61,9 +61,9 @@ const HorizontalServices: React.FC = () => {
               </div>
               <div className="col-r">
                 {s.video ? (
-                  <video src={s.media} autoPlay muted loop playsInline />
+                  <video src={s.media} autoPlay muted loop playsInline aria-label={`Example of our ${s.tag.toLowerCase()} work`} />
                 ) : (
-                  <img src={s.media} alt="" />
+                  <img src={s.media} alt={`Example of our ${s.tag.toLowerCase()} work`} />
                 )}
               </div>
             </div>
