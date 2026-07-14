@@ -27,16 +27,13 @@ const Header: React.FC = () => {
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#process">How we flow</a>
+        <a href="/newsletter">Newsletter</a>
         <a href="#contact">Contact</a>
       </div>
-      {/* <a href="#contact" className="nav-cta">
-        Start growing
-        <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
-      </a> */}
-      {/* <a href="/courses" className="nav-cta courses">
+      <a href="/courses" className="nav-cta courses">
         Online courses
         <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
-      </a> */}
+      </a>
       <button className={`nav-hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
         <span /><span /><span />
       </button>
@@ -44,8 +41,9 @@ const Header: React.FC = () => {
         <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
         <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
         <a href="#process" onClick={() => setMenuOpen(false)}>How we flow</a>
+        <a href="/newsletter" onClick={() => setMenuOpen(false)}>Newsletter</a>
         <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-        {/* <a href="/courses" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Online courses →</a> */}
+        <a href="/courses" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Online courses →</a>
       </div>
     </nav>
   );

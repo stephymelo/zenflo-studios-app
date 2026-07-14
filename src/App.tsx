@@ -13,6 +13,7 @@ import ProgenPresentation from './Pages/Presentation/ProgenPresentation';
 import AprilCalendar from './Pages/Presentation/AprilCalendar';
 import MarketingCampaignNil from './Pages/Presentation/MarketingCampaignNil';
 import Courses from './Pages/Courses/Courses';
+import Newsletter from './Pages/Newsletter/Newsletter';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/contact" element={<Contact/>} />
               <Route path="/work" element={<Work/>} />
+              <Route path="/newsletter" element={<Newsletter/>} />
             </Routes>
             <Footer/>
           </>

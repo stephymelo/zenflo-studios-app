@@ -15,6 +15,8 @@ const Footer: React.FC = () => {
             <a href="https://instagram.com/zenflo.studios" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://x.com/ZenfloStudios" target="_blank" rel="noopener noreferrer">X / Twitter</a>
             <a href="mailto:hello@zenflostudios.com">hello@zenflostudios.com</a>
+            <a href="/newsletter">Sign up to the newsletter</a>
+            <a href="/courses">Online courses</a>
           </div>
         </div>
         <div className="footer-bottom">

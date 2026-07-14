@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
 import { submitForm } from '../../utils/submitForm';
+import { subscribeToNewsletter, COURSE_TAG_ID } from '../../utils/mailchimp';
 
 const Courses: React.FC = () => {
   const navigate = useNavigate();
@@ -21,6 +22,14 @@ const Courses: React.FC = () => {
       goals: (form.elements.namedItem('goals') as HTMLTextAreaElement).value,
       subject: 'New Course Registration — Run Your Own Shopify',
     };
+    // Course signups also join the Mailchimp audience via the dedicated course form.
+    subscribeToNewsletter({
+      email: data.email,
+      fname: data.name,
+      company: data.brand,
+      form: 'course',
+      tags: COURSE_TAG_ID,
+    });
     const ok = await submitForm(data);
     setSending(false);
     if (ok) setSubmitted(true);
@@ -50,39 +59,39 @@ const Courses: React.FC = () => {
             </div>
             <h1>Run your<br /><span className="scribble">own</span> <span className="shopify">Shopify.</span></h1>
             <p className="courses-lead">
-              <strong>A free, live, 45-minute class</strong> we run every month — for Shopify beginners who want to set up a store that converts.
+              <strong>A live monthly class for Shopify beginners.</strong> The first 30 minutes — the full lesson — are free for everyone. When it clicks, stay for the build hour and we set up your store together, live.
             </p>
             <p className="courses-sub">
-              Stay for one. Stay for the whole seven-class series. Either way you leave with a real plan, not theory — and a recording you can share with your team.
+              The build hour is $29, and you decide during class — the payment link drops in the chat at the half-hour mark. Build-hour guests keep the full replay, slides, and templates. Want everything? The series pass covers all seven classes and the replay library for $129.
             </p>
           </div>
           <div className="courses-hero-right">
             <div className="courses-card">
-              <div className="courses-card-free">Free</div>
+              <div className="courses-card-free">First 30 min free</div>
               <div className="courses-card-top">
                 <span className="courses-card-label">Next class</span>
-                <span className="courses-card-date">June 24</span>
+                <span className="courses-card-date">August 19</span>
                 <span className="courses-card-time">Wednesday · 7pm EST</span>
               </div>
               <div className="courses-card-grid">
                 <div>
                   <span className="courses-card-label">Topic</span>
-                  <strong>Shopify basics — how to jumpstart your e-commerce</strong>
+                  <strong>Shopify for beginners — jumpstart your first store</strong>
                 </div>
                 <div>
                   <span className="courses-card-label">Format</span>
-                  <strong>45 min live + Q&A</strong>
+                  <strong>30 min lesson + 60 min build hour</strong>
                 </div>
               </div>
               <div className="courses-card-grid">
                 <div>
-                  <span className="courses-card-label">Price</span>
+                  <span className="courses-card-label">The lesson</span>
                   <strong>Free</strong>
                 </div>
-                {/* <div>
-                  <span className="courses-card-label">Spots left</span>
-                  <strong>17 of 50</strong>
-                </div> */}
+                <div>
+                  <span className="courses-card-label">Build hour</span>
+                  <strong>$29 — only if you stay</strong>
+                </div>
               </div>
             </div>
           </div>
@@ -95,12 +104,11 @@ const Courses: React.FC = () => {
           <div className="courses-signup-left">
             <div className="courses-eyebrow">Save your seat</div>
             <h2>Sign up for your <span className="scribble">first</span> class.</h2>
-            <p>Tell us a little about you and we'll send the Zoom link 24 hours before. You'll automatically get invitations to the rest of the course.</p>
+            <p>Saving a seat is free — you only ever pay if you stay past the lesson. We'll send the Zoom link 24 hours before, and you'll get invitations to the rest of the series.</p>
             <ol className="courses-steps">
               <li><span className="step-num">1</span><span><strong>Zoom link + reminder</strong> sent 24h and 1h before class.</span></li>
-              <li><span className="step-num">2</span><span><strong>Replay + slides</strong> in your inbox the morning after.</span></li>
-              <li><span className="step-num">3</span><span><strong>First dibs</strong> on the rest of the seven-class series.</span></li>
-              
+              <li><span className="step-num">2</span><span><strong>First 30 minutes free</strong> — the full lesson plus live Q&A, for everyone.</span></li>
+              <li><span className="step-num">3</span><span><strong>Stay for the build hour ($29)</strong> — we set up your store together; replay, slides and templates included.</span></li>
             </ol>
           </div>
           <div className="courses-signup-right">
@@ -108,7 +116,7 @@ const Courses: React.FC = () => {
               <div className="courses-form-card">
                 <div className="courses-form-success">
                   <h3>You're in!</h3>
-                  <p>Check your inbox for the Zoom link. See you June 24.</p>
+                  <p>Check your inbox for the Zoom link. See you August 19.</p>
                 </div>
               </div>
             ) : (
@@ -137,13 +145,27 @@ const Courses: React.FC = () => {
                   </div>
                   <label><span>What do you want to walk away with?</span><textarea name="goals" placeholder="A storefront for my candle line. Mostly confused about apps and SEO." /></label>
                   <button type="submit" className="courses-submit" disabled={sending}>
-                    {sending ? 'Saving…' : 'Save my seat for June 24 →'}
+                    {sending ? 'Saving…' : 'Save my seat for August 19 →'}
                   </button>
-                
+                  <p className="courses-form-note">Free to save a seat · Series pass: all 7 classes + replays for $129</p>
                 </form>
               </div>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter strip */}
+      <section className="courses-newsletter">
+        <div className="courses-newsletter-inner">
+          <div>
+            <h2>Catch the recap in your <span className="scribble">inbox</span>.</h2>
+            <p>Class invites, dates, and the monthly Zenflo letter — Shopify plays and content ideas, once a month.</p>
+          </div>
+          <a href="/newsletter" className="courses-newsletter-btn">
+            Sign up to the newsletter
+            <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
+          </a>
         </div>
       </section>
     </div>
