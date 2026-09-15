@@ -1,17 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
-import shopifyImg from '../../../Assets/2026 Assets/shopify-skin-homescreen.png';
-import appDevImg from '../../../Assets/2026 Assets/amn-productpage.png';
-import webVid from '../../../Assets/2026 Assets/ta-website-scroll.mov';
+import shopifyImg from '../../../Assets/2026 Assets/ta-product-desktop.png';
+import shopifyImgM from '../../../Assets/2026 Assets/ta-product-mobile.png';
+import appDevImg from '../../../Assets/2026 Assets/amn-product-desktop.png';
+import appDevImgM from '../../../Assets/2026 Assets/amn-product-mobile.png';
+import webVid from '../../../Assets/2026 Assets/ta-landing-scroll.mp4';
+import webVidM from '../../../Assets/2026 Assets/ta-landing-mobile-scroll.mp4';
 import socialVid from '../../../Assets/2026 Assets/socialmedia-reel.mp4';
-import growthImg from '../../../Assets/2026 Assets/email-comebackcheckout.png';
+import growthImg from '../../../Assets/2026 Assets/ta-caseclosed-desktop.png';
+import growthImgM from '../../../Assets/2026 Assets/ta-caseclosed-mobile.png';
 import creativeVid from '../../../Assets/2026 Assets/ta-reelphotoshoot.mp4';
 
+const MOBILE_QUERY = '(max-width: 768px)';
+
+/* Phone tiles get a portrait capture of the same site, so the crop shows the
+   page instead of a slice of a desktop screenshot. */
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_QUERY);
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return isMobile;
+};
+
 const services = [
-  { ix: '01', name: <>Shopify <span className="pop">stores</span></>, desc: 'Custom Liquid themes built for speed, mobile-first, and conversion. Add subscriptions, bundles, upsell and more.', tags: ['CUSTOM THEME', 'LIQUID', 'CRO'], tag: 'Build', media: shopifyImg, video: false },
-  { ix: '02', name: <>App <span className="pop">development</span></>, desc: 'Custom Shopify development when a theme can\'t take you further — private apps, integrations, custom features, and automations built for your store.', tags: ['CUSTOM APPS', 'INTEGRATIONS', 'SHOPIFY API', 'AUTOMATIONS'], tag: 'Build', cls: 't2', media: appDevImg, video: false },
-  { ix: '03', name: <>Web <span className="pop">design</span></>, desc: 'Landing pages and full websites that load fast, rank well, and turn visitors into customers. Designed around your goals, not a template.', tags: ['UX/UI DESIGN', 'IMPROVE TRAFFIC', 'WEBSITE UPDATES'], tag: 'Design', media: webVid, video: true },
+  { ix: '01', name: <>Shopify <span className="pop">stores</span></>, desc: 'Custom Liquid themes built for speed, mobile-first, and conversion. Add subscriptions, bundles, upsell and more.', tags: ['CUSTOM THEME', 'LIQUID', 'CRO'], tag: 'Build', media: shopifyImg, mediaMobile: shopifyImgM, video: false },
+  { ix: '02', name: <>App <span className="pop">development</span></>, desc: 'Custom Shopify development when a theme can\'t take you further — private apps, integrations, custom features, and automations built for your store.', tags: ['CUSTOM APPS', 'INTEGRATIONS', 'SHOPIFY API', 'AUTOMATIONS'], tag: 'Build', cls: 't2', media: appDevImg, mediaMobile: appDevImgM, video: false },
+  { ix: '03', name: <>Web <span className="pop">design</span></>, desc: 'Landing pages and full websites that load fast, rank well, and turn visitors into customers. Designed around your goals, not a template.', tags: ['UX/UI DESIGN', 'IMPROVE TRAFFIC', 'WEBSITE UPDATES'], tag: 'Design', media: webVid, mediaMobile: webVidM, video: true },
   { ix: '04', name: <>Content <span className="pop">&</span> Social</>, desc: 'Monthly content calendars, reels, carousels, and stories. We shoot, edit, write, and schedule — you approve.', tags: ['REELS', 'CAROUSELS', 'STORIES', 'CALENDAR'], tag: 'Create', cls: 't4', media: socialVid, video: true },
-  { ix: '05', name: <>SEO + <span className="pop">Growth</span></>, desc: 'Technical audits, keyword maps, backlink campaigns, and the monthly reporting loop that actually moves the needle.', tags: ['TECHNICAL SEO', 'KEYWORDS', 'BACKLINKS', 'ANALYTICS'], tag: 'Grow', media: growthImg, video: false },
+  { ix: '05', name: <>SEO + <span className="pop">Growth</span></>, desc: 'Technical audits, keyword maps, backlink campaigns, and the monthly reporting loop that actually moves the needle.', tags: ['TECHNICAL SEO', 'KEYWORDS', 'BACKLINKS', 'ANALYTICS'], tag: 'Grow', media: growthImg, mediaMobile: growthImgM, video: false },
   { ix: '06', name: <>Creative <span className="pop">studio</span></>, desc: 'We film content with your products and business, take high-quality photos, and produce printables and digital catalogs — everything your brand needs to show up polished.', tags: ['CONTENT FILMING', 'PRODUCT PHOTOGRAPHY', 'PRINTABLES', 'DIGITAL CATALOGS'], tag: 'Create', cls: 't6', media: creativeVid, video: true },
 ];
 
@@ -20,6 +39,7 @@ const HorizontalServices: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const [current, setCurrent] = useState(1);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -59,12 +79,15 @@ const HorizontalServices: React.FC = () => {
                 <p className="desc">{s.desc}</p>
                 <div className="tags">{s.tags.map((t) => <span className="tag" key={t}>{t}</span>)}</div>
               </div>
-              <div className="col-r">
-                {s.video ? (
-                  <video src={s.media} autoPlay muted loop playsInline aria-label={`Example of our ${s.tag.toLowerCase()} work`} />
-                ) : (
-                  <img src={s.media} alt={`Example of our ${s.tag.toLowerCase()} work`} />
-                )}
+              <div className={`col-r${isMobile && s.mediaMobile ? ' col-r--portrait' : ''}`}>
+                {(() => {
+                  const src = isMobile && s.mediaMobile ? s.mediaMobile : s.media;
+                  return s.video ? (
+                    <video key={src} src={src} autoPlay muted loop playsInline aria-label={`Example of our ${s.tag.toLowerCase()} work`} />
+                  ) : (
+                    <img src={src} alt={`Example of our ${s.tag.toLowerCase()} work`} />
+                  );
+                })()}
               </div>
             </div>
           ))}

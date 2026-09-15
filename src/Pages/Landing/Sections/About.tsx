@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import hlVid from '../../../Assets/2026 Assets/hl-socialmedia-website.mov';
-import hairlossImg from '../../../Assets/2026 Assets/hairloss-mobile-home.png';
+import hlVid from '../../../Assets/2026 Assets/hl-mobile-scroll.mp4';
+import hairlossImg from '../../../Assets/2026 Assets/hl-home-desktop.png';
 
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);

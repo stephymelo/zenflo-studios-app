@@ -112,5 +112,8 @@
   }
   .hsvc-tile .svc-name { font-size: clamp(28px, 7vw, 40px); }
   .hsvc-tile .col-r { height: auto; max-height: none; aspect-ratio: 4/3; }
+  /* Portrait phone captures: taller frame, anchored to the top of the page. */
+  .hsvc-tile .col-r--portrait { aspect-ratio: 4/5; }
+  .hsvc-tile .col-r--portrait img, .hsvc-tile .col-r--portrait video { object-position: top center; }
   .hsvc-progress { display: none; }
 }

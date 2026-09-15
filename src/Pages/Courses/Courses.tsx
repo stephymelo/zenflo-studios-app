@@ -9,7 +9,7 @@ import LanguageToggle, { isSpanish, langHref } from '../../Components/LanguageTo
 const Courses: React.FC = () => {
   useSeo(
     'Free Shopify Course for Beginners — Live Monthly Class | Zenflo Studios',
-    'Learn Shopify live: a monthly class for beginners starting an online business. The first 30 minutes are free — theme, apps, product pages, and first sales. Next class August 19, 7pm EST.',
+    'Learn Shopify live: a monthly class for beginners starting an online business. The first 30 minutes are free — theme, apps, product pages, and first sales. Next class October 24, 7pm EST.',
     '/courses'
   );
   const navigate = useNavigate();
@@ -78,8 +78,8 @@ const Courses: React.FC = () => {
               <div className="courses-card-free">First 30 min free</div>
               <div className="courses-card-top">
                 <span className="courses-card-label">Next class</span>
-                <span className="courses-card-date">August 19</span>
-                <span className="courses-card-time">Wednesday · 7pm EST</span>
+                <span className="courses-card-date">October 24</span>
+                <span className="courses-card-time">Saturday · 7pm EST</span>
               </div>
               <div className="courses-card-grid">
                 <div>
@@ -124,7 +124,7 @@ const Courses: React.FC = () => {
               <div className="courses-form-card">
                 <div className="courses-form-success">
                   <h3>You're in!</h3>
-                  <p>Check your inbox for the Zoom link. See you August 19.</p>
+                  <p>Check your inbox for the Zoom link. See you October 24.</p>
                 </div>
               </div>
             ) : (
@@ -153,7 +153,7 @@ const Courses: React.FC = () => {
                   </div>
                   <label><span>What do you want to walk away with?</span><textarea name="goals" placeholder="A storefront for my candle line. Mostly confused about apps and SEO." /></label>
                   <button type="submit" className="courses-submit" disabled={sending}>
-                    {sending ? 'Saving…' : 'Save my seat for August 19 →'}
+                    {sending ? 'Saving…' : 'Save my seat for October 24 →'}
                   </button>
                   <p className="courses-form-note">Free to save a seat · Series pass: all 7 classes + replays for $129</p>
                 </form>
@@ -171,7 +171,7 @@ const Courses: React.FC = () => {
             <div><dt>Is the Shopify course really free?</dt><dd>The first 30 minutes — the full lesson plus live Q&A — are free for everyone, every month. Staying for the guided build hour is $29, and the seven-class series pass with the replay library is $129.</dd></div>
             <div><dt>Do I need experience to learn Shopify in this class?</dt><dd>No — the class is built for beginners starting a business or their first online store. If you can use a web browser, you can follow along.</dd></div>
             <div><dt>What will I learn?</dt><dd>How to set up a Shopify store that converts: choosing a theme fast, the 3 apps you actually need, product pages and photos, shipping settings, and how to get your first sales with simple marketing.</dd></div>
-            <div><dt>When is the next class?</dt><dd>Wednesday, August 19 at 7pm EST, live on Zoom. A new class runs every month — the Zoom link arrives 24 hours before.</dd></div>
+            <div><dt>When is the next class?</dt><dd>Saturday, October 24 at 7pm EST, live on Zoom. A new class runs every month — the Zoom link arrives 24 hours before.</dd></div>
             <div><dt>English or Spanish?</dt><dd>The class runs in English, and we speak Spanish natively — preguntas en español are always welcome.</dd></div>
           </dl>
         </div>
