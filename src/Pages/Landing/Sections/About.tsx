@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import hlVid from '../../../Assets/2026 Assets/hl-mobile-scroll.mp4';
-import hairlossImg from '../../../Assets/2026 Assets/hl-home-desktop.png';
+import amnHomeImg from '../../../Assets/2026 Assets/amn-home-desktop.png';
 
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,7 +36,7 @@ const About: React.FC = () => {
         </div>
         <div className="about-collage">
           <div className="collage-card c1"><video src={hlVid} autoPlay muted loop playsInline /></div>
-          <div className="collage-card c2"><img src={hairlossImg} alt="" /></div>
+          <div className="collage-card c2"><img src={amnHomeImg} alt="" /></div>
          
         </div>
       </div>
