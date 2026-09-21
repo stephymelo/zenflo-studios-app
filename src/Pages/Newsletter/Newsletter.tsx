@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { subscribeToNewsletter } from '../../utils/mailchimp';
 import { useSeo } from '../../utils/useSeo';
+import { t, ntCls } from '../../Components/LanguageToggle/LanguageToggle';
 
 const Newsletter: React.FC = () => {
   useSeo(
@@ -27,42 +28,44 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <div className="newsletter">
+    <div className={ntCls('newsletter')}>
       <div className="newsletter-inner">
         <div className="newsletter-left">
-          <div className="lbl"><span>The newsletter</span></div>
-          <h1>The Zenflo <span className="pop">letter</span>.</h1>
+          <div className="lbl"><span>{t('The newsletter', 'El boletín')}</span></div>
+          <h1>{t(<>The Zenflo <span className="pop">letter</span>.</>, <>La <span className="pop">carta</span> de Zenflo.</>)}</h1>
           <p className="newsletter-lead">
-            One email a month — Shopify plays, content ideas, and behind-the-scenes
-            from the studio. Written for founders who do their own marketing.
+            {t(
+              'One email a month — Shopify plays, content ideas, and behind-the-scenes from the studio. Written for founders who do their own marketing.',
+              'Un correo al mes: jugadas de Shopify, ideas de contenido y detrás de cámaras del estudio. Escrito para fundadores que hacen su propio marketing.'
+            )}
           </p>
           <div className="newsletter-tags">
-            <span className="tag">SHOPIFY TIPS</span>
-            <span className="tag">CONTENT IDEAS</span>
-            <span className="tag">CLASS INVITES</span>
-            <span className="tag">ONCE A MONTH</span>
+            <span className="tag">{t('SHOPIFY TIPS', 'TIPS DE SHOPIFY')}</span>
+            <span className="tag">{t('CONTENT IDEAS', 'IDEAS DE CONTENIDO')}</span>
+            <span className="tag">{t('CLASS INVITES', 'INVITACIONES A CLASES')}</span>
+            <span className="tag">{t('ONCE A MONTH', 'UNA VEZ AL MES')}</span>
           </div>
         </div>
         <div className="newsletter-right">
           {status === 'success' ? (
             <div className="newsletter-card">
               <div className="newsletter-success">
-                <h3>You're on the list!</h3>
-                <p>Keep an eye on your inbox — the next letter is already growing.</p>
+                <h3>{t("You're on the list!", '¡Ya estás en la lista!')}</h3>
+                <p>{t('Keep an eye on your inbox — the next letter is already growing.', 'Pendiente de tu correo: la próxima carta ya está creciendo.')}</p>
               </div>
             </div>
           ) : (
             <form className="newsletter-card" onSubmit={handleSubmit}>
               <label>
-                <span>First name</span>
-                <input name="fname" type="text" placeholder="Your name" />
+                <span>{t('First name', 'Nombre')}</span>
+                <input name="fname" type="text" placeholder={t('Your name', 'Tu nombre')} />
               </label>
               <label>
-                <span>Email</span>
-                <input name="email" type="email" placeholder="hello@yourbrand.com" required />
+                <span>{t('Email', 'Correo')}</span>
+                <input name="email" type="email" placeholder={t('hello@yourbrand.com', 'hola@tumarca.com')} required />
               </label>
               <button type="submit" className="newsletter-submit" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Planting…' : 'Sign me up →'}
+                {status === 'sending' ? t('Planting…', 'Sembrando…') : t('Sign me up →', 'Suscribirme →')}
               </button>
               {status === 'error' && (
                 <p className="newsletter-error" dangerouslySetInnerHTML={{ __html: message }} />

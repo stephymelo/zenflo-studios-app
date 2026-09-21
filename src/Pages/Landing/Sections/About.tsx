@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import hlVid from '../../../Assets/2026 Assets/hl-mobile-scroll.mp4';
 import hlProsImg from '../../../Assets/2026 Assets/hl-pros-mobile.png';
+import { t, ntCls } from '../../../Components/LanguageToggle/LanguageToggle';
 
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,18 +16,27 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <section className="about" id="about" ref={sectionRef}>
+    <section className={ntCls('about')} id="about" ref={sectionRef}>
       <div className="about-inner">
         <div>
-          <div className="about-eyebrow rv">About the studio</div>
+          <div className="about-eyebrow rv">{t('About the studio', 'Sobre el estudio')}</div>
           <h2 className="about-title rv rv-2">
-            <span className="swash">Creative</span> muscle for brands with taste.
+            {t(
+              <><span className="swash">Creative</span> muscle for brands with taste.</>,
+              <><span className="swash">Músculo</span> creativo para marcas con gusto.</>
+            )}
           </h2>
           <p className="about-body rv rv-3">
-            We believe the strongest brands are built through story, strategy, and intentional design. 
+            {t(
+              'We believe the strongest brands are built through story, strategy, and intentional design.',
+              'Creemos que las marcas más fuertes se construyen con historia, estrategia y diseño intencional.'
+            )}
           </p>
           <p className="about-body rv rv-4">
-           As a collective of experienced creatives, strategists, and developers, we build brands that feel cohesive and are engaging.
+            {t(
+              'As a collective of experienced creatives, strategists, and developers, we build brands that feel cohesive and are engaging.',
+              'Como colectivo de creativos, estrategas y desarrolladores con experiencia, construimos marcas coherentes que enganchan.'
+            )}
           </p>
           {/* <div className="about-stats rv rv-5">
             <div className="stat"><span className="stat-num">50+</span><span className="stat-lbl">Brands launched</span></div>

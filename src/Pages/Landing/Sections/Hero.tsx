@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { t, ntCls } from '../../../Components/LanguageToggle/LanguageToggle';
 
 export const Hero: React.FC = () => {
   const h1Ref = useRef<HTMLHeadingElement>(null);
@@ -9,7 +10,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="hero">
+    <section className={ntCls('hero')}>
       {/* <div className="hero-eyebrows">
         <span className="dot-line">Zenflo Studios · Est. 2025</span>
         <span>Boca Raton · South Florida</span>
@@ -17,9 +18,9 @@ export const Hero: React.FC = () => {
 
       <div className="hero-inner">
         <h1 className="hero-h1" ref={h1Ref}>
-          <span className="line">We build</span>
-          <span className="line">your <em>vision,</em></span>
-          <span className="line">you <span className="scribble">grow.</span></span>
+          <span className="line">{t('We build', 'Construimos')}</span>
+          <span className="line">{t('your', 'tu')} <em>{t('vision,', 'visión,')}</em></span>
+          <span className="line">{t('you', 'tú')} <span className="scribble">{t('grow.', 'creces.')}</span></span>
         </h1>
       </div>
 
@@ -28,10 +29,10 @@ export const Hero: React.FC = () => {
           A creative studio from <strong>South Florida</strong> building the next wave of brands.
         </p> */}
         <div className="hero-stamps">
-          <span className="stamp"><span className="bullet" /> Brand</span>
+          <span className="stamp"><span className="bullet" /> {t('Brand', 'Marca')}</span>
           <span className="stamp butter"><span className="bullet" /> Shopify/E-commerce</span>
-          <span className="stamp coral"><span className="bullet" /> AI + SEO + Social</span>
-          <span className="stamp green"><span className="bullet" /> Print</span>
+          <span className="stamp coral"><span className="bullet" /> {t('AI + SEO + Social', 'IA + SEO + Redes')}</span>
+          <span className="stamp green"><span className="bullet" /> {t('Print', 'Impresión')}</span>
         </div>
       </div>
 

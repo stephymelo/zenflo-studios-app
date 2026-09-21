@@ -13,6 +13,12 @@ export const currentLang = (): Lang => {
 
 export const isSpanish = () => currentLang() === 'es';
 
+// Hand-written Spanish. Google Translate mangles headings that mix spans, so
+// sections with manual copy opt out of it entirely: pick the string with t()
+// and put ntCls() on the section root so the widget leaves it alone.
+export const t = <T,>(en: T, es: T): T => (isSpanish() ? es : en);
+export const ntCls = (cls: string) => (isSpanish() ? `${cls} notranslate` : cls);
+
 // Prefix an internal href with the active language (raw <a> tags bypass the
 // router basename, so they need this).
 export const langHref = (path: string) =>

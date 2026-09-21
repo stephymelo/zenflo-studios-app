@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../../Assets/Logo/logo-zenflo-2026.svg';
 import { submitForm } from '../../../utils/submitForm';
-import { isSpanish } from '../../../Components/LanguageToggle/LanguageToggle';
+import { t, ntCls } from '../../../Components/LanguageToggle/LanguageToggle';
 
 const CtaSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -34,45 +34,44 @@ const CtaSection: React.FC = () => {
   };
 
   return (
-    <section className="cta-section" id="contact" ref={sectionRef}>
+    <section className={ntCls('cta-section')} id="contact" ref={sectionRef}>
       <div className="cta-section-mark"><img src={logo} alt="" /></div>
       <div className="cta-section-inner">
         <div>
-          {isSpanish() ? (
-            <h2 className="rv notranslate">Vamos a <span className="pop">crear</span> algo <span className="coral-text">juntos.</span></h2>
-          ) : (
-            <h2 className="rv">Let's <span className="pop">grow</span> something <span className="coral-text">together.</span></h2>
-          )}
-          <p className="rv rv-2">Tell us about your brand and your vision.</p>
+          <h2 className="rv">{t(
+            <>Let's <span className="pop">grow</span> something <span className="coral-text">together.</span></>,
+            <>Vamos a <span className="pop">crear</span> algo <span className="coral-text">juntos.</span></>
+          )}</h2>
+          <p className="rv rv-2">{t('Tell us about your brand and your vision.', 'Cuéntanos sobre tu marca y tu visión.')}</p>
           {sent ? (
             <div className="cta-form rv rv-3" style={{ textAlign: 'center', padding: '40px 0' }}>
-              <h3 style={{ color: '#FFDA63', marginBottom: 12 }}>Sent!</h3>
-              <p style={{ color: 'var(--cream)' }}>We'll be in touch within 48 hours.</p>
+              <h3 style={{ color: '#FFDA63', marginBottom: 12 }}>{t('Sent!', '¡Enviado!')}</h3>
+              <p style={{ color: 'var(--cream)' }}>{t("We'll be in touch within 48 hours.", 'Te respondemos en menos de 48 horas.')}</p>
             </div>
           ) : (
             <form className="cta-form rv rv-3" onSubmit={handleSubmit}>
               <div className="cta-row">
-                <label><span>Your name</span><input name="name" type="text" required /></label>
-                <label><span>Your brand</span><input name="brand" type="text" placeholder="Brand Name" /></label>
+                <label><span>{t('Your name', 'Tu nombre')}</span><input name="name" type="text" required /></label>
+                <label><span>{t('Your brand', 'Tu marca')}</span><input name="brand" type="text" placeholder={t('Brand Name', 'Nombre de la marca')} /></label>
               </div>
-              <label><span>Email</span><input name="email" type="email" placeholder="hello@yourbrand.com" required /></label>
-              <label><span>What are you working on?</span><textarea name="message" placeholder="A skincare launch. Need brand + Shopify + first 90 days of content." /></label>
-              <button type="submit" disabled={sending}>{sending ? 'Sending…' : 'Send the seed →'}</button>
+              <label><span>{t('Email', 'Correo')}</span><input name="email" type="email" placeholder={t('hello@yourbrand.com', 'hola@tumarca.com')} required /></label>
+              <label><span>{t('What are you working on?', '¿En qué estás trabajando?')}</span><textarea name="message" placeholder={t('A skincare launch. Need brand + Shopify + first 90 days of content.', 'Un lanzamiento de skincare. Necesito marca + Shopify + los primeros 90 días de contenido.')} /></label>
+              <button type="submit" disabled={sending}>{sending ? t('Sending…', 'Enviando…') : t('Send the seed →', 'Enviar la semilla →')}</button>
             </form>
           )}
         </div>
         <aside className="cta-aside">
           <div className="block rv rv-2">
-            <h4>Email us</h4>
+            <h4>{t('Email us', 'Escríbenos')}</h4>
             <p><a href="mailto:hello@zenflostudios.com">hello@zenflostudios.com</a></p>
           </div>
           <div className="block rv rv-3">
-            <h4>We're based in</h4>
-            <p>Boca Raton, South Florida.</p>
+            <h4>{t("We're based in", 'Estamos en')}</h4>
+            <p>{t('Boca Raton, South Florida.', 'Boca Raton, sur de Florida.')}</p>
           </div>
           <div className="block rv rv-4">
-            <h4>Office hours</h4>
-            <p>Mon–Fri · 9am to 6pm EST<br />Async by default — meetings on purpose.</p>
+            <h4>{t('Office hours', 'Horario')}</h4>
+            <p>{t(<>Mon–Fri · 9am to 6pm EST<br />Async by default — meetings on purpose.</>, <>Lun–Vie · 9am a 6pm EST<br />Asíncronos por defecto: reuniones con propósito.</>)}</p>
           </div>
         </aside>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { t, ntCls } from '../../../Components/LanguageToggle/LanguageToggle';
 
 interface MarqueeProps {
   variant?: 'default' | 'alt' | 'butter';
@@ -6,7 +7,7 @@ interface MarqueeProps {
 }
 
 const Marquee: React.FC<MarqueeProps> = ({ variant = 'default', children }) => {
-  const cls = variant === 'default' ? 'marquee' : `marquee ${variant}`;
+  const cls = ntCls(variant === 'default' ? 'marquee' : `marquee ${variant}`);
   return (
     <div className={cls}>
       <div className="marquee-track">

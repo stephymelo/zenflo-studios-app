@@ -1,5 +1,6 @@
 import React from "react";
 import { useSeo } from "../../utils/useSeo";
+import { t, ntCls } from "../../Components/LanguageToggle/LanguageToggle";
 
 import catalog from '../../Assets/Projects/catalog-men-nil-mockup.png';
 import catalogW from '../../Assets/Projects/catalog-women-mockup.png';
@@ -25,8 +26,8 @@ const Work: React.FC = () => {
   const workItems: WorkItem[] = [
     {
       id: 1,
-      title: "Catalogs for print and digital",
-      subtitle: "Re-designing the catalogs to better fit the products, improve readibility and navigation. Designed covers and took photos for catalog use. ",
+      title: t("Catalogs for print and digital", "Catálogos para impresión y digital"),
+      subtitle: t("Re-designing the catalogs to better fit the products, improve readibility and navigation. Designed covers and took photos for catalog use. ", "Rediseño de los catálogos para ajustarse mejor a los productos y mejorar la lectura y la navegación. Diseñamos las portadas y tomamos las fotos para el catálogo."),
       images: [
         catalog,
         catalogW,
@@ -35,8 +36,8 @@ const Work: React.FC = () => {
     },
     {
       id: 2,
-      title: "E-commerce for Hair Care with Branding",
-      subtitle: "Designed brand book for socials and web. Built e-commerse with Shopify, customized to the brands needs to include Wholesale, interactive elements, and more.",
+      title: t("E-commerce for Hair Care with Branding", "E-commerce de cuidado capilar con branding"),
+      subtitle: t("Designed brand book for socials and web. Built e-commerse with Shopify, customized to the brands needs to include Wholesale, interactive elements, and more.", "Diseñamos el brand book para redes y web. Construimos el e-commerce en Shopify, personalizado a las necesidades de la marca con mayoreo, elementos interactivos y más."),
       images: [
         progen,
         progenWeb,
@@ -59,8 +60,8 @@ const Work: React.FC = () => {
   ];
 
   return (
-    <div className="section-work">
-      <h1>Work</h1>
+    <div className={ntCls("section-work")}>
+      <h1>{t("Work", "Proyectos")}</h1>
       
       <div className="work-items-container">
         {workItems.map((item) => (

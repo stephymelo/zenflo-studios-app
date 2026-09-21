@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../Assets/Logo/logo-zenflo-2026.svg';
-import LanguageToggle, { isSpanish, langHref } from '../LanguageToggle/LanguageToggle';
+import LanguageToggle, { isSpanish, langHref, t, ntCls } from '../LanguageToggle/LanguageToggle';
 
 // Section links point at the landing page in the current language plus the
 // hash (/#about, /es/#about). A raw href keeps open-in-new-tab working; the
@@ -33,32 +33,32 @@ const Header: React.FC = () => {
   }, [menuOpen]);
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+    <nav className={ntCls(`nav${scrolled ? ' scrolled' : ''}`)}>
       <div className="nav-brand" onClick={() => navigate('/')}>
         <img src={logo} alt="Zenflo Studios" className="nav-logo" />
       </div>
       <div className="nav-links">
-        <a href={sectionHref('about')} onClick={goToSection('about')}>About</a>
-        <a href={sectionHref('services')} onClick={goToSection('services')}>Services</a>
-        <a href={sectionHref('process')} onClick={goToSection('process')}>How we flow</a>
-        <a href={langHref('/newsletter')} className="notranslate">{isSpanish() ? 'Boletín' : 'Newsletter'}</a>
-        <a href={sectionHref('contact')} onClick={goToSection('contact')}>Contact</a>
+        <a href={sectionHref('about')} onClick={goToSection('about')}>{t('About', 'Nosotros')}</a>
+        <a href={sectionHref('services')} onClick={goToSection('services')}>{t('Services', 'Servicios')}</a>
+        <a href={sectionHref('process')} onClick={goToSection('process')}>{t('How we flow', 'Cómo fluimos')}</a>
+        <a href={langHref('/newsletter')}>{isSpanish() ? 'Boletín' : 'Newsletter'}</a>
+        <a href={sectionHref('contact')} onClick={goToSection('contact')}>{t('Contact', 'Contacto')}</a>
         <LanguageToggle />
       </div>
       <a href={langHref('/courses')} className="nav-cta courses">
-        Online courses
+        {t('Online courses', 'Cursos en línea')}
         <svg className="arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M1 13L13 1M13 1H3M13 1v10" /></svg>
       </a>
-      <button className={`nav-hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+      <button className={`nav-hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label={t('Menu', 'Menú')}>
         <span /><span /><span />
       </button>
       <div className={`nav-mobile${menuOpen ? ' open' : ''}`}>
-        <a href={sectionHref('about')} onClick={goToSection('about')}>About</a>
-        <a href={sectionHref('services')} onClick={goToSection('services')}>Services</a>
-        <a href={sectionHref('process')} onClick={goToSection('process')}>How we flow</a>
-        <a href={langHref('/newsletter')} className="notranslate" onClick={() => setMenuOpen(false)}>{isSpanish() ? 'Boletín' : 'Newsletter'}</a>
-        <a href={sectionHref('contact')} onClick={goToSection('contact')}>Contact</a>
-        <a href={langHref('/courses')} className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Online courses →</a>
+        <a href={sectionHref('about')} onClick={goToSection('about')}>{t('About', 'Nosotros')}</a>
+        <a href={sectionHref('services')} onClick={goToSection('services')}>{t('Services', 'Servicios')}</a>
+        <a href={sectionHref('process')} onClick={goToSection('process')}>{t('How we flow', 'Cómo fluimos')}</a>
+        <a href={langHref('/newsletter')} onClick={() => setMenuOpen(false)}>{isSpanish() ? 'Boletín' : 'Newsletter'}</a>
+        <a href={sectionHref('contact')} onClick={goToSection('contact')}>{t('Contact', 'Contacto')}</a>
+        <a href={langHref('/courses')} className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>{t('Online courses →', 'Cursos en línea →')}</a>
         <LanguageToggle />
       </div>
     </nav>

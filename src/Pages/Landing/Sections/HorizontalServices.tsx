@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { t, ntCls } from '../../../Components/LanguageToggle/LanguageToggle';
 import shopifyImg from '../../../Assets/2026 Assets/ta-product-desktop.png';
 import shopifyImgM from '../../../Assets/2026 Assets/ta-product-mobile.png';
 import appDevImg from '../../../Assets/2026 Assets/amn-product-desktop.png';
@@ -26,12 +27,12 @@ const useIsMobile = () => {
 };
 
 const services = [
-  { ix: '01', name: <>Shopify <span className="pop">stores</span></>, desc: 'Custom Liquid themes built for speed, mobile-first, and conversion. Add subscriptions, bundles, upsell and more.', tags: ['CUSTOM THEME', 'LIQUID', 'CRO'], tag: 'Build', media: shopifyImg, mediaMobile: shopifyImgM, video: false },
-  { ix: '02', name: <>App <span className="pop">development</span></>, desc: 'Custom Shopify development when a theme can\'t take you further — private apps, integrations, custom features, and automations built for your store.', tags: ['CUSTOM APPS', 'INTEGRATIONS', 'SHOPIFY API', 'AUTOMATIONS'], tag: 'Build', cls: 't2', media: appDevImg, mediaMobile: appDevImgM, video: false },
-  { ix: '03', name: <>Web <span className="pop">design</span></>, desc: 'Landing pages and full websites that load fast, rank well, and turn visitors into customers. Designed around your goals, not a template.', tags: ['UX/UI DESIGN', 'IMPROVE TRAFFIC', 'WEBSITE UPDATES'], tag: 'Design', media: webVid, mediaMobile: webVidM, video: true },
-  { ix: '04', name: <>Content <span className="pop">&</span> Social</>, desc: 'Monthly content calendars, reels, carousels, and stories. We shoot, edit, write, and schedule — you approve.', tags: ['REELS', 'CAROUSELS', 'STORIES', 'CALENDAR'], tag: 'Create', cls: 't4', media: socialVid, video: true },
-  { ix: '05', name: <>SEO + <span className="pop">Growth</span></>, desc: 'Technical audits, keyword maps, backlink campaigns, and the monthly reporting loop that actually moves the needle.', tags: ['TECHNICAL SEO', 'KEYWORDS', 'BACKLINKS', 'ANALYTICS'], tag: 'Grow', media: growthImg, mediaMobile: growthImgM, video: false },
-  { ix: '06', name: <>Creative <span className="pop">studio</span></>, desc: 'We film content with your products and business, take high-quality photos, and produce printables and digital catalogs — everything your brand needs to show up polished.', tags: ['CONTENT FILMING', 'PRODUCT PHOTOGRAPHY', 'PRINTABLES', 'DIGITAL CATALOGS'], tag: 'Create', cls: 't6', media: creativeVid, video: true },
+  { ix: '01', name: t(<>Shopify <span className="pop">stores</span></>, <>Tiendas <span className="pop">Shopify</span></>), desc: t('Custom Liquid themes built for speed, mobile-first, and conversion. Add subscriptions, bundles, upsell and more.', 'Temas Liquid a medida, pensados para velocidad, móvil primero y conversión. Suma suscripciones, paquetes, upsells y más.'), tags: t(['CUSTOM THEME', 'LIQUID', 'CRO'], ['TEMA A MEDIDA', 'LIQUID', 'CRO']), tag: 'Build', media: shopifyImg, mediaMobile: shopifyImgM, video: false },
+  { ix: '02', name: t(<>App <span className="pop">development</span></>, <>Desarrollo de <span className="pop">apps</span></>), desc: t('Custom Shopify development when a theme can\'t take you further — private apps, integrations, custom features, and automations built for your store.', 'Desarrollo Shopify a medida cuando un tema ya no da más: apps privadas, integraciones, funciones personalizadas y automatizaciones para tu tienda.'), tags: t(['CUSTOM APPS', 'INTEGRATIONS', 'SHOPIFY API', 'AUTOMATIONS'], ['APPS A MEDIDA', 'INTEGRACIONES', 'SHOPIFY API', 'AUTOMATIZACIONES']), tag: 'Build', cls: 't2', media: appDevImg, mediaMobile: appDevImgM, video: false },
+  { ix: '03', name: t(<>Web <span className="pop">design</span></>, <>Diseño <span className="pop">web</span></>), desc: t('Landing pages and full websites that load fast, rank well, and turn visitors into customers. Designed around your goals, not a template.', 'Landing pages y sitios completos que cargan rápido, posicionan bien y convierten visitas en clientes. Diseñados alrededor de tus metas, no de una plantilla.'), tags: t(['UX/UI DESIGN', 'IMPROVE TRAFFIC', 'WEBSITE UPDATES'], ['DISEÑO UX/UI', 'MÁS TRÁFICO', 'ACTUALIZACIONES WEB']), tag: 'Design', media: webVid, mediaMobile: webVidM, video: true },
+  { ix: '04', name: t(<>Content <span className="pop">&</span> Social</>, <>Contenido <span className="pop">&</span> Redes</>), desc: t('Monthly content calendars, reels, carousels, and stories. We shoot, edit, write, and schedule — you approve.', 'Calendarios de contenido mensuales, reels, carruseles e historias. Grabamos, editamos, escribimos y programamos; tú apruebas.'), tags: t(['REELS', 'CAROUSELS', 'STORIES', 'CALENDAR'], ['REELS', 'CARRUSELES', 'HISTORIAS', 'CALENDARIO']), tag: 'Create', cls: 't4', media: socialVid, video: true },
+  { ix: '05', name: t(<>SEO + <span className="pop">Growth</span></>, <>SEO + <span className="pop">Crecimiento</span></>), desc: t('Technical audits, keyword maps, backlink campaigns, and the monthly reporting loop that actually moves the needle.', 'Auditorías técnicas, mapas de palabras clave, campañas de backlinks y el reporte mensual que de verdad mueve la aguja.'), tags: t(['TECHNICAL SEO', 'KEYWORDS', 'BACKLINKS', 'ANALYTICS'], ['SEO TÉCNICO', 'PALABRAS CLAVE', 'BACKLINKS', 'ANALÍTICA']), tag: 'Grow', media: growthImg, mediaMobile: growthImgM, video: false },
+  { ix: '06', name: t(<>Creative <span className="pop">studio</span></>, <>Estudio <span className="pop">creativo</span></>), desc: t('We film content with your products and business, take high-quality photos, and produce printables and digital catalogs — everything your brand needs to show up polished.', 'Grabamos contenido con tus productos y tu negocio, hacemos fotos de alta calidad y producimos imprimibles y catálogos digitales: todo lo que tu marca necesita para verse impecable.'), tags: t(['CONTENT FILMING', 'PRODUCT PHOTOGRAPHY', 'PRINTABLES', 'DIGITAL CATALOGS'], ['GRABACIÓN DE CONTENIDO', 'FOTOGRAFÍA DE PRODUCTO', 'IMPRIMIBLES', 'CATÁLOGOS DIGITALES']), tag: 'Create', cls: 't6', media: creativeVid, video: true },
 ];
 
 const HorizontalServices: React.FC = () => {
@@ -61,15 +62,18 @@ const HorizontalServices: React.FC = () => {
   }, []);
 
   return (
-    <div className="hsvc-wrap" ref={wrapRef} id="services">
+    <div className={ntCls('hsvc-wrap')} ref={wrapRef} id="services">
       <div className="hsvc-sticky">
         <div className="hsvc-head">
-          <div className="lbl"><span>What we do</span></div>
-          <h2>Six ways we<br />make you <span className="pop">bloom</span>.</h2>
+          <div className="lbl"><span>{t('What we do', 'Lo que hacemos')}</span></div>
+          {t(
+            <h2>Six ways we<br />make you <span className="pop">bloom</span>.</h2>,
+            <h2>Seis formas de<br />hacerte <span className="pop">florecer</span>.</h2>
+          )}
         </div>
         <div className="hsvc-counter">
           <span className="cur">{String(current).padStart(2, '0')}</span>
-          <span>/ {String(services.length).padStart(2, '0')} services</span>
+          <span>/ {String(services.length).padStart(2, '0')} {t('services', 'servicios')}</span>
         </div>
         <div className="hsvc-track" ref={trackRef}>
           {services.map((s, i) => (

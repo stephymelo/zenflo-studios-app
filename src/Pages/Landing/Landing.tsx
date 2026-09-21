@@ -1,4 +1,5 @@
 import React from 'react';
+import { t } from '../../Components/LanguageToggle/LanguageToggle';
 import Hero from './Sections/Hero';
 import Marquee, { MarqueeItem } from './Sections/Marquee';
 import About from './Sections/About';
@@ -20,17 +21,17 @@ export const Landing: React.FC = () => {
       <Marquee>
         <MarqueeItem text="Branding" />
         <MarqueeItem text="Shopify" />
-        <MarqueeItem text="Web Design" />
+        <MarqueeItem text={t('Web Design', 'Diseño web')} />
         <MarqueeItem text="SEO" />
-        <MarqueeItem text="Content" />
-        <MarqueeItem text="Creative Direction" />
+        <MarqueeItem text={t('Content', 'Contenido')} />
+        <MarqueeItem text={t('Creative Direction', 'Dirección creativa')} />
       </Marquee>
       <About />
       <Marquee variant="alt">
-        <MarqueeItem text="Beauty" />
-        <MarqueeItem text="Wellness" />
-        <MarqueeItem text="Skincare" />
-        <MarqueeItem text="Lifestyle" />
+        <MarqueeItem text={t('Beauty', 'Belleza')} />
+        <MarqueeItem text={t('Wellness', 'Bienestar')} />
+        <MarqueeItem text={t('Skincare', 'Cuidado de la piel')} />
+        <MarqueeItem text={t('Lifestyle', 'Estilo de vida')} />
         <MarqueeItem text="DTC" />
         <MarqueeItem text="E-Commerce" />
       </Marquee>
@@ -38,10 +39,10 @@ export const Landing: React.FC = () => {
       <ProcessRail />
       {/* <Testimonials /> */}
       <Marquee variant="butter">
-        <MarqueeItem text="Let's grow" />
-        <MarqueeItem text="Let's bloom" />
-        <MarqueeItem text="Let's build" />
-        <MarqueeItem text="Let's create" />
+        <MarqueeItem text={t("Let's grow", 'Vamos a crecer')} />
+        <MarqueeItem text={t("Let's bloom", 'Vamos a florecer')} />
+        <MarqueeItem text={t("Let's build", 'Vamos a construir')} />
+        <MarqueeItem text={t("Let's create", 'Vamos a crear')} />
       </Marquee>
       <CtaSection />
     </section>
