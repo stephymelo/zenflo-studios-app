@@ -169,15 +169,26 @@
     </div>
     <div id="google_translate_element" aria-hidden="true"></div>
     <script type="text/javascript">
+      // Language is driven by the URL prefix (/es/...). Anything else is
+      // English. Google Translate reads the googtrans cookie, and it writes its
+      // own copy on the parent domain (.zenflostudios.com) while the site runs
+      // on www. Every variant has to be cleared and rewritten, otherwise a
+      // stale Spanish cookie on the parent domain wins forever.
+      window.__setSiteLang = function (lang) {
+        var host = location.hostname;
+        var labels = host.split('.');
+        var domains = [null, '.' + host];
+        for (var i = 1; i < labels.length - 1; i++) domains.push('.' + labels.slice(i).join('.'));
+        domains.forEach(function (d) {
+          var suffix = ';path=/' + (d ? ';domain=' + d : '');
+          document.cookie = 'googtrans=' + suffix + ';expires=Thu, 01 Jan 1970 00:00:00 GMT';
+          if (lang !== 'en') document.cookie = 'googtrans=/en/' + lang + suffix;
+        });
+      };
       (function () {
-        // Language is driven by the URL prefix (/es/...). Anything else is
-        // English. Set the Google Translate cookie from the URL BEFORE the
-        // widget loads so the right language paints with no flash.
         var LANGS = ['en', 'es'];
         var seg = location.pathname.split('/')[1];
-        var lang = LANGS.indexOf(seg) !== -1 ? seg : 'en';
-        document.cookie = 'googtrans=/en/' + lang + ';path=/';
-        document.cookie = 'googtrans=/en/' + lang + ';path=/;domain=.' + location.hostname;
+        window.__setSiteLang(LANGS.indexOf(seg) !== -1 ? seg : 'en');
       })();
       function googleTranslateElementInit() {
         new google.translate.TranslateElement(

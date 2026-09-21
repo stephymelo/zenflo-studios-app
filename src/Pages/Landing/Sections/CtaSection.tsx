@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../../Assets/Logo/logo-zenflo-2026.svg';
 import { submitForm } from '../../../utils/submitForm';
+import { isSpanish } from '../../../Components/LanguageToggle/LanguageToggle';
 
 const CtaSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -37,7 +38,11 @@ const CtaSection: React.FC = () => {
       <div className="cta-section-mark"><img src={logo} alt="" /></div>
       <div className="cta-section-inner">
         <div>
-          <h2 className="rv">Let's <span className="pop">grow</span> something <span className="coral-text">together.</span></h2>
+          {isSpanish() ? (
+            <h2 className="rv notranslate">Vamos a <span className="pop">crear</span> algo <span className="coral-text">juntos.</span></h2>
+          ) : (
+            <h2 className="rv">Let's <span className="pop">grow</span> something <span className="coral-text">together.</span></h2>
+          )}
           <p className="rv rv-2">Tell us about your brand and your vision.</p>
           {sent ? (
             <div className="cta-form rv rv-3" style={{ textAlign: 'center', padding: '40px 0' }}>

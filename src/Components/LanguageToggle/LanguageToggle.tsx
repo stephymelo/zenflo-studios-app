@@ -24,8 +24,9 @@ const setLang = (lang: Lang) => {
   if (LANGS.includes(parts[1] as Lang)) parts.splice(1, 1);
   const rest = parts.join('/') || '/';
   const target = lang === 'en' ? rest : `/es${rest === '/' ? '' : rest}`;
-  document.cookie = `googtrans=/en/${lang}; path=/`;
-  document.cookie = `googtrans=/en/${lang}; path=/; domain=.${window.location.hostname}`;
+  // index.html owns the cookie logic (it must run before the widget loads);
+  // it clears every domain variant Google Translate may have written.
+  (window as any).__setSiteLang?.(lang);
   window.location.assign(target + window.location.search + window.location.hash);
 };
 
